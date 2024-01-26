@@ -5,7 +5,7 @@ Tags: membership, ecommerce, user registration, user profile, memberships, membe
 Requires at least: 5.3
 Requires PHP: 7.4
 Tested up to: 6.4
-Stable tag: 4.14.2
+Stable tag: 4.14.3
 License: GPLv2 or later
 
 Setup paid membership, accept payments, sell subscriptions & digital products, paywall & content restriction, create registration form, login form, user profile & member directory.
@@ -189,6 +189,12 @@ Any file type can be sold using ProfilePress ecommerce and membership plugin, in
 
 == Changelog ==
 
+= Paid Membership, Ecommerce & User Registration 4.14.3 =
+* Added ppress_drag_drop_profile_listing_item filter.
+* Ensure subscription is expired on subscription upgrade.
+* Fixed bug with "Already have an account" checkout link not working.
+* Fixed a couple of PHP warnings
+
 = Paid Membership, Ecommerce & User Registration 4.14.2 =
 * Improved avada theme compatibility.
 * Fixed bug with expired subscription not expiring.
@@ -204,19 +210,5 @@ Any file type can be sold using ProfilePress ecommerce and membership plugin, in
 * Improved caching of gravatar API calls.
 * Added more US states: American Samoa, Puerto Rico, Palau.
 * Switch to esc_url_raw in NavigationMenuLinks::Frontend.
-
-= Paid Membership, Ecommerce & User Registration 4.14.0 =
-* Added feature to disable concurrent login by users.
-* Added password strength meter to "change password" myaccount section.
-* Added Allowlist option for restricting registration to specific email addresses.
-* Added Bank Transfer payment method.
-* Added filter to stripe customer metadata array.
-* added ppress_author_post_after_title filter.
-* Fixed fatal error: Uncaught TypeError: array_filter(): Argument 1 ($array) must be of type array.
-
-= Paid Membership, Ecommerce & User Registration 4.13.4 =
-* Pro: [Invite Codes](https://profilepress.com/addons/invite-codes/?ref=changelog) addon.
-* Enhancement: Only add confirm prompt on cancel action button on view subscription page.
-* Fixed bug where material icons weren't showing in form builder.
 
 See the [changelog file](https://plugins.svn.wordpress.org/wp-user-avatar/trunk/changelog.txt) for full change log information.
