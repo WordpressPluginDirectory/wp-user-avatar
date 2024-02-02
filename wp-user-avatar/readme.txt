@@ -5,7 +5,7 @@ Tags: membership, ecommerce, user registration, user profile, memberships, membe
 Requires at least: 5.3
 Requires PHP: 7.4
 Tested up to: 6.4
-Stable tag: 4.14.3
+Stable tag: 4.14.4
 License: GPLv2 or later
 
 Setup paid membership, accept payments, sell subscriptions & digital products, paywall & content restriction, create registration form, login form, user profile & member directory.
@@ -55,7 +55,7 @@ Create excellent checkout page, member login forms, user registration forms, pas
 * **Conversion Optimized Checkout Form** – Let users make payments to you and subscribe to your membership plans.
 * **User Registration Forms** – Let users signup via a custom registration form.
 * **Login & Password Reset Forms** – Allow users to log in and reset their passwords via custom frontent forms.
-* **User Dashboard** – My Account page and edit profile forms for users to manage their profile details and account settings.
+* **User Dashboard** – My Account page and edit profile forms for users to manage their profile details, account settings, change password and delete their account account.
 * **Automatic Registration & Login Redirect** – Auto login users after they register and redirect them after they sign in, log out and reset their passwords.
 * Add login and logout links, register and profile links to your website navigation menu that will change based on whether the user is logged in.
 
@@ -188,6 +188,12 @@ Any file type can be sold using ProfilePress ecommerce and membership plugin, in
 11. Content Protection
 
 == Changelog ==
+
+= Paid Membership, Ecommerce & User Registration 4.14.4 =
+* Added account deletion tab to My Account page.
+* Move CC element below billing address when Taxes is enabled.
+* Security Fix: XSS on registration form.
+* Fixed a couple of PHP warnings
 
 = Paid Membership, Ecommerce & User Registration 4.14.3 =
 * Added ppress_drag_drop_profile_listing_item filter.

@@ -100,7 +100,7 @@ class FieldsShortcodeCallback
         $valid_atts = array();
 
         foreach ($atts as $key => $value) {
-            if ( ! in_array($key, $invalid_atts) && is_string($key) && is_string($value)) {
+            if ( ! in_array($key, $invalid_atts) && strpos($key, 'on') !== 0 && is_string($key) && is_string($value)) {
                 $valid_atts[esc_attr($key)] = esc_attr($value);
             }
         }
@@ -124,15 +124,19 @@ class FieldsShortcodeCallback
         $output = [];
 
         foreach ($atts as $key => $value) {
+            // ensure no leading/trailing space
+            $key = sanitize_text_field(trim($key));
+
+            // skip all onXYZ attributes eg onclick, onmouseover etc
+            if(strpos($key, 'on') === 0) continue;
+
             // add class to submit button.
             if ($field_name == $this->tag_name . '_submit' && $key == 'class') {
                 $value = 'pp-submit-form ' . $value;
             }
 
             if ($key != 'required' && ! empty($value)) {
-                $value    = esc_attr($value);
-                $key      = esc_attr($key);
-                $output[] = "$key=\"$value\"";
+                $output[] = sprintf('%s="%s"', esc_attr($key), esc_attr($value));
             }
         }
 
