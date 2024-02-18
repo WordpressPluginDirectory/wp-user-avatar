@@ -5,7 +5,7 @@ Tags: membership, ecommerce, user registration, user profile, memberships, membe
 Requires at least: 5.3
 Requires PHP: 7.4
 Tested up to: 6.4
-Stable tag: 4.14.4
+Stable tag: 4.15.0
 License: GPLv2 or later
 
 Setup paid membership, accept payments, sell subscriptions & digital products, paywall & content restriction, create registration form, login form, user profile & member directory.
@@ -87,6 +87,18 @@ You can also control the visibility of [navigation menus](https://profilepress.c
 
 We provide a complete reports section where you can Keep track of your earnings, refunds, sales, download logs and more. You can view and export reports for any period or drill down to specific membership plans.
 
+= Login Redirect =
+
+Do you want to redirect WordPress users after login to your website to a specific page or URL? The Login Redirect feature allows you to setup login redirect based on user role and subscribed membership plan.
+
+= Email Customizer =
+
+Customize the email templates for each email that can be sent to users and administrators. You also have the flexibility of changing the sender name and email address and activating and deactivating the email type that can be sent.
+
+= Tutor LMS Integration =
+
+Our [Tutor LMS integration](https://profilepress.com/addons/tutor-lms/?utm_source=wprepo&utm_medium=link&utm_campaign=liteversion) lets you sell access to Tutor LMS courses, enroll users after registration to specific courses and create custom student and instructor WordPress registration forms.
+
 = Other Payment & Membership Plugin Features =
 
 * Accept one-time, recurring payments and charge for subscriptions via Bank Transfer, Stripe, PayPal, Paystack, RazorPay and Mollie.
@@ -96,14 +108,6 @@ We provide a complete reports section where you can Keep track of your earnings,
 * Disable the admin bar and restrict access to the WordPress dashboard based on user roles.
 * Redirect the WordPress default login page (wp-login.php) to your custom login, registration page, and password reset pages.
 * Disable concurrent logins to prevent users from being logged into the same account from multiple computers at the same time.
-
-= Email Customizer =
-
-Customize the email templates for each email that can be sent to users and administrators. You also have the flexibility of changing the sender name and email address and activating and deactivating the email type that can be sent.
-
-= Tutor LMS Integration =
-
-Our [Tutor LMS integration](https://profilepress.com/addons/tutor-lms/?utm_source=wprepo&utm_medium=link&utm_campaign=liteversion) lets you sell access to Tutor LMS courses, enroll users after registration to specific courses and create custom student and instructor WordPress registration forms.
 
 ### Powerful Premium Features
 
@@ -189,32 +193,8 @@ Any file type can be sold using ProfilePress ecommerce and membership plugin, in
 
 == Changelog ==
 
-= Paid Membership, Ecommerce & User Registration 4.14.4 =
-* Added account deletion tab to My Account page.
-* Move CC element below billing address when Taxes is enabled.
-* Security Fix: XSS on registration form.
-* Fixed a couple of PHP warnings
-
-= Paid Membership, Ecommerce & User Registration 4.14.3 =
-* Added ppress_drag_drop_profile_listing_item filter.
-* Ensure subscription is expired on subscription upgrade.
-* Fixed bug with "Already have an account" checkout link not working.
-* Fixed a couple of PHP warnings
-
-= Paid Membership, Ecommerce & User Registration 4.14.2 =
-* Improved avada theme compatibility.
-* Fixed bug with expired subscription not expiring.
-* Fixed a couple of PHP errors.
-
-= Paid Membership, Ecommerce & User Registration 4.14.1 =
-* Added setting for enabling autologin after checkout.
-* Added ppress_myaccount_edit_profile_custom_form filter.
-* Fixed bug with checkout of free trials via Stripe.
-* Fixed bug with multisite login redirect to wrong network site.
-* Fixed bug where order was 0 when amount was not entered during manual order creation.
-* Bumped stripe api version to 2023-10-16.
-* Improved caching of gravatar API calls.
-* Added more US states: American Samoa, Puerto Rico, Palau.
-* Switch to esc_url_raw in NavigationMenuLinks::Frontend.
+= Paid Membership, Ecommerce & User Registration 4.15.0 =
+* Added [Login Redirect](https://profilepress.com/wordpress-user-redirection-after-login-role/#WordPress_Login_Redirect_Based_on_Membership_Level) feature.
+* Security Fix: XSS on forms.
 
 See the [changelog file](https://plugins.svn.wordpress.org/wp-user-avatar/trunk/changelog.txt) for full change log information.

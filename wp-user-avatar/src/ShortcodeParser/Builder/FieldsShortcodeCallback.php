@@ -530,7 +530,7 @@ class FieldsShortcodeCallback
 
         $attributes = $this->field_attributes($key, $this->valid_field_atts(ppress_normalize_attributes($atts)));
 
-        $html = "<input name='" . $key . "' type='$type' $attributes>";
+        $html = sprintf('<input name="%s" type="%s" %s>', esc_attr($key), esc_attr($type), $attributes);
 
         if ($this->form_type == FormRepository::REGISTRATION_TYPE && $this->is_field_required($atts)) {
             $value = apply_filters('ppress_custom_required_field', $this->human_readable_field_key($key), $key);
@@ -942,6 +942,8 @@ class FieldsShortcodeCallback
 
         $_POST = $this->GET_POST();
 
+        unset($atts['placeholder']);
+
         $attributes = $this->field_attributes('ignore_value', $this->valid_field_atts(ppress_normalize_attributes($atts)));
 
         if (empty($atts['key'])) return esc_html__('Field key is missing', 'wp-user-avatar');
@@ -949,7 +951,7 @@ class FieldsShortcodeCallback
         $key = ppress_sanitize_key($atts['key']);
 
         $html        = '<div class="pp-checkbox-wrap pp-single-checkbox">';
-        $field_label = isset($atts['checkbox_text']) ? html_entity_decode($atts['checkbox_text']) : '';
+        $field_label = isset($atts['checkbox_text']) ? html_entity_decode(wp_kses_post($atts['checkbox_text'])) : '';
 
         // checked for checkbox
         $checked = checked(ppressPOST_var($key, ppress_var($atts, 'checked_state')), 'true', false);

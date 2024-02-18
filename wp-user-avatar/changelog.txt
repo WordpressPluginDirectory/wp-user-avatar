@@ -1,10 +1,14 @@
 ﻿== Changelog ==
 
+= 4.15.0 =
+* Added [Login Redirect](https://profilepress.com/wordpress-user-redirection-after-login-role/#WordPress_Login_Redirect_Based_on_Membership_Level) feature.
+* Security Fix: XSS on forms.
+
 = 4.14.4 =
 * Added account deletion tab to My Account page.
 * Move CC element below billing address when Taxes is enabled.
 * Security Fix: XSS on registration form.
-* Fixed a couple of PHP warnings
+* Fixed a couple of PHP warnings.
 
 = 4.14.3 =
 * Added ppress_drag_drop_profile_listing_item filter.
