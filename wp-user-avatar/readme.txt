@@ -5,7 +5,7 @@ Tags: membership, ecommerce, user registration, user profile, memberships, membe
 Requires at least: 5.3
 Requires PHP: 7.4
 Tested up to: 6.4
-Stable tag: 4.15.0
+Stable tag: 4.15.1
 License: GPLv2 or later
 
 Setup paid membership, accept payments, sell subscriptions & digital products, paywall & content restriction, create registration form, login form, user profile & member directory.
@@ -192,6 +192,9 @@ Any file type can be sold using ProfilePress ecommerce and membership plugin, in
 11. Content Protection
 
 == Changelog ==
+
+= Paid Membership, Ecommerce & User Registration 4.15.1 =
+* Fixed XSS on registration form with user role select field.
 
 = Paid Membership, Ecommerce & User Registration 4.15.0 =
 * Added [Login Redirect](https://profilepress.com/wordpress-user-redirection-after-login-role/#WordPress_Login_Redirect_Based_on_Membership_Level) feature.

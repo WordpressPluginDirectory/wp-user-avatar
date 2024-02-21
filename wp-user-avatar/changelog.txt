@@ -1,5 +1,8 @@
 ﻿== Changelog ==
 
+= 4.15.1 =
+* Fixed XSS on registration form with user role select field.
+
 = 4.15.0 =
 * Added [Login Redirect](https://profilepress.com/wordpress-user-redirection-after-login-role/#WordPress_Login_Redirect_Based_on_Membership_Level) feature.
 * Security Fix: XSS on forms.

@@ -2,7 +2,6 @@
 
 namespace ProfilePress\Core\ShortcodeParser\Builder;
 
-use ProfilePress\Core\Classes\ExtensionManager as EM;
 use ProfilePress\Core\Classes\FormRepository;
 use ProfilePress\Core\Classes\PROFILEPRESS_sql;
 use ProfilePress\Core\Classes\UserAvatar;
@@ -91,7 +90,7 @@ class FieldsShortcodeCallback
         return ucfirst(str_replace('_', ' ', $key));
     }
 
-    public function valid_field_atts($atts)
+    public static function sanitize_field_attributes($atts)
     {
         if ( ! is_array($atts)) return $atts;
 
@@ -106,6 +105,11 @@ class FieldsShortcodeCallback
         }
 
         return $valid_atts;
+    }
+
+    public function valid_field_atts($atts)
+    {
+        return self::sanitize_field_attributes($atts);
     }
 
     public function field_attributes($field_name, $atts, $required = 'false')
