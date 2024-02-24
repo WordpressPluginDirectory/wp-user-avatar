@@ -29,7 +29,7 @@ if (!function_exists('humbug_phpscoper_expose_class')) {
         }
     }
 }
-humbug_phpscoper_expose_class('ComposerAutoloaderInitab0d39c2bb6dfa6a7029b8bc4c798b41', 'ProfilePressVendor\ComposerAutoloaderInitab0d39c2bb6dfa6a7029b8bc4c798b41');
+humbug_phpscoper_expose_class('ComposerAutoloaderInit38b8a8a9c6655418dde57cfe93eb2b69', 'ProfilePressVendor\ComposerAutoloaderInit38b8a8a9c6655418dde57cfe93eb2b69');
 humbug_phpscoper_expose_class('PAnD', 'ProfilePressVendor\PAnD');
 humbug_phpscoper_expose_class('PhpToken', 'ProfilePressVendor\PhpToken');
 humbug_phpscoper_expose_class('ValueError', 'ProfilePressVendor\ValueError');
@@ -41,7 +41,7 @@ humbug_phpscoper_expose_class('Stringable', 'ProfilePressVendor\Stringable');
 // https://github.com/humbug/php-scoper/blob/master/docs/further-reading.md#function-aliases
 if (!function_exists('app')) { function app() { return \ProfilePressVendor\app(...func_get_args()); } }
 if (!function_exists('calculateTranslationStatus')) { function calculateTranslationStatus() { return \ProfilePressVendor\calculateTranslationStatus(...func_get_args()); } }
-if (!function_exists('composerRequireab0d39c2bb6dfa6a7029b8bc4c798b41')) { function composerRequireab0d39c2bb6dfa6a7029b8bc4c798b41() { return \ProfilePressVendor\composerRequireab0d39c2bb6dfa6a7029b8bc4c798b41(...func_get_args()); } }
+if (!function_exists('composerRequire38b8a8a9c6655418dde57cfe93eb2b69')) { function composerRequire38b8a8a9c6655418dde57cfe93eb2b69() { return \ProfilePressVendor\composerRequire38b8a8a9c6655418dde57cfe93eb2b69(...func_get_args()); } }
 if (!function_exists('extractLocaleFromFilePath')) { function extractLocaleFromFilePath() { return \ProfilePressVendor\extractLocaleFromFilePath(...func_get_args()); } }
 if (!function_exists('extractTranslationKeys')) { function extractTranslationKeys() { return \ProfilePressVendor\extractTranslationKeys(...func_get_args()); } }
 if (!function_exists('fdiv')) { function fdiv() { return \ProfilePressVendor\fdiv(...func_get_args()); } }

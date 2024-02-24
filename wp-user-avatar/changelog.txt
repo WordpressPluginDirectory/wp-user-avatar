@@ -1,5 +1,8 @@
 ﻿== Changelog ==
 
+= 4.15.2 =
+* Fixed XSS on edit profile form.
+
 = 4.15.1 =
 * Fixed XSS on registration form with user role select field.
 
