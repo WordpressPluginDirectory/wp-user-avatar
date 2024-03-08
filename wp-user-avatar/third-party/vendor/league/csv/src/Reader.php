@@ -31,7 +31,6 @@ use function substr;
 use const STREAM_FILTER_READ;
 /**
  * A class to parse and read records from a CSV document.
- * @internal
  */
 class Reader extends AbstractCsv implements TabularDataReader, JsonSerializable
 {

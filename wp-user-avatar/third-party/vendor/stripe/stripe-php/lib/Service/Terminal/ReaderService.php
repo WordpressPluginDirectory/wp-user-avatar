@@ -3,7 +3,6 @@
 // File generated from our OpenAPI spec
 namespace ProfilePressVendor\Stripe\Service\Terminal;
 
-/** @internal */
 class ReaderService extends \ProfilePressVendor\Stripe\Service\AbstractService
 {
     /**

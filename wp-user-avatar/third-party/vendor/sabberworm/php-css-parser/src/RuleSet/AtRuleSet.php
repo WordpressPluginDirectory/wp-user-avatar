@@ -9,7 +9,6 @@ use ProfilePressVendor\Sabberworm\CSS\Property\AtRule;
  * `@import`, `@charset` or `@media`.
  *
  * A common example for this is `@font-face`.
- * @internal
  */
 class AtRuleSet extends RuleSet implements AtRule
 {

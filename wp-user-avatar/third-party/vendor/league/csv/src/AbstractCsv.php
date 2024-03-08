@@ -27,7 +27,6 @@ use const FILTER_FLAG_STRIP_LOW;
 use const FILTER_UNSAFE_RAW;
 /**
  * An abstract class to enable CSV document loading.
- * @internal
  */
 abstract class AbstractCsv implements ByteSequence
 {

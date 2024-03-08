@@ -10,7 +10,6 @@ namespace ProfilePressVendor\Pelago\Emogrifier\HtmlProcessor;
  * It will only add attributes, but leaves the style attribute untouched.
  *
  * To trigger the conversion, call the convertCssToVisualAttributes method.
- * @internal
  */
 class CssToAttributeConverter extends AbstractHtmlProcessor
 {

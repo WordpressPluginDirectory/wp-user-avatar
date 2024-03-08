@@ -7,7 +7,6 @@ use ProfilePressVendor\Sabberworm\CSS\OutputFormat;
 use ProfilePressVendor\Sabberworm\CSS\Value\URL;
 /**
  * Class representing an `@import` rule.
- * @internal
  */
 class Import implements AtRule
 {

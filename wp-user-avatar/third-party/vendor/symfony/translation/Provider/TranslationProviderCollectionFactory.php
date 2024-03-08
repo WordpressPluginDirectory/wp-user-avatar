@@ -13,7 +13,6 @@ namespace ProfilePressVendor\Symfony\Component\Translation\Provider;
 use ProfilePressVendor\Symfony\Component\Translation\Exception\UnsupportedSchemeException;
 /**
  * @author Mathieu Santostefano <msantostefano@protonmail.com>
- * @internal
  */
 class TranslationProviderCollectionFactory
 {

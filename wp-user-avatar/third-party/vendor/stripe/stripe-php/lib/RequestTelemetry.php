@@ -6,7 +6,6 @@ namespace ProfilePressVendor\Stripe;
  * Class RequestTelemetry.
  *
  * Tracks client request telemetry
- * @internal
  */
 class RequestTelemetry
 {

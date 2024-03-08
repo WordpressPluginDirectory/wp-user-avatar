@@ -3,7 +3,6 @@
 // File generated from our OpenAPI spec
 namespace ProfilePressVendor\Stripe\Service\Issuing;
 
-/** @internal */
 class CardholderService extends \ProfilePressVendor\Stripe\Service\AbstractService
 {
     /**

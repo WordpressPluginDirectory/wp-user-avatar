@@ -3,7 +3,6 @@
 namespace ProfilePressVendor\Psr\Clock;
 
 use DateTimeImmutable;
-/** @internal */
 interface ClockInterface
 {
     /**

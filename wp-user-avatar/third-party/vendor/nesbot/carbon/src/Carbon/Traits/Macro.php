@@ -14,7 +14,6 @@ namespace ProfilePressVendor\Carbon\Traits;
  * Trait Macros.
  *
  * Allows users to register macros within the Carbon class.
- * @internal
  */
 trait Macro
 {

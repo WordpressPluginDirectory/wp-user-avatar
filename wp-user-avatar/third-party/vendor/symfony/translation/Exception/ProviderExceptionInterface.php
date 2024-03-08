@@ -12,7 +12,6 @@ namespace ProfilePressVendor\Symfony\Component\Translation\Exception;
 
 /**
  * @author Fabien Potencier <fabien@symfony.com>
- * @internal
  */
 interface ProviderExceptionInterface extends ExceptionInterface
 {

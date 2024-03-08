@@ -21,7 +21,6 @@ use ProfilePressVendor\Carbon\Exceptions\UnknownUnitException;
  *
  * @method static copy()
  * @method static startOfWeek(int $weekStartsAt = null)
- * @internal
  */
 trait Rounding
 {

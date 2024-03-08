@@ -3,7 +3,6 @@
 // File generated from our OpenAPI spec
 namespace ProfilePressVendor\Stripe\Util;
 
-/** @internal */
 class ObjectTypes
 {
     /**

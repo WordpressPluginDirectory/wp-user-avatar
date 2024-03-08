@@ -13,7 +13,6 @@ namespace ProfilePressVendor\Symfony\Component\Translation\Exception;
 use ProfilePressVendor\Symfony\Contracts\HttpClient\ResponseInterface;
 /**
  * @author Fabien Potencier <fabien@symfony.com>
- * @internal
  */
 class ProviderException extends RuntimeException implements ProviderExceptionInterface
 {

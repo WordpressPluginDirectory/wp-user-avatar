@@ -2,7 +2,6 @@
 
 namespace ProfilePressVendor\Stripe;
 
-/** @internal */
 abstract class Webhook
 {
     const DEFAULT_TOLERANCE = 300;

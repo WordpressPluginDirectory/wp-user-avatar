@@ -9,7 +9,6 @@ use ProfilePressVendor\Sabberworm\CSS\Parsing\UnexpectedTokenException;
 /**
  * `Color's can be input in the form #rrggbb, #rgb or schema(val1, val2, …) but are always stored as an array of
  * ('s' => val1, 'c' => val2, 'h' => val3, …) and output in the second form.
- * @internal
  */
 class Color extends CSSFunction
 {

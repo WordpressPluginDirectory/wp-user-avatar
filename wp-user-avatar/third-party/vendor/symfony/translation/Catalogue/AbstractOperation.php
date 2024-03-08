@@ -21,7 +21,6 @@ use ProfilePressVendor\Symfony\Component\Translation\MessageCatalogueInterface;
  * source (the left argument) and target (the right argument) catalogues.
  *
  * @author Jean-François Simon <contact@jfsimon.fr>
- * @internal
  */
 abstract class AbstractOperation implements OperationInterface
 {

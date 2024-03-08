@@ -16,7 +16,6 @@ use DateTimeInterface;
  * Trait Cast.
  *
  * Utils to cast into an other class.
- * @internal
  */
 trait Cast
 {

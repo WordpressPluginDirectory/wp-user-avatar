@@ -12,7 +12,6 @@ namespace ProfilePressVendor;
  */
 use ProfilePressVendor\Carbon\CarbonImmutable;
 require_once __DIR__ . '/vendor/autoload.php';
-/** @internal */
 function getMaxHistoryMonthsByAmount($amount) : int
 {
     if ($amount >= 50) {
@@ -23,12 +22,10 @@ function getMaxHistoryMonthsByAmount($amount) : int
     }
     return 2;
 }
-/** @internal */
 function getHtmlAttribute($rawValue) : string
 {
     return \str_replace(['​', "\r"], '', \trim(\htmlspecialchars((string) $rawValue), "  \n\r\t\v\x00"));
 }
-/** @internal */
 function getOpenCollectiveSponsors() : string
 {
     $customSponsorImages = [];

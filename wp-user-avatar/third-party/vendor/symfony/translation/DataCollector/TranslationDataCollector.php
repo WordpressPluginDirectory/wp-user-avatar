@@ -20,7 +20,6 @@ use ProfilePressVendor\Symfony\Component\VarDumper\Cloner\Data;
  * @author Abdellatif Ait boudad <a.aitboudad@gmail.com>
  *
  * @final
- * @internal
  */
 class TranslationDataCollector extends DataCollector implements LateDataCollectorInterface
 {

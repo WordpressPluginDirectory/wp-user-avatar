@@ -12,7 +12,6 @@ namespace ProfilePressVendor\Carbon\Traits;
 
 /**
  * Trait Timestamp.
- * @internal
  */
 trait Timestamp
 {

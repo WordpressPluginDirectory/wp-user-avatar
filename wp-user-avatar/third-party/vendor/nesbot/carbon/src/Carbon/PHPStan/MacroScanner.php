@@ -14,7 +14,6 @@ use ProfilePressVendor\Carbon\CarbonInterface;
 use ProfilePressVendor\PHPStan\Reflection\ReflectionProvider;
 use ReflectionClass;
 use ReflectionException;
-/** @internal */
 final class MacroScanner
 {
     /**

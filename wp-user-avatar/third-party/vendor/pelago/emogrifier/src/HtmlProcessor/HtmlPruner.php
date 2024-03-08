@@ -7,7 +7,6 @@ use ProfilePressVendor\Pelago\Emogrifier\CssInliner;
 use ProfilePressVendor\Pelago\Emogrifier\Utilities\ArrayIntersector;
 /**
  * This class can remove things from HTML.
- * @internal
  */
 class HtmlPruner extends AbstractHtmlProcessor
 {

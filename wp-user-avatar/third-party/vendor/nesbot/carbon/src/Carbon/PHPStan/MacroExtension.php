@@ -21,7 +21,6 @@ use ProfilePressVendor\PHPStan\Type\TypehintHelper;
  * Class MacroExtension.
  *
  * @codeCoverageIgnore Pure PHPStan wrapper.
- * @internal
  */
 final class MacroExtension implements MethodsClassReflectionExtension
 {

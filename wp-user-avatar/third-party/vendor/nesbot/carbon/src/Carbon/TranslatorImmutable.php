@@ -13,7 +13,6 @@ namespace ProfilePressVendor\Carbon;
 use ProfilePressVendor\Carbon\Exceptions\ImmutableException;
 use ProfilePressVendor\Symfony\Component\Config\ConfigCacheFactoryInterface;
 use ProfilePressVendor\Symfony\Component\Translation\Formatter\MessageFormatterInterface;
-/** @internal */
 class TranslatorImmutable extends Translator
 {
     /** @var bool */

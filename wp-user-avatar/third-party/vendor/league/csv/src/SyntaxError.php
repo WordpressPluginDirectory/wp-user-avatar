@@ -14,7 +14,6 @@ namespace ProfilePressVendor\League\Csv;
 use Throwable;
 /**
  * SyntaxError Exception.
- * @internal
  */
 class SyntaxError extends Exception
 {

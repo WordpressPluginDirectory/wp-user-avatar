@@ -12,7 +12,6 @@ use ProfilePressVendor\Sabberworm\CSS\Value\Value;
 /**
  * This class represents the root of a parsed CSS file. It contains all top-level CSS contents: mostly declaration
  * blocks, but also any at-rules encountered (`Import` and `Charset`).
- * @internal
  */
 class Document extends CSSBlockList
 {

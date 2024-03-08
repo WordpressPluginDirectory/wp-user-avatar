@@ -16,7 +16,6 @@ use ProfilePressVendor\Symfony\Component\Translation\MessageCatalogue;
  * XliffFileDumper generates xliff files from a message catalogue.
  *
  * @author Michel Salib <michelsalib@hotmail.com>
- * @internal
  */
 class XliffFileDumper extends FileDumper
 {

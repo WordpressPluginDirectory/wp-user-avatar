@@ -6,7 +6,6 @@ namespace ProfilePressVendor\Sabberworm\CSS;
  * Parser settings class.
  *
  * Configure parser behaviour here.
- * @internal
  */
 class Settings
 {

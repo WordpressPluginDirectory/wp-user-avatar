@@ -1,5 +1,11 @@
 ﻿== Changelog ==
 
+= 4.15.3 =
+* Fixed bug where user membership subscriptions were not cancelled after account deletion.
+* Fixed bug with tax-inclusive checkout calculation.
+* Fixed bug with custom field not working on order/sub emails.
+* Fixed XSS on checkbox registration field.
+
 = 4.15.2 =
 * Fixed XSS on edit profile form.
 

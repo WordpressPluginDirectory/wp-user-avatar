@@ -4,7 +4,6 @@ namespace ProfilePressVendor\Sabberworm\CSS\Comment;
 
 use ProfilePressVendor\Sabberworm\CSS\OutputFormat;
 use ProfilePressVendor\Sabberworm\CSS\Renderable;
-/** @internal */
 class Comment implements Renderable
 {
     /**

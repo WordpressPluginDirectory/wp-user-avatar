@@ -18,7 +18,6 @@ use ProfilePressVendor\Symfony\Component\DependencyInjection\ServiceLocator;
 use ProfilePressVendor\Symfony\Component\HttpKernel\Controller\ArgumentResolver\TraceableValueResolver;
 /**
  * @author Yonel Ceruto <yonelceruto@gmail.com>
- * @internal
  */
 class TranslatorPathsPass extends AbstractRecursivePass
 {

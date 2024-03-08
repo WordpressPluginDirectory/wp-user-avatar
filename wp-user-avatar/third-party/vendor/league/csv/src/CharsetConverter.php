@@ -31,7 +31,6 @@ use function strtolower;
 use function substr;
 /**
  * Converts resource stream or tabular data content charset.
- * @internal
  */
 class CharsetConverter extends php_user_filter
 {

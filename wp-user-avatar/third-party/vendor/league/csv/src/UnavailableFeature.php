@@ -14,7 +14,6 @@ namespace ProfilePressVendor\League\Csv;
 use Throwable;
 /**
  * StreamFilterSupportMissing Exception.
- * @internal
  */
 class UnavailableFeature extends Exception
 {

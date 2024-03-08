@@ -11,7 +11,6 @@ namespace ProfilePressVendor\Stripe\Util;
  *
  * In the context of stripe-php, this is useful because the API will return headers with different
  * case depending on whether HTTP/2 is used or not (with HTTP/2, headers are always in lowercase).
- * @internal
  */
 class CaseInsensitiveArray implements \ArrayAccess, \Countable, \IteratorAggregate
 {

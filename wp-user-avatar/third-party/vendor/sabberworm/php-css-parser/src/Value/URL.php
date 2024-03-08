@@ -9,7 +9,6 @@ use ProfilePressVendor\Sabberworm\CSS\Parsing\UnexpectedEOFException;
 use ProfilePressVendor\Sabberworm\CSS\Parsing\UnexpectedTokenException;
 /**
  * This class represents URLs in CSS. `URL`s always output in `URL("")` notation.
- * @internal
  */
 class URL extends PrimitiveValue
 {

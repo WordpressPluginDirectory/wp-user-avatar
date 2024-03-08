@@ -8,7 +8,6 @@ use ProfilePressVendor\Sabberworm\CSS\OutputFormat;
  * (mostly `,`, whitespace, or `/`).
  *
  * There are two types of `ValueList`s: `RuleValueList` and `CSSFunction`
- * @internal
  */
 abstract class ValueList extends Value
 {

@@ -8,7 +8,6 @@ use ProfilePressVendor\Sabberworm\CSS\Parsing\UnexpectedEOFException;
 use ProfilePressVendor\Sabberworm\CSS\Parsing\UnexpectedTokenException;
 /**
  * A `Size` consists of a numeric `size` value and a unit.
- * @internal
  */
 class Size extends PrimitiveValue
 {

@@ -11,7 +11,6 @@
 namespace ProfilePressVendor\Carbon\Exceptions;
 
 use Throwable;
-/** @internal */
 class UnitNotConfiguredException extends UnitException
 {
     /**

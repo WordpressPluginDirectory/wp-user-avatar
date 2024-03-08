@@ -30,7 +30,6 @@ if (\interface_exists('ProfilePressVendor\\Symfony\\Contracts\\Translation\\Tran
  * Trait Localization.
  *
  * Embed default and locale translators and translation base methods.
- * @internal
  */
 trait Localization
 {

@@ -12,7 +12,6 @@ namespace ProfilePressVendor\Stripe;
  * @property string $parent
  * @property int $quantity
  * @property string $type
- * @internal
  */
 class OrderItem extends StripeObject
 {

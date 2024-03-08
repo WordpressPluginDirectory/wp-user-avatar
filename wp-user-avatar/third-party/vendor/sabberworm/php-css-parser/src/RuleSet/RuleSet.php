@@ -18,7 +18,6 @@ use ProfilePressVendor\Sabberworm\CSS\Rule\Rule;
  *
  * If you want to manipulate a `RuleSet`, use the methods `addRule(Rule $rule)`, `getRules()` and `removeRule($rule)`
  * (which accepts either a `Rule` or a rule name; optionally suffixed by a dash to remove all related rules).
- * @internal
  */
 abstract class RuleSet implements Renderable, Commentable
 {

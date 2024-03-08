@@ -2,7 +2,6 @@
 
 namespace ProfilePressVendor\Sabberworm\CSS;
 
-/** @internal */
 interface Renderable
 {
     /**

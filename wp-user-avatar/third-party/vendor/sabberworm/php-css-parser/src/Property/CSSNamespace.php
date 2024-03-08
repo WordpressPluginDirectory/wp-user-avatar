@@ -6,7 +6,6 @@ use ProfilePressVendor\Sabberworm\CSS\Comment\Comment;
 use ProfilePressVendor\Sabberworm\CSS\OutputFormat;
 /**
  * `CSSNamespace` represents an `@namespace` rule.
- * @internal
  */
 class CSSNamespace implements AtRule
 {

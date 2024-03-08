@@ -18,7 +18,6 @@ use const SEEK_CUR;
 use const STREAM_FILTER_WRITE;
 /**
  * A class to insert records into a CSV Document.
- * @internal
  */
 class Writer extends AbstractCsv
 {

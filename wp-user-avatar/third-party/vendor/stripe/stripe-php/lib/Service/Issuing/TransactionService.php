@@ -3,7 +3,6 @@
 // File generated from our OpenAPI spec
 namespace ProfilePressVendor\Stripe\Service\Issuing;
 
-/** @internal */
 class TransactionService extends \ProfilePressVendor\Stripe\Service\AbstractService
 {
     /**

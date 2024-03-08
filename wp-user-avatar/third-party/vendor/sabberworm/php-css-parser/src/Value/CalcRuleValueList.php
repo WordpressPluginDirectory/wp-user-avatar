@@ -3,7 +3,6 @@
 namespace ProfilePressVendor\Sabberworm\CSS\Value;
 
 use ProfilePressVendor\Sabberworm\CSS\OutputFormat;
-/** @internal */
 class CalcRuleValueList extends RuleValueList
 {
     /**

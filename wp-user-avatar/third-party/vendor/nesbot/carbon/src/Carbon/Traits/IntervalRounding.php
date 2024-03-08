@@ -15,7 +15,6 @@ use ProfilePressVendor\Carbon\Exceptions\InvalidIntervalException;
 use DateInterval;
 /**
  * Trait to call rounding methods to interval or the interval of a period.
- * @internal
  */
 trait IntervalRounding
 {

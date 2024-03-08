@@ -3,7 +3,6 @@
 // File generated from our OpenAPI spec
 namespace ProfilePressVendor\Stripe\Service\Checkout;
 
-/** @internal */
 class SessionService extends \ProfilePressVendor\Stripe\Service\AbstractService
 {
     /**

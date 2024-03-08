@@ -23,7 +23,6 @@ use ProfilePressVendor\Symfony\Component\Translation\Util\XliffUtils;
  * XliffFileLoader loads translations from XLIFF files.
  *
  * @author Fabien Potencier <fabien@symfony.com>
- * @internal
  */
 class XliffFileLoader implements LoaderInterface
 {

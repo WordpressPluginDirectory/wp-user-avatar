@@ -23,7 +23,6 @@ use function iterator_count;
 use function iterator_to_array;
 /**
  * Represents the result set of a {@link Reader} processed by a {@link Statement}.
- * @internal
  */
 class ResultSet implements TabularDataReader, JsonSerializable
 {

@@ -4,7 +4,6 @@ namespace ProfilePressVendor\Stripe\Exception;
 
 /**
  * Implements properties and methods common to all (non-SPL) Stripe exceptions.
- * @internal
  */
 abstract class ApiErrorException extends \Exception implements ExceptionInterface
 {

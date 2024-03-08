@@ -6,7 +6,6 @@ namespace ProfilePressVendor\Brick\Math\Exception;
 use ProfilePressVendor\Brick\Math\BigInteger;
 /**
  * Exception thrown when an integer overflow occurs.
- * @internal
  */
 class IntegerOverflowException extends MathException
 {

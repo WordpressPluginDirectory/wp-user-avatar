@@ -17,7 +17,6 @@ use DOMException;
 use function preg_match;
 /**
  * Converts tabular data into an HTML Table string.
- * @internal
  */
 class HTMLConverter
 {

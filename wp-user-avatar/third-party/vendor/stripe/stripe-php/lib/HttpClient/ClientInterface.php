@@ -2,7 +2,6 @@
 
 namespace ProfilePressVendor\Stripe\HttpClient;
 
-/** @internal */
 interface ClientInterface
 {
     /**

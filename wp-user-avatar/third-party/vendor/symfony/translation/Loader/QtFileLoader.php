@@ -20,7 +20,6 @@ use ProfilePressVendor\Symfony\Component\Translation\MessageCatalogue;
  * QtFileLoader loads translations from QT Translations XML files.
  *
  * @author Benjamin Eberlei <kontakt@beberlei.de>
- * @internal
  */
 class QtFileLoader implements LoaderInterface
 {

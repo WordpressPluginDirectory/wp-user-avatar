@@ -22,7 +22,6 @@ use ReturnTypeWillChange;
  * Trait Units.
  *
  * Add, subtract and set units.
- * @internal
  */
 trait Units
 {

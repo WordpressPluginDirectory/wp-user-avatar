@@ -2,7 +2,6 @@
 
 namespace ProfilePressVendor\Carbon\Doctrine;
 
-/** @internal */
 class DateTimeDefaultPrecision
 {
     private static $precision = 6;

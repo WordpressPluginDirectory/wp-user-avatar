@@ -15,7 +15,6 @@ use ProfilePressVendor\Symfony\Component\Translation\MessageCatalogue;
  * PoFileDumper generates a gettext formatted string representation of a message catalogue.
  *
  * @author Stealth35
- * @internal
  */
 class PoFileDumper extends FileDumper
 {

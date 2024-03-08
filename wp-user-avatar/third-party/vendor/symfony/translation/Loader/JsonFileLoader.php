@@ -15,7 +15,6 @@ use ProfilePressVendor\Symfony\Component\Translation\Exception\InvalidResourceEx
  * JsonFileLoader loads translations from an json file.
  *
  * @author singles
- * @internal
  */
 class JsonFileLoader extends FileLoader
 {

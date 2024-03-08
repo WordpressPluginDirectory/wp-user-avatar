@@ -14,7 +14,6 @@ use ProfilePressVendor\Symfony\Component\Config\Resource\ResourceInterface;
 use ProfilePressVendor\Symfony\Component\Translation\Exception\LogicException;
 /**
  * @author Fabien Potencier <fabien@symfony.com>
- * @internal
  */
 class MessageCatalogue implements MessageCatalogueInterface, MetadataAwareInterface
 {

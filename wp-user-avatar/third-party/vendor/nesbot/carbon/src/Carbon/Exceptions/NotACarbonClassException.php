@@ -13,7 +13,6 @@ namespace ProfilePressVendor\Carbon\Exceptions;
 use ProfilePressVendor\Carbon\CarbonInterface;
 use InvalidArgumentException as BaseInvalidArgumentException;
 use Throwable;
-/** @internal */
 class NotACarbonClassException extends BaseInvalidArgumentException implements InvalidArgumentException
 {
     /**

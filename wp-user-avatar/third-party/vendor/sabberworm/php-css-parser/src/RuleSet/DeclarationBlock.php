@@ -24,7 +24,6 @@ use ProfilePressVendor\Sabberworm\CSS\Value\Value;
  * matching elements.
  *
  * Declaration blocks usually appear directly inside a `Document` or another `CSSList` (mostly a `MediaQuery`).
- * @internal
  */
 class DeclarationBlock extends RuleSet
 {

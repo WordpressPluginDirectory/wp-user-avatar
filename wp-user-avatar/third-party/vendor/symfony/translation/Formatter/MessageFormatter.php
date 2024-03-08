@@ -16,7 +16,6 @@ use ProfilePressVendor\Symfony\Contracts\Translation\TranslatorInterface;
 \class_exists(IntlFormatter::class);
 /**
  * @author Abdellatif Ait boudad <a.aitboudad@gmail.com>
- * @internal
  */
 class MessageFormatter implements MessageFormatterInterface, IntlFormatterInterface
 {

@@ -14,7 +14,6 @@ namespace ProfilePressVendor\League\Csv;
 use function count;
 /**
  * Validates column consistency when inserting records into a CSV document.
- * @internal
  */
 class ColumnConsistency
 {

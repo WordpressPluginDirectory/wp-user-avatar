@@ -11,7 +11,6 @@ namespace ProfilePressVendor\Stripe;
  * @property string $object String representing the object's type. Objects of the same type share the same value.
  * @property string $description A detailed description of which types of products the tax code represents.
  * @property string $name A short name for the tax code.
- * @internal
  */
 class TaxCode extends ApiResource
 {

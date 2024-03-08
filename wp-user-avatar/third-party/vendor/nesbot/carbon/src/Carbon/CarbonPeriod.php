@@ -170,7 +170,6 @@ use RuntimeException;
  * @method $this ceilMicroseconds(float $precision = 1) Ceil the current instance microsecond with given precision.
  *
  * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
- * @internal
  */
 class CarbonPeriod implements Iterator, Countable, JsonSerializable
 {

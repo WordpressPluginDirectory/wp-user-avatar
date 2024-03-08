@@ -14,7 +14,6 @@ namespace ProfilePressVendor\Symfony\Component\Translation\Loader;
  * IniFileLoader loads translations from an ini file.
  *
  * @author stealth35
- * @internal
  */
 class IniFileLoader extends FileLoader
 {

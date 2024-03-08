@@ -15,7 +15,6 @@ use ProfilePressVendor\Symfony\Component\Translation\Exception\InvalidResourceEx
 use ProfilePressVendor\Symfony\Component\Translation\Exception\NotFoundResourceException;
 /**
  * @author Abdellatif Ait boudad <a.aitboudad@gmail.com>
- * @internal
  */
 abstract class FileLoader extends ArrayLoader
 {

@@ -12,7 +12,6 @@ namespace ProfilePressVendor\Carbon\Exceptions;
 
 use RuntimeException as BaseRuntimeException;
 use Throwable;
-/** @internal */
 class ImmutableException extends BaseRuntimeException implements RuntimeException
 {
     /**

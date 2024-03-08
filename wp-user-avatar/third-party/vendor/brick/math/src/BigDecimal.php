@@ -11,7 +11,6 @@ use ProfilePressVendor\Brick\Math\Internal\Calculator;
  * Immutable, arbitrary-precision signed decimal numbers.
  *
  * @psalm-immutable
- * @internal
  */
 final class BigDecimal extends BigNumber
 {

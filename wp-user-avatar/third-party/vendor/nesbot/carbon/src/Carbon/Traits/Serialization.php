@@ -29,7 +29,6 @@ use Throwable;
  *
  * @method string|static locale(string $locale = null, string ...$fallbackLocales)
  * @method string        toJSON()
- * @internal
  */
 trait Serialization
 {

@@ -12,7 +12,6 @@ namespace ProfilePressVendor\Carbon\Exceptions;
 
 use BadMethodCallException as BaseBadMethodCallException;
 use Throwable;
-/** @internal */
 class BadFluentConstructorException extends BaseBadMethodCallException implements BadMethodCallException
 {
     /**

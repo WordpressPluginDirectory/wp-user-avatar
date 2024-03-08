@@ -15,7 +15,6 @@ use ProfilePressVendor\Carbon\Exceptions\InvalidTimeZoneException;
 use DateTimeInterface;
 use DateTimeZone;
 use Throwable;
-/** @internal */
 class CarbonTimeZone extends DateTimeZone
 {
     public function __construct($timezone = null)

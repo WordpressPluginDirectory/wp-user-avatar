@@ -12,7 +12,6 @@ namespace ProfilePressVendor\Carbon\Exceptions;
 
 use InvalidArgumentException as BaseInvalidArgumentException;
 use Throwable;
-/** @internal */
 class UnknownSetterException extends BaseInvalidArgumentException implements BadMethodCallException
 {
     /**

@@ -4,7 +4,6 @@ namespace ProfilePressVendor\Stripe\Service;
 
 /**
  * Abstract base class for all services.
- * @internal
  */
 abstract class AbstractService
 {

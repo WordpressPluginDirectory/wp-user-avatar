@@ -18,7 +18,6 @@ use LimitIterator;
 use function array_reduce;
 /**
  * Criteria to filter a {@link Reader} object.
- * @internal
  */
 class Statement
 {

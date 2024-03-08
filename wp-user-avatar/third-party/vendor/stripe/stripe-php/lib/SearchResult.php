@@ -24,7 +24,6 @@ namespace ProfilePressVendor\Stripe;
  * @property int $total_count
  * @property bool $has_more
  * @property TStripeObject[] $data
- * @internal
  */
 class SearchResult extends StripeObject implements \Countable, \IteratorAggregate
 {

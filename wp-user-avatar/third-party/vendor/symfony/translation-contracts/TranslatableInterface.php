@@ -12,7 +12,6 @@ namespace ProfilePressVendor\Symfony\Contracts\Translation;
 
 /**
  * @author Nicolas Grekas <p@tchwork.com>
- * @internal
  */
 interface TranslatableInterface
 {

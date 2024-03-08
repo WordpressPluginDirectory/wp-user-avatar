@@ -19,7 +19,6 @@ use IteratorAggregate;
  *
  * @method Iterator fetchColumnByName(string $name)  returns a column from its name
  * @method Iterator fetchColumnByOffset(int $offset) returns a column from its offset
- * @internal
  */
 interface TabularDataReader extends Countable, IteratorAggregate
 {

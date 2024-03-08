@@ -17,7 +17,6 @@ use DOMElement;
 use DOMException;
 /**
  * Converts tabular data into a DOMDocument object.
- * @internal
  */
 class XMLConverter
 {

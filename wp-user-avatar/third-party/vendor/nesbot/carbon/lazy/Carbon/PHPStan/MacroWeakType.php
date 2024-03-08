@@ -12,7 +12,6 @@ declare (strict_types=1);
 namespace ProfilePressVendor\Carbon\PHPStan;
 
 if (!\class_exists(LazyMacro::class, \false)) {
-    /** @internal */
     abstract class LazyMacro extends AbstractReflectionMacro
     {
         /**

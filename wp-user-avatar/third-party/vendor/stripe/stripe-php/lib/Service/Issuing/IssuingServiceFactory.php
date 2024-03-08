@@ -11,7 +11,6 @@ namespace ProfilePressVendor\Stripe\Service\Issuing;
  * @property CardService $cards
  * @property DisputeService $disputes
  * @property TransactionService $transactions
- * @internal
  */
 class IssuingServiceFactory extends \ProfilePressVendor\Stripe\Service\AbstractServiceFactory
 {

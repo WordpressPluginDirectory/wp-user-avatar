@@ -12,7 +12,6 @@ namespace ProfilePressVendor\Stripe;
  * @property string $url
  * @property bool $has_more
  * @property TStripeObject[] $data
- * @internal
  */
 class Collection extends StripeObject implements \Countable, \IteratorAggregate
 {

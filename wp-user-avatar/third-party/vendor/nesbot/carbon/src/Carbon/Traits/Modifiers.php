@@ -16,7 +16,6 @@ use ReturnTypeWillChange;
  * Trait Modifiers.
  *
  * Returns dates relative to current date using modifier short-hand.
- * @internal
  */
 trait Modifiers
 {

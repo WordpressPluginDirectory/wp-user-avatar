@@ -236,7 +236,6 @@ use ReflectionMethod;
  * @method Carbon                                             yesterday($tz = null)                                                                                                        Create a Carbon instance for yesterday.
  *
  * </autodoc>
- * @internal
  */
 class Factory
 {

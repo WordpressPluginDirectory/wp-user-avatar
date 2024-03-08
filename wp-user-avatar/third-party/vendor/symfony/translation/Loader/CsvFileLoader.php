@@ -15,7 +15,6 @@ use ProfilePressVendor\Symfony\Component\Translation\Exception\NotFoundResourceE
  * CsvFileLoader loads translations from CSV files.
  *
  * @author Saša Stamenković <umpirsky@gmail.com>
- * @internal
  */
 class CsvFileLoader extends FileLoader
 {

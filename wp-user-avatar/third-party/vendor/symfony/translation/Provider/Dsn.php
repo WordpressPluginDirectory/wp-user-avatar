@@ -15,7 +15,6 @@ use ProfilePressVendor\Symfony\Component\Translation\Exception\MissingRequiredOp
 /**
  * @author Fabien Potencier <fabien@symfony.com>
  * @author Oskar Stark <oskarstark@googlemail.com>
- * @internal
  */
 final class Dsn
 {

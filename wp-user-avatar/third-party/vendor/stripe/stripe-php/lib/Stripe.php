@@ -4,7 +4,6 @@ namespace ProfilePressVendor\Stripe;
 
 /**
  * Class Stripe.
- * @internal
  */
 class Stripe
 {

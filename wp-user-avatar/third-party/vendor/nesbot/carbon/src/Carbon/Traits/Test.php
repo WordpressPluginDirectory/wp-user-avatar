@@ -17,7 +17,6 @@ use DateTimeImmutable;
 use DateTimeInterface;
 use InvalidArgumentException;
 use Throwable;
-/** @internal */
 trait Test
 {
     ///////////////////////////////////////////////////////////////////

@@ -4,7 +4,6 @@ namespace ProfilePressVendor\Stripe;
 
 /**
  * Class ApiRequestor.
- * @internal
  */
 class ApiRequestor
 {

@@ -4,7 +4,6 @@ namespace ProfilePressVendor\Sabberworm\CSS;
 
 use ProfilePressVendor\Sabberworm\CSS\Comment\Commentable;
 use ProfilePressVendor\Sabberworm\CSS\Parsing\OutputException;
-/** @internal */
 class OutputFormatter
 {
     /**

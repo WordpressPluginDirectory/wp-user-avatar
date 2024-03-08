@@ -4,7 +4,6 @@ namespace ProfilePressVendor\Carbon\Doctrine;
 
 use ProfilePressVendor\Carbon\CarbonImmutable;
 use ProfilePressVendor\Doctrine\DBAL\Types\VarDateTimeImmutableType;
-/** @internal */
 class DateTimeImmutableType extends VarDateTimeImmutableType implements CarbonDoctrineType
 {
     /** @use CarbonTypeConverter<CarbonImmutable> */

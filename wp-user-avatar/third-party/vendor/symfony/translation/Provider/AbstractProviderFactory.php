@@ -11,7 +11,6 @@
 namespace ProfilePressVendor\Symfony\Component\Translation\Provider;
 
 use ProfilePressVendor\Symfony\Component\Translation\Exception\IncompleteDsnException;
-/** @internal */
 abstract class AbstractProviderFactory implements ProviderFactoryInterface
 {
     public function supports(Dsn $dsn) : bool

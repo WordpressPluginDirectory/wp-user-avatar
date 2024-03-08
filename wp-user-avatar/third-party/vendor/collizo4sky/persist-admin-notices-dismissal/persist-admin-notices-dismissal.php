@@ -34,7 +34,6 @@ if (!\defined('ABSPATH')) {
 if (!\class_exists('ProfilePressVendor\\PAnD')) {
     /**
      * Class PAnD
-     * @internal
      */
     class PAnD
     {

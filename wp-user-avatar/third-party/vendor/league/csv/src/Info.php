@@ -20,7 +20,6 @@ use function iterator_to_array;
 use function strlen;
 use function strpos;
 use const COUNT_RECURSIVE;
-/** @internal */
 final class Info implements ByteSequence
 {
     private const BOM_SEQUENCE_LIST = [self::BOM_UTF32_BE, self::BOM_UTF32_LE, self::BOM_UTF16_BE, self::BOM_UTF16_LE, self::BOM_UTF8];

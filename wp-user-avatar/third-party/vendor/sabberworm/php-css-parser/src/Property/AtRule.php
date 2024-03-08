@@ -4,7 +4,6 @@ namespace ProfilePressVendor\Sabberworm\CSS\Property;
 
 use ProfilePressVendor\Sabberworm\CSS\Comment\Commentable;
 use ProfilePressVendor\Sabberworm\CSS\Renderable;
-/** @internal */
 interface AtRule extends Renderable, Commentable
 {
     /**

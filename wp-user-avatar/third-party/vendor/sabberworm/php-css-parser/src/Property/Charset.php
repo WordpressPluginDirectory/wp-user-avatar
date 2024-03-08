@@ -12,7 +12,6 @@ use ProfilePressVendor\Sabberworm\CSS\Value\CSSString;
  * - May not be found in any CSSList other than the Document.
  * - May only appear at the very top of a Document’s contents.
  * - Must not appear more than once.
- * @internal
  */
 class Charset implements AtRule
 {

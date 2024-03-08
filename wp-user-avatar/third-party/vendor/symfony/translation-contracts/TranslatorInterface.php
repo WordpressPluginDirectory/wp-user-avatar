@@ -14,7 +14,6 @@ namespace ProfilePressVendor\Symfony\Contracts\Translation;
  * @author Fabien Potencier <fabien@symfony.com>
  *
  * @method string getLocale() Returns the default locale
- * @internal
  */
 interface TranslatorInterface
 {

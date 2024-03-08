@@ -7,18 +7,18 @@
             "source": {
                 "type": "git",
                 "url": "https:\/\/github.com\/mailoptin\/composer-cleanup-plugin.git",
-                "reference": "e9e4b361f2e872a0bf4933c6218c35ad48c56075"
+                "reference": "80cceff45bfb85a0f49236537b1f1c928a1ee820"
             },
             "dist": {
                 "type": "zip",
-                "url": "https:\/\/api.github.com\/repos\/mailoptin\/composer-cleanup-plugin\/zipball\/e9e4b361f2e872a0bf4933c6218c35ad48c56075",
-                "reference": "e9e4b361f2e872a0bf4933c6218c35ad48c56075",
+                "url": "https:\/\/api.github.com\/repos\/mailoptin\/composer-cleanup-plugin\/zipball\/80cceff45bfb85a0f49236537b1f1c928a1ee820",
+                "reference": "80cceff45bfb85a0f49236537b1f1c928a1ee820",
                 "shasum": ""
             },
             "require": {
                 "composer-plugin-api": "^2.0"
             },
-            "time": "2023-08-18T07:18:15+00:00",
+            "time": "2024-03-06T10:56:07+00:00",
             "default-branch": true,
             "type": "composer-plugin",
             "extra": {
@@ -44,7 +44,7 @@
             ],
             "description": "A composer cleanup plugin, to remove tests and documentation to save space",
             "support": {
-                "source": "https:\/\/github.com\/mailoptin\/composer-cleanup-plugin\/tree\/0.1.1"
+                "source": "https:\/\/github.com\/mailoptin\/composer-cleanup-plugin\/tree\/master"
             },
             "install-path": "..\/barryvdh\/composer-cleanup-plugin"
         },

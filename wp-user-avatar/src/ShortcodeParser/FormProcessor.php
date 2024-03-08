@@ -6,6 +6,8 @@ use ProfilePress\Core\Classes\EditUserProfile;
 use ProfilePress\Core\Classes\LoginAuth;
 use ProfilePress\Core\Classes\PasswordReset;
 use ProfilePress\Core\Classes\RegistrationAuth;
+use ProfilePress\Core\Membership\Models\Customer\CustomerFactory;
+use ProfilePress\Core\Membership\Repositories\SubscriptionRepository;
 
 class FormProcessor
 {
@@ -74,7 +76,6 @@ class FormProcessor
         }
 
         if ($user instanceof \WP_User && wp_check_password($current_password, $user->data->user_pass, $user->ID) && is_user_logged_in()) {
-
             $updated_user_id = wp_update_user([
                 'ID'        => $user->ID,
                 'user_pass' => $new_password,
@@ -106,6 +107,19 @@ class FormProcessor
 
         if ($user instanceof \WP_User && wp_check_password($_POST['password'], $user->user_pass, $user->ID) && is_user_logged_in()) {
 
+            $customer = CustomerFactory::fromUserId($user->ID);
+
+            if ($customer->exists()) {
+
+                $subs = SubscriptionRepository::init()->retrieveBy([
+                    'customer_id' => $customer->get_id()
+                ]);
+
+                foreach ($subs as $sub) {
+                    $sub->cancel(true);
+                }
+            }
+
             if (is_multisite()) {
 
                 if ( ! function_exists('wpmu_delete_user')) {
@@ -121,7 +135,6 @@ class FormProcessor
                 }
 
                 wp_delete_user($user->ID);
-
             }
 
             wp_safe_redirect(home_url());
@@ -149,7 +162,6 @@ class FormProcessor
         }
 
         if (isset($_POST['eup_submit'])) {
-
             $state_key = 'edit_profile_form_error';
 
             if (self::get_global_state_error($state_key)) {
@@ -169,7 +181,6 @@ class FormProcessor
             $response = EditUserProfile::process_func($form_id, $redirect, $is_melange);
 
             if ( ! empty($response)) {
-
                 if ( ! $form_id) {
                     self::set_global_state($state_key, $response);
                     $this->edit_profile_form_error = $response;
@@ -184,7 +195,6 @@ class FormProcessor
     public function process_registration_form()
     {
         if (isset($_POST['reg_submit'])) {
-
             $state_key = 'registration_form_error';
 
             if (self::get_global_state_error($state_key)) {
@@ -232,7 +242,6 @@ class FormProcessor
         }
 
         if (isset($_POST['login_submit'])) {
-
             $state_key = 'login_form_error';
 
             if (self::get_global_state_error($state_key)) {
@@ -255,7 +264,6 @@ class FormProcessor
             $login_error = '';
 
             if (is_wp_error($login_status)) {
-
                 if ($login_status->get_error_code() == 'pp2fa_auth_code_invalid') {
                     self::set_global_state('is_2fa', true, $form_id);
                 }

@@ -2,7 +2,6 @@
 
 namespace ProfilePressVendor\Stripe;
 
-/** @internal */
 class BaseStripeClient implements StripeClientInterface, StripeStreamingClientInterface
 {
     /** @var string default base URL for Stripe's API */

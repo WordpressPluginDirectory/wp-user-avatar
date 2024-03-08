@@ -33,12 +33,14 @@ class NewOrderReceipt extends AbstractMembershipEmail
 
             $subject = apply_filters('ppress_' . self::ID . '_email_subject', $this->parse_placeholders(
                 ppress_get_setting(self::ID . '_email_subject', esc_html__('New Order Receipt', 'wp-user-avatar'), true),
-                $placeholders_values
+                $placeholders_values,
+	            $order
             ), $order);
 
             $message = apply_filters('ppress_' . self::ID . '_email_content', $this->parse_placeholders(
                 ppress_get_setting(self::ID . '_email_content', $this->get_order_receipt_content(), true),
-                $placeholders_values
+                $placeholders_values,
+	            $order
             ), $order);
 
             ppress_send_email($order->get_customer_email(), $subject, $message);

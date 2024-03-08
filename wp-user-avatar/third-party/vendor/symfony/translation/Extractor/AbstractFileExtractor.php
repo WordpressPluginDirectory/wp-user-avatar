@@ -15,7 +15,6 @@ use ProfilePressVendor\Symfony\Component\Translation\Exception\InvalidArgumentEx
  * Base class used by classes that extract translation messages from files.
  *
  * @author Marcos D. Sánchez <marcosdsanchez@gmail.com>
- * @internal
  */
 abstract class AbstractFileExtractor
 {

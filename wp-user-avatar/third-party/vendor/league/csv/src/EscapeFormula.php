@@ -24,7 +24,6 @@ use function method_exists;
  * A Formatter to tackle CSV Formula Injection.
  *
  * @see http://georgemauer.net/2017/10/07/csv-injection.html
- * @internal
  */
 class EscapeFormula
 {

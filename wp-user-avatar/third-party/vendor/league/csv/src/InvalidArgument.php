@@ -14,7 +14,6 @@ namespace ProfilePressVendor\League\Csv;
 use Throwable;
 /**
  * InvalidArgument Exception.
- * @internal
  */
 class InvalidArgument extends Exception
 {

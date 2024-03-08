@@ -15,7 +15,6 @@ use ProfilePressVendor\Symfony\Component\Translation\MessageCatalogue;
  * JsonFileDumper generates an json formatted string representation of a message catalogue.
  *
  * @author singles
- * @internal
  */
 class JsonFileDumper extends FileDumper
 {

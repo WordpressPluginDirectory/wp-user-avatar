@@ -15,7 +15,6 @@ use ProfilePressVendor\Symfony\Component\Translation\MessageCatalogue;
  * CsvFileDumper generates a csv formatted string representation of a message catalogue.
  *
  * @author Stealth35
- * @internal
  */
 class CsvFileDumper extends FileDumper
 {

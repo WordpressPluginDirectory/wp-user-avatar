@@ -7,7 +7,6 @@ use ProfilePressVendor\Sabberworm\CSS\Parsing\ParserState;
 use ProfilePressVendor\Sabberworm\CSS\Parsing\SourceException;
 /**
  * This class parses CSS from text into a data structure.
- * @internal
  */
 class Parser
 {

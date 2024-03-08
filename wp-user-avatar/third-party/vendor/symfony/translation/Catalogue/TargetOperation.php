@@ -20,7 +20,6 @@ use ProfilePressVendor\Symfony\Component\Translation\MessageCatalogueInterface;
  * Basically, the result contains messages from the target catalogue.
  *
  * @author Michael Lee <michael.lee@zerustech.com>
- * @internal
  */
 class TargetOperation extends AbstractOperation
 {

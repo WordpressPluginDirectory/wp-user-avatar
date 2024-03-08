@@ -6,7 +6,6 @@ use ProfilePressVendor\Sabberworm\CSS\OutputFormat;
 use ProfilePressVendor\Sabberworm\CSS\Property\AtRule;
 /**
  * A `BlockList` constructed by an unknown at-rule. `@media` rules are rendered into `AtRuleBlockList` objects.
- * @internal
  */
 class AtRuleBlockList extends CSSBlockList implements AtRule
 {

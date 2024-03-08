@@ -27,7 +27,6 @@ use function strlen;
  *
  * @see https://tools.ietf.org/html/rfc4180#section-2
  * @see https://bugs.php.net/bug.php?id=38301
- * @internal
  */
 class EncloseField extends php_user_filter
 {

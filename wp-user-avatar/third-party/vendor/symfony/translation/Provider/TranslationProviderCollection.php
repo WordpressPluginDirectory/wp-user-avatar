@@ -13,7 +13,6 @@ namespace ProfilePressVendor\Symfony\Component\Translation\Provider;
 use ProfilePressVendor\Symfony\Component\Translation\Exception\InvalidArgumentException;
 /**
  * @author Mathieu Santostefano <msantostefano@protonmail.com>
- * @internal
  */
 final class TranslationProviderCollection
 {

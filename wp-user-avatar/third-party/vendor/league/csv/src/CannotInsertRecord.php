@@ -13,7 +13,6 @@ namespace ProfilePressVendor\League\Csv;
 
 /**
  * Thrown when a data is not added to the Csv Document.
- * @internal
  */
 class CannotInsertRecord extends Exception
 {

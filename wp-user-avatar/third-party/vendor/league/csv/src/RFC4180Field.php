@@ -34,7 +34,6 @@ use const STREAM_FILTER_WRITE;
  * @see AbstractCsv::setEscape
  *
  * @see https://tools.ietf.org/html/rfc4180#section-2
- * @internal
  */
 class RFC4180Field extends php_user_filter
 {

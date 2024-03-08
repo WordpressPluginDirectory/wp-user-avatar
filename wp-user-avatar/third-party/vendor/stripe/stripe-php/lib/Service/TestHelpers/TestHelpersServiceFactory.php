@@ -9,7 +9,6 @@ namespace ProfilePressVendor\Stripe\Service\TestHelpers;
  * @property RefundService $refunds
  * @property Terminal\TerminalServiceFactory $terminal
  * @property TestClockService $testClocks
- * @internal
  */
 class TestHelpersServiceFactory extends \ProfilePressVendor\Stripe\Service\AbstractServiceFactory
 {

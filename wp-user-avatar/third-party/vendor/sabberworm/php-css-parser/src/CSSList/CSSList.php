@@ -27,7 +27,6 @@ use ProfilePressVendor\Sabberworm\CSS\Value\Value;
  * `RuleSet`s as well as other `CSSList` objects.
  *
  * It can also contain `Import` and `Charset` objects stemming from at-rules.
- * @internal
  */
 abstract class CSSList implements Renderable, Commentable
 {

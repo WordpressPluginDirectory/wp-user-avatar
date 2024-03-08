@@ -3,7 +3,6 @@
 namespace ProfilePressVendor\Stripe\Util;
 
 use ProfilePressVendor\Stripe\StripeObject;
-/** @internal */
 abstract class Util
 {
     private static $isMbstringAvailable = null;

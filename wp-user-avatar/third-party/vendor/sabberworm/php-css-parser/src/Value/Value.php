@@ -10,7 +10,6 @@ use ProfilePressVendor\Sabberworm\CSS\Renderable;
 /**
  * Abstract base class for specific classes of CSS values: `Size`, `Color`, `CSSString` and `URL`, and another
  * abstract subclass `ValueList`.
- * @internal
  */
 abstract class Value implements Renderable
 {
