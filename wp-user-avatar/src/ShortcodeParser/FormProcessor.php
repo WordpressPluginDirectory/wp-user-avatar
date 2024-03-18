@@ -107,18 +107,7 @@ class FormProcessor
 
         if ($user instanceof \WP_User && wp_check_password($_POST['password'], $user->user_pass, $user->ID) && is_user_logged_in()) {
 
-            $customer = CustomerFactory::fromUserId($user->ID);
-
-            if ($customer->exists()) {
-
-                $subs = SubscriptionRepository::init()->retrieveBy([
-                    'customer_id' => $customer->get_id()
-                ]);
-
-                foreach ($subs as $sub) {
-                    $sub->cancel(true);
-                }
-            }
+            do_action('ppress_myaccount_before_delete_user', $user->ID);
 
             if (is_multisite()) {
 

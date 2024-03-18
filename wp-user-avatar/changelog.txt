@@ -1,5 +1,8 @@
 ﻿== Changelog ==
 
+= 4.15.4 =
+* Compatibility with upcoming WP 6.5
+
 = 4.15.3 =
 * Fixed bug where user membership subscriptions were not cancelled after account deletion.
 * Fixed bug with tax-inclusive checkout calculation.

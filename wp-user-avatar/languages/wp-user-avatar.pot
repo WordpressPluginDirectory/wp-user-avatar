@@ -2,14 +2,14 @@
 # This file is distributed under the same license as the ProfilePress plugin.
 msgid ""
 msgstr ""
-"Project-Id-Version: ProfilePress 4.15.3\n"
+"Project-Id-Version: ProfilePress 4.15.4\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wp-user-avatar\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2024-03-07T11:58:53+00:00\n"
+"POT-Creation-Date: 2024-03-18T10:16:41+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.8.1\n"
 "X-Domain: wp-user-avatar\n"
@@ -1417,7 +1417,7 @@ msgstr ""
 #: src/Admin/SettingsPages/EmailSettings/EmailSettingsPage.php:86
 #: src/Admin/SettingsPages/Membership/OrdersPage/OrderWPListTable.php:53
 #: src/ShortcodeParser/MyAccount/view-order.tmpl.php:43
-#: src/ShortcodeParser/MyAccount/view-subscription.tmpl.php:125
+#: src/ShortcodeParser/MyAccount/view-subscription.tmpl.php:121
 msgid "Order"
 msgstr ""
 
@@ -1870,7 +1870,7 @@ msgstr ""
 #: src/Admin/SettingsPages/Membership/OrdersPage/OrderWPListTable.php:58
 #: src/Admin/SettingsPages/Membership/OrdersPage/SettingsPage.php:539
 #: src/Admin/SettingsPages/Membership/views/subscriptions/sub-payments-metabox.php:17
-#: src/ShortcodeParser/MyAccount/view-subscription.tmpl.php:126
+#: src/ShortcodeParser/MyAccount/view-subscription.tmpl.php:122
 msgid "Date"
 msgstr ""
 
@@ -2958,15 +2958,15 @@ msgstr ""
 #: src/Admin/SettingsPages/Membership/views/subscriptions/sub-payments-metabox.php:18
 #: src/ShortcodeParser/MyAccount/subscriptions.tmpl.php:57
 #: src/ShortcodeParser/MyAccount/view-order.tmpl.php:168
-#: src/ShortcodeParser/MyAccount/view-subscription.tmpl.php:68
-#: src/ShortcodeParser/MyAccount/view-subscription.tmpl.php:127
+#: src/ShortcodeParser/MyAccount/view-subscription.tmpl.php:64
+#: src/ShortcodeParser/MyAccount/view-subscription.tmpl.php:123
 msgid "Status"
 msgstr ""
 
 #: src/Admin/SettingsPages/Membership/CouponsPage/CouponWPListTable.php:34
 #: src/Admin/SettingsPages/Membership/ExportPage/SubscriptionsExport.php:27
 #: src/Admin/SettingsPages/Membership/views/add-edit-coupon.php:83
-#: src/ShortcodeParser/MyAccount/view-subscription.tmpl.php:86
+#: src/ShortcodeParser/MyAccount/view-subscription.tmpl.php:82
 msgid "Start Date"
 msgstr ""
 
@@ -3460,7 +3460,7 @@ msgstr ""
 #: src/Admin/SettingsPages/Membership/views/orders/add-edit-order.php:140
 #: src/ContentProtection/NavMenuProtection.php:90
 #: src/ShortcodeParser/MyAccount/downloads.tmpl.php:40
-#: src/ShortcodeParser/MyAccount/view-subscription.tmpl.php:74
+#: src/ShortcodeParser/MyAccount/view-subscription.tmpl.php:70
 msgid "Plan"
 msgstr ""
 
@@ -3679,7 +3679,7 @@ msgstr ""
 
 #: src/Admin/SettingsPages/Membership/ExportPage/SubscriptionsExport.php:19
 #: src/ShortcodeParser/MyAccount/subscriptions.tmpl.php:51
-#: src/ShortcodeParser/MyAccount/view-subscription.tmpl.php:82
+#: src/ShortcodeParser/MyAccount/view-subscription.tmpl.php:78
 msgid "Initial Amount"
 msgstr ""
 
@@ -3709,7 +3709,7 @@ msgstr ""
 
 #: src/Admin/SettingsPages/Membership/ExportPage/SubscriptionsExport.php:28
 #: src/Admin/SettingsPages/Membership/SubscriptionsPage/SubscriptionWPListTable.php:58
-#: src/ShortcodeParser/MyAccount/view-subscription.tmpl.php:90
+#: src/ShortcodeParser/MyAccount/view-subscription.tmpl.php:86
 msgid "Expiration Date"
 msgstr ""
 
@@ -3924,7 +3924,7 @@ msgstr ""
 #: src/Admin/SettingsPages/Membership/OrdersPage/OrderWPListTable.php:55
 #: src/Admin/SettingsPages/Membership/views/subscriptions/sub-payments-metabox.php:19
 #: src/ShortcodeParser/MyAccount/view-order.tmpl.php:141
-#: src/ShortcodeParser/MyAccount/view-subscription.tmpl.php:128
+#: src/ShortcodeParser/MyAccount/view-subscription.tmpl.php:124
 #: src/templates/checkout/form-checkout-sidebar.php:115
 msgid "Total"
 msgstr ""
@@ -4305,7 +4305,7 @@ msgstr ""
 #: src/Admin/SettingsPages/Membership/views/customers/subcriptions-metabox.php:21
 #: src/ShortcodeParser/MyAccount/subscriptions.tmpl.php:63
 #: src/ShortcodeParser/MyAccount/view-order.tmpl.php:169
-#: src/ShortcodeParser/MyAccount/view-subscription.tmpl.php:90
+#: src/ShortcodeParser/MyAccount/view-subscription.tmpl.php:86
 msgid "Renewal Date"
 msgstr ""
 
@@ -4984,7 +4984,7 @@ msgid "Subscription #%s"
 msgstr ""
 
 #: src/Admin/SettingsPages/Membership/views/subscriptions/add-edit-subscription.php:32
-#: src/ShortcodeParser/MyAccount/view-subscription.tmpl.php:118
+#: src/ShortcodeParser/MyAccount/view-subscription.tmpl.php:114
 msgid "Subscription Orders"
 msgstr ""
 
@@ -16377,7 +16377,7 @@ msgstr ""
 msgid "The password you entered is incorrect."
 msgstr ""
 
-#: src/ShortcodeParser/FormProcessor.php:235
+#: src/ShortcodeParser/FormProcessor.php:224
 msgid "Authentication failed. Please try again"
 msgstr ""
 
@@ -16568,7 +16568,7 @@ msgid "Item Description"
 msgstr ""
 
 #: src/ShortcodeParser/MyAccount/view-order.tmpl.php:167
-#: src/ShortcodeParser/MyAccount/view-subscription.tmpl.php:78
+#: src/ShortcodeParser/MyAccount/view-subscription.tmpl.php:74
 msgid "Terms"
 msgstr ""
 
@@ -16576,23 +16576,23 @@ msgstr ""
 msgid "Invalid subscription"
 msgstr ""
 
-#: src/ShortcodeParser/MyAccount/view-subscription.tmpl.php:51
+#: src/ShortcodeParser/MyAccount/view-subscription.tmpl.php:47
 msgid "Resubscribe"
 msgstr ""
 
-#: src/ShortcodeParser/MyAccount/view-subscription.tmpl.php:55
+#: src/ShortcodeParser/MyAccount/view-subscription.tmpl.php:51
 msgid "Change Plan"
 msgstr ""
 
-#: src/ShortcodeParser/MyAccount/view-subscription.tmpl.php:94
+#: src/ShortcodeParser/MyAccount/view-subscription.tmpl.php:90
 msgid "Payment"
 msgstr ""
 
-#: src/ShortcodeParser/MyAccount/view-subscription.tmpl.php:95
+#: src/ShortcodeParser/MyAccount/view-subscription.tmpl.php:91
 msgid "Via %s"
 msgstr ""
 
-#: src/ShortcodeParser/MyAccount/view-subscription.tmpl.php:99
+#: src/ShortcodeParser/MyAccount/view-subscription.tmpl.php:95
 msgid "Actions"
 msgstr ""
 
