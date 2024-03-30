@@ -678,9 +678,9 @@ class FrontendProfileBuilder
                         ?>
                         <li>
                             <a href="<?php echo get_permalink($post->ID); ?>">
-                                <img src="<?php echo $feature_img; ?>" alt="<?php echo $post->post_title; ?>">
+                                <img src="<?php echo esc_url($feature_img); ?>" alt="<?php esc_attr_e($post->post_title); ?>">
 
-                                <div class="jc-title"><?php echo $post->post_title; ?></div>
+                                <div class="jc-title"><?php esc_html_e($post->post_title); ?></div>
                             </a>
                         </li>
                         <?php

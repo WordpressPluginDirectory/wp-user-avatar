@@ -584,8 +584,7 @@ class Stripe extends AbstractPaymentMethod
             <div class="ppress-main-checkout-form__block__item">
                 <label for="<?= esc_attr($this->id . '-' . 'card_name') ?>">
                     <?php esc_html_e('Name on card', 'wp-user-avatar') ?>
-                    <span class="ppress-required">*</span>
-                </label>
+                    <span class="ppress-required">*</span> </label>
                 <input id="<?= esc_attr($this->id . '-' . 'card_name') ?>" name="<?= esc_attr($this->id . '-' . 'card_name') ?>" class="ppress-checkout-field__input" type="text" autocomplete="cc-name">
             </div>
         <?php endif; ?>
@@ -817,6 +816,26 @@ class Stripe extends AbstractPaymentMethod
         }
     }
 
+    /**
+     * @param $customer_id
+     * @param $checkout_metadata
+     *
+     * @return array
+     *
+     * @throws \Exception
+     */
+    public function create_setup_intent($customer_id, $checkout_metadata)
+    {
+        $create_setup_intent_args = [
+            'customer' => $customer_id,
+            'metadata' => $checkout_metadata
+        ];
+
+        $create_setup_intent_args = apply_filters('ppress_stripe_create_setup_intent_args', $create_setup_intent_args, $this);
+
+        return APIClass::stripeClient()->setupIntents->create($create_setup_intent_args)->toArray();
+    }
+
     public function process_payment($order_id, $subscription_id, $customer_id)
     {
         $order        = OrderFactory::fromId($order_id);
@@ -871,7 +890,7 @@ class Stripe extends AbstractPaymentMethod
                     }
                 }
 
-                if ($plan->has_signup_fee() && Calculator::init($signup_fee)->isGreaterThanZero()) {
+                if (Calculator::init($signup_fee)->isGreaterThanZero()) {
 
                     $create_subscription_args['add_invoice_items'][] = [
                         'quantity'   => 1,
@@ -913,6 +932,15 @@ class Stripe extends AbstractPaymentMethod
 
                 if (false !== $stripe_coupon) {
                     PaymentHelpers::delete_coupon($stripe_coupon['id']);
+                }
+
+                // if order total is $0 and not signup fee (total amount charged is $0), create a setup intent to save customer
+                // payment method so when trial ends, they can be charged.
+                if (Calculator::init($order->total)->isNegativeOrZero() && Calculator::init($signup_fee)->isNegativeOrZero()) {
+
+                    $setup_intent_response = $this->create_setup_intent($customer_id, $checkout_metadata);
+
+                    if (is_array($response)) $response['setup_intent_response'] = $setup_intent_response;
                 }
 
                 return (new CheckoutResponse())

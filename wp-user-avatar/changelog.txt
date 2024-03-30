@@ -1,5 +1,12 @@
 ﻿== Changelog ==
 
+= 4.15.5 =
+* Added custom field support to account welcome email
+* Improve checkout verbiage when auto-renewal is disabled
+* Fixed bug where customer username is always email during creation from wp-admin.
+* Fixed Stripe bug where payment method not saving for zero amount orders.
+* Fixed XSS on carousel-author-posts shortcode.
+
 = 4.15.4 =
 * Compatibility with upcoming WP 6.5
 

@@ -566,7 +566,21 @@ function ppress_other_field_atts($atts)
 {
     if ( ! is_array($atts)) return $atts;
 
-    $official_atts = array('name', 'class', 'id', 'value', 'title', 'required', 'placeholder', 'key', 'field_key', 'limit', 'options', 'checkbox_text', 'processing_label');
+    $official_atts = array(
+        'name',
+        'class',
+        'id',
+        'value',
+        'title',
+        'required',
+        'placeholder',
+        'key',
+        'field_key',
+        'limit',
+        'options',
+        'checkbox_text',
+        'processing_label'
+    );
 
     $other_atts = array();
 
@@ -771,28 +785,7 @@ function ppress_wp_new_user_notification($user_id, $deprecated = null, $notify =
                 $user
             );
 
-            // handle support for custom fields placeholder.
-            preg_match_all('#({{[a-z_-]+}})#', $message, $matches);
-
-            if (isset($matches[1]) && ! empty($matches[1])) {
-
-                foreach ($matches[1] as $match) {
-                    $key = str_replace(['{', '}'], '', $match);
-
-                    $value = '';
-
-                    if (isset($user->{$key})) {
-
-                        $value = $user->{$key};
-
-                        if (is_array($value)) {
-                            $value = implode(', ', $value);
-                        }
-                    }
-
-                    $message = str_replace($match, $value, $message);
-                }
-            }
+            $message = ppress_custom_profile_field_search_replace($message, $user);
 
             $admin_email = apply_filters('ppress_signup_notification_admin_email', ppress_get_admin_notification_emails());
 
@@ -1301,10 +1294,33 @@ function ppress_dnd_field_key_description()
 function ppress_reserved_field_keys()
 {
     return [
-        'ID', 'id', 'user_pass', 'user_login', 'user_nicename', 'user_url', 'user_email', 'display_name', 'nickname',
-        'first_name', 'last_name', 'description', 'rich_editing', 'syntax_highlighting', 'comment_shortcuts', 'admin_color',
-        'use_ssl', 'user_registered', 'user_activation_key', 'spam', 'show_admin_bar_front', 'role', 'locale', 'deleted', 'user_level',
-        'user_status', 'user_description'
+        'ID',
+        'id',
+        'user_pass',
+        'user_login',
+        'user_nicename',
+        'user_url',
+        'user_email',
+        'display_name',
+        'nickname',
+        'first_name',
+        'last_name',
+        'description',
+        'rich_editing',
+        'syntax_highlighting',
+        'comment_shortcuts',
+        'admin_color',
+        'use_ssl',
+        'user_registered',
+        'user_activation_key',
+        'spam',
+        'show_admin_bar_front',
+        'role',
+        'locale',
+        'deleted',
+        'user_level',
+        'user_status',
+        'user_description'
     ];
 }
 
@@ -1795,4 +1811,33 @@ function ppress_form_has_field($form_id, $form_type, $field_shortcode_tag)
     }
 
     return false;
+}
+
+function ppress_custom_profile_field_search_replace($message, $user)
+{
+    // handle support for custom fields placeholder.
+    preg_match_all('#({{[a-z_-]+}})#', $message, $matches);
+
+    if (isset($matches[1]) && ! empty($matches[1])) {
+
+        foreach ($matches[1] as $match) {
+
+            $key = str_replace(['{', '}'], '', $match);
+
+            $value = '';
+
+            if (isset($user->{$key})) {
+
+                $value = $user->{$key};
+
+                if (is_array($value)) {
+                    $value = implode(', ', $value);
+                }
+            }
+
+            $message = str_replace($match, $value, $message);
+        }
+    }
+
+    return $message;
 }

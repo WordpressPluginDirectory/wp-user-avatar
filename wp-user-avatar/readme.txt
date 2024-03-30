@@ -5,7 +5,7 @@ Tags: membership, ecommerce, user registration, user profile, stripe
 Requires at least: 5.3
 Requires PHP: 7.4
 Tested up to: 6.5
-Stable tag: 4.15.4
+Stable tag: 4.15.5
 License: GPLv2 or later
 
 Setup paid membership, accept payment, sell subscription & digital product, paywall, create login & registration form, user profile & member directory
@@ -169,13 +169,13 @@ Any file type can be sold using ProfilePress ecommerce and membership plugin, in
 
 == Changelog ==
 
-= Paid Membership, Ecommerce & User Registration 4.15.4 =
-* Compatibility with upcoming WP 6.5
+= Paid Membership, Ecommerce & User Registration 4.15.5 =
+* Added custom field support to account welcome email
+* Improve checkout verbiage when auto-renewal is disabled
+* Fixed bug where customer username is always email during creation from wp-admin.
+* Fixed Stripe bug where payment method not saving for zero amount orders.
+* Fixed XSS on carousel-author-posts shortcode.
 
-= Paid Membership, Ecommerce & User Registration 4.15.3 =
-* Fixed bug where user membership subscriptions were not cancelled after account deletion.
-* Fixed bug with tax-inclusive checkout calculation.
-* Fixed bug with custom field not working on order/sub emails.
-* Fixed XSS on checkbox registration field.
+= Paid Membership, Ecommerce & User Registration 4.15.4 =
 
 See the [changelog file](https://plugins.svn.wordpress.org/wp-user-avatar/trunk/changelog.txt) for full change log information.

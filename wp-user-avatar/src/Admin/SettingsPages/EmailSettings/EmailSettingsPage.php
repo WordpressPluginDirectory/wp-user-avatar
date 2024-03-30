@@ -132,6 +132,10 @@ class EmailSettingsPage
                     '{{last_name}}'           => esc_html__('Last Name entered by user on registration.', 'wp-user-avatar'),
                     '{{password_reset_link}}' => esc_html__('URL to reset password.', 'wp-user-avatar'),
                     '{{login_link}}'          => esc_html__('URL to login.', 'wp-user-avatar'),
+                    '{{field_key}}'  => sprintf(
+                        esc_html__('Replace "field_key" with the %scustom field key%s or usermeta key.', 'wp-user-avatar'),
+                        '<a href="' . PPRESS_CUSTOM_FIELDS_SETTINGS_PAGE . '" target="_blank">', '</a>'
+                    )
                 ],
             ],
             [

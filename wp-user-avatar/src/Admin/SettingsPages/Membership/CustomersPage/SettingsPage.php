@@ -119,7 +119,7 @@ class SettingsPage extends AbstractSettingsPage
 
         if ('new' == $type) {
 
-            $user_login = ! empty($_POST['username']) ? $_POST['username'] : $customer_email;
+            $user_login = ! empty($customer_data['username']) ? $customer_data['username'] : $customer_email;
 
             $existing_user = get_user_by('login', $user_login);
 

@@ -86,35 +86,6 @@ abstract class AbstractMembershipEmail
         ]);
     }
 
-    public function custom_profile_field_search_replace($message, $user)
-    {
-        // handle support for custom fields placeholder.
-        preg_match_all('#({{[a-z_-]+}})#', $message, $matches);
-
-        if (isset($matches[1]) && ! empty($matches[1])) {
-
-            foreach ($matches[1] as $match) {
-
-                $key = str_replace(['{', '}'], '', $match);
-
-                $value = '';
-
-                if (isset($user->{$key})) {
-
-                    $value = $user->{$key};
-
-                    if (is_array($value)) {
-                        $value = implode(', ', $value);
-                    }
-                }
-
-                $message = str_replace($match, $value, $message);
-            }
-        }
-
-        return $message;
-    }
-
     /**
      * @param string $content
      * @param array $placeholders
@@ -130,7 +101,7 @@ abstract class AbstractMembershipEmail
 			$user = $order_or_sub->get_customer()->get_wp_user();
 		}
 
-        return $this->custom_profile_field_search_replace(
+        return ppress_custom_profile_field_search_replace(
 			str_replace(array_keys($placeholders), array_values($placeholders), $content),
 	        $user
         );
