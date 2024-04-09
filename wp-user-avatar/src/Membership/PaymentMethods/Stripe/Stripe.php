@@ -265,7 +265,7 @@ class Stripe extends AbstractPaymentMethod
                     '<code>' . esc_url($this->get_webhook_url()) . '</code>',
                     '<a target="_blank" href="' . esc_url($stripe_webhook_url) . '">',
                     '</a>',
-                    '<a target="_blank" href="https://profilepress.com/article/setting-up-stripe/">'
+                    '<a target="_blank" href="https://profilepress.com/article/setting-up-stripe/#Webhooks">'
                 ),
             ];
         }
@@ -940,7 +940,10 @@ class Stripe extends AbstractPaymentMethod
 
                     $setup_intent_response = $this->create_setup_intent($customer_id, $checkout_metadata);
 
-                    if (is_array($response)) $response['setup_intent_response'] = $setup_intent_response;
+                    if (is_array($response) && isset($setup_intent_response->id)) {
+                        $order->update_meta('stripe_setup_intent', $setup_intent_response->id);
+                        $response['setup_intent_response'] = $setup_intent_response;
+                    }
                 }
 
                 return (new CheckoutResponse())

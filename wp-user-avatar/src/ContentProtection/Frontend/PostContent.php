@@ -73,7 +73,7 @@ class PostContent
             \Elementor\Plugin::$instance->preview->is_preview_mode(),
         ];
 
-        return in_array(true, $checks, true);
+        return apply_filters('ppress_content_protection_is_protection_disabled', in_array(true, $checks, true));
     }
 
     /**

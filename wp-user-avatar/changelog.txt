@@ -1,5 +1,10 @@
 ﻿== Changelog ==
 
+= 4.15.6 =
+* Fixed bug where Stripe sometimes fails to make payment method default.
+* Fixed XSS on registration checkbox field label.
+* Added ppress_content_protection_is_protection_disabled filter.
+
 = 4.15.5 =
 * Added custom field support to account welcome email
 * Improve checkout verbiage when auto-renewal is disabled

@@ -955,7 +955,7 @@ class FieldsShortcodeCallback
         $key = ppress_sanitize_key($atts['key']);
 
         $html        = '<div class="pp-checkbox-wrap pp-single-checkbox">';
-        $field_label = isset($atts['checkbox_text']) ? html_entity_decode(wp_kses_post($atts['checkbox_text'])) : '';
+        $field_label = isset($atts['checkbox_text']) ? wp_kses_post(html_entity_decode($atts['checkbox_text'])) : '';
 
         // remove all onXYZ attributes
         $field_label = preg_replace('/(on.+=)/', '', $field_label);

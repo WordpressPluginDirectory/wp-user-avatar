@@ -5,7 +5,7 @@ Tags: membership, ecommerce, user registration, user profile, stripe
 Requires at least: 5.3
 Requires PHP: 7.4
 Tested up to: 6.5
-Stable tag: 4.15.5
+Stable tag: 4.15.6
 License: GPLv2 or later
 
 Setup paid membership, accept payment, sell subscription & digital product, paywall, create login & registration form, user profile & member directory
@@ -126,6 +126,18 @@ Extend the capabilities of ProfilePress with our powerful addons and remove the 
 * [Akismet](https://profilepress.com/addons/akismet/?utm_source=wprepo&utm_medium=link&utm_campaign=liteversion) –  Block spam and bot user registrations with Akismet and keep your membership site safe and secured.
 * [Polylang](https://profilepress.com/addons/polylang/?utm_source=wprepo&utm_medium=link&utm_campaign=liteversion) –  Build multilingual login, registration, password reset, and edit profile forms.
 
+ProfilePress is the Ecommerce platform of your dreams. It delivers a complete Ecommerce experience with everything needed for selling online.
+
+If you're looking to build a business out of your membership site by creating paid memberships, there's no better way than to use ProfilePress membership plugin which provide the ultimate member experience and will help you start and profit from your WordPress membership sites.
+
+= What's Next =
+
+If you like this plugin, then consider checking out our other products:
+
+* <a href="https://mailoptin.io/">MailOptin</a> - Create popups and optin forms for capturing email newsletter subscribers. Integrates with Mailchimp, ConvertKit, Infusionsoft, ActiveCampaign, Campaign Monitor, Constant Contact & more.
+* <a href="https://fusewp.com/">FuseWP</a> - Connect wordPress to marketing platforms and sync users to your email list.
+* <a href="https://feedbackwp.com/">FeedbackWP</a> - Add star rating to WordPress posts and collect user feedbacks..
+
 == Installation ==
 
 Installing ProfilePress is just like any other WordPress plugin.
@@ -169,13 +181,16 @@ Any file type can be sold using ProfilePress ecommerce and membership plugin, in
 
 == Changelog ==
 
+= Paid Membership, Ecommerce & User Registration 4.15.6 =
+* Fixed bug where Stripe sometimes fails to make payment method default.
+* Fixed XSS on registration checkbox field label.
+* Added ppress_content_protection_is_protection_disabled filter.
+
 = Paid Membership, Ecommerce & User Registration 4.15.5 =
 * Added custom field support to account welcome email
 * Improve checkout verbiage when auto-renewal is disabled
 * Fixed bug where customer username is always email during creation from wp-admin.
 * Fixed Stripe bug where payment method not saving for zero amount orders.
 * Fixed XSS on carousel-author-posts shortcode.
-
-= Paid Membership, Ecommerce & User Registration 4.15.4 =
 
 See the [changelog file](https://plugins.svn.wordpress.org/wp-user-avatar/trunk/changelog.txt) for full change log information.
