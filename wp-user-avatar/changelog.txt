@@ -1,5 +1,9 @@
 ﻿== Changelog ==
 
+= 4.15.7 =
+* Added filter to for changing Tutor LMS subscribe button.
+* Added filters to order and subscriptions email recipients.
+
 = 4.15.6 =
 * Fixed bug where Stripe sometimes fails to make payment method default.
 * Fixed XSS on registration checkbox field label.

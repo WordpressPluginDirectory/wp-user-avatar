@@ -117,7 +117,7 @@ class Init
                         </div>
                         <div class="tutor-profilepress-message-wrapper tutor-justify-center tutor-align-center tutor-flex-column">
                             <a class="tutor-btn tutor-btn-outline-primary tutor-btn-md tutor-btn-block" href="<?php echo esc_url($plan->get_checkout_url()); ?>">
-                                <?php esc_html_e('Subscribe Now', 'wp-user-avatar'); ?>
+                                <?php esc_html_e( apply_filters( 'ppress_tutorlms_checkout_button_text', 'Subscribe Now' ), 'wp-user-avatar' ); ?>
                             </a>
                         </div>
                         <?php

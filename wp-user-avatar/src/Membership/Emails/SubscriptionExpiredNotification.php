@@ -37,6 +37,8 @@ class SubscriptionExpiredNotification extends AbstractMembershipEmail
 	        $subscription
         ), $subscription);
 
-        ppress_send_email(CustomerFactory::fromId($subscription->customer_id)->get_email(), $subject, $message);
+        $recipient = apply_filters('ppress_' . self::ID . '_recipient', CustomerFactory::fromId($subscription->customer_id)->get_email(), $subscription);
+
+        ppress_send_email($recipient, $subject, $message);
     }
 }

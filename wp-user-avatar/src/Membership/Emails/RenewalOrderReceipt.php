@@ -38,7 +38,9 @@ class RenewalOrderReceipt extends AbstractMembershipEmail
 	            $order
             ), $order);
 
-            ppress_send_email($order->get_customer_email(), $subject, $message);
+            $recipient = apply_filters('ppress_' . self::ID . '_recipient', $order->get_customer_email(), $order);
+
+            ppress_send_email($recipient, $subject, $message);
         }
     }
 }

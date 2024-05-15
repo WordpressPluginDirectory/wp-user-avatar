@@ -5,7 +5,7 @@ Tags: membership, ecommerce, user registration, user profile, stripe
 Requires at least: 5.3
 Requires PHP: 7.4
 Tested up to: 6.5
-Stable tag: 4.15.6
+Stable tag: 4.15.7
 License: GPLv2 or later
 
 Setup paid membership, accept payment, sell subscription & digital product, paywall, create login & registration form, user profile & member directory
@@ -136,7 +136,7 @@ If you like this plugin, then consider checking out our other products:
 
 * <a href="https://mailoptin.io/">MailOptin</a> - Create popups and optin forms for capturing email newsletter subscribers. Integrates with Mailchimp, ConvertKit, Infusionsoft, ActiveCampaign, Campaign Monitor, Constant Contact & more.
 * <a href="https://fusewp.com/">FuseWP</a> - Connect wordPress to marketing platforms and sync users to your email list.
-* <a href="https://feedbackwp.com/">FeedbackWP</a> - Add star rating to WordPress posts and collect user feedbacks..
+* <a href="https://feedbackwp.com/">FeedbackWP</a> - Add star rating to WordPress posts and collect user feedbacks.
 
 == Installation ==
 
@@ -180,6 +180,10 @@ Any file type can be sold using ProfilePress ecommerce and membership plugin, in
 11. Content Protection
 
 == Changelog ==
+
+= Paid Membership, Ecommerce & User Registration 4.15.7 =
+* Added filter to for changing Tutor LMS subscribe button.
+* Added filters to order and subscriptions email recipients.
 
 = Paid Membership, Ecommerce & User Registration 4.15.6 =
 * Fixed bug where Stripe sometimes fails to make payment method default.
