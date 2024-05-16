@@ -940,8 +940,8 @@ class Stripe extends AbstractPaymentMethod
 
                     $setup_intent_response = $this->create_setup_intent($customer_id, $checkout_metadata);
 
-                    if (is_array($response) && isset($setup_intent_response->id)) {
-                        $order->update_meta('stripe_setup_intent', $setup_intent_response->id);
+                    if (is_array($response) && isset($setup_intent_response['id'])) {
+                        $order->update_meta('stripe_setup_intent', $setup_intent_response['id']);
                         $response['setup_intent_response'] = $setup_intent_response;
                     }
                 }

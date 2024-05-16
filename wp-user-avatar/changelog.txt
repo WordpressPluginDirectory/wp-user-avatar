@@ -1,5 +1,8 @@
 ﻿== Changelog ==
 
+= 4.15.8 =
+* Fixed Stripe bug where payment method not saving for zero amount orders.
+
 = 4.15.7 =
 * Added filter to for changing Tutor LMS subscribe button.
 * Added filters to order and subscriptions email recipients.

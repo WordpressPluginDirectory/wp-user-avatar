@@ -5,7 +5,7 @@ Tags: membership, ecommerce, user registration, user profile, stripe
 Requires at least: 5.3
 Requires PHP: 7.4
 Tested up to: 6.5
-Stable tag: 4.15.7
+Stable tag: 4.15.8
 License: GPLv2 or later
 
 Setup paid membership, accept payment, sell subscription & digital product, paywall, create login & registration form, user profile & member directory
@@ -181,20 +181,7 @@ Any file type can be sold using ProfilePress ecommerce and membership plugin, in
 
 == Changelog ==
 
-= Paid Membership, Ecommerce & User Registration 4.15.7 =
-* Added filter to for changing Tutor LMS subscribe button.
-* Added filters to order and subscriptions email recipients.
-
-= Paid Membership, Ecommerce & User Registration 4.15.6 =
-* Fixed bug where Stripe sometimes fails to make payment method default.
-* Fixed XSS on registration checkbox field label.
-* Added ppress_content_protection_is_protection_disabled filter.
-
-= Paid Membership, Ecommerce & User Registration 4.15.5 =
-* Added custom field support to account welcome email
-* Improve checkout verbiage when auto-renewal is disabled
-* Fixed bug where customer username is always email during creation from wp-admin.
+= Paid Membership, Ecommerce & User Registration 4.15.8 =
 * Fixed Stripe bug where payment method not saving for zero amount orders.
-* Fixed XSS on carousel-author-posts shortcode.
 
 See the [changelog file](https://plugins.svn.wordpress.org/wp-user-avatar/trunk/changelog.txt) for full change log information.
