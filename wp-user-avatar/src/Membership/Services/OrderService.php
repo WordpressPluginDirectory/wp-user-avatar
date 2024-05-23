@@ -12,6 +12,7 @@ use ProfilePress\Core\Membership\Models\Order\OrderEntity as OrderEntity;
 use ProfilePress\Core\Membership\Models\Order\OrderFactory;
 use ProfilePress\Core\Membership\Models\Order\OrderStatus;
 use ProfilePress\Core\Membership\Models\Order\OrderType;
+use ProfilePress\Core\Membership\Models\Plan\PlanFactory;
 use ProfilePress\Core\Membership\Models\Subscription\SubscriptionBillingFrequency;
 use ProfilePress\Core\Membership\Models\Subscription\SubscriptionEntity;
 use ProfilePress\Core\Membership\Models\Subscription\SubscriptionFactory;
@@ -33,8 +34,10 @@ class OrderService
      */
     public function is_free_checkout($cart_vars)
     {
-        return Calculator::init($cart_vars->total)->isNegativeOrZero() &&
-               Calculator::init($cart_vars->recurring_amount)->isNegativeOrZero();
+        return Calculator::init($cart_vars->total)->isNegativeOrZero() && (
+                ! PlanFactory::fromId($cart_vars->plan_id)->is_auto_renew() ||
+                Calculator::init($cart_vars->recurring_amount)->isNegativeOrZero()
+            );
     }
 
     public function customer_has_trialled($plan_id = '')
@@ -564,7 +567,10 @@ class OrderService
             $order_id = OrderFactory::fromOrderKey($order_id_or_key)->id;
         }
 
-        return add_query_arg(['ppress_order_action' => 'edit', 'id' => $order_id], PPRESS_MEMBERSHIP_ORDERS_SETTINGS_PAGE);
+        return add_query_arg([
+            'ppress_order_action' => 'edit',
+            'id'                  => $order_id
+        ], PPRESS_MEMBERSHIP_ORDERS_SETTINGS_PAGE);
     }
 
     /**

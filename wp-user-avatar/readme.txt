@@ -5,7 +5,7 @@ Tags: membership, ecommerce, user registration, user profile, stripe
 Requires at least: 5.3
 Requires PHP: 7.4
 Tested up to: 6.5
-Stable tag: 4.15.8
+Stable tag: 4.15.9
 License: GPLv2 or later
 
 Setup paid membership, accept payment, sell subscription & digital product, paywall, create login & registration form, user profile & member directory
@@ -180,6 +180,10 @@ Any file type can be sold using ProfilePress ecommerce and membership plugin, in
 11. Content Protection
 
 == Changelog ==
+
+= Paid Membership, Ecommerce & User Registration 4.15.9 =
+* Fixed bug where zero amount checkout didn't work when autorenewal is enabled.
+* Fixed XSS on user panel widget.
 
 = Paid Membership, Ecommerce & User Registration 4.15.8 =
 * Fixed Stripe bug where payment method not saving for zero amount orders.

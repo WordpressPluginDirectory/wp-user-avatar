@@ -119,7 +119,7 @@ class PostContent
                                 $is_restricted = $access_condition;
                             }
                             break;
-                        };
+                        }
                     }
                 }
             }
