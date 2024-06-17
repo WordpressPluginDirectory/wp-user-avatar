@@ -1,5 +1,12 @@
 ﻿== Changelog ==
 
+= 4.15.10 =
+* Added exemption to content protection.
+* Fixed bug where Tutor course in multiple plans didn't exactly work correctly
+* Fixed bug where subscription was not revoked when unpaid in Stripe.
+* Enhancement: Stopped ucwords-ing displayname profile information.
+* Improved checkout compatibility with Pantheon hosting.
+
 = 4.15.9 =
 * Fixed bug where zero amount checkout didn't work when autorenewal is enabled.
 

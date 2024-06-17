@@ -2,14 +2,14 @@
 # This file is distributed under the same license as the ProfilePress plugin.
 msgid ""
 msgstr ""
-"Project-Id-Version: ProfilePress 4.15.9\n"
+"Project-Id-Version: ProfilePress 4.15.10\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wp-user-avatar\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2024-05-22T09:19:02+00:00\n"
+"POT-Creation-Date: 2024-06-16T16:20:22+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.8.1\n"
 "X-Domain: wp-user-avatar\n"
@@ -1383,7 +1383,7 @@ msgid "Change Logo"
 msgstr ""
 
 #: src/Admin/SettingsPages/EmailSettings/DefaultTemplateCustomizer.php:299
-#: src/ContentProtection/ContentConditions.php:276
+#: src/ContentProtection/ContentConditions.php:341
 msgid "Default"
 msgstr ""
 
@@ -2609,7 +2609,7 @@ msgstr ""
 
 #: src/Admin/SettingsPages/GeneralSettings.php:489
 #: src/ContentProtection/ElementorRestriction.php:253
-#: src/ContentProtection/Frontend/PostContent.php:155
+#: src/ContentProtection/Frontend/PostContent.php:157
 #: src/RegisterActivation/Base.php:135
 msgid "You are unauthorized to view this page."
 msgstr ""
@@ -4528,7 +4528,7 @@ msgstr ""
 #: src/Admin/SettingsPages/Membership/views/customers/view-customer.php:48
 #: src/Admin/SettingsPages/Membership/views/orders/add-edit-order.php:50
 #: src/Admin/SettingsPages/Membership/views/subscriptions/add-edit-subscription.php:42
-#: src/ContentProtection/views/include.view.php:38
+#: src/ContentProtection/views/include.view.php:51
 msgid "Publish"
 msgstr ""
 
@@ -5225,7 +5225,7 @@ msgid "Select this template"
 msgstr ""
 
 #: src/Classes/AjaxHandler.php:151
-#: src/ContentProtection/ContentConditions.php:274
+#: src/ContentProtection/ContentConditions.php:339
 msgid "Select Template"
 msgstr ""
 
@@ -5414,10 +5414,10 @@ msgid "WooCommerce is not active"
 msgstr ""
 
 #: src/Classes/ExtensionManager.php:211
-#: src/Integrations/TutorLMS/Init.php:287
-#: src/Integrations/TutorLMS/Init.php:322
-#: src/Integrations/TutorLMS/Init.php:346
-#: src/Integrations/TutorLMS/Init.php:369
+#: src/Integrations/TutorLMS/Init.php:313
+#: src/Integrations/TutorLMS/Init.php:348
+#: src/Integrations/TutorLMS/Init.php:372
+#: src/Integrations/TutorLMS/Init.php:395
 msgid "Tutor LMS"
 msgstr ""
 
@@ -5778,100 +5778,103 @@ msgid "The selected block will only be visible to users with an active subscript
 msgstr ""
 
 #: src/ContentProtection/ContentConditions.php:111
+#: src/ContentProtection/ContentConditions.php:149
 msgid "or"
 msgstr ""
 
 #: src/ContentProtection/ContentConditions.php:114
+#: src/ContentProtection/ContentConditions.php:152
 msgid "Select a condition"
 msgstr ""
 
-#: src/ContentProtection/ContentConditions.php:146
-#: src/ContentProtection/ContentConditions.php:151
+#: src/ContentProtection/ContentConditions.php:184
+#: src/ContentProtection/ContentConditions.php:189
 msgid "AND"
 msgstr ""
 
-#: src/ContentProtection/ContentConditions.php:174
+#: src/ContentProtection/ContentConditions.php:212
+#: src/ContentProtection/ContentConditions.php:247
 msgid "OR"
 msgstr ""
 
-#: src/ContentProtection/ContentConditions.php:216
+#: src/ContentProtection/ContentConditions.php:281
 msgid "%s Archive Page"
 msgstr ""
 
-#: src/ContentProtection/ContentConditions.php:223
+#: src/ContentProtection/ContentConditions.php:288
 msgid "All %s"
 msgstr ""
 
-#: src/ContentProtection/ContentConditions.php:230
+#: src/ContentProtection/ContentConditions.php:295
 msgid "Selected %s"
 msgstr ""
 
-#: src/ContentProtection/ContentConditions.php:232
-#: src/ContentProtection/ContentConditions.php:245
-#: src/ContentProtection/ContentConditions.php:257
-#: src/ContentProtection/ContentConditions.php:331
-#: src/ContentProtection/ContentConditions.php:367
+#: src/ContentProtection/ContentConditions.php:297
+#: src/ContentProtection/ContentConditions.php:310
+#: src/ContentProtection/ContentConditions.php:322
+#: src/ContentProtection/ContentConditions.php:396
+#: src/ContentProtection/ContentConditions.php:432
 msgid "Select %s"
 msgstr ""
 
-#: src/ContentProtection/ContentConditions.php:242
+#: src/ContentProtection/ContentConditions.php:307
 msgid "Child %s of"
 msgstr ""
 
-#: src/ContentProtection/ContentConditions.php:243
+#: src/ContentProtection/ContentConditions.php:308
 msgid "Child of Selected %s"
 msgstr ""
 
-#: src/ContentProtection/ContentConditions.php:254
+#: src/ContentProtection/ContentConditions.php:319
 msgid "Parent %s of"
 msgstr ""
 
-#: src/ContentProtection/ContentConditions.php:255
+#: src/ContentProtection/ContentConditions.php:320
 msgid "Parent of Selected %s"
 msgstr ""
 
-#: src/ContentProtection/ContentConditions.php:270
+#: src/ContentProtection/ContentConditions.php:335
 msgid "Template"
 msgstr ""
 
-#: src/ContentProtection/ContentConditions.php:271
+#: src/ContentProtection/ContentConditions.php:336
 msgid "%s with Template"
 msgstr ""
 
-#: src/ContentProtection/ContentConditions.php:285
+#: src/ContentProtection/ContentConditions.php:350
 msgid "Home or Front Page"
 msgstr ""
 
-#: src/ContentProtection/ContentConditions.php:291
+#: src/ContentProtection/ContentConditions.php:356
 msgid "Blog or Posts Page"
 msgstr ""
 
-#: src/ContentProtection/ContentConditions.php:297
+#: src/ContentProtection/ContentConditions.php:362
 msgid "Search Result Page"
 msgstr ""
 
-#: src/ContentProtection/ContentConditions.php:303
+#: src/ContentProtection/ContentConditions.php:368
 msgid "404 Error Page"
 msgstr ""
 
-#: src/ContentProtection/ContentConditions.php:329
+#: src/ContentProtection/ContentConditions.php:394
 msgid "%1$s with %2$s"
 msgstr ""
 
-#: src/ContentProtection/ContentConditions.php:353
+#: src/ContentProtection/ContentConditions.php:418
 msgid "%s (%s)"
 msgstr ""
 
-#: src/ContentProtection/ContentConditions.php:357
+#: src/ContentProtection/ContentConditions.php:422
 msgid "All %s Archive Pages"
 msgstr ""
 
-#: src/ContentProtection/ContentConditions.php:358
-#: src/ContentProtection/ContentConditions.php:364
+#: src/ContentProtection/ContentConditions.php:423
+#: src/ContentProtection/ContentConditions.php:429
 msgid "%s Archive"
 msgstr ""
 
-#: src/ContentProtection/ContentConditions.php:365
+#: src/ContentProtection/ContentConditions.php:430
 msgid "Selected %s Archive Pages"
 msgstr ""
 
@@ -5959,7 +5962,7 @@ msgid "Title cannot be empty."
 msgstr ""
 
 #: src/ContentProtection/SettingsPage.php:192
-#: src/ContentProtection/views/include.view.php:51
+#: src/ContentProtection/views/include.view.php:64
 msgid "Restrict Content Shortcode"
 msgstr ""
 
@@ -5968,7 +5971,7 @@ msgid "WordPress Menu Protection"
 msgstr ""
 
 #: src/ContentProtection/SettingsPage.php:213
-#: src/ContentProtection/views/include.view.php:72
+#: src/ContentProtection/views/include.view.php:85
 msgid "Elementor Restriction"
 msgstr ""
 
@@ -6000,19 +6003,23 @@ msgstr ""
 msgid "Save Rule"
 msgstr ""
 
-#: src/ContentProtection/views/include.view.php:16
+#: src/ContentProtection/views/include.view.php:18
 msgid "Content to Protect"
 msgstr ""
 
-#: src/ContentProtection/views/include.view.php:27
+#: src/ContentProtection/views/include.view.php:29
+msgid "Content to Exclude"
+msgstr ""
+
+#: src/ContentProtection/views/include.view.php:40
 msgid "Access Condition"
 msgstr ""
 
-#: src/ContentProtection/views/include.view.php:61
+#: src/ContentProtection/views/include.view.php:74
 msgid "WordPress Menu Restriction"
 msgstr ""
 
-#: src/ContentProtection/views/include.view.php:98
+#: src/ContentProtection/views/include.view.php:111
 msgid "Add title"
 msgstr ""
 
@@ -15373,49 +15380,49 @@ msgstr ""
 msgid "Unable to add new subscription. Please try again"
 msgstr ""
 
-#: src/Integrations/TutorLMS/Init.php:288
+#: src/Integrations/TutorLMS/Init.php:314
 msgid "Tutor LMS Settings"
 msgstr ""
 
-#: src/Integrations/TutorLMS/Init.php:293
-#: src/Integrations/TutorLMS/Init.php:373
+#: src/Integrations/TutorLMS/Init.php:319
+#: src/Integrations/TutorLMS/Init.php:399
 msgid "Courses"
 msgstr ""
 
-#: src/Integrations/TutorLMS/Init.php:294
+#: src/Integrations/TutorLMS/Init.php:320
 msgid "Select the Tutor LMS courses to enroll users in after user registration."
 msgstr ""
 
-#: src/Integrations/TutorLMS/Init.php:298
+#: src/Integrations/TutorLMS/Init.php:324
 msgid "Custom Student Registration Page"
 msgstr ""
 
-#: src/Integrations/TutorLMS/Init.php:301
+#: src/Integrations/TutorLMS/Init.php:327
 msgid "Select a page with a custom ProfilePress registration form shortcode you wish to make a student registration page for Tutor LMS. %sLearn more%s"
 msgstr ""
 
-#: src/Integrations/TutorLMS/Init.php:307
+#: src/Integrations/TutorLMS/Init.php:333
 msgid "Custom Instructor Registration Page"
 msgstr ""
 
-#: src/Integrations/TutorLMS/Init.php:310
+#: src/Integrations/TutorLMS/Init.php:336
 msgid "Select a page with a ProfilePress registration form shortcode you wish to make an instructor registration page for Tutor LMS. %sLearn more%s"
 msgstr ""
 
-#: src/Integrations/TutorLMS/Init.php:327
-#: src/Integrations/TutorLMS/Init.php:351
+#: src/Integrations/TutorLMS/Init.php:353
+#: src/Integrations/TutorLMS/Init.php:377
 msgid "Select Courses"
 msgstr ""
 
-#: src/Integrations/TutorLMS/Init.php:328
+#: src/Integrations/TutorLMS/Init.php:354
 msgid "Select the Tutor LMS courses to enroll users in that subscribe to this plan."
 msgstr ""
 
-#: src/Integrations/TutorLMS/Init.php:352
+#: src/Integrations/TutorLMS/Init.php:378
 msgid "Select the Tutor LMS courses to enroll users in after registration through this form."
 msgstr ""
 
-#: src/Integrations/TutorLMS/Init.php:381
+#: src/Integrations/TutorLMS/Init.php:407
 msgid "Select the Tutor LMS courses to enroll users in after registration through this form"
 msgstr ""
 
@@ -16096,11 +16103,11 @@ msgstr ""
 msgid "Subscription is scheduled for cancellation on %s"
 msgstr ""
 
-#: src/Membership/PaymentMethods/Stripe/WebhookHandlers/CustomerSubscriptionUpdated.php:67
+#: src/Membership/PaymentMethods/Stripe/WebhookHandlers/CustomerSubscriptionUpdated.php:69
 msgid "Stripe payment failed (payment is past due)"
 msgstr ""
 
-#: src/Membership/PaymentMethods/Stripe/WebhookHandlers/CustomerSubscriptionUpdated.php:90
+#: src/Membership/PaymentMethods/Stripe/WebhookHandlers/CustomerSubscriptionUpdated.php:92
 msgid "Recurring amount changed from %s to %s in Stripe."
 msgstr ""
 

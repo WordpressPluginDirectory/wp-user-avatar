@@ -293,7 +293,7 @@ class FrontendProfileBuilder
             }
         }
 
-        return apply_filters('ppress_profile_display_name', ucwords($display_name), self::$user_data);
+        return apply_filters('ppress_profile_display_name', $display_name, self::$user_data);
     }
 
     /**
