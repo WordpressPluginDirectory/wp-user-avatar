@@ -2,14 +2,14 @@
 # This file is distributed under the same license as the ProfilePress plugin.
 msgid ""
 msgstr ""
-"Project-Id-Version: ProfilePress 4.15.10\n"
+"Project-Id-Version: ProfilePress 4.15.11\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wp-user-avatar\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2024-06-16T16:20:22+00:00\n"
+"POT-Creation-Date: 2024-07-17T10:39:25+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.8.1\n"
 "X-Domain: wp-user-avatar\n"
@@ -95,12 +95,12 @@ msgid "Default Profile Picture"
 msgstr ""
 
 #: deprecated/wp-user-avatar/includes/class-wp-user-avatar-admin.php:242
-#: deprecated/wp-user-avatar/includes/class-wp-user-avatar.php:180
+#: deprecated/wp-user-avatar/includes/class-wp-user-avatar.php:183
 msgid "Choose Image"
 msgstr ""
 
 #: deprecated/wp-user-avatar/includes/class-wp-user-avatar-admin.php:243
-#: deprecated/wp-user-avatar/includes/class-wp-user-avatar.php:79
+#: deprecated/wp-user-avatar/includes/class-wp-user-avatar.php:82
 #: src/Admin/SettingsPages/EmailSettings/DefaultTemplateCustomizer.php:300
 #: src/ShortcodeParser/MyAccount/edit-profile.tmpl.php:103
 #: src/ShortcodeParser/MyAccount/edit-profile.tmpl.php:122
@@ -109,7 +109,7 @@ msgid "Remove"
 msgstr ""
 
 #: deprecated/wp-user-avatar/includes/class-wp-user-avatar-admin.php:243
-#: deprecated/wp-user-avatar/includes/class-wp-user-avatar.php:206
+#: deprecated/wp-user-avatar/includes/class-wp-user-avatar.php:209
 msgid "Undo"
 msgstr ""
 
@@ -143,71 +143,71 @@ msgstr ""
 msgid "Automatically add paragraphs"
 msgstr ""
 
-#: deprecated/wp-user-avatar/includes/class-wp-user-avatar.php:43
+#: deprecated/wp-user-avatar/includes/class-wp-user-avatar.php:45
 #: src/Classes/ImageUploader.php:41
 msgid "Cover Photo"
 msgstr ""
 
-#: deprecated/wp-user-avatar/includes/class-wp-user-avatar.php:73
-#: deprecated/wp-user-avatar/includes/class-wp-user-avatar.php:186
+#: deprecated/wp-user-avatar/includes/class-wp-user-avatar.php:76
+#: deprecated/wp-user-avatar/includes/class-wp-user-avatar.php:189
 #: deprecated/wp-user-avatar/includes/tinymce/window.php:192
 msgid "Upload"
 msgstr ""
 
-#: deprecated/wp-user-avatar/includes/class-wp-user-avatar.php:146
+#: deprecated/wp-user-avatar/includes/class-wp-user-avatar.php:149
 #: src/RegisterScripts.php:103
 #: src/RegisterScripts.php:185
 msgid "Are you sure?"
 msgstr ""
 
-#: deprecated/wp-user-avatar/includes/class-wp-user-avatar.php:147
+#: deprecated/wp-user-avatar/includes/class-wp-user-avatar.php:150
 #: src/RegisterScripts.php:104
 msgid "Deleting..."
 msgstr ""
 
-#: deprecated/wp-user-avatar/includes/class-wp-user-avatar.php:148
+#: deprecated/wp-user-avatar/includes/class-wp-user-avatar.php:151
 #: src/RegisterScripts.php:105
 msgid "An error occurred. Please try again."
 msgstr ""
 
-#: deprecated/wp-user-avatar/includes/class-wp-user-avatar.php:189
+#: deprecated/wp-user-avatar/includes/class-wp-user-avatar.php:192
 #: deprecated/wp-user-avatar/includes/wpua-options-page.php:38
 #: deprecated/wp-user-avatar/includes/wpua-options-page.php:70
 msgid "Maximum upload file size: %d%s."
 msgstr ""
 
-#: deprecated/wp-user-avatar/includes/class-wp-user-avatar.php:190
+#: deprecated/wp-user-avatar/includes/class-wp-user-avatar.php:193
 msgid "Allowed Files"
 msgstr ""
 
-#: deprecated/wp-user-avatar/includes/class-wp-user-avatar.php:190
+#: deprecated/wp-user-avatar/includes/class-wp-user-avatar.php:193
 msgid "<code>jpg jpeg png gif</code>"
 msgstr ""
 
-#: deprecated/wp-user-avatar/includes/class-wp-user-avatar.php:196
+#: deprecated/wp-user-avatar/includes/class-wp-user-avatar.php:199
 #: deprecated/wp-user-avatar/includes/tinymce/window.php:139
 msgid "Original Size"
 msgstr ""
 
-#: deprecated/wp-user-avatar/includes/class-wp-user-avatar.php:200
+#: deprecated/wp-user-avatar/includes/class-wp-user-avatar.php:203
 #: deprecated/wp-user-avatar/includes/tinymce/window.php:142
 msgid "Thumbnail"
 msgstr ""
 
-#: deprecated/wp-user-avatar/includes/class-wp-user-avatar.php:203
+#: deprecated/wp-user-avatar/includes/class-wp-user-avatar.php:206
 msgid "Remove Image"
 msgstr ""
 
-#: deprecated/wp-user-avatar/includes/class-wp-user-avatar.php:253
+#: deprecated/wp-user-avatar/includes/class-wp-user-avatar.php:256
 msgid "This file is not an image. Please try another."
 msgstr ""
 
-#: deprecated/wp-user-avatar/includes/class-wp-user-avatar.php:257
-#: deprecated/wp-user-avatar/includes/class-wp-user-avatar.php:284
+#: deprecated/wp-user-avatar/includes/class-wp-user-avatar.php:260
+#: deprecated/wp-user-avatar/includes/class-wp-user-avatar.php:287
 msgid "Memory exceeded. Please try another smaller file."
 msgstr ""
 
-#: deprecated/wp-user-avatar/includes/class-wp-user-avatar.php:261
+#: deprecated/wp-user-avatar/includes/class-wp-user-avatar.php:264
 msgid "Unable to create directory %s. Is its parent directory writable by the server?"
 msgstr ""
 
@@ -415,9 +415,9 @@ msgstr ""
 #: src/Admin/SettingsPages/GeneralSettings.php:404
 #: src/Admin/SettingsPages/Membership/CheckoutFieldsManager.php:90
 #: src/Admin/SettingsPages/Membership/PlanIntegrationsMetabox.php:175
-#: src/Functions/GlobalFunctions.php:1444
-#: src/Functions/GlobalFunctions.php:1476
-#: src/Functions/GlobalFunctions.php:1498
+#: src/Functions/GlobalFunctions.php:1443
+#: src/Functions/GlobalFunctions.php:1475
+#: src/Functions/GlobalFunctions.php:1497
 #: src/LoginRedirect.php:167
 msgid "Select..."
 msgstr ""
@@ -484,7 +484,7 @@ msgstr ""
 
 #: src/Admin/SettingsPages/DragDropBuilder/DragDropBuilder.php:1226
 #: src/Admin/SettingsPages/Membership/CheckoutFieldsManager.php:93
-#: src/Functions/GlobalFunctions.php:1501
+#: src/Functions/GlobalFunctions.php:1500
 #: src/Themes/DragDrop/AbstractMemberDirectoryTheme.php:202
 msgid "Standard Fields"
 msgstr ""
@@ -497,7 +497,7 @@ msgstr ""
 #: src/Admin/SettingsPages/LicenseUpgrader.php:176
 #: src/Admin/SettingsPages/Membership/CheckoutFieldsManager.php:101
 #: src/Classes/ExtensionManager.php:115
-#: src/Functions/GlobalFunctions.php:1504
+#: src/Functions/GlobalFunctions.php:1503
 #: src/Themes/DragDrop/AbstractMemberDirectoryTheme.php:216
 msgid "Custom Fields"
 msgstr ""
@@ -707,7 +707,7 @@ msgstr ""
 
 #: src/Admin/SettingsPages/DragDropBuilder/Fields/Bio.php:22
 #: src/Admin/SettingsPages/DragDropBuilder/Fields/UserProfile/Bio.php:22
-#: src/Functions/GlobalFunctions.php:1488
+#: src/Functions/GlobalFunctions.php:1487
 #: src/Themes/DragDrop/AbstractMemberDirectoryTheme.php:211
 #: src/Themes/DragDrop/AbstractTheme.php:189
 msgid "Biography"
@@ -978,7 +978,7 @@ msgstr ""
 
 #: src/Admin/SettingsPages/DragDropBuilder/Fields/DisplayName.php:22
 #: src/Admin/SettingsPages/DragDropBuilder/Fields/UserProfile/DisplayName.php:22
-#: src/Functions/GlobalFunctions.php:1486
+#: src/Functions/GlobalFunctions.php:1485
 #: src/Membership/CheckoutFields.php:114
 #: src/ShortcodeParser/Builder/FieldsShortcodeCallback.php:351
 #: src/Themes/DragDrop/AbstractMemberDirectoryTheme.php:208
@@ -1004,7 +1004,7 @@ msgstr ""
 #: src/Admin/SettingsPages/DragDropBuilder/Fields/Email.php:22
 #: src/Admin/SettingsPages/DragDropBuilder/Fields/UserProfile/Email.php:22
 #: src/Admin/SettingsPages/Membership/CustomersPage/SettingsPage.php:307
-#: src/Functions/GlobalFunctions.php:1487
+#: src/Functions/GlobalFunctions.php:1486
 #: src/Membership/CheckoutFields.php:51
 #: src/ShortcodeParser/Builder/FieldsShortcodeCallback.php:243
 #: src/Themes/DragDrop/AbstractMemberDirectoryTheme.php:206
@@ -1017,7 +1017,7 @@ msgstr ""
 #: src/Admin/SettingsPages/DragDropBuilder/Fields/FirstName.php:22
 #: src/Admin/SettingsPages/DragDropBuilder/Fields/UserProfile/FirstName.php:22
 #: src/Admin/SettingsPages/Membership/CustomersPage/SettingsPage.php:299
-#: src/Functions/GlobalFunctions.php:1483
+#: src/Functions/GlobalFunctions.php:1482
 #: src/Membership/CheckoutFields.php:65
 #: src/ShortcodeParser/Builder/FieldsShortcodeCallback.php:383
 #: src/Themes/DragDrop/AbstractMemberDirectoryTheme.php:209
@@ -1039,7 +1039,7 @@ msgstr ""
 #: src/Admin/SettingsPages/DragDropBuilder/Fields/LastName.php:22
 #: src/Admin/SettingsPages/DragDropBuilder/Fields/UserProfile/LastName.php:22
 #: src/Admin/SettingsPages/Membership/CustomersPage/SettingsPage.php:303
-#: src/Functions/GlobalFunctions.php:1484
+#: src/Functions/GlobalFunctions.php:1483
 #: src/Membership/CheckoutFields.php:72
 #: src/ShortcodeParser/Builder/FieldsShortcodeCallback.php:416
 #: src/Themes/DragDrop/AbstractMemberDirectoryTheme.php:210
@@ -1075,7 +1075,7 @@ msgstr ""
 
 #: src/Admin/SettingsPages/DragDropBuilder/Fields/Nickname.php:22
 #: src/Admin/SettingsPages/DragDropBuilder/Fields/UserProfile/Nickname.php:22
-#: src/Functions/GlobalFunctions.php:1485
+#: src/Functions/GlobalFunctions.php:1484
 #: src/Membership/CheckoutFields.php:107
 #: src/ShortcodeParser/Builder/FieldsShortcodeCallback.php:319
 #: src/ShortcodeParser/Builder/FieldsShortcodeCallback.php:333
@@ -1174,7 +1174,7 @@ msgstr ""
 #: src/Admin/SettingsPages/DragDropBuilder/Fields/Username.php:22
 #: src/Admin/SettingsPages/DragDropBuilder/Fields/UserProfile/Username.php:22
 #: src/Admin/SettingsPages/Membership/CustomersPage/SettingsPage.php:311
-#: src/Functions/GlobalFunctions.php:1482
+#: src/Functions/GlobalFunctions.php:1481
 #: src/Membership/CheckoutFields.php:79
 #: src/ShortcodeParser/Builder/FieldsShortcodeCallback.php:168
 #: src/Themes/DragDrop/AbstractMemberDirectoryTheme.php:481
@@ -14671,44 +14671,44 @@ msgstr ""
 msgid "Dismiss this notice"
 msgstr ""
 
-#: src/Functions/GlobalFunctions.php:1291
+#: src/Functions/GlobalFunctions.php:1290
 msgid "It must be unique for each field, not a reserve text, in lowercase letters only with an underscore ( _ ) separating words e.g job_title"
 msgstr ""
 
-#: src/Functions/GlobalFunctions.php:1428
+#: src/Functions/GlobalFunctions.php:1427
 msgid "%s (WooCommerce Billing Address)"
 msgstr ""
 
-#: src/Functions/GlobalFunctions.php:1432
+#: src/Functions/GlobalFunctions.php:1431
 msgid "%s (WooCommerce Shipping Address)"
 msgstr ""
 
-#: src/Functions/GlobalFunctions.php:1480
+#: src/Functions/GlobalFunctions.php:1479
 msgid "First and Last Names"
 msgstr ""
 
-#: src/Functions/GlobalFunctions.php:1481
+#: src/Functions/GlobalFunctions.php:1480
 msgid "Last and First Names"
 msgstr ""
 
-#: src/Functions/GlobalFunctions.php:1489
+#: src/Functions/GlobalFunctions.php:1488
 msgid "Registration Date"
 msgstr ""
 
-#: src/Functions/GlobalFunctions.php:1628
+#: src/Functions/GlobalFunctions.php:1627
 msgid "There was an problem while verifying your file."
 msgstr ""
 
-#: src/Functions/GlobalFunctions.php:1633
+#: src/Functions/GlobalFunctions.php:1632
 msgid "Sorry, this file extension is not permitted for security reasons."
 msgstr ""
 
-#: src/Functions/GlobalFunctions.php:1637
+#: src/Functions/GlobalFunctions.php:1636
 msgid "Sorry, this file type is not permitted for security reasons."
 msgstr ""
 
-#: src/Functions/GlobalFunctions.php:1641
-#: src/Functions/GlobalFunctions.php:1645
+#: src/Functions/GlobalFunctions.php:1640
+#: src/Functions/GlobalFunctions.php:1644
 msgid "Error: The file you uploaded is not accepted on our website."
 msgstr ""
 
@@ -16066,32 +16066,32 @@ msgstr ""
 msgid "Please enter a name for the credit card."
 msgstr ""
 
-#: src/Membership/PaymentMethods/Stripe/Stripe.php:473
+#: src/Membership/PaymentMethods/Stripe/Stripe.php:475
 msgid "Attempted cancellation but was unable. Message was \"%s\"."
 msgstr ""
 
-#: src/Membership/PaymentMethods/Stripe/Stripe.php:586
+#: src/Membership/PaymentMethods/Stripe/Stripe.php:588
 #: src/templates/checkout/credit-card-fields.php:5
 msgid "Name on card"
 msgstr ""
 
-#: src/Membership/PaymentMethods/Stripe/Stripe.php:644
+#: src/Membership/PaymentMethods/Stripe/Stripe.php:646
 msgid "Manage Subscription"
 msgstr ""
 
-#: src/Membership/PaymentMethods/Stripe/Stripe.php:675
+#: src/Membership/PaymentMethods/Stripe/Stripe.php:677
 msgid "Unable to generate Stripe customer portal URL. Please try again"
 msgstr ""
 
-#: src/Membership/PaymentMethods/Stripe/Stripe.php:1009
+#: src/Membership/PaymentMethods/Stripe/Stripe.php:1011
 msgid "Refund request is pending"
 msgstr ""
 
-#: src/Membership/PaymentMethods/Stripe/Stripe.php:1012
+#: src/Membership/PaymentMethods/Stripe/Stripe.php:1014
 msgid "Refund request failed"
 msgstr ""
 
-#: src/Membership/PaymentMethods/Stripe/Stripe.php:1015
+#: src/Membership/PaymentMethods/Stripe/Stripe.php:1017
 msgid "Refund request failed. Status: %s"
 msgstr ""
 

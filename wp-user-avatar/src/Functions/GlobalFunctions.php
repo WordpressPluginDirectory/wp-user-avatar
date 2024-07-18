@@ -426,7 +426,6 @@ function ppress_get_current_url_query_string()
     return esc_url_raw($url);
 }
 
-
 /**
  * @return string blog URL without scheme
  */

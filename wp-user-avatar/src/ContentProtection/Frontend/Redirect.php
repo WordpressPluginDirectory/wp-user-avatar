@@ -59,7 +59,7 @@ class Redirect
                 if ($current_url == $password_reset_url) continue;
                 if ($current_url == $edit_profile_url) continue;
 
-                if (is_array(ppress_var($meta, 'exempt', [])) && Checker::content_match($meta['exempt'])) continue;
+                if (isset($meta['exempt']) && is_array($meta['exempt']) && Checker::content_match($meta['exempt'])) continue;
 
                 if (Checker::content_match($meta['content'], true)) {
 

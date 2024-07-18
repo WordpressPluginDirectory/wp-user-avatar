@@ -1,5 +1,10 @@
 ﻿== Changelog ==
 
+= 4.15.11 =
+* Enhancement: Update order tax amount in if Stripe charges tax.
+* Added filter to remove cover photo uploader field from default profile page.
+* Fixed: Undefined array key 'exempt' warning.
+
 = 4.15.10 =
 * Added exemption to content protection.
 * Fixed bug where Tutor course in multiple plans didn't exactly work correctly

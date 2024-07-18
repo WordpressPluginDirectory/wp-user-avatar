@@ -30,7 +30,7 @@ class CsvFileLoader extends FileLoader
         try {
             $file = new \SplFileObject($resource, 'rb');
         } catch (\RuntimeException $e) {
-            throw new NotFoundResourceException(\sprintf('Error opening file "%s".', $resource), 0, $e);
+            throw new NotFoundResourceException(sprintf('Error opening file "%s".', $resource), 0, $e);
         }
         $file->setFlags(\SplFileObject::READ_CSV | \SplFileObject::SKIP_EMPTY);
         $file->setCsvControl($this->delimiter, $this->enclosure, $this->escape);
@@ -38,7 +38,7 @@ class CsvFileLoader extends FileLoader
             if (\false === $data) {
                 continue;
             }
-            if ('#' !== \substr($data[0], 0, 1) && isset($data[1]) && 2 === \count($data)) {
+            if ('#' !== substr($data[0], 0, 1) && isset($data[1]) && 2 === \count($data)) {
                 $messages[$data[0]] = $data[1];
             }
         }

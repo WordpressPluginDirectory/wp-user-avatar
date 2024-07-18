@@ -4,8 +4,8 @@ Donate link: https://profilepress.com/pricing/
 Tags: membership, ecommerce, user registration, user profile, stripe
 Requires at least: 5.3
 Requires PHP: 7.4
-Tested up to: 6.5
-Stable tag: 4.15.10
+Tested up to: 6.6
+Stable tag: 4.15.11
 License: GPLv2 or later
 
 Setup paid membership, accept payment, sell subscription & digital product, paywall, create login & registration form, user profile & member directory
@@ -181,15 +181,16 @@ Any file type can be sold using ProfilePress ecommerce and membership plugin, in
 
 == Changelog ==
 
+= Paid Membership, Ecommerce & User Registration 4.15.11 =
+* Enhancement: Update order tax amount in if Stripe charges tax.
+* Added filter to remove cover photo uploader field from default profile page.
+* Fixed: Undefined array key 'exempt' warning.
+
 = Paid Membership, Ecommerce & User Registration 4.15.10 =
 * Added exemption to content protection.
 * Fixed bug where Tutor course in multiple plans didn't exactly work correctly
 * Fixed bug where subscription was not revoked when unpaid in Stripe.
 * Enhancement: Stopped ucwords-ing displayname profile information.
 * Improved checkout compatibility with Pantheon hosting.
-
-= Paid Membership, Ecommerce & User Registration 4.15.9 =
-* Fixed bug where zero amount checkout didn't work when autorenewal is enabled.
-* Fixed XSS on user panel widget.
 
 See the [changelog file](https://plugins.svn.wordpress.org/wp-user-avatar/trunk/changelog.txt) for full change log information.
