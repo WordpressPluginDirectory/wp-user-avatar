@@ -5,7 +5,7 @@ Tags: membership, ecommerce, user registration, user profile, stripe
 Requires at least: 5.3
 Requires PHP: 7.4
 Tested up to: 6.6
-Stable tag: 4.15.11
+Stable tag: 4.15.12
 License: GPLv2 or later
 
 Setup paid membership, accept payment, sell subscription & digital product, paywall, create login & registration form, user profile & member directory
@@ -180,6 +180,11 @@ Any file type can be sold using ProfilePress ecommerce and membership plugin, in
 11. Content Protection
 
 == Changelog ==
+
+= Paid Membership, Ecommerce & User Registration 4.15.12 =
+* Added uncode theme compatibility to content protection feature.
+* Fixed bugs with Stripe tax update after order.
+* Fixed bug where manual order didn’t include subtotal.
 
 = Paid Membership, Ecommerce & User Registration 4.15.11 =
 * Enhancement: Update order tax amount in if Stripe charges tax.

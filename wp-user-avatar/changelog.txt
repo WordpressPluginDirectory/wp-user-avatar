@@ -1,5 +1,10 @@
 ﻿== Changelog ==
 
+= 4.15.12 =
+* Added uncode theme compatibility to content protection feature.
+* Fixed bugs with Stripe tax update after order.
+* Fixed bug where manual order didn’t include subtotal.
+
 = 4.15.11 =
 * Enhancement: Update order tax amount in if Stripe charges tax.
 * Added filter to remove cover photo uploader field from default profile page.

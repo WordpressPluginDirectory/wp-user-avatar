@@ -34,31 +34,21 @@ class CheckoutSessionAsyncPaymentSucceeded implements WebhookHandlerInterface
 
         if ($order->exists() && ! $order->is_completed()) {
 
-            $order->complete_order($transaction_id);
-
             if (isset($event_data['total_details']['amount_tax'])) {
 
                 if (Calculator::init($event_data['total_details']['amount_tax'])->isGreaterThanZero()) {
 
-                    OrderRepository::init()->updateColumn(
-                        $order->get_id(),
-                        'tax',
-                        PaymentHelpers::stripe_amount_to_ppress_amount($event_data['total_details']['amount_tax'])
-                    );
+                    $order->tax = PaymentHelpers::stripe_amount_to_ppress_amount($event_data['total_details']['amount_tax']);
 
-                    OrderRepository::init()->updateColumn(
-                        $order->get_id(),
-                        'subtotal',
-                        PaymentHelpers::stripe_amount_to_ppress_amount($event_data['amount_subtotal'])
-                    );
+                    $order->subtotal = PaymentHelpers::stripe_amount_to_ppress_amount($event_data['amount_subtotal']);
 
-                    OrderRepository::init()->updateColumn(
-                        $order->get_id(),
-                        'total',
-                        PaymentHelpers::stripe_amount_to_ppress_amount($event_data['amount_total'])
-                    );
+                    $order->total = PaymentHelpers::stripe_amount_to_ppress_amount($event_data['amount_total']);
+
+                    $order->save();
                 }
             }
+
+            $order->complete_order($transaction_id);
         }
 
         if ( ! $subscription->is_active()) {

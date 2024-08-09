@@ -37,6 +37,22 @@ class PostContent
         add_action('awb_readd_third_party_the_content_changes', function () {
             add_filter('the_content', [$this, 'the_content'], PHP_INT_MAX - 1);
         });
+
+        $this->uncode_theme_compatibility();
+    }
+
+    public function uncode_theme_compatibility()
+    {
+        add_filter('uncode_apply_the_content', function () {
+            return ! is_singular('post');
+        });
+
+        if (apply_filters('uncode_mp_single_content_raw', '__return_true')) {
+
+            add_filter('uncode_get_single_content_raw', function ($content) {
+                return $this->the_content($content);
+            }, 999999, 1);
+        }
     }
 
     /**
@@ -115,7 +131,7 @@ class PostContent
 
                         if (Checker::content_match($meta['content'])) {
 
-							if (ppress_var($meta, 'exempt', []) && Checker::content_match($meta['exempt'])) continue;
+                            if (ppress_var($meta, 'exempt', []) && Checker::content_match($meta['exempt'])) continue;
 
                             if (Checker::is_blocked($who_can_access, $access_roles, $access_wp_users, $access_membership_plans)) {
                                 $is_restricted = $access_condition;
