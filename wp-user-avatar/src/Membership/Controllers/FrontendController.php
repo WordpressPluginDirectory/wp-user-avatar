@@ -97,7 +97,7 @@ class FrontendController extends BaseController
      *     Header names and field values.
      *
      * @type string $Expires Expires header.
-     * @type string $Cache-Control Cache-Control header.
+     * @type string $Cache -Control Cache-Control header.
      * }
      * @return array
      * @see wp_get_nocache_headers()
@@ -162,10 +162,10 @@ class FrontendController extends BaseController
      */
     public function exclude_page_from_pantheon_server_cache()
     {
-        if (isset($_ENV['PANTHEON_ENVIRONMENT'])) {
-            $domain =  $_SERVER['HTTP_HOST'];
-            $path          = wp_parse_url(get_permalink(), PHP_URL_PATH);
-            setcookie('NO_CACHE', '1', time()+0, $path, $domain);
+        if (apply_filters('ppress_enable_pantheon_caching_exclusion', true) && isset($_ENV['PANTHEON_ENVIRONMENT'])) {
+            $domain = $_SERVER['HTTP_HOST'];
+            $path   = wp_parse_url(get_permalink(), PHP_URL_PATH);
+            setcookie('NO_CACHE', '1', time() + 0, $path, $domain);
         }
     }
 }

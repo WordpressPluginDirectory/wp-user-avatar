@@ -131,7 +131,7 @@
 
     cr.addOrRule = function () {
         $(document).on('click', '#ppress-content-protection-content .addFacet', function () {
-            $(this).blur();
+            $(this).trigger('blur');
             var parent = $(this).parents('.condAction');
             parent.find('.facetList').append(
                 cr.orRuleTemplate({
@@ -142,7 +142,7 @@
         });
 
         $(document).on('click', '#ppress-content-protection-excludes .addFacet', function () {
-            $(this).blur();
+            $(this).trigger('blur');
             var parent = $(this).parents('.condAction');
             parent.find('.facetList').append(
                 cr.orExemptTemplate({
@@ -155,7 +155,7 @@
 
     cr.addAndRule = function () {
         $(document).on('click', '#ppress-content-protection-content .addCondition', function () {
-            $(this).blur();
+            $(this).trigger('blur');
             $('#ppress-content-protection-content #workflowConditions').append(
                 cr.andRuleTemplate({
                     facetListId: cr.generateUniqueID(),
@@ -169,7 +169,7 @@
 
     cr.deleteOrRule = function () {
         $(document).on('click', '#ppress-content-protection-content .removeFacet', function () {
-            $(this).blur();
+            $(this).trigger('blur');
             var andRuleWrapper = $(this).parents('.condAction').parent(),
                 rule_wrapper = $(this).parents('.facetList').find('.facet');
 
@@ -191,7 +191,7 @@
         });
 
         $(document).on('click', '#ppress-content-protection-excludes .removeFacet', function () {
-            $(this).blur();
+            $(this).trigger('blur');
             var andRuleWrapper = $(this).parents('.condAction').parent(),
                 rule_wrapper = $(this).parents('.facetList').find('.facet');
 

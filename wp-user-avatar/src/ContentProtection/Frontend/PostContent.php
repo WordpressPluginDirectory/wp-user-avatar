@@ -39,6 +39,10 @@ class PostContent
         });
 
         $this->uncode_theme_compatibility();
+
+        add_action('wp', function () {
+            $this->woocommerce_compatibility();
+        });
     }
 
     public function uncode_theme_compatibility()
@@ -52,6 +56,44 @@ class PostContent
             add_filter('uncode_get_single_content_raw', function ($content) {
                 return $this->the_content($content);
             }, 999999, 1);
+        }
+    }
+
+    public function woocommerce_compatibility()
+    {
+        if (class_exists('\WooCommerce') && ! apply_filters('ppress_content_protection_disable_woocommerce_compatibility', false)) {
+
+            $is_restricted = $this->is_post_content_restricted();
+
+            if (false !== $is_restricted) {
+
+                add_filter('woocommerce_product_tabs', function ($tabs) {
+                    return array_filter($tabs, function ($v, $k) {
+                        return $k == 'description';
+                    }, ARRAY_FILTER_USE_BOTH);
+                });
+
+                add_filter('woocommerce_product_description_heading', '__return_empty_string');
+
+                add_filter('woocommerce_short_description', function () {
+                    $msg = esc_html__('You are not allowed to purchase this product.', 'wp-user-avatar');
+
+                    return apply_filters('ppress_content_protection_woocommerce_product_purchase_error_message', $msg);
+                });
+
+                remove_action('woocommerce_single_product_summary', 'woocommerce_template_single_add_to_cart', 30);
+
+                add_filter('woocommerce_loop_add_to_cart_link', function ($add_to_cart_html, $product) {
+
+                    // is_post_content_restricted can be used because global $post; will always be WP_Post of each loop product item
+                    if ($this->is_post_content_restricted(true)) {
+                        return '';
+                    }
+
+                    return $add_to_cart_html;
+
+                }, 99, 2);
+            }
         }
     }
 
@@ -93,13 +135,13 @@ class PostContent
     }
 
     /**
+     * @param bool $skip_cache
+     *
      * @return bool
      */
-    public function is_post_content_restricted()
+    public function is_post_content_restricted($skip_cache = false)
     {
-        static $is_restricted = null;
-
-        if (is_null($is_restricted)) {
+        $callback = function () {
 
             $is_restricted = false;
 
@@ -141,9 +183,17 @@ class PostContent
                     }
                 }
             }
-        }
 
-        return $is_restricted;
+            return $is_restricted;
+        };
+
+        if ($skip_cache === true) return $callback();
+
+        static $cache = null;
+
+        if (is_null($cache)) $cache = $callback();
+
+        return $cache;
     }
 
     public function the_content($content)

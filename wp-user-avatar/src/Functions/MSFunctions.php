@@ -911,7 +911,7 @@ function ppress_subscribe_user_to_plan($plan_id, $customer_id, $order_data = [],
     }
 
     $order_data = wp_parse_args(array_filter($order_data), [
-        'date_created'   => current_time('mysql'),
+        'date_created'   => current_time('mysql', true),
         'payment_method' => StoreGateway::get_instance()->get_id(),
         'amount'         => '0',
         'order_status'   => OrderStatus::COMPLETED,
