@@ -544,7 +544,7 @@ function Frontend() {
             return strength;
         }
 
-        $(document).on('ready', function () {
+        $(function () {
 
             var password1 = $('input[name=password_new]');
             var password2 = $('input[name=password_confirm_new]');

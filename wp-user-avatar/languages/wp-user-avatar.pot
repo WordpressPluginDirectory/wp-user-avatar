@@ -2,14 +2,14 @@
 # This file is distributed under the same license as the ProfilePress plugin.
 msgid ""
 msgstr ""
-"Project-Id-Version: ProfilePress 4.15.14\n"
+"Project-Id-Version: ProfilePress 4.15.15\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wp-user-avatar\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2024-09-18T14:51:50+00:00\n"
+"POT-Creation-Date: 2024-10-07T15:37:03+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.8.1\n"
 "X-Domain: wp-user-avatar\n"
@@ -3887,7 +3887,7 @@ msgstr ""
 #: src/Admin/SettingsPages/Membership/GroupsPage/GroupWPListTable.php:31
 #: src/Admin/SettingsPages/Membership/PlansPage/PlanWPListTable.php:31
 #: src/Admin/SettingsPages/Membership/views/add-edit-plan-group.php:74
-#: src/Admin/SettingsPages/Membership/views/add-edit-plan.php:240
+#: src/Admin/SettingsPages/Membership/views/add-edit-plan.php:243
 msgid "Checkout URL"
 msgstr ""
 
@@ -4532,7 +4532,7 @@ msgstr ""
 
 #: src/Admin/SettingsPages/Membership/views/add-edit-coupon.php:142
 #: src/Admin/SettingsPages/Membership/views/add-edit-plan-group.php:62
-#: src/Admin/SettingsPages/Membership/views/add-edit-plan.php:216
+#: src/Admin/SettingsPages/Membership/views/add-edit-plan.php:219
 #: src/Admin/SettingsPages/Membership/views/customers/view-customer.php:48
 #: src/Admin/SettingsPages/Membership/views/orders/add-edit-order.php:50
 #: src/Admin/SettingsPages/Membership/views/subscriptions/add-edit-subscription.php:42
@@ -4642,31 +4642,35 @@ msgstr ""
 msgid "Subscribe members to your Campaign Monitor lists when they register or subscribe to a membership plan and sync membership and profile changes with Campaign Monitor."
 msgstr ""
 
-#: src/Admin/SettingsPages/Membership/views/add-edit-plan.php:162
-msgid "Get ProfilePress Pro →"
+#: src/Admin/SettingsPages/Membership/views/add-edit-plan.php:152
+msgid "Sell paid memberships via WooCommerce, and create members-only discounts."
 msgstr ""
 
-#: src/Admin/SettingsPages/Membership/views/add-edit-plan.php:171
+#: src/Admin/SettingsPages/Membership/views/add-edit-plan.php:165
+msgid "Get ProfilePress Premium →"
+msgstr ""
+
+#: src/Admin/SettingsPages/Membership/views/add-edit-plan.php:174
 msgid "Pro Integrations"
 msgstr ""
 
-#: src/Admin/SettingsPages/Membership/views/add-edit-plan.php:173
+#: src/Admin/SettingsPages/Membership/views/add-edit-plan.php:176
 msgid "Pro Features"
 msgstr ""
 
-#: src/Admin/SettingsPages/Membership/views/add-edit-plan.php:183
+#: src/Admin/SettingsPages/Membership/views/add-edit-plan.php:186
 msgid "Plan Details"
 msgstr ""
 
-#: src/Admin/SettingsPages/Membership/views/add-edit-plan.php:194
+#: src/Admin/SettingsPages/Membership/views/add-edit-plan.php:197
 msgid "Subscription Settings"
 msgstr ""
 
-#: src/Admin/SettingsPages/Membership/views/add-edit-plan.php:205
+#: src/Admin/SettingsPages/Membership/views/add-edit-plan.php:208
 msgid "Downloads & Integrations"
 msgstr ""
 
-#: src/Admin/SettingsPages/Membership/views/add-edit-plan.php:226
+#: src/Admin/SettingsPages/Membership/views/add-edit-plan.php:229
 msgid "Summary"
 msgstr ""
 
