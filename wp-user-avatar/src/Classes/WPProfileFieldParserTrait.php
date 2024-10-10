@@ -119,7 +119,7 @@ trait WPProfileFieldParserTrait
 
                     $cpf_saved_data = get_the_author_meta($field_key, $user->ID);
 
-                    echo sprintf("<select id='%1$s' name='%2$s' %3$s>", esc_attr($field_key), esc_attr($select_tag_key), $multiple);
+                    echo sprintf('<select id="%1$s" name="%2$s" %3$s>', esc_attr($field_key), esc_attr($select_tag_key), $multiple);
                     foreach ($select_options_values as $options_key => $options_value) {
                         $selected = null;
                         // if data is for multi select dropdown

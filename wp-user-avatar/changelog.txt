@@ -1,5 +1,9 @@
 ﻿== Changelog ==
 
+= 4.15.16 =
+* Fixed fatal error: Uncaught ValueError.
+* Bumped Stripe API version to 2024-06-20.
+
 = 4.15.15 =
 * Improved support for cache-heavy hosting like WPEngine and Pantheon.
 * Fixed XSS on plan edit page metabox and builder form field label.

@@ -5,7 +5,7 @@ Tags: membership, ecommerce, user registration, user profile, stripe
 Requires at least: 5.3
 Requires PHP: 7.4
 Tested up to: 6.6
-Stable tag: 4.15.15
+Stable tag: 4.15.16
 License: GPLv2 or later
 
 Setup paid membership, accept payment, sell subscription & digital product, paywall, create login & registration form, user profile & member directory
@@ -180,6 +180,10 @@ Any file type can be sold using ProfilePress ecommerce and membership plugin, in
 11. Content Protection
 
 == Changelog ==
+
+= Paid Membership, Ecommerce & User Registration 4.15.16 =
+* Fixed fatal error: Uncaught ValueError.
+* Bumped Stripe API version to 2024-06-20.
 
 = Paid Membership, Ecommerce & User Registration 4.15.15 =
 * Improved support for cache-heavy hosting like WPEngine and Pantheon.
