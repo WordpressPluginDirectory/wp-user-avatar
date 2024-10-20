@@ -1,5 +1,10 @@
 ﻿== Changelog ==
 
+= 4.15.17 =
+* Fixed bug that displays double 'tripple-mdash' in billing state field.
+* Fixed bug where country/state field ID instead of title was displayed in member directory & user profile.
+* Improved content protection compatibility with WooCommerce.
+
 = 4.15.16 =
 * Fixed fatal error: Uncaught ValueError.
 * Bumped Stripe API version to 2024-06-20.
