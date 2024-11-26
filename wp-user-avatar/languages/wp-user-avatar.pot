@@ -2,14 +2,14 @@
 # This file is distributed under the same license as the ProfilePress plugin.
 msgid ""
 msgstr ""
-"Project-Id-Version: ProfilePress 4.15.18\n"
+"Project-Id-Version: ProfilePress 4.15.19\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wp-user-avatar\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2024-11-16T12:41:19+00:00\n"
+"POT-Creation-Date: 2024-11-26T08:56:04+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.8.1\n"
 "X-Domain: wp-user-avatar\n"
@@ -520,7 +520,7 @@ msgstr ""
 #: src/Admin/SettingsPages/Membership/CheckoutFieldsManager.php:68
 #: src/AdminBarDashboardAccess/include.settings-page.php:54
 #: src/AdminBarDashboardAccess/include.settings-page.php:109
-#: src/Functions/custom-settings-api.php:1125
+#: src/Functions/custom-settings-api.php:1124
 #: src/LoginRedirect.php:146
 #: src/ShortcodeParser/Builder/FieldsShortcodeCallback.php:1137
 msgid "Save Changes"
@@ -534,61 +534,61 @@ msgstr ""
 msgid "Delete Form"
 msgstr ""
 
-#: src/Admin/SettingsPages/DragDropBuilder/DragDropBuilder.php:1370
-#: src/Admin/SettingsPages/DragDropBuilder/DragDropBuilder.php:1409
-#: src/Admin/SettingsPages/DragDropBuilder/DragDropBuilder.php:1461
+#: src/Admin/SettingsPages/DragDropBuilder/DragDropBuilder.php:1369
+#: src/Admin/SettingsPages/DragDropBuilder/DragDropBuilder.php:1408
+#: src/Admin/SettingsPages/DragDropBuilder/DragDropBuilder.php:1460
 msgid "Success Message"
 msgstr ""
 
-#: src/Admin/SettingsPages/DragDropBuilder/DragDropBuilder.php:1376
+#: src/Admin/SettingsPages/DragDropBuilder/DragDropBuilder.php:1375
 msgid "New User Role"
 msgstr ""
 
-#: src/Admin/SettingsPages/DragDropBuilder/DragDropBuilder.php:1377
+#: src/Admin/SettingsPages/DragDropBuilder/DragDropBuilder.php:1376
 msgid "Role users registered through this form will be assigned."
 msgstr ""
 
-#: src/Admin/SettingsPages/DragDropBuilder/DragDropBuilder.php:1384
+#: src/Admin/SettingsPages/DragDropBuilder/DragDropBuilder.php:1383
 msgid "Username Requirement"
 msgstr ""
 
-#: src/Admin/SettingsPages/DragDropBuilder/DragDropBuilder.php:1385
+#: src/Admin/SettingsPages/DragDropBuilder/DragDropBuilder.php:1384
 msgid "Check to disable username requirement"
 msgstr ""
 
-#: src/Admin/SettingsPages/DragDropBuilder/DragDropBuilder.php:1386
+#: src/Admin/SettingsPages/DragDropBuilder/DragDropBuilder.php:1385
 msgid "Disable requirement for users to enter a username during registration. Usernames will automatically be generated from their email addresses."
 msgstr ""
 
-#: src/Admin/SettingsPages/DragDropBuilder/DragDropBuilder.php:1393
+#: src/Admin/SettingsPages/DragDropBuilder/DragDropBuilder.php:1392
 #: src/Admin/SettingsPages/GeneralSettings.php:311
 msgid "Registration Settings"
 msgstr ""
 
-#: src/Admin/SettingsPages/DragDropBuilder/DragDropBuilder.php:1416
+#: src/Admin/SettingsPages/DragDropBuilder/DragDropBuilder.php:1415
 msgid "Edit Profile Settings"
 msgstr ""
 
-#: src/Admin/SettingsPages/DragDropBuilder/DragDropBuilder.php:1434
+#: src/Admin/SettingsPages/DragDropBuilder/DragDropBuilder.php:1433
 #: src/Admin/SettingsPages/LicenseUpgrader.php:200
 #: src/Classes/ExtensionManager.php:150
 msgid "Passwordless Login"
 msgstr ""
 
-#: src/Admin/SettingsPages/DragDropBuilder/DragDropBuilder.php:1435
+#: src/Admin/SettingsPages/DragDropBuilder/DragDropBuilder.php:1434
 msgid "Check to make this a passwordless login form."
 msgstr ""
 
-#: src/Admin/SettingsPages/DragDropBuilder/DragDropBuilder.php:1445
+#: src/Admin/SettingsPages/DragDropBuilder/DragDropBuilder.php:1444
 #: src/Admin/SettingsPages/GeneralSettings.php:325
 msgid "Login Settings"
 msgstr ""
 
-#: src/Admin/SettingsPages/DragDropBuilder/DragDropBuilder.php:1468
+#: src/Admin/SettingsPages/DragDropBuilder/DragDropBuilder.php:1467
 msgid "Password Reset Settings"
 msgstr ""
 
-#: src/Admin/SettingsPages/DragDropBuilder/DragDropBuilder.php:1489
+#: src/Admin/SettingsPages/DragDropBuilder/DragDropBuilder.php:1488
 #: src/Admin/SettingsPages/DragDropBuilder/Fields/CheckboxList.php:35
 #: src/Admin/SettingsPages/DragDropBuilder/Fields/Country.php:35
 #: src/Admin/SettingsPages/DragDropBuilder/Fields/DefinedFieldTypes/Checkbox.php:50
@@ -602,34 +602,34 @@ msgstr ""
 msgid "Label"
 msgstr ""
 
-#: src/Admin/SettingsPages/DragDropBuilder/DragDropBuilder.php:1495
+#: src/Admin/SettingsPages/DragDropBuilder/DragDropBuilder.php:1494
 msgid "Processing Label"
 msgstr ""
 
-#: src/Admin/SettingsPages/DragDropBuilder/DragDropBuilder.php:1502
+#: src/Admin/SettingsPages/DragDropBuilder/DragDropBuilder.php:1501
 msgid "Submit Button"
 msgstr ""
 
-#: src/Admin/SettingsPages/DragDropBuilder/DragDropBuilder.php:1509
+#: src/Admin/SettingsPages/DragDropBuilder/DragDropBuilder.php:1508
 msgid "Appearance"
 msgstr ""
 
-#: src/Admin/SettingsPages/DragDropBuilder/DragDropBuilder.php:1516
+#: src/Admin/SettingsPages/DragDropBuilder/DragDropBuilder.php:1515
 msgid "Colors"
 msgstr ""
 
-#: src/Admin/SettingsPages/DragDropBuilder/DragDropBuilder.php:1544
+#: src/Admin/SettingsPages/DragDropBuilder/DragDropBuilder.php:1543
 #: src/Themes/DragDrop/AbstractBuildScratch.php:526
 #: src/Themes/DragDrop/Login/PerfectoLite.php:51
 #: src/Themes/DragDrop/Registration/PerfectoLite.php:53
 msgid "Text"
 msgstr ""
 
-#: src/Admin/SettingsPages/DragDropBuilder/DragDropBuilder.php:1545
+#: src/Admin/SettingsPages/DragDropBuilder/DragDropBuilder.php:1544
 msgid "Visual"
 msgstr ""
 
-#: src/Admin/SettingsPages/DragDropBuilder/DragDropBuilder.php:1546
+#: src/Admin/SettingsPages/DragDropBuilder/DragDropBuilder.php:1545
 msgid "Add Media"
 msgstr ""
 
@@ -1663,128 +1663,128 @@ msgstr ""
 msgid "Email sent to customer few days after their subscription expires."
 msgstr ""
 
-#: src/Admin/SettingsPages/EmailSettings/EmailSettingsPage.php:315
+#: src/Admin/SettingsPages/EmailSettings/EmailSettingsPage.php:314
 msgid "Preview Email"
 msgstr ""
 
-#: src/Admin/SettingsPages/EmailSettings/EmailSettingsPage.php:336
+#: src/Admin/SettingsPages/EmailSettings/EmailSettingsPage.php:335
 msgid "Enable Notification"
 msgstr ""
 
-#: src/Admin/SettingsPages/EmailSettings/EmailSettingsPage.php:337
+#: src/Admin/SettingsPages/EmailSettings/EmailSettingsPage.php:336
 #: src/Admin/SettingsPages/GeneralSettings.php:525
 #: src/Admin/SettingsPages/Membership/PaymentSettings.php:134
 msgid "Enable"
 msgstr ""
 
-#: src/Admin/SettingsPages/EmailSettings/EmailSettingsPage.php:340
+#: src/Admin/SettingsPages/EmailSettings/EmailSettingsPage.php:339
 msgid "Check to enable this email notification."
 msgstr ""
 
-#: src/Admin/SettingsPages/EmailSettings/EmailSettingsPage.php:345
+#: src/Admin/SettingsPages/EmailSettings/EmailSettingsPage.php:344
 msgid "Subject Line"
 msgstr ""
 
-#: src/Admin/SettingsPages/EmailSettings/EmailSettingsPage.php:346
+#: src/Admin/SettingsPages/EmailSettings/EmailSettingsPage.php:345
 msgid "Enter the subject or title of the email."
 msgstr ""
 
-#: src/Admin/SettingsPages/EmailSettings/EmailSettingsPage.php:351
+#: src/Admin/SettingsPages/EmailSettings/EmailSettingsPage.php:350
 msgid "Message Body"
 msgstr ""
 
-#: src/Admin/SettingsPages/EmailSettings/EmailSettingsPage.php:359
+#: src/Admin/SettingsPages/EmailSettings/EmailSettingsPage.php:358
 #: src/Admin/SettingsPages/GeneralSettings.php:339
 msgid "Check to Disable"
 msgstr ""
 
-#: src/Admin/SettingsPages/EmailSettings/EmailSettingsPage.php:360
+#: src/Admin/SettingsPages/EmailSettings/EmailSettingsPage.php:359
 msgid "Disable for Free Orders"
 msgstr ""
 
-#: src/Admin/SettingsPages/EmailSettings/EmailSettingsPage.php:361
+#: src/Admin/SettingsPages/EmailSettings/EmailSettingsPage.php:360
 msgid "Optionally disable sending email receipts for free orders."
 msgstr ""
 
-#: src/Admin/SettingsPages/EmailSettings/EmailSettingsPage.php:369
-#: src/Admin/SettingsPages/EmailSettings/EmailSettingsPage.php:378
-#: src/Admin/SettingsPages/EmailSettings/EmailSettingsPage.php:387
+#: src/Admin/SettingsPages/EmailSettings/EmailSettingsPage.php:368
+#: src/Admin/SettingsPages/EmailSettings/EmailSettingsPage.php:377
+#: src/Admin/SettingsPages/EmailSettings/EmailSettingsPage.php:386
 msgid "Reminder Days"
 msgstr ""
 
-#: src/Admin/SettingsPages/EmailSettings/EmailSettingsPage.php:370
+#: src/Admin/SettingsPages/EmailSettings/EmailSettingsPage.php:369
 msgid "The number of days before the upcoming payment due date to notify the customer."
 msgstr ""
 
-#: src/Admin/SettingsPages/EmailSettings/EmailSettingsPage.php:379
+#: src/Admin/SettingsPages/EmailSettings/EmailSettingsPage.php:378
 msgid "The number of days before the subscription expiration due date to notify the customer."
 msgstr ""
 
-#: src/Admin/SettingsPages/EmailSettings/EmailSettingsPage.php:388
+#: src/Admin/SettingsPages/EmailSettings/EmailSettingsPage.php:387
 msgid "The number of days after the subscription expired to notify the customer."
 msgstr ""
 
-#: src/Admin/SettingsPages/EmailSettings/EmailSettingsPage.php:437
+#: src/Admin/SettingsPages/EmailSettings/EmailSettingsPage.php:436
 msgid "Admin Email Address(es)"
 msgstr ""
 
-#: src/Admin/SettingsPages/EmailSettings/EmailSettingsPage.php:438
+#: src/Admin/SettingsPages/EmailSettings/EmailSettingsPage.php:437
 msgid "The Email address to receive admin notifications. Use comma to separate multiple email addresses."
 msgstr ""
 
-#: src/Admin/SettingsPages/EmailSettings/EmailSettingsPage.php:443
+#: src/Admin/SettingsPages/EmailSettings/EmailSettingsPage.php:442
 msgid "Sender Name"
 msgstr ""
 
-#: src/Admin/SettingsPages/EmailSettings/EmailSettingsPage.php:444
+#: src/Admin/SettingsPages/EmailSettings/EmailSettingsPage.php:443
 msgid "The name to use as the sender of all ProfilePress emails. Preferably your website name."
 msgstr ""
 
-#: src/Admin/SettingsPages/EmailSettings/EmailSettingsPage.php:450
+#: src/Admin/SettingsPages/EmailSettings/EmailSettingsPage.php:449
 msgid "Sender Email Address"
 msgstr ""
 
-#: src/Admin/SettingsPages/EmailSettings/EmailSettingsPage.php:451
+#: src/Admin/SettingsPages/EmailSettings/EmailSettingsPage.php:450
 msgid "The email address to use as the sender of all ProfilePress emails."
 msgstr ""
 
-#: src/Admin/SettingsPages/EmailSettings/EmailSettingsPage.php:457
+#: src/Admin/SettingsPages/EmailSettings/EmailSettingsPage.php:456
 msgid "HTML"
 msgstr ""
 
-#: src/Admin/SettingsPages/EmailSettings/EmailSettingsPage.php:458
+#: src/Admin/SettingsPages/EmailSettings/EmailSettingsPage.php:457
 msgid "Plain Text"
 msgstr ""
 
-#: src/Admin/SettingsPages/EmailSettings/EmailSettingsPage.php:461
+#: src/Admin/SettingsPages/EmailSettings/EmailSettingsPage.php:460
 msgid "Content Type"
 msgstr ""
 
-#: src/Admin/SettingsPages/EmailSettings/EmailSettingsPage.php:462
+#: src/Admin/SettingsPages/EmailSettings/EmailSettingsPage.php:461
 msgid "Choose whether to send ProfilePress emails in HTML or plain text. HTML is recommended."
 msgstr ""
 
-#: src/Admin/SettingsPages/EmailSettings/EmailSettingsPage.php:467
+#: src/Admin/SettingsPages/EmailSettings/EmailSettingsPage.php:466
 msgid "Default Template"
 msgstr ""
 
-#: src/Admin/SettingsPages/EmailSettings/EmailSettingsPage.php:468
+#: src/Admin/SettingsPages/EmailSettings/EmailSettingsPage.php:467
 msgid "Custom Email Template"
 msgstr ""
 
-#: src/Admin/SettingsPages/EmailSettings/EmailSettingsPage.php:471
+#: src/Admin/SettingsPages/EmailSettings/EmailSettingsPage.php:470
 msgid "Email Template"
 msgstr ""
 
-#: src/Admin/SettingsPages/EmailSettings/EmailSettingsPage.php:472
+#: src/Admin/SettingsPages/EmailSettings/EmailSettingsPage.php:471
 msgid "Choose \"Custom Email Template\" if you want to code your own email template from scratch."
 msgstr ""
 
-#: src/Admin/SettingsPages/EmailSettings/EmailSettingsPage.php:479
+#: src/Admin/SettingsPages/EmailSettings/EmailSettingsPage.php:478
 msgid "Customize Default Template"
 msgstr ""
 
-#: src/Admin/SettingsPages/EmailSettings/EmailSettingsPage.php:521
+#: src/Admin/SettingsPages/EmailSettings/EmailSettingsPage.php:520
 msgid "Available placeholders for subject and message body"
 msgstr ""
 
@@ -1896,7 +1896,7 @@ msgstr ""
 
 #: src/Admin/SettingsPages/FormList.php:244
 #: src/Classes/FormPreviewHandler.php:61
-#: src/Functions/custom-settings-api.php:896
+#: src/Functions/custom-settings-api.php:895
 msgid "Preview"
 msgstr ""
 
@@ -1979,8 +1979,8 @@ msgstr ""
 msgid "Live Preview"
 msgstr ""
 
-#: src/Admin/SettingsPages/Forms.php:299
-#: src/Admin/SettingsPages/MemberDirectories.php:211
+#: src/Admin/SettingsPages/Forms.php:298
+#: src/Admin/SettingsPages/MemberDirectories.php:210
 #: src/Admin/SettingsPages/Membership/CustomersPage/SettingsPage.php:379
 msgid "Add New"
 msgstr ""
@@ -2430,7 +2430,7 @@ msgstr ""
 #: src/Admin/SettingsPages/Membership/PlansPage/PlanWPListTable.php:74
 #: src/Admin/SettingsPages/Membership/PlansPage/PlanWPListTable.php:173
 #: src/ContentProtection/WPListTable.php:93
-#: src/Functions/custom-settings-api.php:1047
+#: src/Functions/custom-settings-api.php:1046
 msgid "Activate"
 msgstr ""
 
@@ -2941,7 +2941,7 @@ msgid "No coupon code found."
 msgstr ""
 
 #: src/Admin/SettingsPages/Membership/CouponsPage/CouponWPListTable.php:30
-#: src/Functions/custom-settings-api.php:895
+#: src/Functions/custom-settings-api.php:894
 msgid "Code"
 msgstr ""
 
@@ -3112,37 +3112,37 @@ msgstr ""
 msgid "All"
 msgstr ""
 
-#: src/Admin/SettingsPages/Membership/CustomersPage/CustomerWPListTable.php:313
+#: src/Admin/SettingsPages/Membership/CustomersPage/CustomerWPListTable.php:312
 #: src/Admin/SettingsPages/Membership/DashboardPage/SettingsPage.php:280
-#: src/Admin/SettingsPages/Membership/OrdersPage/OrderWPListTable.php:355
-#: src/Admin/SettingsPages/Membership/SubscriptionsPage/SubscriptionWPListTable.php:319
+#: src/Admin/SettingsPages/Membership/OrdersPage/OrderWPListTable.php:354
+#: src/Admin/SettingsPages/Membership/SubscriptionsPage/SubscriptionWPListTable.php:318
 msgctxt "date filter"
 msgid "From"
 msgstr ""
 
-#: src/Admin/SettingsPages/Membership/CustomersPage/CustomerWPListTable.php:316
+#: src/Admin/SettingsPages/Membership/CustomersPage/CustomerWPListTable.php:315
 #: src/Admin/SettingsPages/Membership/DashboardPage/SettingsPage.php:283
-#: src/Admin/SettingsPages/Membership/OrdersPage/OrderWPListTable.php:358
-#: src/Admin/SettingsPages/Membership/SubscriptionsPage/SubscriptionWPListTable.php:322
+#: src/Admin/SettingsPages/Membership/OrdersPage/OrderWPListTable.php:357
+#: src/Admin/SettingsPages/Membership/SubscriptionsPage/SubscriptionWPListTable.php:321
 msgctxt "date filter"
 msgid "To"
 msgstr ""
 
-#: src/Admin/SettingsPages/Membership/CustomersPage/CustomerWPListTable.php:321
+#: src/Admin/SettingsPages/Membership/CustomersPage/CustomerWPListTable.php:320
 #: src/Admin/SettingsPages/Membership/DashboardPage/SettingsPage.php:299
-#: src/Admin/SettingsPages/Membership/OrdersPage/OrderWPListTable.php:384
-#: src/Admin/SettingsPages/Membership/SubscriptionsPage/SubscriptionWPListTable.php:345
+#: src/Admin/SettingsPages/Membership/OrdersPage/OrderWPListTable.php:383
+#: src/Admin/SettingsPages/Membership/SubscriptionsPage/SubscriptionWPListTable.php:344
 msgid "Filter"
 msgstr ""
 
-#: src/Admin/SettingsPages/Membership/CustomersPage/CustomerWPListTable.php:325
+#: src/Admin/SettingsPages/Membership/CustomersPage/CustomerWPListTable.php:324
 #: src/Admin/SettingsPages/Membership/DashboardPage/SettingsPage.php:303
-#: src/Admin/SettingsPages/Membership/OrdersPage/OrderWPListTable.php:388
-#: src/Admin/SettingsPages/Membership/SubscriptionsPage/SubscriptionWPListTable.php:349
+#: src/Admin/SettingsPages/Membership/OrdersPage/OrderWPListTable.php:387
+#: src/Admin/SettingsPages/Membership/SubscriptionsPage/SubscriptionWPListTable.php:348
 msgid "Clear"
 msgstr ""
 
-#: src/Admin/SettingsPages/Membership/CustomersPage/CustomerWPListTable.php:334
+#: src/Admin/SettingsPages/Membership/CustomersPage/CustomerWPListTable.php:333
 msgid "Search Customers"
 msgstr ""
 
@@ -3777,7 +3777,7 @@ msgstr ""
 #: src/Admin/SettingsPages/Membership/ExportPage/views/product-sales.php:20
 #: src/Admin/SettingsPages/Membership/ExportPage/views/sales-earnings.php:20
 #: src/Admin/SettingsPages/Membership/ExportPage/views/subscriptions.php:19
-#: src/Admin/SettingsPages/Membership/SubscriptionsPage/SubscriptionWPListTable.php:337
+#: src/Admin/SettingsPages/Membership/SubscriptionsPage/SubscriptionWPListTable.php:336
 msgid "All Membership Plans"
 msgstr ""
 
@@ -3794,8 +3794,8 @@ msgid "Select Customer"
 msgstr ""
 
 #: src/Admin/SettingsPages/Membership/ExportPage/views/sales-earnings.php:28
-#: src/Admin/SettingsPages/Membership/OrdersPage/OrderWPListTable.php:376
-#: src/Admin/SettingsPages/Membership/SubscriptionsPage/SubscriptionWPListTable.php:328
+#: src/Admin/SettingsPages/Membership/OrdersPage/OrderWPListTable.php:375
+#: src/Admin/SettingsPages/Membership/SubscriptionsPage/SubscriptionWPListTable.php:327
 msgid "All Customers"
 msgstr ""
 
@@ -3956,15 +3956,15 @@ msgstr ""
 msgid "Resend Order Receipt"
 msgstr ""
 
-#: src/Admin/SettingsPages/Membership/OrdersPage/OrderWPListTable.php:344
+#: src/Admin/SettingsPages/Membership/OrdersPage/OrderWPListTable.php:343
 msgid "All Modes"
 msgstr ""
 
-#: src/Admin/SettingsPages/Membership/OrdersPage/OrderWPListTable.php:365
+#: src/Admin/SettingsPages/Membership/OrdersPage/OrderWPListTable.php:364
 msgid "All Payment Methods"
 msgstr ""
 
-#: src/Admin/SettingsPages/Membership/OrdersPage/OrderWPListTable.php:397
+#: src/Admin/SettingsPages/Membership/OrdersPage/OrderWPListTable.php:396
 msgid "Search Orders"
 msgstr ""
 
@@ -4017,28 +4017,28 @@ msgstr ""
 msgid "&mdash; No gateway &mdash;"
 msgstr ""
 
-#: src/Admin/SettingsPages/Membership/PaymentMethods.php:94
+#: src/Admin/SettingsPages/Membership/PaymentMethods.php:93
 #: src/Classes/Miscellaneous.php:105
 msgid "Test Mode"
 msgstr ""
 
-#: src/Admin/SettingsPages/Membership/PaymentMethods.php:95
+#: src/Admin/SettingsPages/Membership/PaymentMethods.php:94
 msgid "When test mode is enabled, no live transactions are processed. Use test mode in conjunction with the sandbox/test account for the payment method to test."
 msgstr ""
 
-#: src/Admin/SettingsPages/Membership/PaymentMethods.php:100
+#: src/Admin/SettingsPages/Membership/PaymentMethods.php:99
 msgid "Switching test/live modes would require payment methods reconnection or setup."
 msgstr ""
 
-#: src/Admin/SettingsPages/Membership/PaymentMethods.php:104
+#: src/Admin/SettingsPages/Membership/PaymentMethods.php:103
 msgid "Default Payment Method"
 msgstr ""
 
-#: src/Admin/SettingsPages/Membership/PaymentMethods.php:105
+#: src/Admin/SettingsPages/Membership/PaymentMethods.php:104
 msgid "Select payment method to automatically load on the checkout page. If empty, the first active method is selected instead."
 msgstr ""
 
-#: src/Admin/SettingsPages/Membership/PaymentMethods.php:113
+#: src/Admin/SettingsPages/Membership/PaymentMethods.php:112
 msgid "Installed payment methods are listed below. Drag and drop to control their display order on the frontend."
 msgstr ""
 
@@ -4318,7 +4318,7 @@ msgstr ""
 msgid "Renewal Date"
 msgstr ""
 
-#: src/Admin/SettingsPages/Membership/SubscriptionsPage/SubscriptionWPListTable.php:358
+#: src/Admin/SettingsPages/Membership/SubscriptionsPage/SubscriptionWPListTable.php:357
 msgid "Search Subscriptions"
 msgstr ""
 

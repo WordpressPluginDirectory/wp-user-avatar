@@ -7,7 +7,6 @@ use ProfilePress\Core\Membership\Models\Subscription\SubscriptionFactory;
 use ProfilePress\Core\Membership\PaymentMethods\Stripe\APIClass;
 use ProfilePress\Core\Membership\PaymentMethods\Stripe\PaymentHelpers;
 use ProfilePress\Core\Membership\PaymentMethods\WebhookHandlerInterface;
-use ProfilePress\Core\Membership\Repositories\OrderRepository;
 use ProfilePress\Core\Membership\Services\Calculator;
 
 class CheckoutSessionCompleted implements WebhookHandlerInterface

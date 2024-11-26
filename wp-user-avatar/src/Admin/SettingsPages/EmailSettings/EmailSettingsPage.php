@@ -283,8 +283,7 @@ class EmailSettingsPage
         $data = array_shift($data);
 
         if (empty($data)) {
-            wp_safe_redirect(PPRESS_SETTINGS_SETTING_GENERAL_PAGE);
-            exit;
+            ppress_do_admin_redirect(PPRESS_SETTINGS_SETTING_GENERAL_PAGE);
         }
 
         $page_header = $data['title'];

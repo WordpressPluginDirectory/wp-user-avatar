@@ -1329,8 +1329,7 @@ class DragDropBuilder
         $theme_class_instance = FR::forge_class($this->form_id, $this->form_class, $this->form_type);
 
         if ( ! $theme_class_instance) {
-            wp_safe_redirect(add_query_arg('form-type', $this->form_type, PPRESS_FORMS_SETTINGS_PAGE));
-            exit;
+            ppress_do_admin_redirect(add_query_arg('form-type', $this->form_type, PPRESS_FORMS_SETTINGS_PAGE));
         }
 
         $this->theme_class_instance = $theme_class_instance;

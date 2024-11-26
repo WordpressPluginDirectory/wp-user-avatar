@@ -1,5 +1,10 @@
 ﻿== Changelog ==
 
+= 4.15.19 =
+* Security fix where protected content was exposed via WP and Rest API search.
+* Upgraded Stripe PHP SDK to 16.3.
+* Fixed bug with incorrect insertion of ob_start().
+
 = 4.15.18 =
 * Added ppress_checkout_disable_payment_for_zero_initial_payment filter to disable payment when initial amount is zero.
 * Added filter to disable tab widget user registration.

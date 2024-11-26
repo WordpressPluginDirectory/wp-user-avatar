@@ -123,8 +123,7 @@ class MemberDirectories extends AbstractSettingsPage
     public function no_form_exist_redirect($form_id, $form_type)
     {
         if ( ! FR::form_id_exist($form_id, $form_type)) {
-            wp_safe_redirect(add_query_arg('form-type', $form_type, PPRESS_FORMS_SETTINGS_PAGE));
-            exit;
+            ppress_do_admin_redirect(add_query_arg('form-type', $form_type, PPRESS_FORMS_SETTINGS_PAGE));
         }
     }
 

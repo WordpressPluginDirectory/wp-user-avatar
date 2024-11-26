@@ -59,7 +59,7 @@ class SettingsPage extends AbstractSettingsPage
     }
 
     /**
-     * @return void|string
+     * @return void
      * @throws \Exception
      */
     public function save_customer()

@@ -1664,6 +1664,16 @@ function ppress_content_http_redirect($myURL)
     <?php
 }
 
+function ppress_do_admin_redirect($url)
+{
+    if ( ! headers_sent()) {
+        wp_safe_redirect($url);
+        exit;
+    }
+
+    ppress_content_http_redirect($url);
+}
+
 function ppress_is_json($str)
 {
     $json = json_decode($str);

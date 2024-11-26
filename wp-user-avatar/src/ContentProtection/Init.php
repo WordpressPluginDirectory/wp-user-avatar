@@ -5,6 +5,7 @@ namespace ProfilePress\Core\ContentProtection;
 use ProfilePress\Core\ContentProtection\Frontend\PostContent;
 use ProfilePress\Core\ContentProtection\Frontend\Redirect;
 use ProfilePress\Core\ContentProtection\Frontend\RestrictionShortcode;
+use ProfilePress\Core\ContentProtection\Frontend\SearchAndAPI;
 
 class Init
 {
@@ -16,6 +17,7 @@ class Init
 
         PostContent::get_instance();
         Redirect::get_instance();
+        SearchAndAPI::get_instance();
         RestrictionShortcode::get_instance();
         NavMenuProtection::get_instance();
         ElementorRestriction::get_instance();
