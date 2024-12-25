@@ -5,7 +5,7 @@ Tags: membership, ecommerce, user registration, user profile, memberships
 Requires at least: 5.3
 Requires PHP: 7.4
 Tested up to: 6.7
-Stable tag: 4.15.19
+Stable tag: 4.15.20
 License: GPLv2 or later
 
 Setup paid membership, accept payment, sell subscription & digital product, paywall, create login & registration form, user profile & member directory
@@ -183,16 +183,15 @@ Any file type can be sold using ProfilePress ecommerce and membership plugin, in
 
 == Changelog ==
 
-= Paid Membership, Ecommerce & User Registration 4.15.19 =
-* Security fix where protected content was exposed via WP and Rest API search.
-* Upgraded Stripe PHP SDK to 16.3.
-* Fixed bug with incorrect insertion of ob_start().
-
-= Paid Membership, Ecommerce & User Registration 4.15.18 =
-* Added ppress_checkout_disable_payment_for_zero_initial_payment filter to disable payment when initial amount is zero.
-* Added filter to disable tab widget user registration.
-* Fixed bug where restricted content could be accessed via rest api.
-* Fixed icon error in admin css.
-* Fixed bug with multiple display of login remember label.
+= Paid Membership, Ecommerce & User Registration 4.15.20 =
+* Added ppress_content_protection_ignore_post_excerpt filter.
+* Added ppress_user_avatar_image_url filter.
+* Added {{order_coupon}} placeholder to order emails.
+* Fixed customer search in admin dashboard not working correctly.
+* Fixed various XSS reported by Cleantalk.
+* Fixed duplicate queries detected by Query Monitor.
+* Fixed fatal error that might occur from changing default login page url.
+* Switched to using core Codemirror library.
+* Fixed couple of PHP errors and warnings.
 
 See the [changelog file](https://plugins.svn.wordpress.org/wp-user-avatar/trunk/changelog.txt) for full change log information.

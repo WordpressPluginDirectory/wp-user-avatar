@@ -63,7 +63,7 @@ class ExtensionsSettingsPage extends AbstractSettingsPage
 
     public function settings_page_function()
     {
-        add_action('wp_cspa_main_content_area', array($this, 'admin_settings_page_callback'), 10, 2);
+        add_filter('wp_cspa_main_content_area', array($this, 'admin_settings_page_callback'), 10, 2);
         add_action('wp_cspa_form_tag', function () {
             echo 'id="ppress-extension-manager-form"';
         });

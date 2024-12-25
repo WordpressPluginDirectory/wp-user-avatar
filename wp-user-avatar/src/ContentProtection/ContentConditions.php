@@ -115,7 +115,7 @@ class ContentConditions
                     <?php foreach ($this->get_conditions_by_group() as $group => $conditions) : ?>
                         <optgroup label="<?= $group; ?>">
                             <?php foreach ($conditions as $id => $condition) : ?>
-                                <option value="<?php echo $id; ?>" <?php selected(@$savedRule['condition'], $id); ?>>
+                                <option value="<?php echo $id; ?>" <?php selected($savedRule['condition'] ?? '', $id); ?>>
                                     <?php echo $condition['title'] ?>
                                 </option>
                             <?php endforeach ?>
@@ -127,7 +127,7 @@ class ContentConditions
                 <div class="ppress-cr-rule-values">
                     <?php if (is_array($savedRule) && ! empty($savedRule)) : ?>
                         <?php if ( ! empty($savedRule['condition'])) : ?>
-                            <?= $this->rule_value_field(@$savedRule['condition'], $facetListId, $facetId, @$savedRule['value']); ?>
+                            <?= $this->rule_value_field($savedRule['condition'] ?? '', $facetListId, $facetId, ($savedRule['value'] ?? '')); ?>
                         <?php endif; ?>
                     <?php endif; ?>
                 </div>
@@ -153,7 +153,7 @@ class ContentConditions
 					<?php foreach ($this->get_conditions_by_group() as $group => $conditions) : ?>
 						<optgroup label="<?= $group; ?>">
 							<?php foreach ($conditions as $id => $condition) : ?>
-								<option value="<?php echo $id; ?>" <?php selected(@$savedRule['condition'], $id); ?>>
+								<option value="<?php echo $id; ?>" <?php selected($savedRule['condition'] ?? '', $id); ?>>
 									<?php echo $condition['title'] ?>
 								</option>
 							<?php endforeach ?>
@@ -165,7 +165,7 @@ class ContentConditions
 				<div class="ppress-cr-rule-values">
 					<?php if (is_array($savedRule) && ! empty($savedRule)) : ?>
 						<?php if ( ! empty($savedRule['condition'])) : ?>
-							<?= $this->exempt_rule_value_field(@$savedRule['condition'], $facetListId, $facetId, @$savedRule['value']); ?>
+							<?= $this->exempt_rule_value_field($savedRule['condition'], $facetListId, $facetId, $savedRule['value'] ?? ''); ?>
 						<?php endif; ?>
 					<?php endif; ?>
 				</div>

@@ -35,8 +35,6 @@ class RegisterScripts
 
         wp_enqueue_style('ppress-form-builder-styles', PPRESS_ASSETS_URL . '/css/form-builder.css', [], PPRESS_VERSION_NUMBER);
 
-        wp_enqueue_style('ppress-codemirror', PPRESS_ASSETS_URL . '/codemirror/codemirror.css');
-
         wp_enqueue_style('ppress-jbox', PPRESS_ASSETS_URL . '/jbox/jBox.all.min.css', [], PPRESS_VERSION_NUMBER);
     }
 
@@ -157,7 +155,7 @@ class RegisterScripts
         }
 
         wp_enqueue_script('ppress-chartjs', PPRESS_ASSETS_URL . '/js/admin/chart.min.js', array('jquery'), PPRESS_VERSION_NUMBER);
-        wp_enqueue_script('ppress-reports', PPRESS_ASSETS_URL . '/js/admin/reports.js', array('jquery', 'ppress-chartjs'), PPRESS_VERSION_NUMBER);
+        wp_enqueue_script('ppress-reports', PPRESS_ASSETS_URL . '/js/admin/reports.js', ['jquery', 'ppress-chartjs'], PPRESS_VERSION_NUMBER);
 
         wp_enqueue_media();
 
@@ -166,7 +164,7 @@ class RegisterScripts
 
         wp_enqueue_script('ppress-clipboardjs', PPRESS_ASSETS_URL . '/js/clipboard.min.js', [], PPRESS_VERSION_NUMBER);
 
-        wp_enqueue_script('ppress-admin-scripts', PPRESS_ASSETS_URL . '/js/admin.js', array('jquery', 'jquery-ui-sortable'), PPRESS_VERSION_NUMBER);
+        wp_enqueue_script('ppress-admin-scripts', PPRESS_ASSETS_URL . '/js/admin.js', ['jquery', 'jquery-ui-sortable'], PPRESS_VERSION_NUMBER);
 
         wp_localize_script('ppress-admin-scripts', 'ppress_admin_globals', [
             'nonce' => wp_create_nonce('ppress-admin-nonce')
@@ -190,7 +188,15 @@ class RegisterScripts
         wp_enqueue_script(
             'ppress-form-builder',
             PPRESS_ASSETS_URL . '/js/builder/app.min.js',
-            ['jquery', 'backbone', 'wp-util', 'jquery-ui-draggable', 'jquery-ui-core', 'jquery-ui-sortable', 'wp-color-picker'],
+            [
+                'jquery',
+                'backbone',
+                'wp-util',
+                'jquery-ui-draggable',
+                'jquery-ui-core',
+                'jquery-ui-sortable',
+                'wp-color-picker'
+            ],
             PPRESS_VERSION_NUMBER
         );
 
@@ -200,11 +206,21 @@ class RegisterScripts
 
         wp_enqueue_script('ppress-jquery-blockui', PPRESS_ASSETS_URL . '/js/jquery.blockUI.js', array('jquery'), PPRESS_VERSION_NUMBER);
 
-        wp_enqueue_script('ppress-codemirror', PPRESS_ASSETS_URL . '/codemirror/codemirror.js');
-        wp_enqueue_script('ppress-codemirror-css', PPRESS_ASSETS_URL . '/codemirror/css.js', ['ppress-codemirror']);
-        wp_enqueue_script('ppress-codemirror-javascript', PPRESS_ASSETS_URL . '/codemirror/javascript.js', ['ppress-codemirror']);
-        wp_enqueue_script('ppress-codemirror-xml', PPRESS_ASSETS_URL . '/codemirror/xml.js', ['ppress-codemirror']);
-        wp_enqueue_script('ppress-codemirror-htmlmixed', PPRESS_ASSETS_URL . '/codemirror/htmlmixed.js', ['ppress-codemirror']);
+        /** @see https://make.wordpress.org/core/2017/10/22/code-editing-improvements-in-wordpress-4-9/ */
+        // ensures even if user disable syntax highlight, it still works.
+        add_filter('get_user_metadata', function ($val, $object_id, $meta_key) {
+            if ($meta_key == 'syntax_highlighting') return true;
+
+            return $val;
+
+        }, 10, 3);
+
+        $settings = wp_enqueue_code_editor([
+            'type'       => 'text/html',
+            'codemirror' => ['lint' => false]
+        ]);
+
+        wp_localize_script('code-editor', 'ppressCodeEditor', ['settings' => $settings]);
     }
 
     /**

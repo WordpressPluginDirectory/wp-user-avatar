@@ -273,7 +273,7 @@ class PostContent
 
         $more = false;
 
-        if (has_excerpt($post->ID)) {
+        if ( ! apply_filters('ppress_content_protection_ignore_post_excerpt', false) && has_excerpt($post->ID)) {
             $the_excerpt = $post->post_excerpt;
         } elseif (strstr($post->post_content, '<!--more-->')) {
             $more        = true;

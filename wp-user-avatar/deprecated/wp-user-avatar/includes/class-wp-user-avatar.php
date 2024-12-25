@@ -79,7 +79,7 @@ class WP_User_Avatar
             <img style="width: 450px;height:auto" src="<?= ppress_get_cover_image_url($user->ID) ?>">
             <?php if (ppress_user_has_cover_image($user->ID)) : ?>
                 <br>
-                <a href="#" class="button ppress-remove-cover-photo" data-user_id="<?= $user->ID ?>"><?php esc_attr_e('Remove', 'wp-user-avatar'); ?></a>
+                <a href="#" class="button ppress-remove-cover-photo" data-user_id="<?= esc_attr($user->ID) ?>"><?php esc_attr_e('Remove', 'wp-user-avatar'); ?></a>
             <?php endif; ?>
         </div>
         <p>
@@ -159,15 +159,15 @@ class WP_User_Avatar
     {
         global $blog_id, $show_avatars, $wpdb, $wp_user_avatar, $wpua_functions, $wpua_upload_size_limit_with_units, $wpua_cover_upload_size_limit_with_units;
 
-        $has_wp_user_avatar = has_wp_user_avatar(@$user->ID);
+        $has_wp_user_avatar = has_wp_user_avatar($user->ID ?? 0);
         // Get WPUA attachment ID
-        $wpua = get_user_meta(@$user->ID, $wpdb->get_blog_prefix($blog_id) . 'user_avatar', true);
+        $wpua = get_user_meta($user->ID ?? 0, $wpdb->get_blog_prefix($blog_id) . 'user_avatar', true);
         // Show remove button if WPUA is set
         $hide_remove = ! $has_wp_user_avatar ? 'wpua-hide' : "";
         // Hide image tags if show avatars is off
         $hide_images = ! $has_wp_user_avatar && (bool)$show_avatars == 0 ? 'wpua-no-avatars' : "";
         // If avatars are enabled, get original avatar image or show blank
-        $avatar_medium_src = (bool)$show_avatars == 1 ? $wpua_functions->wpua_get_avatar_original(@$user->user_email, 'medium') : includes_url() . 'images/blank.gif';
+        $avatar_medium_src = (bool)$show_avatars == 1 ? $wpua_functions->wpua_get_avatar_original($user->user_email ?? '', 'medium') : includes_url() . 'images/blank.gif';
         // Check if user has wp_user_avatar, if not show image from above
         $avatar_medium = $has_wp_user_avatar ? get_wp_user_avatar_src($user->ID, 'medium') : $avatar_medium_src;
         // Check if user has wp_user_avatar, if not show image from above

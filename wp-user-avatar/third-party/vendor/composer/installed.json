@@ -360,10 +360,6 @@
             ],
             "type": "library",
             "extra": {
-                "branch-alias": {
-                    "dev-master": "3.x-dev",
-                    "dev-2.x": "2.x-dev"
-                },
                 "laravel": {
                     "providers": [
                         "ProfilePressVendor\\Carbon\\Laravel\\ServiceProvider"
@@ -373,6 +369,10 @@
                     "includes": [
                         "extension.neon"
                     ]
+                },
+                "branch-alias": {
+                    "dev-2.x": "2.x-dev",
+                    "dev-master": "3.x-dev"
                 }
             },
             "installation-source": "dist",
@@ -626,26 +626,26 @@
         },
         {
             "name": "sniccowp\/php-scoper-wordpress-excludes",
-            "version": "6.6.2",
-            "version_normalized": "6.6.2.0",
+            "version": "6.7.1",
+            "version_normalized": "6.7.1.0",
             "source": {
                 "type": "git",
                 "url": "https:\/\/github.com\/snicco\/php-scoper-wordpress-excludes.git",
-                "reference": "b87d7455bdf05c25f9a688fc3862bb3f2b7c8b15"
+                "reference": "d8e6b5fdc9e42300a8ab18b44b775836a7b52363"
             },
             "dist": {
                 "type": "zip",
-                "url": "https:\/\/api.github.com\/repos\/snicco\/php-scoper-wordpress-excludes\/zipball\/b87d7455bdf05c25f9a688fc3862bb3f2b7c8b15",
-                "reference": "b87d7455bdf05c25f9a688fc3862bb3f2b7c8b15",
+                "url": "https:\/\/api.github.com\/repos\/snicco\/php-scoper-wordpress-excludes\/zipball\/d8e6b5fdc9e42300a8ab18b44b775836a7b52363",
+                "reference": "d8e6b5fdc9e42300a8ab18b44b775836a7b52363",
                 "shasum": ""
             },
             "require-dev": {
                 "php": "^7.4",
                 "php-stubs\/wordpress-globals": "0.2.0",
-                "php-stubs\/wordpress-stubs": "6.6.2",
+                "php-stubs\/wordpress-stubs": "6.7.1",
                 "sniccowp\/php-scoper-excludes": "dev-master"
             },
-            "time": "2024-10-01T00:32:14+00:00",
+            "time": "2024-11-25T00:31:50+00:00",
             "type": "library",
             "installation-source": "dist",
             "notification-url": "https:\/\/packagist.org\/downloads\/",
@@ -670,23 +670,23 @@
             ],
             "support": {
                 "issues": "https:\/\/github.com\/snicco\/php-scoper-wordpress-excludes\/issues",
-                "source": "https:\/\/github.com\/snicco\/php-scoper-wordpress-excludes\/tree\/6.6.2"
+                "source": "https:\/\/github.com\/snicco\/php-scoper-wordpress-excludes\/tree\/6.7.1"
             },
             "install-path": "..\/sniccowp\/php-scoper-wordpress-excludes"
         },
         {
             "name": "stripe\/stripe-php",
-            "version": "v16.3.0",
-            "version_normalized": "16.3.0.0",
+            "version": "v16.4.0",
+            "version_normalized": "16.4.0.0",
             "source": {
                 "type": "git",
                 "url": "https:\/\/github.com\/stripe\/stripe-php.git",
-                "reference": "48af6bc64ca8157b3fdce100e856069963bac466"
+                "reference": "4aa86099f888db9368f5f778f29feb14e6294dfb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https:\/\/api.github.com\/repos\/stripe\/stripe-php\/zipball\/48af6bc64ca8157b3fdce100e856069963bac466",
-                "reference": "48af6bc64ca8157b3fdce100e856069963bac466",
+                "url": "https:\/\/api.github.com\/repos\/stripe\/stripe-php\/zipball\/4aa86099f888db9368f5f778f29feb14e6294dfb",
+                "reference": "4aa86099f888db9368f5f778f29feb14e6294dfb",
                 "shasum": ""
             },
             "require": {
@@ -700,7 +700,7 @@
                 "phpstan\/phpstan": "^1.2",
                 "phpunit\/phpunit": "^5.7 || ^9.0"
             },
-            "time": "2024-11-20T23:30:16+00:00",
+            "time": "2024-12-18T23:42:15+00:00",
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -732,7 +732,7 @@
             ],
             "support": {
                 "issues": "https:\/\/github.com\/stripe\/stripe-php\/issues",
-                "source": "https:\/\/github.com\/stripe\/stripe-php\/tree\/v16.3.0"
+                "source": "https:\/\/github.com\/stripe\/stripe-php\/tree\/v16.4.0"
             },
             "install-path": "..\/stripe\/stripe-php"
         },
@@ -807,23 +807,23 @@
         },
         {
             "name": "symfony\/deprecation-contracts",
-            "version": "v2.5.3",
-            "version_normalized": "2.5.3.0",
+            "version": "v2.5.4",
+            "version_normalized": "2.5.4.0",
             "source": {
                 "type": "git",
                 "url": "https:\/\/github.com\/symfony\/deprecation-contracts.git",
-                "reference": "80d075412b557d41002320b96a096ca65aa2c98d"
+                "reference": "605389f2a7e5625f273b53960dc46aeaf9c62918"
             },
             "dist": {
                 "type": "zip",
-                "url": "https:\/\/api.github.com\/repos\/symfony\/deprecation-contracts\/zipball\/80d075412b557d41002320b96a096ca65aa2c98d",
-                "reference": "80d075412b557d41002320b96a096ca65aa2c98d",
+                "url": "https:\/\/api.github.com\/repos\/symfony\/deprecation-contracts\/zipball\/605389f2a7e5625f273b53960dc46aeaf9c62918",
+                "reference": "605389f2a7e5625f273b53960dc46aeaf9c62918",
                 "shasum": ""
             },
             "require": {
                 "php": ">=7.1"
             },
-            "time": "2023-01-24T14:02:46+00:00",
+            "time": "2024-09-25T14:11:13+00:00",
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -857,7 +857,7 @@
             "description": "A generic function and convention to trigger deprecation notices",
             "homepage": "https:\/\/symfony.com",
             "support": {
-                "source": "https:\/\/github.com\/symfony\/deprecation-contracts\/tree\/v2.5.3"
+                "source": "https:\/\/github.com\/symfony\/deprecation-contracts\/tree\/v2.5.4"
             },
             "funding": [
                 {
@@ -903,8 +903,8 @@
             "type": "library",
             "extra": {
                 "thanks": {
-                    "name": "symfony\/polyfill",
-                    "url": "https:\/\/github.com\/symfony\/polyfill"
+                    "url": "https:\/\/github.com\/symfony\/polyfill",
+                    "name": "symfony\/polyfill"
                 }
             },
             "installation-source": "dist",
@@ -980,8 +980,8 @@
             "type": "library",
             "extra": {
                 "thanks": {
-                    "name": "symfony\/polyfill",
-                    "url": "https:\/\/github.com\/symfony\/polyfill"
+                    "url": "https:\/\/github.com\/symfony\/polyfill",
+                    "name": "symfony\/polyfill"
                 }
             },
             "installation-source": "dist",
@@ -1143,17 +1143,17 @@
         },
         {
             "name": "symfony\/translation-contracts",
-            "version": "v2.5.3",
-            "version_normalized": "2.5.3.0",
+            "version": "v2.5.4",
+            "version_normalized": "2.5.4.0",
             "source": {
                 "type": "git",
                 "url": "https:\/\/github.com\/symfony\/translation-contracts.git",
-                "reference": "b0073a77ac0b7ea55131020e87b1e3af540f4664"
+                "reference": "450d4172653f38818657022252f9d81be89ee9a8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https:\/\/api.github.com\/repos\/symfony\/translation-contracts\/zipball\/b0073a77ac0b7ea55131020e87b1e3af540f4664",
-                "reference": "b0073a77ac0b7ea55131020e87b1e3af540f4664",
+                "url": "https:\/\/api.github.com\/repos\/symfony\/translation-contracts\/zipball\/450d4172653f38818657022252f9d81be89ee9a8",
+                "reference": "450d4172653f38818657022252f9d81be89ee9a8",
                 "shasum": ""
             },
             "require": {
@@ -1162,7 +1162,7 @@
             "suggest": {
                 "symfony\/translation-implementation": ""
             },
-            "time": "2024-01-23T13:51:25+00:00",
+            "time": "2024-09-25T14:11:13+00:00",
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -1204,7 +1204,7 @@
                 "standards"
             ],
             "support": {
-                "source": "https:\/\/github.com\/symfony\/translation-contracts\/tree\/v2.5.3"
+                "source": "https:\/\/github.com\/symfony\/translation-contracts\/tree\/v2.5.4"
             },
             "funding": [
                 {

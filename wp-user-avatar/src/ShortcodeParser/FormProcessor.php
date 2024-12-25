@@ -157,7 +157,7 @@ class FormProcessor
                 return $this->restore_form_error($state_key);
             }
 
-            $form_id = absint(ppressPOST_var('pp_melange_id', @$_POST['editprofile_form_id'], true));
+            $form_id = absint(ppressPOST_var('pp_melange_id', ($_POST['editprofile_form_id'] ?? ''), true));
 
             $redirect = ppressPOST_var('editprofile_redirect', '', true);
 
@@ -190,7 +190,7 @@ class FormProcessor
                 return $this->restore_form_error($state_key);
             }
 
-            $form_id = absint(ppressPOST_var('pp_melange_id', @$_POST['signup_form_id'], true));
+            $form_id = absint(ppressPOST_var('pp_melange_id', $_POST['signup_form_id'] ?? '', true));
 
             $redirect = ppressPOST_var('signup_redirect', '', true);
             if ( ! empty($_POST['melange_redirect'])) {
@@ -204,7 +204,7 @@ class FormProcessor
             $response = RegistrationAuth::register_new_user($_POST, $form_id, $redirect, $is_melange, $no_login_redirect);
 
             if ( ! empty($response)) {
-                $response = html_entity_decode($response);
+                $response = wp_kses_post(html_entity_decode($response));
 
                 $this->registration_form_error[$form_id] = $response;
 
@@ -239,9 +239,9 @@ class FormProcessor
 
             $username       = trim($_POST['login_username']);
             $password       = $_POST['login_password'];
-            $remember_login = sanitize_text_field(@$_POST['login_remember']);
+            $remember_login = sanitize_text_field($_POST['login_remember'] ?? '');
 
-            $form_id = absint(! empty($_POST['pp_melange_id']) ? $_POST['pp_melange_id'] : @$_POST['login_form_id']);
+            $form_id = absint(! empty($_POST['pp_melange_id']) ? $_POST['pp_melange_id'] : ($_POST['login_form_id'] ?? ''));
 
             $redirect = ! empty($_POST['login_redirect']) ? sanitize_text_field($_POST['login_redirect']) : '';
             if ( ! empty($_POST['melange_redirect'])) {
@@ -287,7 +287,7 @@ class FormProcessor
             return $this->restore_form_error($state_key);
         }
 
-        $form_id = absint(! empty($_POST['pp_melange_id']) ? $_POST['pp_melange_id'] : @$_POST['passwordreset_form_id']);
+        $form_id = absint(! empty($_POST['pp_melange_id']) ? $_POST['pp_melange_id'] : ($_POST['passwordreset_form_id'] ?? ''));
 
         $is_melange = isset($_POST['is_melange']) && $_POST['is_melange'] == 'true';
 

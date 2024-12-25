@@ -8,33 +8,29 @@ use ProfilePress\Core\Membership\CheckoutFields;
 
 class MemberDirectoryListing
 {
-    private $directory_id;
+    private int $user_id;
 
-    private $user_id;
+    private array $field_settings;
 
-    private $field_settings = [];
+    private string $output = '';
 
-    private $output = '';
-
-    private $defaults;
+    private array $defaults;
 
     public function __construct($directory_id, $user_id = false)
     {
-        $this->directory_id = $directory_id;
-
-        $this->user_id = $user_id;
+        $this->user_id = absint($user_id);
 
         $this->field_settings = FR::form_builder_fields_settings($directory_id, FR::MEMBERS_DIRECTORY_TYPE);
     }
 
-    public function defaults($defaults)
+    public function defaults($defaults): MemberDirectoryListing
     {
         $this->defaults = $defaults;
 
         return $this;
     }
 
-    public function forge()
+    public function forge(): MemberDirectoryListing
     {
         $output = '';
 
@@ -46,7 +42,7 @@ class MemberDirectoryListing
                 $field_setting = wp_parse_args($field_setting, $this->defaults[$field_type]);
             }
 
-            $field_title = isset($field_setting['label']) ? $field_setting['label'] : '';
+            $field_title = $field_setting['label'] ?? '';
 
             if ($field_type == 'profile-cpf') {
 
@@ -126,7 +122,7 @@ class MemberDirectoryListing
                     $parsed_shortcode = sprintf(
                         '<a href="%s">%s</a>',
                         $parsed_shortcode,
-                        ! empty($field_title) ? $field_title : esc_html__('Website', 'wp-user-avatar')
+                        ! empty($field_title) ? wp_kses_post($field_title) : esc_html__('Website', 'wp-user-avatar')
                     );
                     $parsed_shortcode = make_clickable($parsed_shortcode);
                     $parsed_shortcode = apply_filters('ppress_md_profile_website', $parsed_shortcode, $this->user_id);
@@ -135,7 +131,7 @@ class MemberDirectoryListing
                 $output .= sprintf('<div class="ppress-md-profile-item-wrap %s">', $raw_field_type);
 
                 if ( ! empty($field_title) && $raw_field_type != 'profile-website') {
-                    $output .= sprintf('<span class="ppress-md-profile-item-title">%s:</span> ', $field_title);
+                    $output .= sprintf('<span class="ppress-md-profile-item-title">%s:</span> ', wp_kses_post($field_title));
                 }
 
                 $output .= sprintf('%s', $parsed_shortcode);
@@ -149,7 +145,7 @@ class MemberDirectoryListing
         return $this;
     }
 
-    public function output()
+    public function output(): string
     {
         return $this->output;
     }

@@ -596,7 +596,7 @@ class FieldsShortcodeCallback
 
         $key = ppress_sanitize_key($atts['key']);
 
-        $value = isset($_POST[$key]) ? sanitize_text_field($_POST[$key]) : @sanitize_text_field($atts['value']);
+        $value = isset($_POST[$key]) ? sanitize_text_field($_POST[$key]) : sanitize_text_field($atts['value'] ?? '');
 
         if ($this->form_type == FormRepository::EDIT_PROFILE_TYPE) {
             $db_data = isset($atts['value']) ? sanitize_text_field($atts['value']) : ($this->current_user->$key ?? '');
@@ -1061,7 +1061,7 @@ class FieldsShortcodeCallback
 
         if ($type == 'agreeable') {
             $atts['key']           = $key;
-            $atts['checkbox_text'] = html_entity_decode(PROFILEPRESS_sql::get_field_label($key));
+            $atts['checkbox_text'] = wp_kses_post(html_entity_decode(PROFILEPRESS_sql::get_field_label($key)));
             $html                  = $this->single_checkbox_field($atts);
         }
 

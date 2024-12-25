@@ -45,11 +45,14 @@ function ppress_get_payment_method($payment_method_id)
  */
 function ppress_is_any_active_plan()
 {
-    global $wpdb;
+    return ppress_cache_transform('ppress_is_any_active_plan', function () {
 
-    $table = Base::subscription_plans_db_table();
+        global $wpdb;
 
-    return absint($wpdb->get_var("SELECT COUNT(id) FROM $table WHERE status = 'true'")) > 0;
+        $table = Base::subscription_plans_db_table();
+
+        return absint($wpdb->get_var("SELECT COUNT(id) FROM $table WHERE status = 'true'")) > 0;
+    });
 }
 
 /**

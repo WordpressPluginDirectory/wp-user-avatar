@@ -282,6 +282,11 @@ function ppress_profile_url()
     return apply_filters('ppress_profile_url', $url);
 }
 
+/**
+ * @param $username_or_id
+ *
+ * @return string
+ */
 function ppress_get_frontend_profile_url($username_or_id)
 {
     if (is_numeric($username_or_id)) {
@@ -1249,7 +1254,7 @@ function ppressGET_var($key, $default = false, $empty = false)
 function ppress_var($bucket, $key, $default = false, $empty = false)
 {
     if ($empty) {
-        return isset($bucket[$key]) && ( ! empty($bucket[$key]) || ppress_is_boolean($bucket[$key])) ? $bucket[$key] : $default;
+        return isset($bucket[$key]) && ( ! empty($bucket[$key]) || ppress_is_boolean($bucket[$key]) || is_numeric($bucket[$key])) ? $bucket[$key] : $default;
     }
 
     return isset($bucket[$key]) ? $bucket[$key] : $default;
@@ -1532,11 +1537,9 @@ function ppress_get_cover_image_url($user_id = false)
 
     $slug = get_user_meta($user_id, 'pp_profile_cover_image', true);
 
-    if ( ! empty($slug)) {
-        return PPRESS_COVER_IMAGE_UPLOAD_URL . "$slug";
-    }
+    $url = ! empty($slug) ? PPRESS_COVER_IMAGE_UPLOAD_URL . "$slug" : get_option('wp_user_cover_default_image_url');
 
-    return get_option('wp_user_cover_default_image_url');
+    return esc_url_raw($url);
 }
 
 function ppress_is_my_own_profile()
@@ -1785,18 +1788,15 @@ function ppress_upgrade_urls_affilify($url)
 
 function ppress_cache_transform($cache_key, $callback)
 {
-    static $ppress_cache_transform_bucket = [];
+    static $cache = [];
 
-    $result = ppress_var($ppress_cache_transform_bucket, $cache_key, false);
-
-    if ( ! $result) {
-
-        $result = $callback();
-
-        $ppress_cache_transform_bucket[$cache_key] = $result;
+    // If the cache key does not exist, compute the value and cache it.
+    if ( ! isset($cache[$cache_key])) {
+        $cache[$cache_key] = $callback();
     }
 
-    return $result;
+    // Return the cached result.
+    return $cache[$cache_key];
 }
 
 function ppress_form_has_field($form_id, $form_type, $field_shortcode_tag)

@@ -35,6 +35,7 @@
                 builder_structure: builder_structure,
                 builder_css: css_codemirror_editor.getValue(),
                 action: 'pp-builder-preview',
+                form_id: typeof ppress_shortcode_builder_form_id !== 'undefined' ? ppress_shortcode_builder_form_id : 0,
                 _wpnonce: ppress_admin_globals.nonce
             },
             beforeSend: function () {
@@ -46,6 +47,7 @@
             .done(function (response) {
                 sb.ajax_flag = false;
                 var doc = document.getElementById(iframe_id).contentWindow.document;
+                /** @see https://stackoverflow.com/a/5752189/2648410 */
                 doc.open();
                 doc.write(response);
                 doc.close();
@@ -57,10 +59,13 @@
 
     sb.codeMirrorInit = function (id, mode, lineNumbers) {
         lineNumbers = typeof lineNumbers !== 'undefined' ? lineNumbers : true;
-        return CodeMirror.fromTextArea(id, {
-            lineNumbers: lineNumbers,
-            mode: mode
-        });
+
+        ppressCodeEditor.settings.codemirror.mode = mode;
+        ppressCodeEditor.settings.codemirror.lineNumbers = lineNumbers;
+
+        $instance = wp.codeEditor.initialize(id, ppressCodeEditor.settings);
+
+        return $instance.codemirror;
     };
 
     sb.preview_request = function (builder_structure_id, builder_css_id, iframe_id) {

@@ -8,19 +8,17 @@ use ProfilePress\Core\Classes\FormRepository as FR;
 
 abstract class AbstractTheme implements ThemeInterface
 {
-    public $form_id;
+    public int $form_id;
 
-    public $form_type;
+    public string $form_type;
 
-    public $tag_name;
+    public string $tag_name;
 
-    public $metabox_settings;
-
-    public $asset_image_url;
+    public string $asset_image_url;
 
     public function __construct($form_id, $form_type)
     {
-        $this->form_id   = $form_id;
+        $this->form_id   = absint($form_id);
         $this->form_type = $form_type;
 
         $this->asset_image_url = PPRESS_ASSETS_URL . '/images';
@@ -81,7 +79,7 @@ abstract class AbstractTheme implements ThemeInterface
 
         $default_metabox_settings = $this->default_metabox_settings();
 
-        $val = isset($metabox_settings[$key]) ? $metabox_settings[$key] : (isset($default_metabox_settings[$key]) ? $default_metabox_settings[$key] : '');
+        $val = $metabox_settings[$key] ?? ($default_metabox_settings[$key] ?? '');
 
         if (is_array($val) && ! empty($val)) {
             $val = array_filter($val);
@@ -109,7 +107,7 @@ abstract class AbstractTheme implements ThemeInterface
 
                 return sprintf(
                     '<div class="ppform-remember-me"><label class="ppform-remember-checkbox">%s <span class="ppform-remember-label">%s</span></label></div>',
-                    $tag, $field_setting['label']
+                    $tag, esc_html($field_setting['label'])
                 );
             }
         }

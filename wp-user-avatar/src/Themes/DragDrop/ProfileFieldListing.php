@@ -152,7 +152,7 @@ class ProfileFieldListing
                 $this->has_field_data = true;
 
                 if ($field_type == 'profile-website') {
-                    $parsed_shortcode = sprintf('<a href="%1$s" rel="nofollow" target="_blank">%1$s</a>', $parsed_shortcode);
+                    $parsed_shortcode = sprintf('<a href="%1$s" rel="nofollow" target="_blank">%1$s</a>', esc_url($parsed_shortcode));
                 }
 
                 if ( ! empty($field_key) && strpos($field_type, 'profile-cpf') !== false) {
@@ -175,7 +175,7 @@ class ProfileFieldListing
 
                 $output .= $this->item_wrap_start_tag;
                 if ( ! empty($field_title)) {
-                    $output .= $this->title_start_tag . $field_title . $this->title_end_tag;
+                    $output .= $this->title_start_tag . wp_kses_post($field_title) . $this->title_end_tag;
                 }
                 $output .= $this->info_start_tag . $parsed_shortcode . $this->info_end_tag;
                 $output .= $this->item_wrap_end_tag;

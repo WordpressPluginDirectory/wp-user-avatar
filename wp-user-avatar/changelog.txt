@@ -1,5 +1,16 @@
 ﻿== Changelog ==
 
+= 4.15.20 =
+* Added ppress_content_protection_ignore_post_excerpt filter.
+* Added ppress_user_avatar_image_url filter.
+* Added {{order_coupon}} placeholder to order emails.
+* Fixed customer search in admin dashboard not working correctly.
+* Fixed various XSS reported by Cleantalk.
+* Fixed duplicate queries detected by Query Monitor.
+* Fixed fatal error that might occur from changing default login page url.
+* Switched to using core Codemirror library.
+* Fixed couple of PHP errors and warnings.
+
 = 4.15.19 =
 * Security fix where protected content was exposed via WP and Rest API search.
 * Upgraded Stripe PHP SDK to 16.3.

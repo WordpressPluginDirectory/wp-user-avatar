@@ -2,14 +2,14 @@
 # This file is distributed under the same license as the ProfilePress plugin.
 msgid ""
 msgstr ""
-"Project-Id-Version: ProfilePress 4.15.19\n"
+"Project-Id-Version: ProfilePress 4.15.20\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wp-user-avatar\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2024-11-26T08:56:04+00:00\n"
+"POT-Creation-Date: 2024-12-24T15:37:58+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.8.1\n"
 "X-Domain: wp-user-avatar\n"
@@ -113,12 +113,12 @@ msgstr ""
 msgid "Undo"
 msgstr ""
 
-#: deprecated/wp-user-avatar/includes/class-wp-user-avatar-shortcode.php:177
+#: deprecated/wp-user-avatar/includes/class-wp-user-avatar-shortcode.php:178
 msgid "Profile updated."
 msgstr ""
 
-#: deprecated/wp-user-avatar/includes/class-wp-user-avatar-shortcode.php:202
-#: src/Themes/DragDrop/AbstractTheme.php:131
+#: deprecated/wp-user-avatar/includes/class-wp-user-avatar-shortcode.php:203
+#: src/Themes/DragDrop/AbstractTheme.php:129
 msgid "Update Profile"
 msgstr ""
 
@@ -155,18 +155,18 @@ msgid "Upload"
 msgstr ""
 
 #: deprecated/wp-user-avatar/includes/class-wp-user-avatar.php:149
-#: src/RegisterScripts.php:103
-#: src/RegisterScripts.php:198
+#: src/RegisterScripts.php:101
+#: src/RegisterScripts.php:204
 msgid "Are you sure?"
 msgstr ""
 
 #: deprecated/wp-user-avatar/includes/class-wp-user-avatar.php:150
-#: src/RegisterScripts.php:104
+#: src/RegisterScripts.php:102
 msgid "Deleting..."
 msgstr ""
 
 #: deprecated/wp-user-avatar/includes/class-wp-user-avatar.php:151
-#: src/RegisterScripts.php:105
+#: src/RegisterScripts.php:103
 msgid "An error occurred. Please try again."
 msgstr ""
 
@@ -415,9 +415,9 @@ msgstr ""
 #: src/Admin/SettingsPages/GeneralSettings.php:444
 #: src/Admin/SettingsPages/Membership/CheckoutFieldsManager.php:90
 #: src/Admin/SettingsPages/Membership/PlanIntegrationsMetabox.php:178
-#: src/Functions/GlobalFunctions.php:1443
-#: src/Functions/GlobalFunctions.php:1475
-#: src/Functions/GlobalFunctions.php:1497
+#: src/Functions/GlobalFunctions.php:1448
+#: src/Functions/GlobalFunctions.php:1480
+#: src/Functions/GlobalFunctions.php:1502
 #: src/LoginRedirect.php:167
 msgid "Select..."
 msgstr ""
@@ -427,7 +427,7 @@ msgid "Custom URL Here"
 msgstr ""
 
 #: src/Admin/SettingsPages/AddNewForm.php:27
-#: src/Admin/SettingsPages/MemberDirectories.php:40
+#: src/Admin/SettingsPages/MemberDirectories.php:44
 msgid "Add Member Directory"
 msgstr ""
 
@@ -453,7 +453,7 @@ msgid "Code your own from scratch with complete control and flexibility using sh
 msgstr ""
 
 #: src/Admin/SettingsPages/AddNewForm.php:65
-#: src/Classes/AjaxHandler.php:117
+#: src/Classes/AjaxHandler.php:120
 msgid "Build Now"
 msgstr ""
 
@@ -466,7 +466,7 @@ msgstr ""
 msgid "Upgrade to Premium"
 msgstr ""
 
-#: src/Admin/SettingsPages/AddNewForm.php:123
+#: src/Admin/SettingsPages/AddNewForm.php:113
 msgid "Back to Overview"
 msgstr ""
 
@@ -478,44 +478,44 @@ msgstr ""
 msgid "Form title cannot empty"
 msgstr ""
 
-#: src/Admin/SettingsPages/DragDropBuilder/DragDropBuilder.php:1198
+#: src/Admin/SettingsPages/DragDropBuilder/DragDropBuilder.php:1194
 msgid "Select Icon"
 msgstr ""
 
-#: src/Admin/SettingsPages/DragDropBuilder/DragDropBuilder.php:1226
+#: src/Admin/SettingsPages/DragDropBuilder/DragDropBuilder.php:1222
 #: src/Admin/SettingsPages/Membership/CheckoutFieldsManager.php:93
-#: src/Functions/GlobalFunctions.php:1500
-#: src/Themes/DragDrop/AbstractMemberDirectoryTheme.php:202
+#: src/Functions/GlobalFunctions.php:1505
+#: src/Themes/DragDrop/AbstractMemberDirectoryTheme.php:222
 msgid "Standard Fields"
 msgstr ""
 
-#: src/Admin/SettingsPages/DragDropBuilder/DragDropBuilder.php:1227
+#: src/Admin/SettingsPages/DragDropBuilder/DragDropBuilder.php:1223
 msgid "Extra Fields"
 msgstr ""
 
-#: src/Admin/SettingsPages/DragDropBuilder/DragDropBuilder.php:1229
+#: src/Admin/SettingsPages/DragDropBuilder/DragDropBuilder.php:1225
 #: src/Admin/SettingsPages/LicenseUpgrader.php:176
 #: src/Admin/SettingsPages/Membership/CheckoutFieldsManager.php:101
 #: src/Classes/ExtensionManager.php:115
-#: src/Functions/GlobalFunctions.php:1503
-#: src/Themes/DragDrop/AbstractMemberDirectoryTheme.php:216
+#: src/Functions/GlobalFunctions.php:1508
+#: src/Themes/DragDrop/AbstractMemberDirectoryTheme.php:236
 msgid "Custom Fields"
 msgstr ""
 
-#: src/Admin/SettingsPages/DragDropBuilder/DragDropBuilder.php:1230
+#: src/Admin/SettingsPages/DragDropBuilder/DragDropBuilder.php:1226
 msgid "WooCommerce Billing Address"
 msgstr ""
 
-#: src/Admin/SettingsPages/DragDropBuilder/DragDropBuilder.php:1231
+#: src/Admin/SettingsPages/DragDropBuilder/DragDropBuilder.php:1227
 msgid "WooCommerce Shipping Address"
 msgstr ""
 
-#: src/Admin/SettingsPages/DragDropBuilder/DragDropBuilder.php:1280
+#: src/Admin/SettingsPages/DragDropBuilder/DragDropBuilder.php:1286
 msgid "Enter title here"
 msgstr ""
 
-#: src/Admin/SettingsPages/DragDropBuilder/DragDropBuilder.php:1282
-#: src/Admin/SettingsPages/DragDropBuilder/DragDropBuilder.php:1309
+#: src/Admin/SettingsPages/DragDropBuilder/DragDropBuilder.php:1288
+#: src/Admin/SettingsPages/DragDropBuilder/DragDropBuilder.php:1313
 #: src/Admin/SettingsPages/EmailSettings/CustomizerTrait.php:11
 #: src/Admin/SettingsPages/Membership/CheckoutFieldsManager.php:68
 #: src/AdminBarDashboardAccess/include.settings-page.php:54
@@ -526,69 +526,69 @@ msgstr ""
 msgid "Save Changes"
 msgstr ""
 
-#: src/Admin/SettingsPages/DragDropBuilder/DragDropBuilder.php:1287
+#: src/Admin/SettingsPages/DragDropBuilder/DragDropBuilder.php:1292
 msgid "Copy this shortcode and paste it into your post, page, or text widget content:"
 msgstr ""
 
-#: src/Admin/SettingsPages/DragDropBuilder/DragDropBuilder.php:1312
+#: src/Admin/SettingsPages/DragDropBuilder/DragDropBuilder.php:1316
 msgid "Delete Form"
 msgstr ""
 
-#: src/Admin/SettingsPages/DragDropBuilder/DragDropBuilder.php:1369
-#: src/Admin/SettingsPages/DragDropBuilder/DragDropBuilder.php:1408
-#: src/Admin/SettingsPages/DragDropBuilder/DragDropBuilder.php:1460
+#: src/Admin/SettingsPages/DragDropBuilder/DragDropBuilder.php:1373
+#: src/Admin/SettingsPages/DragDropBuilder/DragDropBuilder.php:1412
+#: src/Admin/SettingsPages/DragDropBuilder/DragDropBuilder.php:1464
 msgid "Success Message"
 msgstr ""
 
-#: src/Admin/SettingsPages/DragDropBuilder/DragDropBuilder.php:1375
+#: src/Admin/SettingsPages/DragDropBuilder/DragDropBuilder.php:1379
 msgid "New User Role"
 msgstr ""
 
-#: src/Admin/SettingsPages/DragDropBuilder/DragDropBuilder.php:1376
+#: src/Admin/SettingsPages/DragDropBuilder/DragDropBuilder.php:1380
 msgid "Role users registered through this form will be assigned."
 msgstr ""
 
-#: src/Admin/SettingsPages/DragDropBuilder/DragDropBuilder.php:1383
+#: src/Admin/SettingsPages/DragDropBuilder/DragDropBuilder.php:1387
 msgid "Username Requirement"
 msgstr ""
 
-#: src/Admin/SettingsPages/DragDropBuilder/DragDropBuilder.php:1384
+#: src/Admin/SettingsPages/DragDropBuilder/DragDropBuilder.php:1388
 msgid "Check to disable username requirement"
 msgstr ""
 
-#: src/Admin/SettingsPages/DragDropBuilder/DragDropBuilder.php:1385
+#: src/Admin/SettingsPages/DragDropBuilder/DragDropBuilder.php:1389
 msgid "Disable requirement for users to enter a username during registration. Usernames will automatically be generated from their email addresses."
 msgstr ""
 
-#: src/Admin/SettingsPages/DragDropBuilder/DragDropBuilder.php:1392
+#: src/Admin/SettingsPages/DragDropBuilder/DragDropBuilder.php:1396
 #: src/Admin/SettingsPages/GeneralSettings.php:311
 msgid "Registration Settings"
 msgstr ""
 
-#: src/Admin/SettingsPages/DragDropBuilder/DragDropBuilder.php:1415
+#: src/Admin/SettingsPages/DragDropBuilder/DragDropBuilder.php:1419
 msgid "Edit Profile Settings"
 msgstr ""
 
-#: src/Admin/SettingsPages/DragDropBuilder/DragDropBuilder.php:1433
+#: src/Admin/SettingsPages/DragDropBuilder/DragDropBuilder.php:1437
 #: src/Admin/SettingsPages/LicenseUpgrader.php:200
 #: src/Classes/ExtensionManager.php:150
 msgid "Passwordless Login"
 msgstr ""
 
-#: src/Admin/SettingsPages/DragDropBuilder/DragDropBuilder.php:1434
+#: src/Admin/SettingsPages/DragDropBuilder/DragDropBuilder.php:1438
 msgid "Check to make this a passwordless login form."
 msgstr ""
 
-#: src/Admin/SettingsPages/DragDropBuilder/DragDropBuilder.php:1444
+#: src/Admin/SettingsPages/DragDropBuilder/DragDropBuilder.php:1448
 #: src/Admin/SettingsPages/GeneralSettings.php:325
 msgid "Login Settings"
 msgstr ""
 
-#: src/Admin/SettingsPages/DragDropBuilder/DragDropBuilder.php:1467
+#: src/Admin/SettingsPages/DragDropBuilder/DragDropBuilder.php:1471
 msgid "Password Reset Settings"
 msgstr ""
 
-#: src/Admin/SettingsPages/DragDropBuilder/DragDropBuilder.php:1488
+#: src/Admin/SettingsPages/DragDropBuilder/DragDropBuilder.php:1492
 #: src/Admin/SettingsPages/DragDropBuilder/Fields/CheckboxList.php:35
 #: src/Admin/SettingsPages/DragDropBuilder/Fields/Country.php:35
 #: src/Admin/SettingsPages/DragDropBuilder/Fields/DefinedFieldTypes/Checkbox.php:50
@@ -602,34 +602,34 @@ msgstr ""
 msgid "Label"
 msgstr ""
 
-#: src/Admin/SettingsPages/DragDropBuilder/DragDropBuilder.php:1494
+#: src/Admin/SettingsPages/DragDropBuilder/DragDropBuilder.php:1498
 msgid "Processing Label"
 msgstr ""
 
-#: src/Admin/SettingsPages/DragDropBuilder/DragDropBuilder.php:1501
+#: src/Admin/SettingsPages/DragDropBuilder/DragDropBuilder.php:1505
 msgid "Submit Button"
 msgstr ""
 
-#: src/Admin/SettingsPages/DragDropBuilder/DragDropBuilder.php:1508
+#: src/Admin/SettingsPages/DragDropBuilder/DragDropBuilder.php:1512
 msgid "Appearance"
 msgstr ""
 
-#: src/Admin/SettingsPages/DragDropBuilder/DragDropBuilder.php:1515
+#: src/Admin/SettingsPages/DragDropBuilder/DragDropBuilder.php:1519
 msgid "Colors"
 msgstr ""
 
-#: src/Admin/SettingsPages/DragDropBuilder/DragDropBuilder.php:1543
+#: src/Admin/SettingsPages/DragDropBuilder/DragDropBuilder.php:1547
 #: src/Themes/DragDrop/AbstractBuildScratch.php:526
 #: src/Themes/DragDrop/Login/PerfectoLite.php:51
 #: src/Themes/DragDrop/Registration/PerfectoLite.php:53
 msgid "Text"
 msgstr ""
 
-#: src/Admin/SettingsPages/DragDropBuilder/DragDropBuilder.php:1544
+#: src/Admin/SettingsPages/DragDropBuilder/DragDropBuilder.php:1548
 msgid "Visual"
 msgstr ""
 
-#: src/Admin/SettingsPages/DragDropBuilder/DragDropBuilder.php:1545
+#: src/Admin/SettingsPages/DragDropBuilder/DragDropBuilder.php:1549
 msgid "Add Media"
 msgstr ""
 
@@ -707,9 +707,9 @@ msgstr ""
 
 #: src/Admin/SettingsPages/DragDropBuilder/Fields/Bio.php:22
 #: src/Admin/SettingsPages/DragDropBuilder/Fields/UserProfile/Bio.php:22
-#: src/Functions/GlobalFunctions.php:1487
-#: src/Themes/DragDrop/AbstractMemberDirectoryTheme.php:211
-#: src/Themes/DragDrop/AbstractTheme.php:207
+#: src/Functions/GlobalFunctions.php:1492
+#: src/Themes/DragDrop/AbstractMemberDirectoryTheme.php:231
+#: src/Themes/DragDrop/AbstractTheme.php:205
 msgid "Biography"
 msgstr ""
 
@@ -889,8 +889,8 @@ msgstr ""
 #: src/ShortcodeParser/Builder/FieldsShortcodeCallback.php:209
 #: src/ShortcodeParser/MyAccount/delete-account.tmpl.php:21
 #: src/templates/checkout/form-login.php:21
-#: src/Themes/DragDrop/AbstractTheme.php:183
-#: src/Themes/DragDrop/AbstractTheme.php:223
+#: src/Themes/DragDrop/AbstractTheme.php:181
+#: src/Themes/DragDrop/AbstractTheme.php:221
 #: src/Widgets/TabbedWidget.php:144
 #: src/Widgets/TabbedWidget.php:172
 msgid "Password"
@@ -925,14 +925,14 @@ msgid "Enter one choice per line. This will be the options available for user to
 msgstr ""
 
 #: src/Admin/SettingsPages/DragDropBuilder/Fields/ConfirmEmail.php:22
-#: src/Themes/DragDrop/AbstractTheme.php:189
+#: src/Themes/DragDrop/AbstractTheme.php:187
 msgid "Confirm Email"
 msgstr ""
 
 #: src/Admin/SettingsPages/DragDropBuilder/Fields/ConfirmPassword.php:22
 #: src/Membership/CheckoutFields.php:93
 #: src/ShortcodeParser/Builder/FieldsShortcodeCallback.php:235
-#: src/Themes/DragDrop/AbstractTheme.php:186
+#: src/Themes/DragDrop/AbstractTheme.php:184
 msgid "Confirm Password"
 msgstr ""
 
@@ -978,11 +978,11 @@ msgstr ""
 
 #: src/Admin/SettingsPages/DragDropBuilder/Fields/DisplayName.php:22
 #: src/Admin/SettingsPages/DragDropBuilder/Fields/UserProfile/DisplayName.php:22
-#: src/Functions/GlobalFunctions.php:1485
+#: src/Functions/GlobalFunctions.php:1490
 #: src/Membership/CheckoutFields.php:114
 #: src/ShortcodeParser/Builder/FieldsShortcodeCallback.php:365
-#: src/Themes/DragDrop/AbstractMemberDirectoryTheme.php:208
-#: src/Themes/DragDrop/AbstractTheme.php:198
+#: src/Themes/DragDrop/AbstractMemberDirectoryTheme.php:228
+#: src/Themes/DragDrop/AbstractTheme.php:196
 #: src/Themes/DragDrop/MemberDirectory/DefaultTemplate.php:115
 #: src/Themes/DragDrop/UserProfile/DefaultTemplate.php:106
 msgid "Display Name"
@@ -1004,12 +1004,12 @@ msgstr ""
 #: src/Admin/SettingsPages/DragDropBuilder/Fields/Email.php:22
 #: src/Admin/SettingsPages/DragDropBuilder/Fields/UserProfile/Email.php:22
 #: src/Admin/SettingsPages/Membership/CustomersPage/SettingsPage.php:307
-#: src/Functions/GlobalFunctions.php:1486
+#: src/Functions/GlobalFunctions.php:1491
 #: src/Membership/CheckoutFields.php:51
 #: src/ShortcodeParser/Builder/FieldsShortcodeCallback.php:257
-#: src/Themes/DragDrop/AbstractMemberDirectoryTheme.php:206
-#: src/Themes/DragDrop/AbstractTheme.php:180
-#: src/Themes/DragDrop/AbstractTheme.php:239
+#: src/Themes/DragDrop/AbstractMemberDirectoryTheme.php:226
+#: src/Themes/DragDrop/AbstractTheme.php:178
+#: src/Themes/DragDrop/AbstractTheme.php:237
 #: src/Widgets/TabbedWidget.php:137
 msgid "Email Address"
 msgstr ""
@@ -1017,13 +1017,13 @@ msgstr ""
 #: src/Admin/SettingsPages/DragDropBuilder/Fields/FirstName.php:22
 #: src/Admin/SettingsPages/DragDropBuilder/Fields/UserProfile/FirstName.php:22
 #: src/Admin/SettingsPages/Membership/CustomersPage/SettingsPage.php:299
-#: src/Functions/GlobalFunctions.php:1482
+#: src/Functions/GlobalFunctions.php:1487
 #: src/Membership/CheckoutFields.php:65
 #: src/ShortcodeParser/Builder/FieldsShortcodeCallback.php:397
-#: src/Themes/DragDrop/AbstractMemberDirectoryTheme.php:209
-#: src/Themes/DragDrop/AbstractMemberDirectoryTheme.php:479
-#: src/Themes/DragDrop/AbstractTheme.php:201
-#: src/Themes/DragDrop/AbstractTheme.php:242
+#: src/Themes/DragDrop/AbstractMemberDirectoryTheme.php:229
+#: src/Themes/DragDrop/AbstractMemberDirectoryTheme.php:377
+#: src/Themes/DragDrop/AbstractTheme.php:199
+#: src/Themes/DragDrop/AbstractTheme.php:240
 msgid "First Name"
 msgstr ""
 
@@ -1039,13 +1039,13 @@ msgstr ""
 #: src/Admin/SettingsPages/DragDropBuilder/Fields/LastName.php:22
 #: src/Admin/SettingsPages/DragDropBuilder/Fields/UserProfile/LastName.php:22
 #: src/Admin/SettingsPages/Membership/CustomersPage/SettingsPage.php:303
-#: src/Functions/GlobalFunctions.php:1483
+#: src/Functions/GlobalFunctions.php:1488
 #: src/Membership/CheckoutFields.php:72
 #: src/ShortcodeParser/Builder/FieldsShortcodeCallback.php:430
-#: src/Themes/DragDrop/AbstractMemberDirectoryTheme.php:210
-#: src/Themes/DragDrop/AbstractMemberDirectoryTheme.php:480
-#: src/Themes/DragDrop/AbstractTheme.php:204
-#: src/Themes/DragDrop/AbstractTheme.php:245
+#: src/Themes/DragDrop/AbstractMemberDirectoryTheme.php:230
+#: src/Themes/DragDrop/AbstractMemberDirectoryTheme.php:378
+#: src/Themes/DragDrop/AbstractTheme.php:202
+#: src/Themes/DragDrop/AbstractTheme.php:243
 msgid "Last Name"
 msgstr ""
 
@@ -1054,7 +1054,7 @@ msgid "Remember Login"
 msgstr ""
 
 #: src/Admin/SettingsPages/DragDropBuilder/Fields/Login/RememberLogin.php:27
-#: src/Themes/DragDrop/AbstractTheme.php:226
+#: src/Themes/DragDrop/AbstractTheme.php:224
 msgid "Remember Me"
 msgstr ""
 
@@ -1062,8 +1062,8 @@ msgstr ""
 #: src/Admin/SettingsPages/DragDropBuilder/Fields/PasswordReset/Userlogin.php:22
 #: src/ShortcodeParser/Builder/PasswordResetBuilder.php:35
 #: src/templates/checkout/form-login.php:16
-#: src/Themes/DragDrop/AbstractTheme.php:220
-#: src/Themes/DragDrop/AbstractTheme.php:231
+#: src/Themes/DragDrop/AbstractTheme.php:218
+#: src/Themes/DragDrop/AbstractTheme.php:229
 #: src/Widgets/TabbedWidget.php:133
 msgid "Username or Email"
 msgstr ""
@@ -1075,12 +1075,12 @@ msgstr ""
 
 #: src/Admin/SettingsPages/DragDropBuilder/Fields/Nickname.php:22
 #: src/Admin/SettingsPages/DragDropBuilder/Fields/UserProfile/Nickname.php:22
-#: src/Functions/GlobalFunctions.php:1484
+#: src/Functions/GlobalFunctions.php:1489
 #: src/Membership/CheckoutFields.php:107
 #: src/ShortcodeParser/Builder/FieldsShortcodeCallback.php:333
 #: src/ShortcodeParser/Builder/FieldsShortcodeCallback.php:347
 #: src/ShortcodeParser/MyAccount/edit-profile.tmpl.php:143
-#: src/Themes/DragDrop/AbstractTheme.php:195
+#: src/Themes/DragDrop/AbstractTheme.php:193
 #: src/Themes/DragDrop/UserProfile/DefaultTemplate.php:107
 msgid "Nickname"
 msgstr ""
@@ -1174,12 +1174,12 @@ msgstr ""
 #: src/Admin/SettingsPages/DragDropBuilder/Fields/Username.php:22
 #: src/Admin/SettingsPages/DragDropBuilder/Fields/UserProfile/Username.php:22
 #: src/Admin/SettingsPages/Membership/CustomersPage/SettingsPage.php:311
-#: src/Functions/GlobalFunctions.php:1481
+#: src/Functions/GlobalFunctions.php:1486
 #: src/Membership/CheckoutFields.php:79
 #: src/ShortcodeParser/Builder/FieldsShortcodeCallback.php:182
-#: src/Themes/DragDrop/AbstractMemberDirectoryTheme.php:481
-#: src/Themes/DragDrop/AbstractTheme.php:177
-#: src/Themes/DragDrop/AbstractTheme.php:236
+#: src/Themes/DragDrop/AbstractMemberDirectoryTheme.php:379
+#: src/Themes/DragDrop/AbstractTheme.php:175
+#: src/Themes/DragDrop/AbstractTheme.php:234
 #: src/Themes/DragDrop/UserProfile/DefaultTemplate.php:105
 #: src/Widgets/TabbedWidget.php:130
 #: src/Widgets/TabbedWidget.php:166
@@ -1251,10 +1251,10 @@ msgstr ""
 #: src/ShortcodeParser/Builder/FieldsShortcodeCallback.php:300
 #: src/ShortcodeParser/Builder/FieldsShortcodeCallback.php:314
 #: src/ShortcodeParser/MyAccount/edit-profile.tmpl.php:153
-#: src/Themes/DragDrop/AbstractMemberDirectoryTheme.php:207
-#: src/Themes/DragDrop/AbstractTheme.php:192
-#: src/Themes/DragDrop/AbstractTheme.php:248
-#: src/Themes/DragDrop/MemberDirectoryListing.php:129
+#: src/Themes/DragDrop/AbstractMemberDirectoryTheme.php:227
+#: src/Themes/DragDrop/AbstractTheme.php:190
+#: src/Themes/DragDrop/AbstractTheme.php:246
+#: src/Themes/DragDrop/MemberDirectoryListing.php:125
 msgid "Website"
 msgstr ""
 
@@ -1480,12 +1480,12 @@ msgstr ""
 
 #: src/Admin/SettingsPages/EmailSettings/EmailSettingsPage.php:133
 #: src/Admin/SettingsPages/EmailSettings/EmailSettingsPage.php:153
-#: src/Membership/Emails/EmailDataTrait.php:44
+#: src/Membership/Emails/EmailDataTrait.php:45
 msgid "URL to reset password."
 msgstr ""
 
 #: src/Admin/SettingsPages/EmailSettings/EmailSettingsPage.php:134
-#: src/Membership/Emails/EmailDataTrait.php:45
+#: src/Membership/Emails/EmailDataTrait.php:46
 msgid "URL to login."
 msgstr ""
 
@@ -1974,13 +1974,13 @@ msgstr ""
 msgid "Forms"
 msgstr ""
 
-#: src/Admin/SettingsPages/Forms.php:219
-#: src/Admin/SettingsPages/MemberDirectories.php:114
+#: src/Admin/SettingsPages/Forms.php:227
+#: src/Admin/SettingsPages/MemberDirectories.php:125
 msgid "Live Preview"
 msgstr ""
 
-#: src/Admin/SettingsPages/Forms.php:298
-#: src/Admin/SettingsPages/MemberDirectories.php:210
+#: src/Admin/SettingsPages/Forms.php:313
+#: src/Admin/SettingsPages/MemberDirectories.php:173
 #: src/Admin/SettingsPages/Membership/CustomersPage/SettingsPage.php:379
 msgid "Add New"
 msgstr ""
@@ -2885,13 +2885,13 @@ msgstr ""
 msgid "Go to MailOptin settings"
 msgstr ""
 
-#: src/Admin/SettingsPages/MemberDirectories.php:37
-#: src/Admin/SettingsPages/MemberDirectories.php:55
-#: src/Admin/SettingsPages/MemberDirectories.php:91
+#: src/Admin/SettingsPages/MemberDirectories.php:39
+#: src/Admin/SettingsPages/MemberDirectories.php:61
+#: src/Admin/SettingsPages/MemberDirectories.php:97
 msgid "Member Directories"
 msgstr ""
 
-#: src/Admin/SettingsPages/MemberDirectories.php:44
+#: src/Admin/SettingsPages/MemberDirectories.php:48
 msgid "Edit Member Directory"
 msgstr ""
 
@@ -3063,7 +3063,7 @@ msgstr ""
 #: src/Admin/SettingsPages/Membership/PlansPage/SettingsPage.php:217
 #: src/Admin/SettingsPages/Membership/SubscriptionsPage/SettingsPage.php:170
 #: src/ContentProtection/SettingsPage.php:171
-#: src/Themes/DragDrop/AbstractTheme.php:132
+#: src/Themes/DragDrop/AbstractTheme.php:130
 msgid "Changes saved."
 msgstr ""
 
@@ -5220,42 +5220,42 @@ msgstr ""
 msgid "Loading..."
 msgstr ""
 
-#: src/Classes/AjaxHandler.php:102
+#: src/Classes/AjaxHandler.php:105
 msgid "Create from Scratch"
 msgstr ""
 
-#: src/Classes/AjaxHandler.php:108
+#: src/Classes/AjaxHandler.php:111
 msgid "Do it Yourself"
 msgstr ""
 
-#: src/Classes/AjaxHandler.php:111
+#: src/Classes/AjaxHandler.php:114
 msgid "Get Started Creating Your Own Form"
 msgstr ""
 
-#: src/Classes/AjaxHandler.php:150
+#: src/Classes/AjaxHandler.php:153
 msgid "Select this template"
 msgstr ""
 
-#: src/Classes/AjaxHandler.php:151
+#: src/Classes/AjaxHandler.php:154
 #: src/ContentProtection/ContentConditions.php:339
 msgid "Select Template"
 msgstr ""
 
-#: src/Classes/AjaxHandler.php:160
+#: src/Classes/AjaxHandler.php:163
 msgid "Enter a Name"
 msgstr ""
 
-#: src/Classes/AjaxHandler.php:216
-#: src/Classes/AjaxHandler.php:239
+#: src/Classes/AjaxHandler.php:224
+#: src/Classes/AjaxHandler.php:250
 #: src/Classes/PasswordReset.php:360
 msgid "Unexpected error. Please try again."
 msgstr ""
 
-#: src/Classes/AjaxHandler.php:248
+#: src/Classes/AjaxHandler.php:259
 msgid "Form with similar name exist already."
 msgstr ""
 
-#: src/Classes/AjaxHandler.php:546
+#: src/Classes/AjaxHandler.php:558
 msgid "Security validation failed. Try again"
 msgstr ""
 
@@ -5567,7 +5567,7 @@ msgid "You must be logged in to preview a form."
 msgstr ""
 
 #: src/Classes/FormRepository.php:167
-#: src/Themes/DragDrop/AbstractTheme.php:142
+#: src/Themes/DragDrop/AbstractTheme.php:140
 #: src/Widgets/TabbedWidget.php:87
 msgid "Processing"
 msgstr ""
@@ -5690,7 +5690,7 @@ msgid "<strong>ERROR</strong>: Invalid username or e-mail."
 msgstr ""
 
 #: src/Classes/PasswordReset.php:206
-#: src/Themes/DragDrop/AbstractTheme.php:136
+#: src/Themes/DragDrop/AbstractTheme.php:134
 #: src/Widgets/TabbedWidgetDependency.php:47
 msgid "Check your email for further instructions."
 msgstr ""
@@ -5751,7 +5751,7 @@ msgid "Password is not strong"
 msgstr ""
 
 #: src/Classes/RegistrationAuth.php:419
-#: src/Themes/DragDrop/AbstractTheme.php:128
+#: src/Themes/DragDrop/AbstractTheme.php:126
 msgid "Registration successful."
 msgstr ""
 
@@ -15120,712 +15120,712 @@ msgstr ""
 msgid "Dismiss this notice"
 msgstr ""
 
-#: src/Functions/GlobalFunctions.php:1290
+#: src/Functions/GlobalFunctions.php:1295
 msgid "It must be unique for each field, not a reserve text, in lowercase letters only with an underscore ( _ ) separating words e.g job_title"
 msgstr ""
 
-#: src/Functions/GlobalFunctions.php:1427
+#: src/Functions/GlobalFunctions.php:1432
 msgid "%s (WooCommerce Billing Address)"
 msgstr ""
 
-#: src/Functions/GlobalFunctions.php:1431
+#: src/Functions/GlobalFunctions.php:1436
 msgid "%s (WooCommerce Shipping Address)"
 msgstr ""
 
-#: src/Functions/GlobalFunctions.php:1479
+#: src/Functions/GlobalFunctions.php:1484
 msgid "First and Last Names"
 msgstr ""
 
-#: src/Functions/GlobalFunctions.php:1480
+#: src/Functions/GlobalFunctions.php:1485
 msgid "Last and First Names"
 msgstr ""
 
-#: src/Functions/GlobalFunctions.php:1488
+#: src/Functions/GlobalFunctions.php:1493
 msgid "Registration Date"
 msgstr ""
 
-#: src/Functions/GlobalFunctions.php:1627
+#: src/Functions/GlobalFunctions.php:1630
 msgid "There was an problem while verifying your file."
 msgstr ""
 
-#: src/Functions/GlobalFunctions.php:1632
+#: src/Functions/GlobalFunctions.php:1635
 msgid "Sorry, this file extension is not permitted for security reasons."
 msgstr ""
 
-#: src/Functions/GlobalFunctions.php:1636
+#: src/Functions/GlobalFunctions.php:1639
 msgid "Sorry, this file type is not permitted for security reasons."
 msgstr ""
 
-#: src/Functions/GlobalFunctions.php:1640
-#: src/Functions/GlobalFunctions.php:1644
+#: src/Functions/GlobalFunctions.php:1643
+#: src/Functions/GlobalFunctions.php:1647
 msgid "Error: The file you uploaded is not accepted on our website."
 msgstr ""
 
-#: src/Functions/MSFunctions.php:102
+#: src/Functions/MSFunctions.php:105
 msgid "United States (US) dollar"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:103
+#: src/Functions/MSFunctions.php:106
 msgid "Euro"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:104
+#: src/Functions/MSFunctions.php:107
 msgid "Pound sterling"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:105
+#: src/Functions/MSFunctions.php:108
 msgid "United Arab Emirates dirham"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:106
+#: src/Functions/MSFunctions.php:109
 msgid "Afghan afghani"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:107
+#: src/Functions/MSFunctions.php:110
 msgid "Albanian lek"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:108
+#: src/Functions/MSFunctions.php:111
 msgid "Armenian dram"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:109
+#: src/Functions/MSFunctions.php:112
 msgid "Netherlands Antillean guilder"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:110
+#: src/Functions/MSFunctions.php:113
 msgid "Angolan kwanza"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:111
+#: src/Functions/MSFunctions.php:114
 msgid "Argentine peso"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:112
+#: src/Functions/MSFunctions.php:115
 msgid "Australian dollar"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:113
+#: src/Functions/MSFunctions.php:116
 msgid "Aruban florin"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:114
+#: src/Functions/MSFunctions.php:117
 msgid "Azerbaijani manat"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:115
+#: src/Functions/MSFunctions.php:118
 msgid "Bosnia and Herzegovina convertible mark"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:116
+#: src/Functions/MSFunctions.php:119
 msgid "Barbadian dollar"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:117
+#: src/Functions/MSFunctions.php:120
 msgid "Bangladeshi taka"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:118
+#: src/Functions/MSFunctions.php:121
 msgid "Bulgarian lev"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:119
+#: src/Functions/MSFunctions.php:122
 msgid "Bahraini dinar"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:120
+#: src/Functions/MSFunctions.php:123
 msgid "Burundian franc"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:121
+#: src/Functions/MSFunctions.php:124
 msgid "Bermudian dollar"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:122
+#: src/Functions/MSFunctions.php:125
 msgid "Brunei dollar"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:123
+#: src/Functions/MSFunctions.php:126
 msgid "Bolivian boliviano"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:124
+#: src/Functions/MSFunctions.php:127
 msgid "Brazilian real"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:125
+#: src/Functions/MSFunctions.php:128
 msgid "Bahamian dollar"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:126
+#: src/Functions/MSFunctions.php:129
 msgid "Bitcoin"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:127
+#: src/Functions/MSFunctions.php:130
 msgid "Bhutanese ngultrum"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:128
+#: src/Functions/MSFunctions.php:131
 msgid "Botswana pula"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:129
+#: src/Functions/MSFunctions.php:132
 msgid "Belarusian ruble (old)"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:130
+#: src/Functions/MSFunctions.php:133
 msgid "Belarusian ruble"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:131
+#: src/Functions/MSFunctions.php:134
 msgid "Belize dollar"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:132
+#: src/Functions/MSFunctions.php:135
 msgid "Canadian dollar"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:133
+#: src/Functions/MSFunctions.php:136
 msgid "Congolese franc"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:134
+#: src/Functions/MSFunctions.php:137
 msgid "Swiss franc"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:135
+#: src/Functions/MSFunctions.php:138
 msgid "Chilean peso"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:136
+#: src/Functions/MSFunctions.php:139
 msgid "Chinese yuan"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:137
+#: src/Functions/MSFunctions.php:140
 msgid "Colombian peso"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:138
+#: src/Functions/MSFunctions.php:141
 msgid "Costa Rican col&oacute;n"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:139
+#: src/Functions/MSFunctions.php:142
 msgid "Cuban convertible peso"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:140
+#: src/Functions/MSFunctions.php:143
 msgid "Cuban peso"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:141
+#: src/Functions/MSFunctions.php:144
 msgid "Cape Verdean escudo"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:142
+#: src/Functions/MSFunctions.php:145
 msgid "Czech koruna"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:143
+#: src/Functions/MSFunctions.php:146
 msgid "Djiboutian franc"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:144
+#: src/Functions/MSFunctions.php:147
 msgid "Danish krone"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:145
+#: src/Functions/MSFunctions.php:148
 msgid "Dominican peso"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:146
+#: src/Functions/MSFunctions.php:149
 msgid "Algerian dinar"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:147
+#: src/Functions/MSFunctions.php:150
 msgid "Egyptian pound"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:148
+#: src/Functions/MSFunctions.php:151
 msgid "Eritrean nakfa"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:149
+#: src/Functions/MSFunctions.php:152
 msgid "Ethiopian birr"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:150
+#: src/Functions/MSFunctions.php:153
 msgid "Fijian dollar"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:151
+#: src/Functions/MSFunctions.php:154
 msgid "Falkland Islands pound"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:152
+#: src/Functions/MSFunctions.php:155
 msgid "Georgian lari"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:153
+#: src/Functions/MSFunctions.php:156
 msgid "Guernsey pound"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:154
+#: src/Functions/MSFunctions.php:157
 msgid "Ghana cedi"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:155
+#: src/Functions/MSFunctions.php:158
 msgid "Gibraltar pound"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:156
+#: src/Functions/MSFunctions.php:159
 msgid "Gambian dalasi"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:157
+#: src/Functions/MSFunctions.php:160
 msgid "Guinean franc"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:158
+#: src/Functions/MSFunctions.php:161
 msgid "Guatemalan quetzal"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:159
+#: src/Functions/MSFunctions.php:162
 msgid "Guyanese dollar"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:160
+#: src/Functions/MSFunctions.php:163
 msgid "Hong Kong dollar"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:161
+#: src/Functions/MSFunctions.php:164
 msgid "Honduran lempira"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:162
+#: src/Functions/MSFunctions.php:165
 msgid "Croatian kuna"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:163
+#: src/Functions/MSFunctions.php:166
 msgid "Haitian gourde"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:164
+#: src/Functions/MSFunctions.php:167
 msgid "Hungarian forint"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:165
+#: src/Functions/MSFunctions.php:168
 msgid "Indonesian rupiah"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:166
+#: src/Functions/MSFunctions.php:169
 msgid "Israeli new shekel"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:167
+#: src/Functions/MSFunctions.php:170
 msgid "Manx pound"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:168
+#: src/Functions/MSFunctions.php:171
 msgid "Indian rupee"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:169
+#: src/Functions/MSFunctions.php:172
 msgid "Iraqi dinar"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:170
+#: src/Functions/MSFunctions.php:173
 msgid "Iranian rial"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:171
+#: src/Functions/MSFunctions.php:174
 msgid "Iranian toman"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:172
+#: src/Functions/MSFunctions.php:175
 msgid "Icelandic kr&oacute;na"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:173
+#: src/Functions/MSFunctions.php:176
 msgid "Jersey pound"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:174
+#: src/Functions/MSFunctions.php:177
 msgid "Jamaican dollar"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:175
+#: src/Functions/MSFunctions.php:178
 msgid "Jordanian dinar"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:176
+#: src/Functions/MSFunctions.php:179
 msgid "Japanese yen"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:177
+#: src/Functions/MSFunctions.php:180
 msgid "Kenyan shilling"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:178
+#: src/Functions/MSFunctions.php:181
 msgid "Kyrgyzstani som"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:179
+#: src/Functions/MSFunctions.php:182
 msgid "Cambodian riel"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:180
+#: src/Functions/MSFunctions.php:183
 msgid "Comorian franc"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:181
+#: src/Functions/MSFunctions.php:184
 msgid "North Korean won"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:182
+#: src/Functions/MSFunctions.php:185
 msgid "South Korean won"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:183
+#: src/Functions/MSFunctions.php:186
 msgid "Kuwaiti dinar"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:184
+#: src/Functions/MSFunctions.php:187
 msgid "Cayman Islands dollar"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:185
+#: src/Functions/MSFunctions.php:188
 msgid "Kazakhstani tenge"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:186
+#: src/Functions/MSFunctions.php:189
 msgid "Lao kip"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:187
+#: src/Functions/MSFunctions.php:190
 msgid "Lebanese pound"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:188
+#: src/Functions/MSFunctions.php:191
 msgid "Sri Lankan rupee"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:189
+#: src/Functions/MSFunctions.php:192
 msgid "Liberian dollar"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:190
+#: src/Functions/MSFunctions.php:193
 msgid "Lesotho loti"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:191
+#: src/Functions/MSFunctions.php:194
 msgid "Libyan dinar"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:192
+#: src/Functions/MSFunctions.php:195
 msgid "Moroccan dirham"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:193
+#: src/Functions/MSFunctions.php:196
 msgid "Moldovan leu"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:194
+#: src/Functions/MSFunctions.php:197
 msgid "Malagasy ariary"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:195
+#: src/Functions/MSFunctions.php:198
 msgid "Macedonian denar"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:196
+#: src/Functions/MSFunctions.php:199
 msgid "Burmese kyat"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:197
+#: src/Functions/MSFunctions.php:200
 msgid "Mongolian t&ouml;gr&ouml;g"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:198
+#: src/Functions/MSFunctions.php:201
 msgid "Macanese pataca"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:199
+#: src/Functions/MSFunctions.php:202
 msgid "Mauritanian ouguiya"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:200
+#: src/Functions/MSFunctions.php:203
 msgid "Mauritian rupee"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:201
+#: src/Functions/MSFunctions.php:204
 msgid "Maldivian rufiyaa"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:202
+#: src/Functions/MSFunctions.php:205
 msgid "Malawian kwacha"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:203
+#: src/Functions/MSFunctions.php:206
 msgid "Mexican peso"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:204
+#: src/Functions/MSFunctions.php:207
 msgid "Malaysian ringgit"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:205
+#: src/Functions/MSFunctions.php:208
 msgid "Mozambican metical"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:206
+#: src/Functions/MSFunctions.php:209
 msgid "Namibian dollar"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:207
+#: src/Functions/MSFunctions.php:210
 msgid "Nigerian naira"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:208
+#: src/Functions/MSFunctions.php:211
 msgid "Nicaraguan c&oacute;rdoba"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:209
+#: src/Functions/MSFunctions.php:212
 msgid "Norwegian krone"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:210
+#: src/Functions/MSFunctions.php:213
 msgid "Nepalese rupee"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:211
+#: src/Functions/MSFunctions.php:214
 msgid "New Zealand dollar"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:212
+#: src/Functions/MSFunctions.php:215
 msgid "Omani rial"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:213
+#: src/Functions/MSFunctions.php:216
 msgid "Panamanian balboa"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:214
+#: src/Functions/MSFunctions.php:217
 msgid "Sol"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:215
+#: src/Functions/MSFunctions.php:218
 msgid "Papua New Guinean kina"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:216
+#: src/Functions/MSFunctions.php:219
 msgid "Philippine peso"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:217
+#: src/Functions/MSFunctions.php:220
 msgid "Pakistani rupee"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:218
+#: src/Functions/MSFunctions.php:221
 msgid "Polish z&#x142;oty"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:219
+#: src/Functions/MSFunctions.php:222
 msgid "Transnistrian ruble"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:220
+#: src/Functions/MSFunctions.php:223
 msgid "Paraguayan guaran&iacute;"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:221
+#: src/Functions/MSFunctions.php:224
 msgid "Qatari riyal"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:222
+#: src/Functions/MSFunctions.php:225
 msgid "Romanian leu"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:223
+#: src/Functions/MSFunctions.php:226
 msgid "Serbian dinar"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:224
+#: src/Functions/MSFunctions.php:227
 msgid "Russian ruble"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:225
+#: src/Functions/MSFunctions.php:228
 msgid "Rwandan franc"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:226
+#: src/Functions/MSFunctions.php:229
 msgid "Saudi riyal"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:227
+#: src/Functions/MSFunctions.php:230
 msgid "Solomon Islands dollar"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:228
+#: src/Functions/MSFunctions.php:231
 msgid "Seychellois rupee"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:229
+#: src/Functions/MSFunctions.php:232
 msgid "Sudanese pound"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:230
+#: src/Functions/MSFunctions.php:233
 msgid "Swedish krona"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:231
+#: src/Functions/MSFunctions.php:234
 msgid "Singapore dollar"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:232
+#: src/Functions/MSFunctions.php:235
 msgid "Saint Helena pound"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:233
+#: src/Functions/MSFunctions.php:236
 msgid "Sierra Leonean leone"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:234
+#: src/Functions/MSFunctions.php:237
 msgid "Somali shilling"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:235
+#: src/Functions/MSFunctions.php:238
 msgid "Surinamese dollar"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:236
+#: src/Functions/MSFunctions.php:239
 msgid "South Sudanese pound"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:237
+#: src/Functions/MSFunctions.php:240
 msgid "S&atilde;o Tom&eacute; and Pr&iacute;ncipe dobra"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:238
+#: src/Functions/MSFunctions.php:241
 msgid "Syrian pound"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:239
+#: src/Functions/MSFunctions.php:242
 msgid "Swazi lilangeni"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:240
+#: src/Functions/MSFunctions.php:243
 msgid "Thai baht"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:241
+#: src/Functions/MSFunctions.php:244
 msgid "Tajikistani somoni"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:242
+#: src/Functions/MSFunctions.php:245
 msgid "Turkmenistan manat"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:243
+#: src/Functions/MSFunctions.php:246
 msgid "Tunisian dinar"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:244
+#: src/Functions/MSFunctions.php:247
 msgid "Tongan pa&#x2bb;anga"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:245
+#: src/Functions/MSFunctions.php:248
 msgid "Turkish lira"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:246
+#: src/Functions/MSFunctions.php:249
 msgid "Trinidad and Tobago dollar"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:247
+#: src/Functions/MSFunctions.php:250
 msgid "New Taiwan dollar"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:248
+#: src/Functions/MSFunctions.php:251
 msgid "Tanzanian shilling"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:249
+#: src/Functions/MSFunctions.php:252
 msgid "Ukrainian hryvnia"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:250
+#: src/Functions/MSFunctions.php:253
 msgid "Ugandan shilling"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:251
+#: src/Functions/MSFunctions.php:254
 msgid "Uruguayan peso"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:252
+#: src/Functions/MSFunctions.php:255
 msgid "Uzbekistani som"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:253
+#: src/Functions/MSFunctions.php:256
 msgid "Venezuelan bol&iacute;var"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:254
+#: src/Functions/MSFunctions.php:257
 msgid "Bol&iacute;var soberano"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:255
+#: src/Functions/MSFunctions.php:258
 msgid "Vietnamese &#x111;&#x1ed3;ng"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:256
+#: src/Functions/MSFunctions.php:259
 msgid "Vanuatu vatu"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:257
+#: src/Functions/MSFunctions.php:260
 msgid "Samoan t&#x101;l&#x101;"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:258
+#: src/Functions/MSFunctions.php:261
 msgid "Central African CFA franc"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:259
+#: src/Functions/MSFunctions.php:262
 msgid "East Caribbean dollar"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:260
+#: src/Functions/MSFunctions.php:263
 msgid "West African CFA franc"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:261
+#: src/Functions/MSFunctions.php:264
 msgid "CFP franc"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:262
+#: src/Functions/MSFunctions.php:265
 msgid "Yemeni rial"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:263
+#: src/Functions/MSFunctions.php:266
 msgid "South African rand"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:264
+#: src/Functions/MSFunctions.php:267
 msgid "Zambian kwacha"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:882
+#: src/Functions/MSFunctions.php:885
 msgid "Unable to create customer. Please try again"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:909
+#: src/Functions/MSFunctions.php:912
 msgid "Customer already has an active subscription for %s."
 msgstr ""
 
-#: src/Functions/MSFunctions.php:936
+#: src/Functions/MSFunctions.php:939
 msgid "Unable to add new order. Please try again"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:964
+#: src/Functions/MSFunctions.php:967
 msgid "Unable to add new subscription. Please try again"
 msgstr ""
 
@@ -16050,17 +16050,17 @@ msgid "Your store's uploads directory is <a href=\"%1$s\">browsable via the web<
 msgstr ""
 
 #: src/Membership/Emails/EmailDataTrait.php:10
-#: src/Membership/Emails/EmailDataTrait.php:52
+#: src/Membership/Emails/EmailDataTrait.php:53
 msgid "Email address of the customer."
 msgstr ""
 
 #: src/Membership/Emails/EmailDataTrait.php:11
-#: src/Membership/Emails/EmailDataTrait.php:53
+#: src/Membership/Emails/EmailDataTrait.php:54
 msgid "First name of the customer."
 msgstr ""
 
 #: src/Membership/Emails/EmailDataTrait.php:12
-#: src/Membership/Emails/EmailDataTrait.php:54
+#: src/Membership/Emails/EmailDataTrait.php:55
 msgid "Last name of the customer."
 msgstr ""
 
@@ -16101,67 +16101,71 @@ msgid "Name or title of plan ordered."
 msgstr ""
 
 #: src/Membership/Emails/EmailDataTrait.php:25
-msgid "Order price before taxes."
+msgid "Coupon code used for the order."
 msgstr ""
 
 #: src/Membership/Emails/EmailDataTrait.php:26
-msgid "The taxed amount of the order."
+msgid "Order price before taxes."
 msgstr ""
 
 #: src/Membership/Emails/EmailDataTrait.php:27
-msgid "Total order amount that was paid."
+msgid "The taxed amount of the order."
 msgstr ""
 
 #: src/Membership/Emails/EmailDataTrait.php:28
-msgid "Order date."
+msgid "Total order amount that was paid."
 msgstr ""
 
 #: src/Membership/Emails/EmailDataTrait.php:29
-msgid "Order payment method."
+msgid "Order date."
 msgstr ""
 
 #: src/Membership/Emails/EmailDataTrait.php:30
-msgid "The purchase note of ordered plan."
+msgid "Order payment method."
 msgstr ""
 
 #: src/Membership/Emails/EmailDataTrait.php:31
-#: src/Membership/Emails/EmailDataTrait.php:61
+msgid "The purchase note of ordered plan."
+msgstr ""
+
+#: src/Membership/Emails/EmailDataTrait.php:32
+#: src/Membership/Emails/EmailDataTrait.php:62
 msgid "Name or title of this website."
 msgstr ""
 
-#: src/Membership/Emails/EmailDataTrait.php:33
+#: src/Membership/Emails/EmailDataTrait.php:34
 msgid "Your business name as defined in %sSettings%s."
 msgstr ""
 
-#: src/Membership/Emails/EmailDataTrait.php:37
+#: src/Membership/Emails/EmailDataTrait.php:38
 msgid "Your business address as defined in %sSettings%s."
 msgstr ""
 
-#: src/Membership/Emails/EmailDataTrait.php:41
+#: src/Membership/Emails/EmailDataTrait.php:42
 msgid "Your business Tax ID as defined in %sSettings%s."
 msgstr ""
 
-#: src/Membership/Emails/EmailDataTrait.php:55
+#: src/Membership/Emails/EmailDataTrait.php:56
 msgid "Subscription ID."
 msgstr ""
 
-#: src/Membership/Emails/EmailDataTrait.php:56
+#: src/Membership/Emails/EmailDataTrait.php:57
 msgid "URL to view subscription."
 msgstr ""
 
-#: src/Membership/Emails/EmailDataTrait.php:57
+#: src/Membership/Emails/EmailDataTrait.php:58
 msgid "URL to re-subscribe to the membership plan."
 msgstr ""
 
-#: src/Membership/Emails/EmailDataTrait.php:58
+#: src/Membership/Emails/EmailDataTrait.php:59
 msgid "Name or title of membership plan."
 msgstr ""
 
-#: src/Membership/Emails/EmailDataTrait.php:59
+#: src/Membership/Emails/EmailDataTrait.php:60
 msgid "The recurring amount of the subscription."
 msgstr ""
 
-#: src/Membership/Emails/EmailDataTrait.php:60
+#: src/Membership/Emails/EmailDataTrait.php:61
 msgid "The expiration or renewal date for the subscription."
 msgstr ""
 
@@ -16636,7 +16640,7 @@ msgstr ""
 
 #: src/RegisterActivation/Base.php:183
 #: src/ShortcodeParser/Builder/LoginFormBuilder.php:166
-#: src/Themes/DragDrop/AbstractTheme.php:122
+#: src/Themes/DragDrop/AbstractTheme.php:120
 #: src/Widgets/TabbedWidget.php:88
 msgid "Log In"
 msgstr ""
@@ -16650,7 +16654,7 @@ msgstr ""
 
 #: src/RegisterActivation/Base.php:191
 #: src/ShortcodeParser/Builder/GlobalShortcodes.php:216
-#: src/Themes/DragDrop/AbstractTheme.php:135
+#: src/Themes/DragDrop/AbstractTheme.php:133
 msgid "Reset Password"
 msgstr ""
 
@@ -16755,7 +16759,7 @@ msgstr ""
 #: src/ShortcodeParser/Builder/FieldsShortcodeCallback.php:904
 #: src/ShortcodeParser/Builder/FieldsShortcodeCallback.php:967
 #: src/ShortcodeParser/Builder/FieldsShortcodeCallback.php:1019
-#: src/ShortcodeParser/Builder/FrontendProfileBuilder.php:351
+#: src/ShortcodeParser/Builder/FrontendProfileBuilder.php:357
 msgid "Field key is missing"
 msgstr ""
 
@@ -16787,23 +16791,23 @@ msgstr ""
 msgid "Delete Cover Photo"
 msgstr ""
 
-#: src/ShortcodeParser/Builder/FrontendProfileBuilder.php:114
+#: src/ShortcodeParser/Builder/FrontendProfileBuilder.php:120
 msgid "This user has not created any post."
 msgstr ""
 
-#: src/ShortcodeParser/Builder/FrontendProfileBuilder.php:117
+#: src/ShortcodeParser/Builder/FrontendProfileBuilder.php:123
 msgid "You have not created any post."
 msgstr ""
 
-#: src/ShortcodeParser/Builder/FrontendProfileBuilder.php:176
+#: src/ShortcodeParser/Builder/FrontendProfileBuilder.php:182
 msgid "This user has not made any comment."
 msgstr ""
 
-#: src/ShortcodeParser/Builder/FrontendProfileBuilder.php:179
+#: src/ShortcodeParser/Builder/FrontendProfileBuilder.php:185
 msgid "You have not made any comment."
 msgstr ""
 
-#: src/ShortcodeParser/Builder/FrontendProfileBuilder.php:666
+#: src/ShortcodeParser/Builder/FrontendProfileBuilder.php:672
 msgid "No post written yet."
 msgstr ""
 
@@ -16855,8 +16859,28 @@ msgstr ""
 msgid "You are already logged in."
 msgstr ""
 
-#: src/ShortcodeParser/MemberDirectoryTag.php:73
+#: src/ShortcodeParser/MemberDirectoryTag.php:63
+msgid "No member directory ID specified."
+msgstr ""
+
+#: src/ShortcodeParser/MemberDirectoryTag.php:89
 msgid "Member directory class not found. Please check it actually exist in ProfilePress."
+msgstr ""
+
+#: src/ShortcodeParser/MemberDirectoryTag.php:172
+#: src/ShortcodeParser/MemberDirectoryTag.php:173
+#: src/Themes/DragDrop/AbstractMemberDirectoryTheme.php:264
+#: src/Themes/DragDrop/AbstractMemberDirectoryTheme.php:538
+#: src/Themes/DragDrop/AbstractMemberDirectoryTheme.php:540
+msgid "Search"
+msgstr ""
+
+#: src/ShortcodeParser/MemberDirectoryTag.php:198
+msgid "&laquo; Previous"
+msgstr ""
+
+#: src/ShortcodeParser/MemberDirectoryTag.php:199
+msgid "Next &raquo;"
 msgstr ""
 
 #: src/ShortcodeParser/MembershipShortcodes.php:79
@@ -17200,7 +17224,7 @@ msgid "Description Appearance"
 msgstr ""
 
 #: src/Themes/DragDrop/AbstractBuildScratch.php:125
-#: src/Themes/DragDrop/AbstractMemberDirectoryTheme.php:205
+#: src/Themes/DragDrop/AbstractMemberDirectoryTheme.php:225
 msgid "Standard"
 msgstr ""
 
@@ -17235,7 +17259,7 @@ msgid "Lost your password?"
 msgstr ""
 
 #: src/Themes/DragDrop/AbstractBuildScratch.php:179
-#: src/Themes/DragDrop/AbstractTheme.php:127
+#: src/Themes/DragDrop/AbstractTheme.php:125
 #: src/Widgets/TabbedWidget.php:116
 msgid "Register"
 msgstr ""
@@ -17415,162 +17439,156 @@ msgstr ""
 msgid "Text Focused"
 msgstr ""
 
-#: src/Themes/DragDrop/AbstractMemberDirectoryTheme.php:123
+#: src/Themes/DragDrop/AbstractMemberDirectoryTheme.php:143
 msgid "%s Members"
 msgstr ""
 
-#: src/Themes/DragDrop/AbstractMemberDirectoryTheme.php:124
+#: src/Themes/DragDrop/AbstractMemberDirectoryTheme.php:144
 msgid "%s Member"
 msgstr ""
 
-#: src/Themes/DragDrop/AbstractMemberDirectoryTheme.php:125
+#: src/Themes/DragDrop/AbstractMemberDirectoryTheme.php:145
 msgid "We could not find any user that matches your search criteria"
 msgstr ""
 
-#: src/Themes/DragDrop/AbstractMemberDirectoryTheme.php:142
+#: src/Themes/DragDrop/AbstractMemberDirectoryTheme.php:162
 msgid "User Roles to Display"
 msgstr ""
 
-#: src/Themes/DragDrop/AbstractMemberDirectoryTheme.php:143
+#: src/Themes/DragDrop/AbstractMemberDirectoryTheme.php:163
 msgid "If you do not want to show all members, select the user roles to appear in this directory."
 msgstr ""
 
-#: src/Themes/DragDrop/AbstractMemberDirectoryTheme.php:151
-#: src/Themes/DragDrop/AbstractMemberDirectoryTheme.php:159
+#: src/Themes/DragDrop/AbstractMemberDirectoryTheme.php:171
+#: src/Themes/DragDrop/AbstractMemberDirectoryTheme.php:179
 msgid "Example: 1, 6, 32"
 msgstr ""
 
-#: src/Themes/DragDrop/AbstractMemberDirectoryTheme.php:152
+#: src/Themes/DragDrop/AbstractMemberDirectoryTheme.php:172
 msgid "Comma Separated List of Users ID to Only Show"
 msgstr ""
 
-#: src/Themes/DragDrop/AbstractMemberDirectoryTheme.php:160
+#: src/Themes/DragDrop/AbstractMemberDirectoryTheme.php:180
 msgid "Comma Separated List of Users ID to Exclude"
 msgstr ""
 
-#: src/Themes/DragDrop/AbstractMemberDirectoryTheme.php:173
+#: src/Themes/DragDrop/AbstractMemberDirectoryTheme.php:193
 msgid "Search & Filter Fields Text"
 msgstr ""
 
-#: src/Themes/DragDrop/AbstractMemberDirectoryTheme.php:178
+#: src/Themes/DragDrop/AbstractMemberDirectoryTheme.php:198
 msgid "Search & Filter Fields Border"
 msgstr ""
 
-#: src/Themes/DragDrop/AbstractMemberDirectoryTheme.php:183
+#: src/Themes/DragDrop/AbstractMemberDirectoryTheme.php:203
 msgid "Pagination Links"
 msgstr ""
 
-#: src/Themes/DragDrop/AbstractMemberDirectoryTheme.php:188
+#: src/Themes/DragDrop/AbstractMemberDirectoryTheme.php:208
 msgid "Pagination Active Link Color"
 msgstr ""
 
-#: src/Themes/DragDrop/AbstractMemberDirectoryTheme.php:193
+#: src/Themes/DragDrop/AbstractMemberDirectoryTheme.php:213
 msgid "Pagination Active Link Background"
 msgstr ""
 
-#: src/Themes/DragDrop/AbstractMemberDirectoryTheme.php:222
+#: src/Themes/DragDrop/AbstractMemberDirectoryTheme.php:242
 msgid "Sorting"
 msgstr ""
 
-#: src/Themes/DragDrop/AbstractMemberDirectoryTheme.php:225
+#: src/Themes/DragDrop/AbstractMemberDirectoryTheme.php:245
 msgid "Default Sorting method"
 msgstr ""
 
-#: src/Themes/DragDrop/AbstractMemberDirectoryTheme.php:231
+#: src/Themes/DragDrop/AbstractMemberDirectoryTheme.php:251
 msgid "Enable custom sorting"
 msgstr ""
 
-#: src/Themes/DragDrop/AbstractMemberDirectoryTheme.php:236
+#: src/Themes/DragDrop/AbstractMemberDirectoryTheme.php:256
 msgid "Sorting Method Fields"
 msgstr ""
 
-#: src/Themes/DragDrop/AbstractMemberDirectoryTheme.php:239
+#: src/Themes/DragDrop/AbstractMemberDirectoryTheme.php:259
 msgid "Fields to show in sorting dropdown menu"
 msgstr ""
 
-#: src/Themes/DragDrop/AbstractMemberDirectoryTheme.php:244
-#: src/Themes/DragDrop/AbstractMemberDirectoryTheme.php:845
-#: src/Themes/DragDrop/AbstractMemberDirectoryTheme.php:847
-msgid "Search"
-msgstr ""
-
-#: src/Themes/DragDrop/AbstractMemberDirectoryTheme.php:247
+#: src/Themes/DragDrop/AbstractMemberDirectoryTheme.php:267
 msgid "Display Search Form"
 msgstr ""
 
-#: src/Themes/DragDrop/AbstractMemberDirectoryTheme.php:252
+#: src/Themes/DragDrop/AbstractMemberDirectoryTheme.php:272
 msgid "Search Fields"
 msgstr ""
 
-#: src/Themes/DragDrop/AbstractMemberDirectoryTheme.php:255
+#: src/Themes/DragDrop/AbstractMemberDirectoryTheme.php:275
 msgid "Select fields to search in."
 msgstr ""
 
-#: src/Themes/DragDrop/AbstractMemberDirectoryTheme.php:264
+#: src/Themes/DragDrop/AbstractMemberDirectoryTheme.php:284
 msgid "Enable Filters"
 msgstr ""
 
-#: src/Themes/DragDrop/AbstractMemberDirectoryTheme.php:266
+#: src/Themes/DragDrop/AbstractMemberDirectoryTheme.php:286
 msgid "If enabled, users will be able to filter members in this directory"
 msgstr ""
 
-#: src/Themes/DragDrop/AbstractMemberDirectoryTheme.php:271
+#: src/Themes/DragDrop/AbstractMemberDirectoryTheme.php:291
 msgid "Filter Fields"
 msgstr ""
 
-#: src/Themes/DragDrop/AbstractMemberDirectoryTheme.php:278
+#: src/Themes/DragDrop/AbstractMemberDirectoryTheme.php:304
 msgid "Select custom fields that members can be filtered by. Only Select, Checkbox, Radio, Country and Date/Time fields are supported."
 msgstr ""
 
-#: src/Themes/DragDrop/AbstractMemberDirectoryTheme.php:289
+#: src/Themes/DragDrop/AbstractMemberDirectoryTheme.php:315
 msgid "%sUpgrade to ProfilePress premium%s if you don't have the custom field addon so you can enable search and filtering by custom fields."
 msgstr ""
 
-#: src/Themes/DragDrop/AbstractMemberDirectoryTheme.php:296
+#: src/Themes/DragDrop/AbstractMemberDirectoryTheme.php:322
 msgid "Result & Pagination"
 msgstr ""
 
-#: src/Themes/DragDrop/AbstractMemberDirectoryTheme.php:299
+#: src/Themes/DragDrop/AbstractMemberDirectoryTheme.php:325
 msgid "Show Results Only After a Search"
 msgstr ""
 
-#: src/Themes/DragDrop/AbstractMemberDirectoryTheme.php:301
+#: src/Themes/DragDrop/AbstractMemberDirectoryTheme.php:327
 msgid "Enable to only show members after a search is performed"
 msgstr ""
 
-#: src/Themes/DragDrop/AbstractMemberDirectoryTheme.php:305
+#: src/Themes/DragDrop/AbstractMemberDirectoryTheme.php:331
 msgid "Number of Members per Page"
 msgstr ""
 
-#: src/Themes/DragDrop/AbstractMemberDirectoryTheme.php:310
+#: src/Themes/DragDrop/AbstractMemberDirectoryTheme.php:336
 msgid "Results Text"
 msgstr ""
 
-#: src/Themes/DragDrop/AbstractMemberDirectoryTheme.php:315
+#: src/Themes/DragDrop/AbstractMemberDirectoryTheme.php:341
 msgid "Single Result Text"
 msgstr ""
 
-#: src/Themes/DragDrop/AbstractMemberDirectoryTheme.php:320
+#: src/Themes/DragDrop/AbstractMemberDirectoryTheme.php:346
 msgid "No Result Text"
 msgstr ""
 
-#: src/Themes/DragDrop/AbstractMemberDirectoryTheme.php:477
+#: src/Themes/DragDrop/AbstractMemberDirectoryTheme.php:375
 msgid "Newest Users First"
 msgstr ""
 
-#: src/Themes/DragDrop/AbstractMemberDirectoryTheme.php:478
+#: src/Themes/DragDrop/AbstractMemberDirectoryTheme.php:376
 msgid "Oldest Users First"
 msgstr ""
 
-#: src/Themes/DragDrop/AbstractMemberDirectoryTheme.php:712
+#: src/Themes/DragDrop/AbstractMemberDirectoryTheme.php:406
 msgid "Sort by"
 msgstr ""
 
-#: src/Themes/DragDrop/AbstractMemberDirectoryTheme.php:749
+#: src/Themes/DragDrop/AbstractMemberDirectoryTheme.php:442
 msgid "More Filters"
 msgstr ""
 
-#: src/Themes/DragDrop/AbstractTheme.php:251
+#: src/Themes/DragDrop/AbstractTheme.php:249
 msgid "Bio"
 msgstr ""
 

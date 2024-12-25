@@ -2,7 +2,7 @@
 
 use ProfilePress\Core\Membership\Repositories\PlanRepository;
 
-$postedData = ppress_var(@$_POST['ppress_cc_data'], 'access_condition', []);
+$postedData = ppress_var($_POST['ppress_cc_data'] ?? [], 'access_condition', []);
 
 $who_can_access                      = ppressPOST_var('who_can_access', ppress_var($accessConditionData, 'who_can_access'), false, $postedData);
 $access_roles                        = ppressPOST_var('access_roles', ppress_var($accessConditionData, 'access_roles', []), [], $postedData);

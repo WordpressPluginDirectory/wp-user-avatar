@@ -144,7 +144,8 @@ trait WPProfileFieldParserTrait
                 if ($field_type == 'file') {
                     $user_upload_data = get_user_meta($user->ID, 'pp_uploaded_files', true);
                     // if the user uploads isn't empty and there exist a file with the custom field key.
-                    if ( ! empty($user_upload_data) && $filename = @$user_upload_data[$field_key]) {
+                    if ( ! empty($user_upload_data) && isset($user_upload_data[$field_key])) {
+                        $filename = $user_upload_data[$field_key];
                         $link = PPRESS_FILE_UPLOAD_URL . $filename;
                         echo "<p><a href='$link'>$filename</a></p>";
                     }

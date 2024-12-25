@@ -28,7 +28,8 @@
             $.post(
                 ajaxurl, {
                     action: "pp_get_forms_by_builder_type",
-                    data: builder_type
+                    data: builder_type,
+                    is_member_directory: typeof pp_is_member_directory != 'undefined' ? pp_is_member_directory : false
                 }, function (response) {
                     $('.pp-main-ajax-body').html(response);
                     fb.uiUnBlock();

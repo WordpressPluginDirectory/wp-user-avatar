@@ -41,6 +41,7 @@ abstract class AbstractMembershipEmail
                 OrderService::init()->admin_view_order_url($order->id) :
                 OrderService::init()->frontend_view_order_url($order->order_key),
             '{{plan_name}}'            => ppress_get_plan($order->plan_id)->name,
+            '{{order_coupon}}'         => $order->coupon_code,
             '{{order_subtotal}}'       => ppress_display_amount($order->subtotal, $order->currency),
             '{{order_tax}}'            => ppress_display_amount($order->tax, $order->currency),
             '{{order_total}}'          => ppress_display_amount($order->total, $order->currency),
@@ -95,15 +96,15 @@ abstract class AbstractMembershipEmail
      */
     public function parse_placeholders($content, $placeholders, $order_or_sub)
     {
-		if($order_or_sub instanceof SubscriptionEntity) {
-			$user = $order_or_sub->get_customer()->get_wp_user();
-		} else {
-			$user = $order_or_sub->get_customer()->get_wp_user();
-		}
+        if ($order_or_sub instanceof SubscriptionEntity) {
+            $user = $order_or_sub->get_customer()->get_wp_user();
+        } else {
+            $user = $order_or_sub->get_customer()->get_wp_user();
+        }
 
         return ppress_custom_profile_field_search_replace(
-			str_replace(array_keys($placeholders), array_values($placeholders), $content),
-	        $user
+            str_replace(array_keys($placeholders), array_values($placeholders), $content),
+            $user
         );
     }
 
