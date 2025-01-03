@@ -1,5 +1,8 @@
 ﻿== Changelog ==
 
+= 4.15.20.1 =
+* Disable registration via checkout if "user can register" is not enabled.
+
 = 4.15.20 =
 * Added ppress_content_protection_ignore_post_excerpt filter.
 * Added ppress_user_avatar_image_url filter.

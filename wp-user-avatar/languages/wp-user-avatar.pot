@@ -1,15 +1,15 @@
-# Copyright (C) 2024 ProfilePress Membership Team
+# Copyright (C) 2025 ProfilePress Membership Team
 # This file is distributed under the same license as the ProfilePress plugin.
 msgid ""
 msgstr ""
-"Project-Id-Version: ProfilePress 4.15.20\n"
+"Project-Id-Version: ProfilePress 4.15.20.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wp-user-avatar\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2024-12-24T15:37:58+00:00\n"
+"POT-Creation-Date: 2025-01-02T21:59:52+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.8.1\n"
 "X-Domain: wp-user-avatar\n"
@@ -5722,8 +5722,8 @@ msgid "Log in"
 msgstr ""
 
 #: src/Classes/RegistrationAuth.php:223
-#: src/Membership/Controllers/CheckoutTrait.php:225
-#: src/Membership/Controllers/CheckoutTrait.php:244
+#: src/Membership/Controllers/CheckoutTrait.php:230
+#: src/Membership/Controllers/CheckoutTrait.php:249
 msgid "%s field is required"
 msgstr ""
 
@@ -5732,17 +5732,17 @@ msgid "<strong>ERROR</strong>: This username is invalid because it uses illegal 
 msgstr ""
 
 #: src/Classes/RegistrationAuth.php:236
-#: src/Membership/Controllers/CheckoutTrait.php:266
+#: src/Membership/Controllers/CheckoutTrait.php:271
 msgid "Email address is not valid"
 msgstr ""
 
 #: src/Classes/RegistrationAuth.php:240
-#: src/Membership/Controllers/CheckoutTrait.php:298
+#: src/Membership/Controllers/CheckoutTrait.php:303
 msgid "Passwords do not match"
 msgstr ""
 
 #: src/Classes/RegistrationAuth.php:244
-#: src/Membership/Controllers/CheckoutTrait.php:264
+#: src/Membership/Controllers/CheckoutTrait.php:269
 msgid "Email addresses do not match"
 msgstr ""
 
@@ -15988,11 +15988,15 @@ msgstr ""
 msgid "Unable to create order. Please try again"
 msgstr ""
 
-#: src/Membership/Controllers/CheckoutTrait.php:268
+#: src/Membership/Controllers/CheckoutTrait.php:215
+msgid "Registration is disabled"
+msgstr ""
+
+#: src/Membership/Controllers/CheckoutTrait.php:273
 msgid "Email already used. Login or use a different email to complete your order"
 msgstr ""
 
-#: src/Membership/Controllers/CheckoutTrait.php:288
+#: src/Membership/Controllers/CheckoutTrait.php:293
 msgid "Username is invalid because it uses illegal characters"
 msgstr ""
 
