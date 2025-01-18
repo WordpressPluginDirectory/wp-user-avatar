@@ -9,6 +9,7 @@ use ProfilePress\Core\Membership\Models\Group\GroupFactory;
 use ProfilePress\Core\Membership\Models\Order\OrderFactory;
 use ProfilePress\Core\Membership\Models\Order\OrderType;
 use ProfilePress\Core\Membership\Models\Subscription\SubscriptionFactory;
+use ProfilePress\Core\Membership\PaymentMethods\BankTransfer\BankTransfer;
 
 class MembershipShortcodes
 {
@@ -28,11 +29,12 @@ class MembershipShortcodes
             add_filter('the_content', [$this, 'filter_success_page_content'], 99999);
         });
     }
+
     function filter_success_page_content($content)
     {
         if (isset($_GET['order_key'], $_GET['payment_method']) && ppress_is_success_page()) {
             $order = OrderFactory::fromOrderKey(sanitize_key($_GET['order_key']));
-            if ($order->exists() && $order->is_pending()) {
+            if ($order->exists() && $order->is_pending() && $_GET['payment_method'] != BankTransfer::get_instance()->get_id()) {
                 ob_start();
                 ppress_render_view('order-processing', [
                     'order_success_page' => ppress_get_success_url($order->order_key)

@@ -39,7 +39,7 @@ humbug_phpscoper_expose_class('Stringable', 'ProfilePressVendor\Stringable');
 // https://github.com/humbug/php-scoper/blob/master/docs/further-reading.md#function-aliases
 if (!function_exists('app')) { function app() { return \ProfilePressVendor\app(...func_get_args()); } }
 if (!function_exists('calculateTranslationStatus')) { function calculateTranslationStatus() { return \ProfilePressVendor\calculateTranslationStatus(...func_get_args()); } }
-if (!function_exists('composerRequirec33e7254bfb6e6bc8570f410ac076a70')) { function composerRequirec33e7254bfb6e6bc8570f410ac076a70() { return \ProfilePressVendor\composerRequirec33e7254bfb6e6bc8570f410ac076a70(...func_get_args()); } }
+if (!function_exists('composerRequirefde0b937ebb46cb375aae59322f631ba')) { function composerRequirefde0b937ebb46cb375aae59322f631ba() { return \ProfilePressVendor\composerRequirefde0b937ebb46cb375aae59322f631ba(...func_get_args()); } }
 if (!function_exists('extractLocaleFromFilePath')) { function extractLocaleFromFilePath() { return \ProfilePressVendor\extractLocaleFromFilePath(...func_get_args()); } }
 if (!function_exists('extractTranslationKeys')) { function extractTranslationKeys() { return \ProfilePressVendor\extractTranslationKeys(...func_get_args()); } }
 if (!function_exists('fdiv')) { function fdiv() { return \ProfilePressVendor\fdiv(...func_get_args()); } }

@@ -210,8 +210,7 @@ trait CheckoutTrait
 
         $should_validate_fields = [];
 
-
-        if ( ! get_option('users_can_register')) {
+        if ( ! is_user_logged_in() && apply_filters('ppress_checkout_is_registration_checked_enabled', true) && ! get_option('users_can_register')) {
             $error_bucket->add('registration_disabled', esc_html__('Registration is disabled', 'wp-user-avatar'));
         }
 

@@ -972,7 +972,7 @@ class FieldsShortcodeCallback
         $field_label = isset($atts['checkbox_text']) ? wp_kses_post(html_entity_decode($atts['checkbox_text'])) : '';
 
         // remove all onXYZ attributes
-        $field_label = preg_replace('/(on.+=)/', '', $field_label);
+        $field_label = preg_replace('/(on[\S]+=)/', '', $field_label);
 
         // checked for checkbox
         $checked = checked(ppressPOST_var($key, ppress_var($atts, 'checked_state')), 'true', false);

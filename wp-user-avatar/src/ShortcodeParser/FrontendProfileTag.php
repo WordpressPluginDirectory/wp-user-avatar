@@ -20,16 +20,6 @@ class FrontendProfileTag
         add_filter('wp_title', array($this, 'rewrite_profile_title'), 999999999, 1);
     }
 
-    /**
-     * Get currently logged in user object_data
-     *
-     * @return \WP_User
-     */
-    function get_current_user_data()
-    {
-        return wp_get_current_user();
-    }
-
     public function set_up_detected_profile()
     {
         global $ppress_frontend_profile_user_obj;
@@ -40,7 +30,7 @@ class FrontendProfileTag
 
         if (empty($who)) {
             if (is_user_logged_in()) {
-                $user = $this->get_current_user_data();
+                $user = wp_get_current_user();
             } else {
 
                 if (strpos($_SERVER['REQUEST_URI'], '/' . ppress_get_profile_slug() . '/') !== false) {

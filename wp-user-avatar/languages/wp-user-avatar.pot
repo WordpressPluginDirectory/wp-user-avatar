@@ -2,14 +2,14 @@
 # This file is distributed under the same license as the ProfilePress plugin.
 msgid ""
 msgstr ""
-"Project-Id-Version: ProfilePress 4.15.20.1\n"
+"Project-Id-Version: ProfilePress 4.15.21\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wp-user-avatar\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2025-01-02T21:59:52+00:00\n"
+"POT-Creation-Date: 2025-01-17T13:47:41+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.8.1\n"
 "X-Domain: wp-user-avatar\n"
@@ -415,9 +415,9 @@ msgstr ""
 #: src/Admin/SettingsPages/GeneralSettings.php:444
 #: src/Admin/SettingsPages/Membership/CheckoutFieldsManager.php:90
 #: src/Admin/SettingsPages/Membership/PlanIntegrationsMetabox.php:178
-#: src/Functions/GlobalFunctions.php:1448
-#: src/Functions/GlobalFunctions.php:1480
-#: src/Functions/GlobalFunctions.php:1502
+#: src/Functions/GlobalFunctions.php:1452
+#: src/Functions/GlobalFunctions.php:1484
+#: src/Functions/GlobalFunctions.php:1506
 #: src/LoginRedirect.php:167
 msgid "Select..."
 msgstr ""
@@ -484,7 +484,7 @@ msgstr ""
 
 #: src/Admin/SettingsPages/DragDropBuilder/DragDropBuilder.php:1222
 #: src/Admin/SettingsPages/Membership/CheckoutFieldsManager.php:93
-#: src/Functions/GlobalFunctions.php:1505
+#: src/Functions/GlobalFunctions.php:1509
 #: src/Themes/DragDrop/AbstractMemberDirectoryTheme.php:222
 msgid "Standard Fields"
 msgstr ""
@@ -497,7 +497,7 @@ msgstr ""
 #: src/Admin/SettingsPages/LicenseUpgrader.php:176
 #: src/Admin/SettingsPages/Membership/CheckoutFieldsManager.php:101
 #: src/Classes/ExtensionManager.php:115
-#: src/Functions/GlobalFunctions.php:1508
+#: src/Functions/GlobalFunctions.php:1512
 #: src/Themes/DragDrop/AbstractMemberDirectoryTheme.php:236
 msgid "Custom Fields"
 msgstr ""
@@ -707,7 +707,7 @@ msgstr ""
 
 #: src/Admin/SettingsPages/DragDropBuilder/Fields/Bio.php:22
 #: src/Admin/SettingsPages/DragDropBuilder/Fields/UserProfile/Bio.php:22
-#: src/Functions/GlobalFunctions.php:1492
+#: src/Functions/GlobalFunctions.php:1496
 #: src/Themes/DragDrop/AbstractMemberDirectoryTheme.php:231
 #: src/Themes/DragDrop/AbstractTheme.php:205
 msgid "Biography"
@@ -978,7 +978,7 @@ msgstr ""
 
 #: src/Admin/SettingsPages/DragDropBuilder/Fields/DisplayName.php:22
 #: src/Admin/SettingsPages/DragDropBuilder/Fields/UserProfile/DisplayName.php:22
-#: src/Functions/GlobalFunctions.php:1490
+#: src/Functions/GlobalFunctions.php:1494
 #: src/Membership/CheckoutFields.php:114
 #: src/ShortcodeParser/Builder/FieldsShortcodeCallback.php:365
 #: src/Themes/DragDrop/AbstractMemberDirectoryTheme.php:228
@@ -1004,7 +1004,7 @@ msgstr ""
 #: src/Admin/SettingsPages/DragDropBuilder/Fields/Email.php:22
 #: src/Admin/SettingsPages/DragDropBuilder/Fields/UserProfile/Email.php:22
 #: src/Admin/SettingsPages/Membership/CustomersPage/SettingsPage.php:307
-#: src/Functions/GlobalFunctions.php:1491
+#: src/Functions/GlobalFunctions.php:1495
 #: src/Membership/CheckoutFields.php:51
 #: src/ShortcodeParser/Builder/FieldsShortcodeCallback.php:257
 #: src/Themes/DragDrop/AbstractMemberDirectoryTheme.php:226
@@ -1017,7 +1017,7 @@ msgstr ""
 #: src/Admin/SettingsPages/DragDropBuilder/Fields/FirstName.php:22
 #: src/Admin/SettingsPages/DragDropBuilder/Fields/UserProfile/FirstName.php:22
 #: src/Admin/SettingsPages/Membership/CustomersPage/SettingsPage.php:299
-#: src/Functions/GlobalFunctions.php:1487
+#: src/Functions/GlobalFunctions.php:1491
 #: src/Membership/CheckoutFields.php:65
 #: src/ShortcodeParser/Builder/FieldsShortcodeCallback.php:397
 #: src/Themes/DragDrop/AbstractMemberDirectoryTheme.php:229
@@ -1039,7 +1039,7 @@ msgstr ""
 #: src/Admin/SettingsPages/DragDropBuilder/Fields/LastName.php:22
 #: src/Admin/SettingsPages/DragDropBuilder/Fields/UserProfile/LastName.php:22
 #: src/Admin/SettingsPages/Membership/CustomersPage/SettingsPage.php:303
-#: src/Functions/GlobalFunctions.php:1488
+#: src/Functions/GlobalFunctions.php:1492
 #: src/Membership/CheckoutFields.php:72
 #: src/ShortcodeParser/Builder/FieldsShortcodeCallback.php:430
 #: src/Themes/DragDrop/AbstractMemberDirectoryTheme.php:230
@@ -1075,7 +1075,7 @@ msgstr ""
 
 #: src/Admin/SettingsPages/DragDropBuilder/Fields/Nickname.php:22
 #: src/Admin/SettingsPages/DragDropBuilder/Fields/UserProfile/Nickname.php:22
-#: src/Functions/GlobalFunctions.php:1489
+#: src/Functions/GlobalFunctions.php:1493
 #: src/Membership/CheckoutFields.php:107
 #: src/ShortcodeParser/Builder/FieldsShortcodeCallback.php:333
 #: src/ShortcodeParser/Builder/FieldsShortcodeCallback.php:347
@@ -1174,7 +1174,7 @@ msgstr ""
 #: src/Admin/SettingsPages/DragDropBuilder/Fields/Username.php:22
 #: src/Admin/SettingsPages/DragDropBuilder/Fields/UserProfile/Username.php:22
 #: src/Admin/SettingsPages/Membership/CustomersPage/SettingsPage.php:311
-#: src/Functions/GlobalFunctions.php:1486
+#: src/Functions/GlobalFunctions.php:1490
 #: src/Membership/CheckoutFields.php:79
 #: src/ShortcodeParser/Builder/FieldsShortcodeCallback.php:182
 #: src/Themes/DragDrop/AbstractMemberDirectoryTheme.php:379
@@ -5722,8 +5722,8 @@ msgid "Log in"
 msgstr ""
 
 #: src/Classes/RegistrationAuth.php:223
-#: src/Membership/Controllers/CheckoutTrait.php:230
-#: src/Membership/Controllers/CheckoutTrait.php:249
+#: src/Membership/Controllers/CheckoutTrait.php:229
+#: src/Membership/Controllers/CheckoutTrait.php:248
 msgid "%s field is required"
 msgstr ""
 
@@ -5732,17 +5732,17 @@ msgid "<strong>ERROR</strong>: This username is invalid because it uses illegal 
 msgstr ""
 
 #: src/Classes/RegistrationAuth.php:236
-#: src/Membership/Controllers/CheckoutTrait.php:271
+#: src/Membership/Controllers/CheckoutTrait.php:270
 msgid "Email address is not valid"
 msgstr ""
 
 #: src/Classes/RegistrationAuth.php:240
-#: src/Membership/Controllers/CheckoutTrait.php:303
+#: src/Membership/Controllers/CheckoutTrait.php:302
 msgid "Passwords do not match"
 msgstr ""
 
 #: src/Classes/RegistrationAuth.php:244
-#: src/Membership/Controllers/CheckoutTrait.php:269
+#: src/Membership/Controllers/CheckoutTrait.php:268
 msgid "Email addresses do not match"
 msgstr ""
 
@@ -15120,44 +15120,44 @@ msgstr ""
 msgid "Dismiss this notice"
 msgstr ""
 
-#: src/Functions/GlobalFunctions.php:1295
+#: src/Functions/GlobalFunctions.php:1299
 msgid "It must be unique for each field, not a reserve text, in lowercase letters only with an underscore ( _ ) separating words e.g job_title"
 msgstr ""
 
-#: src/Functions/GlobalFunctions.php:1432
+#: src/Functions/GlobalFunctions.php:1436
 msgid "%s (WooCommerce Billing Address)"
 msgstr ""
 
-#: src/Functions/GlobalFunctions.php:1436
+#: src/Functions/GlobalFunctions.php:1440
 msgid "%s (WooCommerce Shipping Address)"
 msgstr ""
 
-#: src/Functions/GlobalFunctions.php:1484
+#: src/Functions/GlobalFunctions.php:1488
 msgid "First and Last Names"
 msgstr ""
 
-#: src/Functions/GlobalFunctions.php:1485
+#: src/Functions/GlobalFunctions.php:1489
 msgid "Last and First Names"
 msgstr ""
 
-#: src/Functions/GlobalFunctions.php:1493
+#: src/Functions/GlobalFunctions.php:1497
 msgid "Registration Date"
 msgstr ""
 
-#: src/Functions/GlobalFunctions.php:1630
+#: src/Functions/GlobalFunctions.php:1634
 msgid "There was an problem while verifying your file."
 msgstr ""
 
-#: src/Functions/GlobalFunctions.php:1635
+#: src/Functions/GlobalFunctions.php:1639
 msgid "Sorry, this file extension is not permitted for security reasons."
 msgstr ""
 
-#: src/Functions/GlobalFunctions.php:1639
+#: src/Functions/GlobalFunctions.php:1643
 msgid "Sorry, this file type is not permitted for security reasons."
 msgstr ""
 
-#: src/Functions/GlobalFunctions.php:1643
 #: src/Functions/GlobalFunctions.php:1647
+#: src/Functions/GlobalFunctions.php:1651
 msgid "Error: The file you uploaded is not accepted on our website."
 msgstr ""
 
@@ -15964,7 +15964,7 @@ msgid "Error processing checkout. Nonce failed"
 msgstr ""
 
 #: src/Membership/Controllers/CheckoutController.php:242
-#: src/ShortcodeParser/MembershipShortcodes.php:151
+#: src/ShortcodeParser/MembershipShortcodes.php:153
 msgid "Invalid membership plan."
 msgstr ""
 
@@ -15988,15 +15988,15 @@ msgstr ""
 msgid "Unable to create order. Please try again"
 msgstr ""
 
-#: src/Membership/Controllers/CheckoutTrait.php:215
+#: src/Membership/Controllers/CheckoutTrait.php:214
 msgid "Registration is disabled"
 msgstr ""
 
-#: src/Membership/Controllers/CheckoutTrait.php:273
+#: src/Membership/Controllers/CheckoutTrait.php:272
 msgid "Email already used. Login or use a different email to complete your order"
 msgstr ""
 
-#: src/Membership/Controllers/CheckoutTrait.php:293
+#: src/Membership/Controllers/CheckoutTrait.php:292
 msgid "Username is invalid because it uses illegal characters"
 msgstr ""
 
@@ -16842,19 +16842,19 @@ msgstr ""
 msgid "Authentication failed. Please try again"
 msgstr ""
 
-#: src/ShortcodeParser/FrontendProfileTag.php:90
+#: src/ShortcodeParser/FrontendProfileTag.php:80
 msgid "This content is available to members only. Please <a href=\"%1$s\">login</a> or <a href=\"%2$s\">register</a> to view this area."
 msgstr ""
 
-#: src/ShortcodeParser/FrontendProfileTag.php:97
+#: src/ShortcodeParser/FrontendProfileTag.php:87
 msgid "You are not authorized to access this area."
 msgstr ""
 
-#: src/ShortcodeParser/FrontendProfileTag.php:137
+#: src/ShortcodeParser/FrontendProfileTag.php:127
 msgid "Form class not found. Please check if this user profile actually exist in ProfilePress."
 msgstr ""
 
-#: src/ShortcodeParser/FrontendProfileTag.php:202
+#: src/ShortcodeParser/FrontendProfileTag.php:192
 #: src/Themes/DragDrop/UserProfile/Dixon.php:121
 msgid "Profile"
 msgstr ""
@@ -16887,27 +16887,27 @@ msgstr ""
 msgid "Next &raquo;"
 msgstr ""
 
-#: src/ShortcodeParser/MembershipShortcodes.php:79
+#: src/ShortcodeParser/MembershipShortcodes.php:81
 msgid "Your cart is currently empty. Click <a href=\"%s\">here</a> to get started."
 msgstr ""
 
-#: src/ShortcodeParser/MembershipShortcodes.php:96
+#: src/ShortcodeParser/MembershipShortcodes.php:98
 msgid "You must be logged in to switch to another plan."
 msgstr ""
 
-#: src/ShortcodeParser/MembershipShortcodes.php:107
+#: src/ShortcodeParser/MembershipShortcodes.php:109
 msgid "You can not switch to another plan because this plan does not belong to any group."
 msgstr ""
 
-#: src/ShortcodeParser/MembershipShortcodes.php:119
+#: src/ShortcodeParser/MembershipShortcodes.php:121
 msgid "Invalid plan group."
 msgstr ""
 
-#: src/ShortcodeParser/MembershipShortcodes.php:125
+#: src/ShortcodeParser/MembershipShortcodes.php:127
 msgid "Error: group has no membership plans."
 msgstr ""
 
-#: src/ShortcodeParser/MembershipShortcodes.php:141
+#: src/ShortcodeParser/MembershipShortcodes.php:143
 msgid "You have an active subscription to this plan. Please go to %syour account%s to manage your subscription."
 msgstr ""
 

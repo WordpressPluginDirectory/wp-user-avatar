@@ -627,7 +627,7 @@ class Stripe extends AbstractPaymentMethod
         $response['stripe_args'] = apply_filters('ppress_stripe_js_args', [
             'mode'     => $plan->is_auto_renew() ? 'subscription' : 'payment',
             'currency' => strtolower(ppress_get_currency()),
-            'amount'   => (int)PaymentHelpers::process_amount($cart_vars->total)
+            'amount'   => absint(PaymentHelpers::process_amount($cart_vars->total))
         ], $cart_vars, $response);
 
         return $response;

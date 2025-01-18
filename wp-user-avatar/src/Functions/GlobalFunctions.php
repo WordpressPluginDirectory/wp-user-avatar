@@ -293,7 +293,11 @@ function ppress_get_frontend_profile_url($username_or_id)
         $username_or_id = ppress_get_username_by_id($username_or_id);
     }
 
-    return home_url(ppress_get_profile_slug() . '/' . rawurlencode($username_or_id));
+    return apply_filters(
+        'ppress_frontend_profile_url',
+        home_url(ppress_get_profile_slug() . '/' . rawurlencode($username_or_id)),
+        $username_or_id
+    );
 }
 
 /**

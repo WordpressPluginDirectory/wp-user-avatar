@@ -15,7 +15,7 @@ get_header(); ?>
 <main id="site-content" class="ppress-main-container">
     <div class="ppress-container-div">
         <?php if ( ! empty($args)) {
-            echo wp_kses_post($args['noaccess_action_message_custom']);
+            echo do_shortcode(wp_kses_post($args['noaccess_action_message_custom']));
         } ?>
     </div>
 </main>

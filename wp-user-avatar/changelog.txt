@@ -1,5 +1,15 @@
 ﻿== Changelog ==
 
+= 4.15.21 =
+* Added shortcode support to Resrricred Page template in content protection.
+* Added ppress_checkout_is_registration_checked_enabled filter.
+* Added ppress_frontend_profile_url filter.
+* Disable processing page when on bank transfer payment method.
+* Disable checking if registration is enabled during checkout if user is logged in.
+* Fixed bug where textarea data in user profile lack newlines.
+* Fixed broken html on agreeable field.
+* Fixed bug where stripe amount could be negative integer.
+
 = 4.15.20.1 =
 * Disable registration via checkout if "user can register" is not enabled.
 

@@ -1177,9 +1177,9 @@ html .pp-form-container .select2 input.select2-search__field {
 .profilepress-myaccount-alert,
 .profilepress-myaccount-edit-profile .profilepress-edit-profile-status {
     position: relative;
-    padding: .75em 1.25em;
-    margin-bottom: 1em;
-    border: 1px solid transparent;
+    padding: .75em 1.25em !important;
+    margin-bottom: 1em !important;
+    border: 1px solid transparent !important;
     border-radius: .25em;
 }
 

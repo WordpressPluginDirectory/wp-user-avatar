@@ -171,6 +171,10 @@ class ProfileFieldListing
                         $db_country       = do_shortcode('[profile-cpf key=' . CheckoutFields::BILLING_COUNTRY . ']', true);
                         $parsed_shortcode = ppress_get_country_state_title($parsed_shortcode, $db_country);
                     }
+
+                    if ($custom_field_type == 'textarea') {
+                        $parsed_shortcode = nl2br($parsed_shortcode);
+                    }
                 }
 
                 $output .= $this->item_wrap_start_tag;
