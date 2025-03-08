@@ -2,14 +2,14 @@
 # This file is distributed under the same license as the ProfilePress plugin.
 msgid ""
 msgstr ""
-"Project-Id-Version: ProfilePress 4.15.21\n"
+"Project-Id-Version: ProfilePress 4.15.22\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wp-user-avatar\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2025-01-17T13:47:41+00:00\n"
+"POT-Creation-Date: 2025-03-07T11:42:53+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.8.1\n"
 "X-Domain: wp-user-avatar\n"
@@ -415,10 +415,10 @@ msgstr ""
 #: src/Admin/SettingsPages/GeneralSettings.php:444
 #: src/Admin/SettingsPages/Membership/CheckoutFieldsManager.php:90
 #: src/Admin/SettingsPages/Membership/PlanIntegrationsMetabox.php:178
-#: src/Functions/GlobalFunctions.php:1452
-#: src/Functions/GlobalFunctions.php:1484
-#: src/Functions/GlobalFunctions.php:1506
-#: src/LoginRedirect.php:167
+#: src/Functions/GlobalFunctions.php:1453
+#: src/Functions/GlobalFunctions.php:1485
+#: src/Functions/GlobalFunctions.php:1507
+#: src/LoginRedirect.php:171
 msgid "Select..."
 msgstr ""
 
@@ -484,7 +484,7 @@ msgstr ""
 
 #: src/Admin/SettingsPages/DragDropBuilder/DragDropBuilder.php:1222
 #: src/Admin/SettingsPages/Membership/CheckoutFieldsManager.php:93
-#: src/Functions/GlobalFunctions.php:1509
+#: src/Functions/GlobalFunctions.php:1510
 #: src/Themes/DragDrop/AbstractMemberDirectoryTheme.php:222
 msgid "Standard Fields"
 msgstr ""
@@ -497,7 +497,7 @@ msgstr ""
 #: src/Admin/SettingsPages/LicenseUpgrader.php:176
 #: src/Admin/SettingsPages/Membership/CheckoutFieldsManager.php:101
 #: src/Classes/ExtensionManager.php:115
-#: src/Functions/GlobalFunctions.php:1512
+#: src/Functions/GlobalFunctions.php:1513
 #: src/Themes/DragDrop/AbstractMemberDirectoryTheme.php:236
 msgid "Custom Fields"
 msgstr ""
@@ -521,7 +521,7 @@ msgstr ""
 #: src/AdminBarDashboardAccess/include.settings-page.php:54
 #: src/AdminBarDashboardAccess/include.settings-page.php:109
 #: src/Functions/custom-settings-api.php:1124
-#: src/LoginRedirect.php:146
+#: src/LoginRedirect.php:150
 #: src/ShortcodeParser/Builder/FieldsShortcodeCallback.php:1137
 msgid "Save Changes"
 msgstr ""
@@ -696,8 +696,8 @@ msgstr ""
 #: src/Admin/SettingsPages/Membership/views/plans-page-sidebar.php:12
 #: src/Admin/SettingsPages/Membership/views/subscriptions/submit-sidebar.php:16
 #: src/ContentProtection/views/include.view-sidebar.php:12
-#: src/ContentProtection/WPListTable.php:96
-#: src/ContentProtection/WPListTable.php:322
+#: src/ContentProtection/WPListTable.php:116
+#: src/ContentProtection/WPListTable.php:341
 msgid "Delete"
 msgstr ""
 
@@ -707,7 +707,7 @@ msgstr ""
 
 #: src/Admin/SettingsPages/DragDropBuilder/Fields/Bio.php:22
 #: src/Admin/SettingsPages/DragDropBuilder/Fields/UserProfile/Bio.php:22
-#: src/Functions/GlobalFunctions.php:1496
+#: src/Functions/GlobalFunctions.php:1497
 #: src/Themes/DragDrop/AbstractMemberDirectoryTheme.php:231
 #: src/Themes/DragDrop/AbstractTheme.php:205
 msgid "Biography"
@@ -978,7 +978,7 @@ msgstr ""
 
 #: src/Admin/SettingsPages/DragDropBuilder/Fields/DisplayName.php:22
 #: src/Admin/SettingsPages/DragDropBuilder/Fields/UserProfile/DisplayName.php:22
-#: src/Functions/GlobalFunctions.php:1494
+#: src/Functions/GlobalFunctions.php:1495
 #: src/Membership/CheckoutFields.php:114
 #: src/ShortcodeParser/Builder/FieldsShortcodeCallback.php:365
 #: src/Themes/DragDrop/AbstractMemberDirectoryTheme.php:228
@@ -1004,7 +1004,7 @@ msgstr ""
 #: src/Admin/SettingsPages/DragDropBuilder/Fields/Email.php:22
 #: src/Admin/SettingsPages/DragDropBuilder/Fields/UserProfile/Email.php:22
 #: src/Admin/SettingsPages/Membership/CustomersPage/SettingsPage.php:307
-#: src/Functions/GlobalFunctions.php:1495
+#: src/Functions/GlobalFunctions.php:1496
 #: src/Membership/CheckoutFields.php:51
 #: src/ShortcodeParser/Builder/FieldsShortcodeCallback.php:257
 #: src/Themes/DragDrop/AbstractMemberDirectoryTheme.php:226
@@ -1017,7 +1017,7 @@ msgstr ""
 #: src/Admin/SettingsPages/DragDropBuilder/Fields/FirstName.php:22
 #: src/Admin/SettingsPages/DragDropBuilder/Fields/UserProfile/FirstName.php:22
 #: src/Admin/SettingsPages/Membership/CustomersPage/SettingsPage.php:299
-#: src/Functions/GlobalFunctions.php:1491
+#: src/Functions/GlobalFunctions.php:1492
 #: src/Membership/CheckoutFields.php:65
 #: src/ShortcodeParser/Builder/FieldsShortcodeCallback.php:397
 #: src/Themes/DragDrop/AbstractMemberDirectoryTheme.php:229
@@ -1039,7 +1039,7 @@ msgstr ""
 #: src/Admin/SettingsPages/DragDropBuilder/Fields/LastName.php:22
 #: src/Admin/SettingsPages/DragDropBuilder/Fields/UserProfile/LastName.php:22
 #: src/Admin/SettingsPages/Membership/CustomersPage/SettingsPage.php:303
-#: src/Functions/GlobalFunctions.php:1492
+#: src/Functions/GlobalFunctions.php:1493
 #: src/Membership/CheckoutFields.php:72
 #: src/ShortcodeParser/Builder/FieldsShortcodeCallback.php:430
 #: src/Themes/DragDrop/AbstractMemberDirectoryTheme.php:230
@@ -1075,7 +1075,7 @@ msgstr ""
 
 #: src/Admin/SettingsPages/DragDropBuilder/Fields/Nickname.php:22
 #: src/Admin/SettingsPages/DragDropBuilder/Fields/UserProfile/Nickname.php:22
-#: src/Functions/GlobalFunctions.php:1493
+#: src/Functions/GlobalFunctions.php:1494
 #: src/Membership/CheckoutFields.php:107
 #: src/ShortcodeParser/Builder/FieldsShortcodeCallback.php:333
 #: src/ShortcodeParser/Builder/FieldsShortcodeCallback.php:347
@@ -1174,7 +1174,7 @@ msgstr ""
 #: src/Admin/SettingsPages/DragDropBuilder/Fields/Username.php:22
 #: src/Admin/SettingsPages/DragDropBuilder/Fields/UserProfile/Username.php:22
 #: src/Admin/SettingsPages/Membership/CustomersPage/SettingsPage.php:311
-#: src/Functions/GlobalFunctions.php:1490
+#: src/Functions/GlobalFunctions.php:1491
 #: src/Membership/CheckoutFields.php:79
 #: src/ShortcodeParser/Builder/FieldsShortcodeCallback.php:182
 #: src/Themes/DragDrop/AbstractMemberDirectoryTheme.php:379
@@ -1608,7 +1608,7 @@ msgstr ""
 #: src/Admin/SettingsPages/EmailSettings/EmailSettingsPage.php:220
 #: src/Admin/SettingsPages/EmailSettings/EmailSettingsPage.php:262
 #: src/Membership/Emails/SubscriptionAfterExpiredNotification.php:47
-#: src/Membership/Emails/SubscriptionExpiredNotification.php:29
+#: src/Membership/Emails/SubscriptionExpiredNotification.php:30
 msgid "Your subscription has expired."
 msgstr ""
 
@@ -1884,13 +1884,13 @@ msgstr ""
 #: src/Admin/SettingsPages/Membership/SubscriptionsPage/SubscriptionWPListTable.php:111
 #: src/Admin/SettingsPages/Membership/views/customers/data-metabox.php:84
 #: src/Admin/SettingsPages/Membership/views/orders/order-data-metabox.php:120
-#: src/ContentProtection/WPListTable.php:84
+#: src/ContentProtection/WPListTable.php:100
 msgid "Edit"
 msgstr ""
 
 #: src/Admin/SettingsPages/FormList.php:242
 #: src/Admin/SettingsPages/Membership/PlansPage/PlanWPListTable.php:66
-#: src/ContentProtection/WPListTable.php:85
+#: src/ContentProtection/WPListTable.php:101
 msgid "Duplicate"
 msgstr ""
 
@@ -2429,7 +2429,7 @@ msgstr ""
 #: src/Admin/SettingsPages/Membership/CouponsPage/CouponWPListTable.php:201
 #: src/Admin/SettingsPages/Membership/PlansPage/PlanWPListTable.php:74
 #: src/Admin/SettingsPages/Membership/PlansPage/PlanWPListTable.php:173
-#: src/ContentProtection/WPListTable.php:93
+#: src/ContentProtection/WPListTable.php:113
 #: src/Functions/custom-settings-api.php:1046
 msgid "Activate"
 msgstr ""
@@ -2617,7 +2617,7 @@ msgstr ""
 
 #: src/Admin/SettingsPages/GeneralSettings.php:532
 #: src/ContentProtection/ElementorRestriction.php:253
-#: src/ContentProtection/Frontend/PostContent.php:226
+#: src/ContentProtection/Frontend/PostContent.php:228
 #: src/RegisterActivation/Base.php:135
 msgid "You are unauthorized to view this page."
 msgstr ""
@@ -2988,7 +2988,7 @@ msgstr ""
 #: src/Admin/SettingsPages/Membership/CouponsPage/CouponWPListTable.php:202
 #: src/Admin/SettingsPages/Membership/PlansPage/PlanWPListTable.php:70
 #: src/Admin/SettingsPages/Membership/PlansPage/PlanWPListTable.php:174
-#: src/ContentProtection/WPListTable.php:89
+#: src/ContentProtection/WPListTable.php:109
 msgid "Deactivate"
 msgstr ""
 
@@ -3062,7 +3062,7 @@ msgstr ""
 #: src/Admin/SettingsPages/Membership/OrdersPage/SettingsPage.php:468
 #: src/Admin/SettingsPages/Membership/PlansPage/SettingsPage.php:217
 #: src/Admin/SettingsPages/Membership/SubscriptionsPage/SettingsPage.php:170
-#: src/ContentProtection/SettingsPage.php:171
+#: src/ContentProtection/SettingsPage.php:206
 #: src/Themes/DragDrop/AbstractTheme.php:130
 msgid "Changes saved."
 msgstr ""
@@ -3589,6 +3589,8 @@ msgstr ""
 
 #: src/Admin/SettingsPages/Membership/ExportPage/PlansExport.php:16
 #: src/Admin/SettingsPages/Membership/views/add-edit-plan.php:57
+#: src/Themes/DragDrop/AbstractMemberDirectoryTheme.php:303
+#: src/Themes/DragDrop/AbstractMemberDirectoryTheme.php:469
 msgid "User Role"
 msgstr ""
 
@@ -5058,7 +5060,7 @@ msgid "Renewal Date:"
 msgstr ""
 
 #: src/Admin/SettingsPages/Membership/views/subscriptions/data-metabox.php:163
-#: src/Membership/Models/Subscription/SubscriptionEntity.php:394
+#: src/Membership/Models/Subscription/SubscriptionEntity.php:392
 msgid "Lifetime"
 msgstr ""
 
@@ -5790,8 +5792,7 @@ msgid "The selected block will only be visible to users with an active subscript
 msgstr ""
 
 #: src/ContentProtection/ContentConditions.php:111
-#: src/ContentProtection/ContentConditions.php:149
-msgid "or"
+msgid "and"
 msgstr ""
 
 #: src/ContentProtection/ContentConditions.php:114
@@ -5799,14 +5800,18 @@ msgstr ""
 msgid "Select a condition"
 msgstr ""
 
+#: src/ContentProtection/ContentConditions.php:149
+msgid "or"
+msgstr ""
+
 #: src/ContentProtection/ContentConditions.php:184
 #: src/ContentProtection/ContentConditions.php:189
-msgid "AND"
+#: src/ContentProtection/ContentConditions.php:247
+msgid "OR"
 msgstr ""
 
 #: src/ContentProtection/ContentConditions.php:212
-#: src/ContentProtection/ContentConditions.php:247
-msgid "OR"
+msgid "AND"
 msgstr ""
 
 #: src/ContentProtection/ContentConditions.php:281
@@ -5900,7 +5905,7 @@ msgstr ""
 
 #: src/ContentProtection/ElementorRestriction.php:56
 #: src/ContentProtection/views/view.access-condition.php:33
-#: src/ContentProtection/WPListTable.php:196
+#: src/ContentProtection/WPListTable.php:216
 msgid "Everyone"
 msgstr ""
 
@@ -5955,43 +5960,47 @@ msgstr ""
 msgid "You are not allowed to purchase this product."
 msgstr ""
 
-#: src/ContentProtection/SettingsPage.php:42
-#: src/ContentProtection/SettingsPage.php:60
-#: src/ContentProtection/SettingsPage.php:71
+#: src/ContentProtection/SettingsPage.php:51
+msgid "We have changed the logic of protecting content. %1$sOR%2$s is now %1$sAND%2$s while %1$sAND%2$s has been changed to %1$sOR%2$s. Please review the \"Content to Protect\" setup and ensure everything is perfect before saving."
+msgstr ""
+
+#: src/ContentProtection/SettingsPage.php:61
+#: src/ContentProtection/SettingsPage.php:79
+#: src/ContentProtection/SettingsPage.php:93
 msgid "Content Protection"
 msgstr ""
 
-#: src/ContentProtection/SettingsPage.php:45
+#: src/ContentProtection/SettingsPage.php:64
 msgid "Edit Protection Rule"
 msgstr ""
 
-#: src/ContentProtection/SettingsPage.php:49
+#: src/ContentProtection/SettingsPage.php:68
 msgid "Add Protection Rule"
 msgstr ""
 
-#: src/ContentProtection/SettingsPage.php:92
+#: src/ContentProtection/SettingsPage.php:115
 msgid "Protection Rules"
 msgstr ""
 
-#: src/ContentProtection/SettingsPage.php:137
+#: src/ContentProtection/SettingsPage.php:160
 msgid "Title cannot be empty."
 msgstr ""
 
-#: src/ContentProtection/SettingsPage.php:192
+#: src/ContentProtection/SettingsPage.php:227
 #: src/ContentProtection/views/include.view.php:64
 msgid "Restrict Content Shortcode"
 msgstr ""
 
-#: src/ContentProtection/SettingsPage.php:201
+#: src/ContentProtection/SettingsPage.php:236
 msgid "WordPress Menu Protection"
 msgstr ""
 
-#: src/ContentProtection/SettingsPage.php:213
+#: src/ContentProtection/SettingsPage.php:248
 #: src/ContentProtection/views/include.view.php:85
 msgid "Elementor Restriction"
 msgstr ""
 
-#: src/ContentProtection/SettingsPage.php:233
+#: src/ContentProtection/SettingsPage.php:268
 msgid "Add a Protection Rule"
 msgstr ""
 
@@ -6044,12 +6053,12 @@ msgid "Who can access the content?"
 msgstr ""
 
 #: src/ContentProtection/views/view.access-condition.php:34
-#: src/ContentProtection/WPListTable.php:199
+#: src/ContentProtection/WPListTable.php:219
 msgid "Logged in users"
 msgstr ""
 
 #: src/ContentProtection/views/view.access-condition.php:35
-#: src/ContentProtection/WPListTable.php:202
+#: src/ContentProtection/WPListTable.php:222
 msgid "Logged out users"
 msgstr ""
 
@@ -15120,44 +15129,44 @@ msgstr ""
 msgid "Dismiss this notice"
 msgstr ""
 
-#: src/Functions/GlobalFunctions.php:1299
+#: src/Functions/GlobalFunctions.php:1300
 msgid "It must be unique for each field, not a reserve text, in lowercase letters only with an underscore ( _ ) separating words e.g job_title"
 msgstr ""
 
-#: src/Functions/GlobalFunctions.php:1436
+#: src/Functions/GlobalFunctions.php:1437
 msgid "%s (WooCommerce Billing Address)"
 msgstr ""
 
-#: src/Functions/GlobalFunctions.php:1440
+#: src/Functions/GlobalFunctions.php:1441
 msgid "%s (WooCommerce Shipping Address)"
 msgstr ""
 
-#: src/Functions/GlobalFunctions.php:1488
+#: src/Functions/GlobalFunctions.php:1489
 msgid "First and Last Names"
 msgstr ""
 
-#: src/Functions/GlobalFunctions.php:1489
+#: src/Functions/GlobalFunctions.php:1490
 msgid "Last and First Names"
 msgstr ""
 
-#: src/Functions/GlobalFunctions.php:1497
+#: src/Functions/GlobalFunctions.php:1498
 msgid "Registration Date"
 msgstr ""
 
-#: src/Functions/GlobalFunctions.php:1634
+#: src/Functions/GlobalFunctions.php:1635
 msgid "There was an problem while verifying your file."
 msgstr ""
 
-#: src/Functions/GlobalFunctions.php:1639
+#: src/Functions/GlobalFunctions.php:1640
 msgid "Sorry, this file extension is not permitted for security reasons."
 msgstr ""
 
-#: src/Functions/GlobalFunctions.php:1643
+#: src/Functions/GlobalFunctions.php:1644
 msgid "Sorry, this file type is not permitted for security reasons."
 msgstr ""
 
-#: src/Functions/GlobalFunctions.php:1647
-#: src/Functions/GlobalFunctions.php:1651
+#: src/Functions/GlobalFunctions.php:1648
+#: src/Functions/GlobalFunctions.php:1652
 msgid "Error: The file you uploaded is not accepted on our website."
 msgstr ""
 
@@ -15876,34 +15885,34 @@ msgid "Select the Tutor LMS courses to enroll users in after registration throug
 msgstr ""
 
 #: src/LoginRedirect.php:22
-#: src/LoginRedirect.php:95
-#: src/LoginRedirect.php:152
+#: src/LoginRedirect.php:98
+#: src/LoginRedirect.php:156
 msgid "Login Redirect"
 msgstr ""
 
-#: src/LoginRedirect.php:199
+#: src/LoginRedirect.php:203
 msgid "Login Redirect Based on Membership Plan"
 msgstr ""
 
-#: src/LoginRedirect.php:202
+#: src/LoginRedirect.php:206
 msgid "Add or remove rules that redirect users to specific URLs after login based on their subscribed membership plans."
 msgstr ""
 
-#: src/LoginRedirect.php:215
-#: src/LoginRedirect.php:250
+#: src/LoginRedirect.php:219
+#: src/LoginRedirect.php:254
 msgid "No redirect rule found. Please add one."
 msgstr ""
 
-#: src/LoginRedirect.php:221
-#: src/LoginRedirect.php:256
+#: src/LoginRedirect.php:225
+#: src/LoginRedirect.php:260
 msgid "Add Rule"
 msgstr ""
 
-#: src/LoginRedirect.php:234
+#: src/LoginRedirect.php:238
 msgid "Login Redirect Based on User Role"
 msgstr ""
 
-#: src/LoginRedirect.php:237
+#: src/LoginRedirect.php:241
 msgid "Add or remove rules that redirect users to specific URLs after login based on their user roles."
 msgstr ""
 
@@ -16182,7 +16191,7 @@ msgid "Payment %s has been fully refunded in %s."
 msgstr ""
 
 #: src/Membership/Models/Order/OrderEntity.php:256
-#: src/Membership/Models/Subscription/SubscriptionEntity.php:571
+#: src/Membership/Models/Subscription/SubscriptionEntity.php:569
 msgid "payment method"
 msgstr ""
 
@@ -16257,7 +16266,7 @@ msgstr ""
 msgid "One-time purchase"
 msgstr ""
 
-#: src/Membership/Models/Subscription/SubscriptionEntity.php:574
+#: src/Membership/Models/Subscription/SubscriptionEntity.php:572
 msgid "Subscription changed from %s to %s by %s"
 msgstr ""
 
@@ -16874,8 +16883,8 @@ msgstr ""
 #: src/ShortcodeParser/MemberDirectoryTag.php:172
 #: src/ShortcodeParser/MemberDirectoryTag.php:173
 #: src/Themes/DragDrop/AbstractMemberDirectoryTheme.php:264
-#: src/Themes/DragDrop/AbstractMemberDirectoryTheme.php:538
-#: src/Themes/DragDrop/AbstractMemberDirectoryTheme.php:540
+#: src/Themes/DragDrop/AbstractMemberDirectoryTheme.php:565
+#: src/Themes/DragDrop/AbstractMemberDirectoryTheme.php:567
 msgid "Search"
 msgstr ""
 
@@ -17182,7 +17191,7 @@ msgstr ""
 msgid "Payment Information"
 msgstr ""
 
-#: src/templates/checkout/form-payment-methods.php:76
+#: src/templates/checkout/form-payment-methods.php:78
 msgid "There are no gateways enabled with support for subscriptions."
 msgstr ""
 

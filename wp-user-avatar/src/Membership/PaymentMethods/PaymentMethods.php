@@ -9,7 +9,7 @@ class PaymentMethods
 {
     public function __construct()
     {
-        $this->registered_methods();
+        add_action('init', [$this, 'registered_methods'], 1);
     }
 
     /**

@@ -153,11 +153,11 @@ class PostContent
 
                     foreach ($metas as $meta) {
 
-                        $meta = ppress_var($meta, 'meta_value', []);
+                        $meta_value = ppress_var($meta, 'meta_value', []);
 
-                        if ( ! in_array(ppress_var($meta, 'is_active', true), ['true', true], true)) continue;
+                        if ( ! in_array(ppress_var($meta_value, 'is_active', true), ['true', true], true)) continue;
 
-                        $access_condition = ppress_var($meta, 'access_condition', []);
+                        $access_condition = ppress_var($meta_value, 'access_condition', []);
 
                         /* commented this out because we want content to be restricted when accessed via rss and rest api
                            this is even redundant because redirect happens before the_content hook is fired.
@@ -174,9 +174,11 @@ class PostContent
 
                         $access_membership_plans = ppress_var($access_condition, 'access_membership_plans', []);
 
-                        if (Checker::content_match($meta['content'])) {
+                        $is_new = ppress_var($meta_value, 'is_new') == 'true';
 
-                            if (ppress_var($meta, 'exempt', []) && Checker::content_match($meta['exempt'])) continue;
+                        if (Checker::content_match($meta_value['content'], false, $is_new)) {
+
+                            if (ppress_var($meta_value, 'exempt', []) && Checker::content_match($meta_value['exempt'])) continue;
 
                             if (Checker::is_blocked($who_can_access, $access_roles, $access_wp_users, $access_membership_plans)) {
                                 $is_restricted = $access_condition;

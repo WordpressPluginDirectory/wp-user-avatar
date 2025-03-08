@@ -316,17 +316,17 @@
         },
         {
             "name": "nesbot\/carbon",
-            "version": "2.72.6",
-            "version_normalized": "2.72.6.0",
+            "version": "2.73.0",
+            "version_normalized": "2.73.0.0",
             "source": {
                 "type": "git",
                 "url": "https:\/\/github.com\/CarbonPHP\/carbon.git",
-                "reference": "1e9d50601e7035a4c61441a208cb5bed73e108c5"
+                "reference": "9228ce90e1035ff2f0db84b40ec2e023ed802075"
             },
             "dist": {
                 "type": "zip",
-                "url": "https:\/\/api.github.com\/repos\/CarbonPHP\/carbon\/zipball\/1e9d50601e7035a4c61441a208cb5bed73e108c5",
-                "reference": "1e9d50601e7035a4c61441a208cb5bed73e108c5",
+                "url": "https:\/\/api.github.com\/repos\/CarbonPHP\/carbon\/zipball\/9228ce90e1035ff2f0db84b40ec2e023ed802075",
+                "reference": "9228ce90e1035ff2f0db84b40ec2e023ed802075",
                 "shasum": ""
             },
             "require": {
@@ -354,7 +354,7 @@
                 "phpunit\/phpunit": "^7.5.20 || ^8.5.26 || ^9.5.20",
                 "squizlabs\/php_codesniffer": "^3.4"
             },
-            "time": "2024-12-27T09:28:11+00:00",
+            "time": "2025-01-08T20:10:23+00:00",
             "bin": [
                 "bin\/carbon"
             ],
@@ -626,26 +626,26 @@
         },
         {
             "name": "sniccowp\/php-scoper-wordpress-excludes",
-            "version": "6.7.1",
-            "version_normalized": "6.7.1.0",
+            "version": "6.7.2",
+            "version_normalized": "6.7.2.0",
             "source": {
                 "type": "git",
                 "url": "https:\/\/github.com\/snicco\/php-scoper-wordpress-excludes.git",
-                "reference": "d8e6b5fdc9e42300a8ab18b44b775836a7b52363"
+                "reference": "1e65b207d6f4753904774430ccfc06cb6bfa486e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https:\/\/api.github.com\/repos\/snicco\/php-scoper-wordpress-excludes\/zipball\/d8e6b5fdc9e42300a8ab18b44b775836a7b52363",
-                "reference": "d8e6b5fdc9e42300a8ab18b44b775836a7b52363",
+                "url": "https:\/\/api.github.com\/repos\/snicco\/php-scoper-wordpress-excludes\/zipball\/1e65b207d6f4753904774430ccfc06cb6bfa486e",
+                "reference": "1e65b207d6f4753904774430ccfc06cb6bfa486e",
                 "shasum": ""
             },
             "require-dev": {
                 "php": "^7.4",
                 "php-stubs\/wordpress-globals": "0.2.0",
-                "php-stubs\/wordpress-stubs": "6.7.1",
+                "php-stubs\/wordpress-stubs": "6.7.2",
                 "sniccowp\/php-scoper-excludes": "dev-master"
             },
-            "time": "2024-11-25T00:31:50+00:00",
+            "time": "2025-02-06T00:29:24+00:00",
             "type": "library",
             "installation-source": "dist",
             "notification-url": "https:\/\/packagist.org\/downloads\/",
@@ -670,23 +670,23 @@
             ],
             "support": {
                 "issues": "https:\/\/github.com\/snicco\/php-scoper-wordpress-excludes\/issues",
-                "source": "https:\/\/github.com\/snicco\/php-scoper-wordpress-excludes\/tree\/6.7.1"
+                "source": "https:\/\/github.com\/snicco\/php-scoper-wordpress-excludes\/tree\/6.7.2"
             },
             "install-path": "..\/sniccowp\/php-scoper-wordpress-excludes"
         },
         {
             "name": "stripe\/stripe-php",
-            "version": "v16.4.0",
-            "version_normalized": "16.4.0.0",
+            "version": "v16.6.0",
+            "version_normalized": "16.6.0.0",
             "source": {
                 "type": "git",
                 "url": "https:\/\/github.com\/stripe\/stripe-php.git",
-                "reference": "4aa86099f888db9368f5f778f29feb14e6294dfb"
+                "reference": "d6de0a536f00b5c5c74f36b8f4d0d93b035499ff"
             },
             "dist": {
                 "type": "zip",
-                "url": "https:\/\/api.github.com\/repos\/stripe\/stripe-php\/zipball\/4aa86099f888db9368f5f778f29feb14e6294dfb",
-                "reference": "4aa86099f888db9368f5f778f29feb14e6294dfb",
+                "url": "https:\/\/api.github.com\/repos\/stripe\/stripe-php\/zipball\/d6de0a536f00b5c5c74f36b8f4d0d93b035499ff",
+                "reference": "d6de0a536f00b5c5c74f36b8f4d0d93b035499ff",
                 "shasum": ""
             },
             "require": {
@@ -700,7 +700,7 @@
                 "phpstan\/phpstan": "^1.2",
                 "phpunit\/phpunit": "^5.7 || ^9.0"
             },
-            "time": "2024-12-18T23:42:15+00:00",
+            "time": "2025-02-24T22:35:29+00:00",
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -732,7 +732,7 @@
             ],
             "support": {
                 "issues": "https:\/\/github.com\/stripe\/stripe-php\/issues",
-                "source": "https:\/\/github.com\/stripe\/stripe-php\/tree\/v16.4.0"
+                "source": "https:\/\/github.com\/stripe\/stripe-php\/tree\/v16.6.0"
             },
             "install-path": "..\/stripe\/stripe-php"
         },

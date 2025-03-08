@@ -219,7 +219,8 @@ function ppress_login_redirect()
         } elseif ($login_redirect == 'dashboard') {
             $redirect = network_site_url('/wp-admin');
         } elseif ($login_redirect == 'previous_page' && ! empty($referrer_url)) {
-            $redirect = $referrer_url;
+            $reset_url = untrailingslashit(ppress_password_reset_url());
+            $redirect  = strstr($referrer_url, $reset_url) ? ppress_my_account_url() : $referrer_url;
         } elseif ('current_page' == $login_redirect) {
             // in ajax mode, pp_current_url is set so we can do client-side redirection to current page after login.
             // no way to get current url in social login hence, look it up from $_GET['pp_current_url']
@@ -1252,7 +1253,7 @@ function ppressGET_var($key, $default = false, $empty = false)
         return ! empty($bucket[$key]) ? $bucket[$key] : $default;
     }
 
-    return isset($bucket[$key]) ? $bucket[$key] : $default;
+    return $bucket[$key] ?? $default;
 }
 
 function ppress_var($bucket, $key, $default = false, $empty = false)
@@ -1261,7 +1262,7 @@ function ppress_var($bucket, $key, $default = false, $empty = false)
         return isset($bucket[$key]) && ( ! empty($bucket[$key]) || ppress_is_boolean($bucket[$key]) || is_numeric($bucket[$key])) ? $bucket[$key] : $default;
     }
 
-    return isset($bucket[$key]) ? $bucket[$key] : $default;
+    return $bucket[$key] ?? $default;
 }
 
 function ppress_var_obj($bucket, $key, $default = false, $empty = false)
@@ -1270,7 +1271,7 @@ function ppress_var_obj($bucket, $key, $default = false, $empty = false)
         return isset($bucket->$key) && ( ! empty($bucket->$key) || ppress_is_boolean($bucket->$key)) ? $bucket->$key : $default;
     }
 
-    return isset($bucket->$key) ? $bucket->$key : $default;
+    return $bucket->$key ?? $default;
 }
 
 /**

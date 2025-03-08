@@ -64,39 +64,63 @@ class Checker
     /**
      * @param $protection_rule
      * @param bool $is_redirect set to true if this is a redirect check and not post content check.
+     * @param bool $is_new True if using the new reversed logic where OR comes AND and AND beocomes OR
      *
      * @return bool
      */
-    public static function content_match($protection_rule, $is_redirect = false)
+    public static function content_match($protection_rule, $is_redirect = false, $is_new = false)
     {
+        if (empty($protection_rule)) return false;
+
         $content_match = false;
 
-        if (empty($protection_rule)) return $content_match;
+        if ($is_new) {
 
-        // All Groups Must Return True. Break if any is false and set $loadable to false.
-        foreach ($protection_rule as $group => $conditions) {
+            // All Groups Must Return True. Break if any is false
+            foreach ($protection_rule as $group => $conditions) {
 
-            // Groups are false until a condition proves true.
-            $group_check = false;
+                $group_check_bucket = [];
+                // At least one group condition must be true. Break this loop if any condition is true.
+                foreach ($conditions as $condition) {
 
-            // At least one group condition must be true. Break this loop if any condition is true.
-            foreach ($conditions as $condition) {
+                    $match = self::check_condition($condition['condition'], ppress_var($condition, 'value', []), $is_redirect);
 
-                $match = self::check_condition($condition['condition'], ppress_var($condition, 'value', []), $is_redirect);
+                    $group_check_bucket[] = $match ? 'true' : 'false';
+                }
 
-                // If any condition passes, set $group_check true and break.
-                if ($match) {
-                    $group_check = true;
+                if ( ! in_array('false', $group_check_bucket)) {
+                    $content_match = true;
                     break;
                 }
             }
 
-            // If any group of conditions doesn't pass, not loadable.
-            if ( ! $group_check) {
-                $content_match = false;
-                break;
-            } else {
-                $content_match = true;
+        } else {
+
+            // All Groups Must Return True. Break if any is false
+            foreach ($protection_rule as $group => $conditions) {
+
+                // Groups are false until a condition proves true.
+                $group_check = false;
+
+                // At least one group condition must be true. Break this loop if any condition is true.
+                foreach ($conditions as $condition) {
+
+                    $match = self::check_condition($condition['condition'], ppress_var($condition, 'value', []), $is_redirect);
+
+                    // If any condition passes, set $group_check true and break.
+                    if ($match) {
+                        $group_check = true;
+                        break;
+                    }
+                }
+
+                // If any group of conditions doesn't pass, not loadable.
+                if ( ! $group_check) {
+                    $content_match = false;
+                    break;
+                } else {
+                    $content_match = true;
+                }
             }
         }
 

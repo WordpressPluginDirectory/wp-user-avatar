@@ -35,6 +35,25 @@ class SettingsPage extends AbstractSettingsPage
                 }
             }
         });
+
+        add_action('ppress_admin_notices', [$this, 'logic_upgrade_notice']);
+    }
+
+    public function logic_upgrade_notice()
+    {
+        if (ppressGET_var('page') == PPRESS_CONTENT_PROTECTION_SETTINGS_SLUG && ppressGET_var('action') == 'edit') {
+            $id = absint(ppressGET_var('id'));
+            $db = PROFILEPRESS_sql::get_meta_value($id, self::META_DATA_KEY);
+            if (ppress_var($db, 'is_new') == 'true') return;
+            ?>
+            <div class="notice notice-error">
+                <p style="font-size: 14px;"><?php printf(
+                        esc_html__('We have changed the logic of protecting content. %1$sOR%2$s is now %1$sAND%2$s while %1$sAND%2$s has been changed to %1$sOR%2$s. Please review the "Content to Protect" setup and ensure everything is perfect before saving.', 'wp-user-avatar'),
+                        '<strong>', '</strong>',
+                    ); ?></p>
+            </div>
+            <?php
+        }
     }
 
     public function admin_page_title()
@@ -68,7 +87,11 @@ class SettingsPage extends AbstractSettingsPage
     public function header_menu_tabs()
     {
         $tabs = apply_filters('ppress_membership_content_protection_settings_page_tabs', [
-            5 => ['id' => $this->default_header_menu(), 'url' => PPRESS_CONTENT_PROTECTION_SETTINGS_PAGE, 'label' => esc_html__('Content Protection', 'wp-user-avatar')],
+            5 => [
+                'id'    => $this->default_header_menu(),
+                'url'   => PPRESS_CONTENT_PROTECTION_SETTINGS_PAGE,
+                'label' => esc_html__('Content Protection', 'wp-user-avatar')
+            ],
         ]);
 
         ksort($tabs);
@@ -137,11 +160,19 @@ class SettingsPage extends AbstractSettingsPage
             return $this->content_protection_rule_errors = esc_html__('Title cannot be empty.', 'wp-user-avatar');
         }
 
+        if (isset($_POST['ppress_cc_data']) && is_array($_POST['ppress_cc_data'])) {
+            $_POST['ppress_cc_data']['is_new'] = 'true';
+        }
+
         if ('add' == $type) {
             $id = PROFILEPRESS_sql::add_meta_data(self::META_DATA_KEY, $this->sanitize_data($_POST['ppress_cc_data']));
 
             if (is_int($id)) {
-                wp_safe_redirect(add_query_arg(['action' => 'edit', 'id' => $id, 'rule-updated' => 'true'], PPRESS_CONTENT_PROTECTION_SETTINGS_PAGE));
+                wp_safe_redirect(add_query_arg([
+                    'action'       => 'edit',
+                    'id'           => $id,
+                    'rule-updated' => 'true'
+                ], PPRESS_CONTENT_PROTECTION_SETTINGS_PAGE));
                 exit;
             }
         }
@@ -151,7 +182,11 @@ class SettingsPage extends AbstractSettingsPage
             $response = PROFILEPRESS_sql::update_meta_value($rule_id, self::META_DATA_KEY, $this->sanitize_data($_POST['ppress_cc_data']));
 
             if (false !== $response) {
-                wp_safe_redirect(add_query_arg(['action' => 'edit', 'id' => $rule_id, 'rule-updated' => 'true'], PPRESS_CONTENT_PROTECTION_SETTINGS_PAGE));
+                wp_safe_redirect(add_query_arg([
+                    'action'       => 'edit',
+                    'id'           => $rule_id,
+                    'rule-updated' => 'true'
+                ], PPRESS_CONTENT_PROTECTION_SETTINGS_PAGE));
                 exit;
             }
         }

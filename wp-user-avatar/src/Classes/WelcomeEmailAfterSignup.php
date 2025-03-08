@@ -35,7 +35,7 @@ class WelcomeEmailAfterSignup
         $replace = apply_filters('ppress_welcome_message_placeholder_replace', [
             $this->wp_user->user_login,
             empty($this->password) ? esc_html__('[Your Password]', 'wp-user-avatar') : $this->password,
-            $this->wp_user->email,
+            $this->wp_user->user_email,
             ppress_site_title(),
             $this->wp_user->first_name,
             $this->wp_user->last_name,

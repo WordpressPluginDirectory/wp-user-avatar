@@ -21,7 +21,7 @@ abstract class AbstractMemberDirectoryTheme extends AbstractTheme
             'specific_users' => $this->get_meta('ppress_md_specific_users'),
             'exclude_users'  => $this->get_meta('ppress_md_exclude_users'),
             'sort_default'   => $this->get_meta('ppress_md_sort_default'),
-            'search_fields'   => $this->get_meta('ppress_md_search_fields')
+            'search_fields'  => $this->get_meta('ppress_md_search_fields')
         ]);
 
         add_action('ppress_drag_drop_builder_admin_page', [$this, 'js_script']);
@@ -300,7 +300,7 @@ abstract class AbstractMemberDirectoryTheme extends AbstractTheme
                     $carry[$item->field_key] = ppress_woocommerce_field_transform($item->field_key, $item->label_name);
 
                     return $carry;
-                }, []),
+                }, ['ppress_user_role' => esc_html__('User Role', 'wp-user-avatar')]),
                 'description' => esc_html__('Select custom fields that members can be filtered by. Only Select, Checkbox, Radio, Country and Date/Time fields are supported.', 'wp-user-avatar')
             ];
         }
@@ -453,71 +453,72 @@ abstract class AbstractMemberDirectoryTheme extends AbstractTheme
 
                 <div class="ppressmd-search ppressmd-search-invisible">
 
-                    <?php foreach ($filter_fields as $field_key) : ?>
+                    <?php
+                    foreach ($filter_fields as $field_key) :
 
-                        <?php $custom_field = PROFILEPRESS_sql::get_profile_custom_field_by_key($field_key); ?>
+                        $custom_field = PROFILEPRESS_sql::get_profile_custom_field_by_key($field_key); ?>
 
                         <div class="ppressmd-search-filter ppressmd-text-filter-type">
 
                             <?php
 
-                            switch ($custom_field['type']) {
-                                case 'select' :
-                                case 'checkbox' :
-                                case 'radio' :
-                                case 'country' :
+                            if ($field_key == 'ppress_user_role') {
+                                $this->filter_structure__select_field(
+                                    $query_params,
+                                    $field_key,
+                                    esc_html__('User Role', 'wp-user-avatar'),
+                                    ppress_wp_roles_key_value(false),
+                                    false
+                                );
+                            }
 
-                                    if ( ! empty($custom_field['options'])) {
+                            if (is_array($custom_field)) {
 
-                                        $is_multiple = false;
+                                switch ($custom_field['type']) {
+                                    case 'select' :
+                                    case 'checkbox' :
+                                    case 'radio' :
+                                    case 'country' :
 
-                                        if ($custom_field['type'] == 'select') {
-                                            $is_multiple = ppress_is_select_field_multi_selectable($field_key);
+                                        if ( ! empty($custom_field['options'])) {
 
-                                        }
+                                            $is_multiple = false;
 
-                                        if ($custom_field['type'] == 'checkbox') $is_multiple = true;
+                                            if ($custom_field['type'] == 'select') {
+                                                $is_multiple = ppress_is_select_field_multi_selectable($field_key);
+                                            }
 
-                                        printf(
-                                            '<select name="%s" data-placeholder="%s" class="ppressmd-form-field ppmd-select2"%s>',
-                                            $is_multiple ? 'filters[' . $field_key . '][]' : 'filters[' . $field_key . ']',
-                                            $custom_field['label_name'],
-                                            $is_multiple ? ' multiple' : ' data-allow-clear="true"'
-                                        );
+                                            if ($custom_field['type'] == 'checkbox') $is_multiple = true;
 
-                                        $options = array_map('trim', explode(',', $custom_field['options']));
+                                            $options = array_map('trim', explode(',', $custom_field['options']));
 
-                                        if ( ! $is_multiple) {
-                                            echo '<option></option>';
-                                        }
+                                            $options = array_combine($options, $options);
 
-                                        foreach ($options as $option) {
-                                            $bucket = ppress_var(ppress_var($query_params, 'filters', []), $field_key);
-                                            printf(
-                                                '<option value="%1$s" %2$s>%1$s</option>',
-                                                $option,
-                                                ! $is_multiple ? selected($option, $bucket, false) : (is_array($bucket) && in_array($option, $bucket) ? 'selected=selected' : '')
+                                            $this->filter_structure__select_field(
+                                                $query_params,
+                                                $field_key,
+                                                $custom_field['label_name'],
+                                                $options,
+                                                $is_multiple
                                             );
                                         }
+                                        break;
 
-                                        echo '</select>';
-                                    }
-                                    break;
+                                    case 'date' :
 
-                                case 'date' :
+                                        $dateFormat = ! empty($custom_field['options']) ? $custom_field['options'] : 'Y-m-d';
 
-                                    $dateFormat = ! empty($custom_field['options']) ? $custom_field['options'] : 'Y-m-d';
+                                        $config = FieldsShortcodeCallback::date_picker_config($field_key, $dateFormat);
 
-                                    $config = FieldsShortcodeCallback::date_picker_config($field_key, $dateFormat);
-
-                                    printf(
-                                        '<input type="text" name="%1$s" placeholder="%2$s" value="%4$s" class="ppressmd-form-field ppmd-date" data-config="%3$s">',
-                                        'filters[' . $custom_field['field_key'] . ']',
-                                        $custom_field['label_name'],
-                                        esc_attr(json_encode($config)),
-                                        ppress_var(ppress_var($query_params, 'filters', []), $field_key)
-                                    );
-                                    break;
+                                        printf(
+                                            '<input type="text" name="%1$s" placeholder="%2$s" value="%4$s" class="ppressmd-form-field ppmd-date" data-config="%3$s">',
+                                            'filters[' . $custom_field['field_key'] . ']',
+                                            $custom_field['label_name'],
+                                            esc_attr(json_encode($config)),
+                                            ppress_var(ppress_var($query_params, 'filters', []), $field_key)
+                                        );
+                                        break;
+                                }
                             }
                             ?>
 
@@ -529,6 +530,32 @@ abstract class AbstractMemberDirectoryTheme extends AbstractTheme
 
             </div>
         <?php endif;
+    }
+
+    protected function filter_structure__select_field($query_params, $field_key, $label_name, $options, $is_multiple)
+    {
+        printf(
+            '<select name="%s" data-placeholder="%s" class="ppressmd-form-field ppmd-select2"%s>',
+            $is_multiple ? 'filters[' . $field_key . '][]' : 'filters[' . $field_key . ']',
+            $label_name,
+            $is_multiple ? ' multiple' : ' data-allow-clear="true"'
+        );
+
+        if ( ! $is_multiple) {
+            echo '<option></option>';
+        }
+
+        foreach ($options as $optionKey => $option) {
+            $bucket = ppress_var(ppress_var($query_params, 'filters', []), $field_key);
+            printf(
+                '<option value="%1$s" %3$s>%2$s</option>',
+                $optionKey,
+                $option,
+                ! $is_multiple ? selected($option, $bucket, false) : (is_array($bucket) && in_array($option, $bucket) ? 'selected=selected' : '')
+            );
+        }
+
+        echo '</select>';
     }
 
     protected function search_form()

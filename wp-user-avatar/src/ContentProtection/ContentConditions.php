@@ -108,7 +108,7 @@ class ContentConditions
         $name_attr = sprintf('ppress_cc_data[content][%s][%s][condition]', esc_attr($facetListId), esc_attr($facetId));
         ?>
         <div class="facet" data-facet="<?= esc_attr($facetId) ?>">
-            <i class="badge or"><?= esc_html__('or', 'wp-user-avatar') ?></i>
+            <i class="badge or"><?= esc_html__('and', 'wp-user-avatar') ?></i>
             <div class="col">
                 <select class="ppress-content-condition-rule-name" class="ppcr-condition-rule-name" name="<?= $name_attr; ?>">
                     <option value=""><?php _e('Select a condition', 'wp-user-avatar'); ?></option>
@@ -181,12 +181,12 @@ class ContentConditions
 
     public function unlinked_and_rule_badge()
     {
-        echo '<p class="and"><em>' . esc_html__('AND', 'wp-user-avatar') . '</em></p>';
+        echo '<p class="and"><em>' . esc_html__('OR', 'wp-user-avatar') . '</em></p>';
     }
 
     public function linked_and_rule_badge()
     {
-        echo '<p class="and"><a href="javascript:void(0);" class="addCondition">+ ' . esc_html__('AND', 'wp-user-avatar') . '</a></p>';
+        echo '<p class="and"><a href="javascript:void(0);" class="addCondition">+ ' . esc_html__('OR', 'wp-user-avatar') . '</a></p>';
     }
 
     public function rules_group_row($facetListId = '', $facetId = '', $facets = [], $unlink_and = false)
@@ -209,7 +209,7 @@ class ContentConditions
 
                 </div>
                 <div class="add-or">
-                    <a href="javascript:void(0)" class="add addFacet">+ <?= esc_html__('OR', 'wp-user-avatar') ?></a>
+                    <a href="javascript:void(0)" class="add addFacet">+ <?= esc_html__('AND', 'wp-user-avatar') ?></a>
                 </div>
             </section>
 
@@ -261,7 +261,7 @@ class ContentConditions
     {
         $conditions = $this->get_conditions();
 
-        return isset($conditions[$condition]) ? $conditions[$condition] : null;
+        return $conditions[$condition] ?? null;
     }
 
     /**

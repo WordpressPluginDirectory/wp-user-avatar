@@ -156,7 +156,7 @@
     cr.addAndRule = function () {
         $(document).on('click', '#ppress-content-protection-content .addCondition', function () {
             $(this).trigger('blur');
-            $('#ppress-content-protection-content #workflowConditions').append(
+            $('#ppress-content-protection-content .workflowConditions').append(
                 cr.andRuleTemplate({
                     facetListId: cr.generateUniqueID(),
                     facetId: cr.generateUniqueID()
@@ -197,7 +197,7 @@
 
             if (rule_wrapper.length === 1) {
 
-                if ($('#ppress-content-protection-content .condAction').length === 1) {
+                if ($('#ppress-content-protection-excludes .condAction').length === 1) {
                     rule_wrapper.find('.ppress-cr-rule-values').html('');
                     rule_wrapper.find('.ppress-content-condition-exempt-rule-name').val('');
                     return false;

@@ -354,8 +354,8 @@ class ApiRequestor
         // X-Stripe-Client-User-Agent header via the optional getUserAgentInfo()
         // method
         $clientUAInfo = null;
-        if (\method_exists($this->httpClient(), 'getUserAgentInfo')) {
-            $clientUAInfo = $this->httpClient()->getUserAgentInfo();
+        if (\method_exists(self::httpClient(), 'getUserAgentInfo')) {
+            $clientUAInfo = self::httpClient()->getUserAgentInfo();
         }
         if ($params && \is_array($params)) {
             $optionKeysInParams = \array_filter(self::$OPTIONS_KEYS, function ($key) use ($params) {
@@ -418,8 +418,13 @@ class ApiRequestor
     private function _requestRaw($method, $url, $params, $headers, $apiMode, $usage)
     {
         list($absUrl, $rawHeaders, $params, $hasFile, $myApiKey) = $this->_prepareRequest($method, $url, $params, $headers, $apiMode);
+        // for some reason, PHP users will sometimes include null bytes in their paths, which leads to cryptic server 400s.
+        // we'll be louder about this to help catch issues earlier.
+        if (\false !== \strpos($absUrl, "\x00") || \false !== \strpos($absUrl, '%00')) {
+            throw new Exception\InvalidRequestException("URLs may not contain null bytes ('\\0'); double check any IDs you're including with the request.");
+        }
         $requestStartMs = Util\Util::currentTimeMillis();
-        list($rbody, $rcode, $rheaders) = $this->httpClient()->request($method, $absUrl, $rawHeaders, $params, $hasFile, $apiMode);
+        list($rbody, $rcode, $rheaders) = self::httpClient()->request($method, $absUrl, $rawHeaders, $params, $hasFile, $apiMode);
         if (isset($rheaders['request-id']) && \is_string($rheaders['request-id']) && '' !== $rheaders['request-id']) {
             self::$requestTelemetry = new RequestTelemetry($rheaders['request-id'], Util\Util::currentTimeMillis() - $requestStartMs, $usage);
         }
@@ -443,7 +448,7 @@ class ApiRequestor
     {
         list($absUrl, $rawHeaders, $params, $hasFile, $myApiKey) = $this->_prepareRequest($method, $url, $params, $headers, $apiMode);
         $requestStartMs = Util\Util::currentTimeMillis();
-        list($rbody, $rcode, $rheaders) = $this->streamingHttpClient()->requestStream($method, $absUrl, $rawHeaders, $params, $hasFile, $readBodyChunkCallable);
+        list($rbody, $rcode, $rheaders) = self::streamingHttpClient()->requestStream($method, $absUrl, $rawHeaders, $params, $hasFile, $readBodyChunkCallable);
         if (isset($rheaders['request-id']) && \is_string($rheaders['request-id']) && '' !== $rheaders['request-id']) {
             self::$requestTelemetry = new RequestTelemetry($rheaders['request-id'], Util\Util::currentTimeMillis() - $requestStartMs);
         }
@@ -522,7 +527,7 @@ class ApiRequestor
     /**
      * @return HttpClient\ClientInterface
      */
-    private function httpClient()
+    public static function httpClient()
     {
         if (!self::$_httpClient) {
             self::$_httpClient = HttpClient\CurlClient::instance();
@@ -532,7 +537,7 @@ class ApiRequestor
     /**
      * @return HttpClient\StreamingClientInterface
      */
-    private function streamingHttpClient()
+    public static function streamingHttpClient()
     {
         if (!self::$_streamingHttpClient) {
             self::$_streamingHttpClient = HttpClient\CurlClient::instance();

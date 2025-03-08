@@ -34,8 +34,10 @@ if (empty($methods)) : ?>
                 <legend><?php esc_html_e('Payment Information', 'wp-user-avatar') ?></legend>
 
                 <div class="ppress-checkout-form__payment_methods_wrap">
-
-                    <?php foreach ($methods as $id => $method) :
+	    	
+                    <?php $methods = apply_filters('ppress_checkout_available_payment_methods', $methods, $plan->get_id());
+	    		
+	    		foreach ($methods as $id => $method) :
 
                         if ($plan->is_recurring() && ! $method->supports(AbstractPaymentMethod::SUBSCRIPTIONS)) continue;
 

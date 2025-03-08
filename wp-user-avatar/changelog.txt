@@ -1,5 +1,17 @@
 ﻿== Changelog ==
 
+= 4.15.22 =
+* Added a filter for specifying payment method based on plan ID.
+* Added ppress_subscription_buffer_seconds filter.
+* Added filtering by user role to Member Directory.
+* Inverted the logic of content protection.
+* Fixed: Function _load_textdomain_just_in_time was called incorrectly.
+* Fixed email placeholder not working for welcome email
+* Switch to using home_url() from site_url() for login redirect.
+* Disabled buffer on expiration cron job when a subscription is cancelled.
+* Redirect to My Account page if previous url after login is the password reset page.
+* Added double-check to ensure subscription is expired before sending subscriptionExpired email.
+
 = 4.15.21 =
 * Added shortcode support to Resrricred Page template in content protection.
 * Added ppress_checkout_is_registration_checked_enabled filter.

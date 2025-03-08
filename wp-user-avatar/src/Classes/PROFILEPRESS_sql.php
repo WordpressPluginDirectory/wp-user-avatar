@@ -8,7 +8,7 @@ class PROFILEPRESS_sql
 {
     /** @param $meta_key
      * @param $meta_value
-     * @param $flag
+     * @param string $flag
      *
      * @return bool|int
      */
@@ -33,7 +33,8 @@ class PROFILEPRESS_sql
         return ! $insert ? false : $wpdb->insert_id;
     }
 
-    /** @param $meta_key
+    /**
+     * @param $meta_key
      * @param $meta_value
      * @param $flag
      *

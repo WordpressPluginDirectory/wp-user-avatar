@@ -7,7 +7,7 @@ $dbData = $restrictDataToExcludes
 ?>
 <div class="pp-content-protection-excludes">
     <section id="ppContentProtectionContent">
-        <div id="workflowConditions">
+        <div class="workflowConditions">
             <?php if (is_array($dbData) && ! empty($dbData)): $index = 0;
                 $count                                               = count($dbData); ?>
                 <?php foreach ($dbData as $facetListId => $facets) : ++$index; ?>

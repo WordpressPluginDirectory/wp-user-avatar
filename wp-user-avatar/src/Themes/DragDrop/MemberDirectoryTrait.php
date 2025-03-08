@@ -109,6 +109,14 @@ trait MemberDirectoryTrait
 
             $offset = $current_page > 1 ? ($current_page - 1) * $users_per_page : 0;
 
+            $filter_meta_fields = isset($query_params['filters']) ? array_filter(
+                array_map('ppress_recursive_trim', ppress_var($query_params, 'filters', [], true))
+            ) : [];
+
+            if ( ! empty($filter_meta_fields['ppress_user_role'])) {
+                $roles = [sanitize_text_field($filter_meta_fields['ppress_user_role'])];
+            }
+
             $wp_user_query = $this->member_directory_users([
                 'number'             => $users_per_page,
                 'paged'              => $current_page,
@@ -119,9 +127,7 @@ trait MemberDirectoryTrait
                 'sort_method'        => $sort_method,
                 'search_columns'     => $search_columns,
                 'search_meta_fields' => $meta_fields,
-                'filter_meta_fields' => isset($query_params['filters']) ? array_filter(
-                    array_map('ppress_recursive_trim', ppress_var($query_params, 'filters', [], true))
-                ) : [],
+                'filter_meta_fields' => $filter_meta_fields,
                 'is_search_query'    => ! empty($query_params['ppmd-search']),
                 'search_q'           => isset($query_params[$search_q_key]) ? sanitize_text_field($query_params[$search_q_key]) : ''
             ]);
@@ -130,7 +136,13 @@ trait MemberDirectoryTrait
 
             $total_users_found = $wp_user_query->get_total();
 
-            if ( ! empty($roles) && ! empty($query_params['ppmd-search']) && is_array($users) && ! empty($users)) {
+            if (
+                apply_filters('ppress_member_directory_enable_user_role_array_filtering', false) &&
+                ! empty($roles) &&
+                ! empty($query_params['ppmd-search']) &&
+                is_array($users) &&
+                ! empty($users)
+            ) {
 
                 /**
                  * @var int $key
@@ -222,9 +234,13 @@ trait MemberDirectoryTrait
 
             $roles = $parsed_args['roles'];
 
-            $filter_meta_fields = $parsed_args['filter_meta_fields'];
+            $filter_meta_fields = array_filter($parsed_args['filter_meta_fields'], function ($v, $k) {
+                return $k != 'ppress_user_role';
+            }, ARRAY_FILTER_USE_BOTH);
 
-            $args['search'] = '*' . $search_term . '*';
+            if ( ! empty($search_term)) {
+                $args['search'] = '*' . $search_term . '*';
+            }
 
             // we need to empty out the search column so wp user query doesn't restrict the search only
             // to supplied search columns. We want to also check usermeta too.
@@ -239,7 +255,7 @@ trait MemberDirectoryTrait
                 // AND wp_usermeta.meta_value LIKE '%little%' ) ) ) AND () ORDER BY user_registered DESC
                 $query->query_where = str_replace('AND ()', '', $query->query_where);
 
-                if ( ! empty($roles)) {
+                if ( apply_filters('ppress_member_directory_enable_user_role_array_filtering', false) && ! empty($roles)) {
                     // remove query LIMIT so we can get actual total number of result when filitering by roles
                     unset($query->query_limit);
                 }
@@ -266,9 +282,10 @@ trait MemberDirectoryTrait
 
                     foreach ($search_columns as $search_column) {
 
-                        $OR_placeholders[] = '%s';
-
-                        $queries[] = $wpdb->prepare("{$wpdb->users}.$search_column LIKE %s", '%' . $wpdb->esc_like($search_term) . '%');
+                        if ( ! empty($search_term)) {
+                            $OR_placeholders[] = '%s';
+                            $queries[]         = $wpdb->prepare("{$wpdb->users}.$search_column LIKE %s", '%' . $wpdb->esc_like($search_term) . '%');
+                        }
                     }
                 }
 
@@ -282,7 +299,6 @@ trait MemberDirectoryTrait
                         ppress_mb_function(['mb_strlen', 'strlen'], [$sql['where']])
                     ]
                 );
-
 
                 $filter_queries = '';
 
@@ -340,7 +356,7 @@ trait MemberDirectoryTrait
                 return $sql;
             });
 
-            if (is_array($parsed_args['search_meta_fields']) && ! empty($parsed_args['search_meta_fields'])) {
+            if (is_array($parsed_args['search_meta_fields']) && ! empty($parsed_args['search_meta_fields']) && ! empty($search_term)) {
 
                 $args['meta_query'][0]['relation'] = 'OR';
 

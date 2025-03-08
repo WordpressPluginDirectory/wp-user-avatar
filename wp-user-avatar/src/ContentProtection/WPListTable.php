@@ -23,14 +23,12 @@ class WPListTable extends \WP_List_Table
 
     public function get_columns()
     {
-        $columns = [
+        return [
             'cb'      => '<input type="checkbox" />',
             'title'   => esc_html__('Title', 'wp-user-avatar'),
             'content' => esc_html__('Protected Contents', 'wp-user-avatar'),
             'access'  => esc_html__('Access', 'wp-user-avatar'),
         ];
-
-        return $columns;
     }
 
     public function column_default($item, $column_name)
@@ -63,27 +61,49 @@ class WPListTable extends \WP_List_Table
     {
         $nonce_delete = wp_create_nonce('pp_content_protection_delete_rule');
 
-        return add_query_arg(['action' => 'delete', 'id' => $rule_id, '_wpnonce' => $nonce_delete], PPRESS_CONTENT_PROTECTION_SETTINGS_PAGE);
+        return add_query_arg([
+            'action'   => 'delete',
+            'id'       => $rule_id,
+            '_wpnonce' => $nonce_delete
+        ], PPRESS_CONTENT_PROTECTION_SETTINGS_PAGE);
     }
 
     public function column_title($item)
     {
         $rule_id = absint($item['id']);
 
-        $item = ppress_var($item, 'meta_value', []);
+        $edit_link = add_query_arg([
+            'id'     => $rule_id,
+            'action' => 'edit'
+        ], PPRESS_CONTENT_PROTECTION_SETTINGS_PAGE);
 
-        $is_active = in_array(ppress_var($item, 'is_active', true), ['true', true], true);
+        $duplicate_link = add_query_arg([
+            'action'   => 'duplicate',
+            'id'       => $rule_id,
+            '_wpnonce' => wp_create_nonce('pp_content_protection_duplicate_rule')
+        ], PPRESS_CONTENT_PROTECTION_SETTINGS_PAGE);
 
-        $edit_link       = add_query_arg(['action' => 'edit', 'id' => $rule_id], PPRESS_CONTENT_PROTECTION_SETTINGS_PAGE);
-        $duplicate_link  = add_query_arg(['action' => 'duplicate', 'id' => $rule_id, '_wpnonce' => wp_create_nonce('pp_content_protection_duplicate_rule')], PPRESS_CONTENT_PROTECTION_SETTINGS_PAGE);
-        $activate_link   = add_query_arg(['action' => 'activate', 'id' => $rule_id, '_wpnonce' => wp_create_nonce('pp_content_protection_activate_rule')], PPRESS_CONTENT_PROTECTION_SETTINGS_PAGE);
-        $deactivate_link = add_query_arg(['action' => 'deactivate', 'id' => $rule_id, '_wpnonce' => wp_create_nonce('pp_content_protection_deactivate_rule')], PPRESS_CONTENT_PROTECTION_SETTINGS_PAGE);
+        $activate_link = add_query_arg([
+            'action'   => 'activate',
+            'id'       => $rule_id,
+            '_wpnonce' => wp_create_nonce('pp_content_protection_activate_rule')
+        ], PPRESS_CONTENT_PROTECTION_SETTINGS_PAGE);
+
+        $deactivate_link = add_query_arg([
+            'action'   => 'deactivate',
+            'id'       => $rule_id,
+            '_wpnonce' => wp_create_nonce('pp_content_protection_deactivate_rule')
+        ], PPRESS_CONTENT_PROTECTION_SETTINGS_PAGE);
         $delete_link     = self::delete_rule_url($rule_id);
 
         $actions = [
             'edit'      => sprintf('<a href="%s">%s</a>', $edit_link, esc_html__('Edit', 'wp-user-avatar')),
             'duplicate' => sprintf('<a href="%s">%s</a>', $duplicate_link, esc_html__('Duplicate', 'wp-user-avatar'))
         ];
+
+        $item_meta_value = $item['meta_value'] ?? [];
+
+        $is_active = in_array(ppress_var($item_meta_value, 'is_active', true), ['true', true], true);
 
         if (true === $is_active) {
             $actions['deactivate'] = sprintf('<a href="%s">%s</a>', $deactivate_link, esc_html__('Deactivate', 'wp-user-avatar'));
@@ -95,7 +115,7 @@ class WPListTable extends \WP_List_Table
 
         $actions['delete'] = sprintf('<a class="pp-confirm-delete" href="%s">%s</a>', $delete_link, esc_html__('Delete', 'wp-user-avatar'));
 
-        $a = '<a href="' . $edit_link . '">' . ppress_var($item, 'title') . '</a>';
+        $a = '<a href="' . $edit_link . '">' . $item_meta_value['title'] ?? '</a>';
 
         return '<strong>' . $a . '</strong>' . $this->row_actions($actions);
     }
@@ -277,12 +297,11 @@ class WPListTable extends \WP_List_Table
         if (empty($result)) return false;
 
         $output = [];
-        foreach ($result as $key => $meta) {
-            $output[$key] = array_reduce(array_keys($meta), function ($carry, $item) use ($meta) {
-                $carry[$item] = $item == 'meta_value' ? unserialize($meta[$item], ['allowed_classes' => false]) : $meta[$item];
+        foreach ($result as $meta) {
 
-                return $carry;
-            });
+            if (isset($meta['meta_value'])) $meta['meta_value'] = unserialize($meta['meta_value'], ['allowed_classes' => false]);
+
+            $output[] = $meta;
         }
 
         return $output;
@@ -304,7 +323,7 @@ class WPListTable extends \WP_List_Table
 
         $this->process_bulk_action();
 
-        $per_page = $this->get_items_per_page('rules_per_page', 10);
+        $per_page     = $this->get_items_per_page('rules_per_page', 10);
         $current_page = $this->get_pagenum();
         $total_items  = $this->record_count();
 

@@ -20,11 +20,11 @@ class Redirect
 
             foreach ($metas as $meta) {
 
-                $meta = ppress_var($meta, 'meta_value', []);
+                $meta_value = ppress_var($meta, 'meta_value', []);
 
-                if ( ! in_array(ppress_var($meta, 'is_active', true), ['true', true], true)) continue;
+                if ( ! in_array(ppress_var($meta_value, 'is_active', true), ['true', true], true)) continue;
 
-                $access_condition = ppress_var($meta, 'access_condition', []);
+                $access_condition = ppress_var($meta_value, 'access_condition', []);
 
                 $noaccess_action = ppress_var($access_condition, 'noaccess_action');
 
@@ -59,9 +59,11 @@ class Redirect
                 if ($current_url == $password_reset_url) continue;
                 if ($current_url == $edit_profile_url) continue;
 
-                if (isset($meta['exempt']) && is_array($meta['exempt']) && Checker::content_match($meta['exempt'])) continue;
+                if (isset($meta_value['exempt']) && is_array($meta_value['exempt']) && Checker::content_match($meta_value['exempt'])) continue;
 
-                if (Checker::content_match($meta['content'], true)) {
+                $is_new = ppress_var($meta_value, 'is_new') == 'true';
+
+                if (Checker::content_match($meta_value['content'], true, $is_new)) {
 
                     $who_can_access = ppress_var($access_condition, 'who_can_access', 'everyone');
 

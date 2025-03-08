@@ -5,7 +5,7 @@ Tags: membership, ecommerce, user registration, user profile, memberships
 Requires at least: 5.3
 Requires PHP: 7.4
 Tested up to: 6.7
-Stable tag: 4.15.21
+Stable tag: 4.15.22
 License: GPLv2 or later
 
 Setup paid membership, accept payment, sell subscription & digital product, paywall, create login & registration form, user profile & member directory
@@ -183,8 +183,20 @@ Any file type can be sold using ProfilePress ecommerce and membership plugin, in
 
 == Changelog ==
 
+= Paid Membership, Ecommerce & User Registration 4.15.22 =
+* Added a filter for specifying payment method based on plan ID.
+* Added ppress_subscription_buffer_seconds filter.
+* Added filtering by user role to Member Directory.
+* Inverted the logic of content protection.
+* Fixed: Function _load_textdomain_just_in_time was called incorrectly.
+* Fixed email placeholder not working for welcome email
+* Switch to using home_url() from site_url() for login redirect.
+* Disabled buffer on expiration cron job when a subscription is cancelled.
+* Redirect to My Account page if previous url after login is the password reset page.
+* Added double-check to ensure subscription is expired before sending subscriptionExpired email.
+
 = Paid Membership, Ecommerce & User Registration 4.15.21 =
-* Added shortcode support to Resrricred Page template in content protection.
+* Added shortcode support to Restricted Page template in content protection.
 * Added ppress_checkout_is_registration_checked_enabled filter.
 * Added ppress_frontend_profile_url filter.
 * Disable processing page when on bank transfer payment method.
@@ -192,19 +204,5 @@ Any file type can be sold using ProfilePress ecommerce and membership plugin, in
 * Fixed bug where textarea data in user profile lack newlines.
 * Fixed broken html on agreeable field.
 * Fixed bug where stripe amount could be negative integer.
-
-= Paid Membership, Ecommerce & User Registration 4.15.20.1 =
-* Disable registration via checkout if "user can register" is not enabled.
-
-= Paid Membership, Ecommerce & User Registration 4.15.20 =
-* Added ppress_content_protection_ignore_post_excerpt filter.
-* Added ppress_user_avatar_image_url filter.
-* Added {{order_coupon}} placeholder to order emails.
-* Fixed customer search in admin dashboard not working correctly.
-* Fixed various XSS reported by Cleantalk.
-* Fixed duplicate queries detected by Query Monitor.
-* Fixed fatal error that might occur from changing default login page url.
-* Switched to using core Codemirror library.
-* Fixed couple of PHP errors and warnings.
 
 See the [changelog file](https://plugins.svn.wordpress.org/wp-user-avatar/trunk/changelog.txt) for full change log information.

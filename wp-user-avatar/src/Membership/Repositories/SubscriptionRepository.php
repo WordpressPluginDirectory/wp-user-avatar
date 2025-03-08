@@ -169,9 +169,9 @@ class SubscriptionRepository extends BaseRepository
      * @param $args
      * @param $count
      *
-     * @return SubscriptionEntity[]|[]|string|int
+     * @return array|SubscriptionEntity[]
      */
-    public function retrieveBy($args = array(), $count = false)
+    public function retrieveBy($args = [], $count = false)
     {
         $defaults = [
             'fields'          => '*',

@@ -7,7 +7,7 @@ $dbData = $contentToRestrictData
 ?>
 <div class="pp-content-protection-content-box">
     <section id="ppContentProtectionContent">
-        <div id="workflowConditions">
+        <div class="workflowConditions">
             <?php if (is_array($dbData) && ! empty($dbData)): $index = 0;
                 $count                                               = count($dbData); ?>
                 <?php foreach ($dbData as $facetListId => $facets) : ++$index; ?>

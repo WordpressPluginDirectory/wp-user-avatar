@@ -60,7 +60,7 @@ class LoginRedirect
                 foreach ($membership_plan_rules as $plan_id => $redirect_url_slug) {
 
                     if (ppress_has_active_subscription($user_id, $plan_id)) {
-                        return site_url($redirect_url_slug);
+                        return home_url($redirect_url_slug);
                     }
                 }
             }
@@ -72,7 +72,7 @@ class LoginRedirect
                 foreach ($user_role_rules as $user_role => $redirect_url_slug) {
 
                     if (in_array($user_role, $user_roles, true)) {
-                        return site_url($redirect_url_slug);
+                        return home_url($redirect_url_slug);
                     }
                 }
             }
@@ -92,7 +92,11 @@ class LoginRedirect
 
     public function header_sub_menu_tab($tabs)
     {
-        $tabs[60] = ['parent' => 'general', 'id' => 'login-redirect', 'label' => esc_html__('Login Redirect', 'wp-user-avatar')];
+        $tabs[60] = [
+            'parent' => 'general',
+            'id'     => 'login-redirect',
+            'label'  => esc_html__('Login Redirect', 'wp-user-avatar')
+        ];
 
         return $tabs;
     }
@@ -273,7 +277,7 @@ class LoginRedirect
             <label class="ppress-login-redirect--field-label"><?php echo esc_attr($label); ?></label>
             <div class="ppress-login-redirect--field-control">
                 <div class="ppress-url-prefix-suffix-field">
-                    <div class="ppress-url-prefix-field"><code><?php echo site_url('/'); ?></code></div>
+                    <div class="ppress-url-prefix-field"><code><?php echo home_url('/'); ?></code></div>
                     <input type="text" name="ppress_login_redirect[<?php echo esc_attr($redirect_type); ?>][<?php echo esc_attr($redirect_target); ?>]" value="<?php echo esc_attr($redirect_url_slug); ?>" placeholder="wp-admin/">
                     <div class="ppress-url-suffix-field">
                         <button type="button" class="ppress-login-redirect--remove-field">

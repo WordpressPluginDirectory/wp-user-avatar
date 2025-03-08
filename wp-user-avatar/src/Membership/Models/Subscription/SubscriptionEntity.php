@@ -222,8 +222,6 @@ class SubscriptionEntity extends AbstractModel implements ModelInterface
             ])
         ) {
 
-            $ret = false;
-
             $expiration_date = CarbonImmutable::parse($this->expiration_date, wp_timezone());
             $now             = CarbonImmutable::now(wp_timezone());
 
@@ -688,13 +686,13 @@ class SubscriptionEntity extends AbstractModel implements ModelInterface
 
         $expiration_date_timestamp = ppress_strtotime_utc($this->expiration_date);
 
-        if ($addBuffer && $this->billing_frequency == SubscriptionBillingFrequency::DAILY) {
+        if ($addBuffer && ($this->is_cancelled() || $this->billing_frequency == SubscriptionBillingFrequency::DAILY)) {
             $addBuffer = false;
         }
 
         if (apply_filters('ppress_subscription_is_add_buffer', $addBuffer, $this)) {
             // added a day buffer to expiration date to give time for gateway to renew the sub
-            $expiration_date_timestamp += DAY_IN_SECONDS;
+            $expiration_date_timestamp += apply_filters('ppress_subscription_buffer_seconds', absint(1.5 * DAY_IN_SECONDS), $this);
         }
 
         if ($check_expiration && time() <= $expiration_date_timestamp) {
