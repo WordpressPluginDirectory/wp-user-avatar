@@ -106,6 +106,8 @@ class MemberDirectoryListing
                         $db_country       = get_user_meta($this->user_id, CheckoutFields::BILLING_COUNTRY, true);
                         $parsed_shortcode = ppress_get_country_state_title($parsed_shortcode, $db_country);
                     }
+
+                    $parsed_shortcode = apply_filters(' ppress_md_profile_cpf', $parsed_shortcode, $field_key, $custom_field_type, $this->user_id);
                 }
 
                 if ($raw_field_type == 'profile-display-name') {
@@ -115,6 +117,12 @@ class MemberDirectoryListing
                         ppress_get_frontend_profile_url($this->user_id),
                         $parsed_shortcode
                     );
+                }
+
+                if ($raw_field_type == 'profile-bio') {
+                    $bio = get_user_meta($this->user_id, 'description', true);
+
+                    $parsed_shortcode = apply_filters('ppress_md_profile_bio', $bio, $this->user_id);
                 }
 
                 if ($raw_field_type == 'profile-website') {

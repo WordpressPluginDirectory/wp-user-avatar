@@ -2,14 +2,14 @@
 # This file is distributed under the same license as the ProfilePress plugin.
 msgid ""
 msgstr ""
-"Project-Id-Version: ProfilePress 4.15.22\n"
+"Project-Id-Version: ProfilePress 4.15.25\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wp-user-avatar\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2025-03-07T11:42:53+00:00\n"
+"POT-Creation-Date: 2025-05-13T13:27:07+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.8.1\n"
 "X-Domain: wp-user-avatar\n"
@@ -56,7 +56,7 @@ msgid "%s[avatar_upload]%s adds a standalone avatar uploader visible only to log
 msgstr ""
 
 #: deprecated/wp-user-avatar/includes/class-wp-user-avatar-admin.php:106
-#: src/Classes/AdminNotices.php:217
+#: src/Classes/AdminNotices.php:188
 msgid "Learn more"
 msgstr ""
 
@@ -102,8 +102,8 @@ msgstr ""
 #: deprecated/wp-user-avatar/includes/class-wp-user-avatar-admin.php:243
 #: deprecated/wp-user-avatar/includes/class-wp-user-avatar.php:82
 #: src/Admin/SettingsPages/EmailSettings/DefaultTemplateCustomizer.php:300
-#: src/ShortcodeParser/MyAccount/edit-profile.tmpl.php:103
-#: src/ShortcodeParser/MyAccount/edit-profile.tmpl.php:122
+#: src/ShortcodeParser/MyAccount/edit-profile.tmpl.php:105
+#: src/ShortcodeParser/MyAccount/edit-profile.tmpl.php:124
 #: src/templates/checkout/form-checkout-sidebar.php:97
 msgid "Remove"
 msgstr ""
@@ -415,9 +415,9 @@ msgstr ""
 #: src/Admin/SettingsPages/GeneralSettings.php:444
 #: src/Admin/SettingsPages/Membership/CheckoutFieldsManager.php:90
 #: src/Admin/SettingsPages/Membership/PlanIntegrationsMetabox.php:178
-#: src/Functions/GlobalFunctions.php:1453
-#: src/Functions/GlobalFunctions.php:1485
-#: src/Functions/GlobalFunctions.php:1507
+#: src/Functions/GlobalFunctions.php:1454
+#: src/Functions/GlobalFunctions.php:1486
+#: src/Functions/GlobalFunctions.php:1508
 #: src/LoginRedirect.php:171
 msgid "Select..."
 msgstr ""
@@ -484,7 +484,7 @@ msgstr ""
 
 #: src/Admin/SettingsPages/DragDropBuilder/DragDropBuilder.php:1222
 #: src/Admin/SettingsPages/Membership/CheckoutFieldsManager.php:93
-#: src/Functions/GlobalFunctions.php:1510
+#: src/Functions/GlobalFunctions.php:1511
 #: src/Themes/DragDrop/AbstractMemberDirectoryTheme.php:222
 msgid "Standard Fields"
 msgstr ""
@@ -497,7 +497,7 @@ msgstr ""
 #: src/Admin/SettingsPages/LicenseUpgrader.php:176
 #: src/Admin/SettingsPages/Membership/CheckoutFieldsManager.php:101
 #: src/Classes/ExtensionManager.php:115
-#: src/Functions/GlobalFunctions.php:1513
+#: src/Functions/GlobalFunctions.php:1514
 #: src/Themes/DragDrop/AbstractMemberDirectoryTheme.php:236
 msgid "Custom Fields"
 msgstr ""
@@ -520,7 +520,7 @@ msgstr ""
 #: src/Admin/SettingsPages/Membership/CheckoutFieldsManager.php:68
 #: src/AdminBarDashboardAccess/include.settings-page.php:54
 #: src/AdminBarDashboardAccess/include.settings-page.php:109
-#: src/Functions/custom-settings-api.php:1124
+#: src/Functions/custom-settings-api.php:1123
 #: src/LoginRedirect.php:150
 #: src/ShortcodeParser/Builder/FieldsShortcodeCallback.php:1137
 msgid "Save Changes"
@@ -638,7 +638,7 @@ msgstr ""
 #: src/Admin/SettingsPages/GeneralSettings.php:65
 #: src/Admin/SettingsPages/GeneralSettings.php:102
 #: src/Admin/SettingsPages/Membership/views/orders/order-data-metabox.php:82
-#: src/ShortcodeParser/MyAccount/edit-profile.tmpl.php:30
+#: src/ShortcodeParser/MyAccount/edit-profile.tmpl.php:32
 msgid "General"
 msgstr ""
 
@@ -673,18 +673,18 @@ msgstr ""
 
 #: src/Admin/SettingsPages/DragDropBuilder/FieldBase.php:235
 #: src/Admin/SettingsPages/FormList.php:241
-#: src/Admin/SettingsPages/FormList.php:317
+#: src/Admin/SettingsPages/FormList.php:332
 #: src/Admin/SettingsPages/GeneralSettings.php:175
 #: src/Admin/SettingsPages/Membership/CouponsPage/CouponWPListTable.php:77
 #: src/Admin/SettingsPages/Membership/CouponsPage/CouponWPListTable.php:200
 #: src/Admin/SettingsPages/Membership/CustomersPage/CustomerWPListTable.php:259
 #: src/Admin/SettingsPages/Membership/DownloadLogsPage/WPListTable.php:130
-#: src/Admin/SettingsPages/Membership/GroupsPage/GroupWPListTable.php:58
-#: src/Admin/SettingsPages/Membership/GroupsPage/GroupWPListTable.php:150
+#: src/Admin/SettingsPages/Membership/GroupsPage/GroupWPListTable.php:61
+#: src/Admin/SettingsPages/Membership/GroupsPage/GroupWPListTable.php:167
 #: src/Admin/SettingsPages/Membership/OrdersPage/OrderWPListTable.php:112
 #: src/Admin/SettingsPages/Membership/OrdersPage/OrderWPListTable.php:265
 #: src/Admin/SettingsPages/Membership/PlansPage/PlanWPListTable.php:77
-#: src/Admin/SettingsPages/Membership/PlansPage/PlanWPListTable.php:172
+#: src/Admin/SettingsPages/Membership/PlansPage/PlanWPListTable.php:183
 #: src/Admin/SettingsPages/Membership/SubscriptionsPage/SubscriptionWPListTable.php:114
 #: src/Admin/SettingsPages/Membership/SubscriptionsPage/SubscriptionWPListTable.php:263
 #: src/Admin/SettingsPages/Membership/views/checkout-field-item.php:45
@@ -707,7 +707,7 @@ msgstr ""
 
 #: src/Admin/SettingsPages/DragDropBuilder/Fields/Bio.php:22
 #: src/Admin/SettingsPages/DragDropBuilder/Fields/UserProfile/Bio.php:22
-#: src/Functions/GlobalFunctions.php:1497
+#: src/Functions/GlobalFunctions.php:1498
 #: src/Themes/DragDrop/AbstractMemberDirectoryTheme.php:231
 #: src/Themes/DragDrop/AbstractTheme.php:205
 msgid "Biography"
@@ -887,7 +887,7 @@ msgstr ""
 #: src/Admin/SettingsPages/Membership/CustomersPage/SettingsPage.php:315
 #: src/Membership/CheckoutFields.php:86
 #: src/ShortcodeParser/Builder/FieldsShortcodeCallback.php:209
-#: src/ShortcodeParser/MyAccount/delete-account.tmpl.php:21
+#: src/ShortcodeParser/MyAccount/delete-account.tmpl.php:23
 #: src/templates/checkout/form-login.php:21
 #: src/Themes/DragDrop/AbstractTheme.php:181
 #: src/Themes/DragDrop/AbstractTheme.php:221
@@ -978,7 +978,7 @@ msgstr ""
 
 #: src/Admin/SettingsPages/DragDropBuilder/Fields/DisplayName.php:22
 #: src/Admin/SettingsPages/DragDropBuilder/Fields/UserProfile/DisplayName.php:22
-#: src/Functions/GlobalFunctions.php:1495
+#: src/Functions/GlobalFunctions.php:1496
 #: src/Membership/CheckoutFields.php:114
 #: src/ShortcodeParser/Builder/FieldsShortcodeCallback.php:365
 #: src/Themes/DragDrop/AbstractMemberDirectoryTheme.php:228
@@ -1004,7 +1004,7 @@ msgstr ""
 #: src/Admin/SettingsPages/DragDropBuilder/Fields/Email.php:22
 #: src/Admin/SettingsPages/DragDropBuilder/Fields/UserProfile/Email.php:22
 #: src/Admin/SettingsPages/Membership/CustomersPage/SettingsPage.php:307
-#: src/Functions/GlobalFunctions.php:1496
+#: src/Functions/GlobalFunctions.php:1497
 #: src/Membership/CheckoutFields.php:51
 #: src/ShortcodeParser/Builder/FieldsShortcodeCallback.php:257
 #: src/Themes/DragDrop/AbstractMemberDirectoryTheme.php:226
@@ -1017,7 +1017,7 @@ msgstr ""
 #: src/Admin/SettingsPages/DragDropBuilder/Fields/FirstName.php:22
 #: src/Admin/SettingsPages/DragDropBuilder/Fields/UserProfile/FirstName.php:22
 #: src/Admin/SettingsPages/Membership/CustomersPage/SettingsPage.php:299
-#: src/Functions/GlobalFunctions.php:1492
+#: src/Functions/GlobalFunctions.php:1493
 #: src/Membership/CheckoutFields.php:65
 #: src/ShortcodeParser/Builder/FieldsShortcodeCallback.php:397
 #: src/Themes/DragDrop/AbstractMemberDirectoryTheme.php:229
@@ -1039,7 +1039,7 @@ msgstr ""
 #: src/Admin/SettingsPages/DragDropBuilder/Fields/LastName.php:22
 #: src/Admin/SettingsPages/DragDropBuilder/Fields/UserProfile/LastName.php:22
 #: src/Admin/SettingsPages/Membership/CustomersPage/SettingsPage.php:303
-#: src/Functions/GlobalFunctions.php:1493
+#: src/Functions/GlobalFunctions.php:1494
 #: src/Membership/CheckoutFields.php:72
 #: src/ShortcodeParser/Builder/FieldsShortcodeCallback.php:430
 #: src/Themes/DragDrop/AbstractMemberDirectoryTheme.php:230
@@ -1075,11 +1075,11 @@ msgstr ""
 
 #: src/Admin/SettingsPages/DragDropBuilder/Fields/Nickname.php:22
 #: src/Admin/SettingsPages/DragDropBuilder/Fields/UserProfile/Nickname.php:22
-#: src/Functions/GlobalFunctions.php:1494
+#: src/Functions/GlobalFunctions.php:1495
 #: src/Membership/CheckoutFields.php:107
 #: src/ShortcodeParser/Builder/FieldsShortcodeCallback.php:333
 #: src/ShortcodeParser/Builder/FieldsShortcodeCallback.php:347
-#: src/ShortcodeParser/MyAccount/edit-profile.tmpl.php:143
+#: src/ShortcodeParser/MyAccount/edit-profile.tmpl.php:145
 #: src/Themes/DragDrop/AbstractTheme.php:193
 #: src/Themes/DragDrop/UserProfile/DefaultTemplate.php:107
 msgid "Nickname"
@@ -1174,7 +1174,7 @@ msgstr ""
 #: src/Admin/SettingsPages/DragDropBuilder/Fields/Username.php:22
 #: src/Admin/SettingsPages/DragDropBuilder/Fields/UserProfile/Username.php:22
 #: src/Admin/SettingsPages/Membership/CustomersPage/SettingsPage.php:311
-#: src/Functions/GlobalFunctions.php:1491
+#: src/Functions/GlobalFunctions.php:1492
 #: src/Membership/CheckoutFields.php:79
 #: src/ShortcodeParser/Builder/FieldsShortcodeCallback.php:182
 #: src/Themes/DragDrop/AbstractMemberDirectoryTheme.php:379
@@ -1250,11 +1250,11 @@ msgstr ""
 #: src/Membership/CheckoutFields.php:100
 #: src/ShortcodeParser/Builder/FieldsShortcodeCallback.php:300
 #: src/ShortcodeParser/Builder/FieldsShortcodeCallback.php:314
-#: src/ShortcodeParser/MyAccount/edit-profile.tmpl.php:153
+#: src/ShortcodeParser/MyAccount/edit-profile.tmpl.php:155
 #: src/Themes/DragDrop/AbstractMemberDirectoryTheme.php:227
 #: src/Themes/DragDrop/AbstractTheme.php:190
 #: src/Themes/DragDrop/AbstractTheme.php:246
-#: src/Themes/DragDrop/MemberDirectoryListing.php:125
+#: src/Themes/DragDrop/MemberDirectoryListing.php:133
 msgid "Website"
 msgstr ""
 
@@ -1438,7 +1438,7 @@ msgid "Account Welcome Email"
 msgstr ""
 
 #: src/Admin/SettingsPages/EmailSettings/EmailSettingsPage.php:122
-#: src/Classes/WelcomeEmailAfterSignup.php:54
+#: src/Classes/WelcomeEmailAfterSignup.php:56
 msgid "Welcome To %s"
 msgstr ""
 
@@ -1447,7 +1447,7 @@ msgid "Email that is sent to the user upon successful registration."
 msgstr ""
 
 #: src/Admin/SettingsPages/EmailSettings/EmailSettingsPage.php:125
-#: src/Admin/SettingsPages/EmailSettings/EmailSettingsPage.php:148
+#: src/Admin/SettingsPages/EmailSettings/EmailSettingsPage.php:149
 msgid "Users"
 msgstr ""
 
@@ -1456,335 +1456,339 @@ msgid "Username of the registered user."
 msgstr ""
 
 #: src/Admin/SettingsPages/EmailSettings/EmailSettingsPage.php:128
-#: src/Admin/SettingsPages/EmailSettings/EmailSettingsPage.php:151
-msgid "Email address of the registered user."
+msgid "User ID of the registered user."
 msgstr ""
 
 #: src/Admin/SettingsPages/EmailSettings/EmailSettingsPage.php:129
-msgid "Password of the registered user."
+#: src/Admin/SettingsPages/EmailSettings/EmailSettingsPage.php:152
+msgid "Email address of the registered user."
 msgstr ""
 
 #: src/Admin/SettingsPages/EmailSettings/EmailSettingsPage.php:130
-#: src/Admin/SettingsPages/EmailSettings/EmailSettingsPage.php:152
-#: src/Admin/SettingsPages/EmailSettings/EmailSettingsPage.php:169
-msgid "Website title or name."
+msgid "Password of the registered user."
 msgstr ""
 
 #: src/Admin/SettingsPages/EmailSettings/EmailSettingsPage.php:131
-msgid "First Name entered by user on registration."
+#: src/Admin/SettingsPages/EmailSettings/EmailSettingsPage.php:153
+#: src/Admin/SettingsPages/EmailSettings/EmailSettingsPage.php:170
+msgid "Website title or name."
 msgstr ""
 
 #: src/Admin/SettingsPages/EmailSettings/EmailSettingsPage.php:132
-msgid "Last Name entered by user on registration."
+msgid "First Name entered by user on registration."
 msgstr ""
 
 #: src/Admin/SettingsPages/EmailSettings/EmailSettingsPage.php:133
-#: src/Admin/SettingsPages/EmailSettings/EmailSettingsPage.php:153
+msgid "Last Name entered by user on registration."
+msgstr ""
+
+#: src/Admin/SettingsPages/EmailSettings/EmailSettingsPage.php:134
+#: src/Admin/SettingsPages/EmailSettings/EmailSettingsPage.php:154
 #: src/Membership/Emails/EmailDataTrait.php:45
 msgid "URL to reset password."
 msgstr ""
 
-#: src/Admin/SettingsPages/EmailSettings/EmailSettingsPage.php:134
+#: src/Admin/SettingsPages/EmailSettings/EmailSettingsPage.php:135
 #: src/Membership/Emails/EmailDataTrait.php:46
 msgid "URL to login."
 msgstr ""
 
-#: src/Admin/SettingsPages/EmailSettings/EmailSettingsPage.php:136
-#: src/Admin/SettingsPages/EmailSettings/EmailSettingsPage.php:171
+#: src/Admin/SettingsPages/EmailSettings/EmailSettingsPage.php:137
+#: src/Admin/SettingsPages/EmailSettings/EmailSettingsPage.php:172
 msgid "Replace \"field_key\" with the %scustom field key%s or usermeta key."
 msgstr ""
 
-#: src/Admin/SettingsPages/EmailSettings/EmailSettingsPage.php:144
+#: src/Admin/SettingsPages/EmailSettings/EmailSettingsPage.php:145
 msgid "Password Reset Email"
 msgstr ""
 
-#: src/Admin/SettingsPages/EmailSettings/EmailSettingsPage.php:145
+#: src/Admin/SettingsPages/EmailSettings/EmailSettingsPage.php:146
 msgid "[%s] Password Reset"
 msgstr ""
 
-#: src/Admin/SettingsPages/EmailSettings/EmailSettingsPage.php:147
+#: src/Admin/SettingsPages/EmailSettings/EmailSettingsPage.php:148
 msgid "Email that is sent to the user upon password reset request."
 msgstr ""
 
-#: src/Admin/SettingsPages/EmailSettings/EmailSettingsPage.php:150
+#: src/Admin/SettingsPages/EmailSettings/EmailSettingsPage.php:151
 msgid "Username of user."
 msgstr ""
 
-#: src/Admin/SettingsPages/EmailSettings/EmailSettingsPage.php:159
+#: src/Admin/SettingsPages/EmailSettings/EmailSettingsPage.php:160
 msgid "New User Admin Notification"
 msgstr ""
 
-#: src/Admin/SettingsPages/EmailSettings/EmailSettingsPage.php:160
+#: src/Admin/SettingsPages/EmailSettings/EmailSettingsPage.php:161
 msgid "[%s] New User Registration"
 msgstr ""
 
-#: src/Admin/SettingsPages/EmailSettings/EmailSettingsPage.php:162
+#: src/Admin/SettingsPages/EmailSettings/EmailSettingsPage.php:163
 msgid "Email that is sent to the admin when there is a new user registration."
 msgstr ""
 
-#: src/Admin/SettingsPages/EmailSettings/EmailSettingsPage.php:165
+#: src/Admin/SettingsPages/EmailSettings/EmailSettingsPage.php:166
 msgid "Username of the newly registered user."
 msgstr ""
 
-#: src/Admin/SettingsPages/EmailSettings/EmailSettingsPage.php:166
+#: src/Admin/SettingsPages/EmailSettings/EmailSettingsPage.php:167
 msgid "Email address of the newly registered user."
 msgstr ""
 
-#: src/Admin/SettingsPages/EmailSettings/EmailSettingsPage.php:167
+#: src/Admin/SettingsPages/EmailSettings/EmailSettingsPage.php:168
 msgid "First name of the newly registered user."
 msgstr ""
 
-#: src/Admin/SettingsPages/EmailSettings/EmailSettingsPage.php:168
+#: src/Admin/SettingsPages/EmailSettings/EmailSettingsPage.php:169
 msgid "Last name of the newly registered user."
 msgstr ""
 
-#: src/Admin/SettingsPages/EmailSettings/EmailSettingsPage.php:179
 #: src/Admin/SettingsPages/EmailSettings/EmailSettingsPage.php:180
+#: src/Admin/SettingsPages/EmailSettings/EmailSettingsPage.php:181
 #: src/Membership/Emails/NewOrderReceipt.php:35
 msgid "New Order Receipt"
 msgstr ""
 
-#: src/Admin/SettingsPages/EmailSettings/EmailSettingsPage.php:182
+#: src/Admin/SettingsPages/EmailSettings/EmailSettingsPage.php:183
 msgid "Email sent whenever a customer completes an order."
 msgstr ""
 
-#: src/Admin/SettingsPages/EmailSettings/EmailSettingsPage.php:183
-#: src/Admin/SettingsPages/EmailSettings/EmailSettingsPage.php:193
-#: src/Admin/SettingsPages/EmailSettings/EmailSettingsPage.php:213
-#: src/Admin/SettingsPages/EmailSettings/EmailSettingsPage.php:223
-#: src/Admin/SettingsPages/EmailSettings/EmailSettingsPage.php:233
-#: src/Admin/SettingsPages/EmailSettings/EmailSettingsPage.php:243
-#: src/Admin/SettingsPages/EmailSettings/EmailSettingsPage.php:254
-#: src/Admin/SettingsPages/EmailSettings/EmailSettingsPage.php:265
+#: src/Admin/SettingsPages/EmailSettings/EmailSettingsPage.php:184
+#: src/Admin/SettingsPages/EmailSettings/EmailSettingsPage.php:194
+#: src/Admin/SettingsPages/EmailSettings/EmailSettingsPage.php:214
+#: src/Admin/SettingsPages/EmailSettings/EmailSettingsPage.php:224
+#: src/Admin/SettingsPages/EmailSettings/EmailSettingsPage.php:234
+#: src/Admin/SettingsPages/EmailSettings/EmailSettingsPage.php:244
+#: src/Admin/SettingsPages/EmailSettings/EmailSettingsPage.php:255
+#: src/Admin/SettingsPages/EmailSettings/EmailSettingsPage.php:266
 #: src/Admin/SettingsPages/Membership/CustomersPage/SettingsPage.php:50
 #: src/Admin/SettingsPages/Membership/CustomersPage/SettingsPage.php:215
 #: src/Admin/SettingsPages/Membership/CustomersPage/SettingsPage.php:236
 msgid "Customers"
 msgstr ""
 
-#: src/Admin/SettingsPages/EmailSettings/EmailSettingsPage.php:189
+#: src/Admin/SettingsPages/EmailSettings/EmailSettingsPage.php:190
 msgid "Renewal Order Receipt"
 msgstr ""
 
-#: src/Admin/SettingsPages/EmailSettings/EmailSettingsPage.php:190
+#: src/Admin/SettingsPages/EmailSettings/EmailSettingsPage.php:191
 #: src/Membership/Emails/RenewalOrderReceipt.php:30
 msgid "Subscription Renewal Receipt"
 msgstr ""
 
-#: src/Admin/SettingsPages/EmailSettings/EmailSettingsPage.php:192
+#: src/Admin/SettingsPages/EmailSettings/EmailSettingsPage.php:193
 msgid "Email sent to customer whenever a renewal order occurs."
 msgstr ""
 
-#: src/Admin/SettingsPages/EmailSettings/EmailSettingsPage.php:199
+#: src/Admin/SettingsPages/EmailSettings/EmailSettingsPage.php:200
 msgid "New Order Admin Notification"
 msgstr ""
 
-#: src/Admin/SettingsPages/EmailSettings/EmailSettingsPage.php:200
+#: src/Admin/SettingsPages/EmailSettings/EmailSettingsPage.php:201
 #: src/Membership/Emails/NewOrderAdminNotification.php:30
 msgid "New Order #{{order_id}}"
 msgstr ""
 
-#: src/Admin/SettingsPages/EmailSettings/EmailSettingsPage.php:202
+#: src/Admin/SettingsPages/EmailSettings/EmailSettingsPage.php:203
 msgid "Email sent to the admin when there is a new order."
 msgstr ""
 
-#: src/Admin/SettingsPages/EmailSettings/EmailSettingsPage.php:209
+#: src/Admin/SettingsPages/EmailSettings/EmailSettingsPage.php:210
 msgid "Subscription Cancelled Notification"
 msgstr ""
 
-#: src/Admin/SettingsPages/EmailSettings/EmailSettingsPage.php:210
+#: src/Admin/SettingsPages/EmailSettings/EmailSettingsPage.php:211
 #: src/Membership/Emails/SubscriptionCancelledNotification.php:32
 msgid "Your subscription has been cancelled."
 msgstr ""
 
-#: src/Admin/SettingsPages/EmailSettings/EmailSettingsPage.php:212
+#: src/Admin/SettingsPages/EmailSettings/EmailSettingsPage.php:213
 msgid "Email sent to customer whenever their subscription is cancelled."
 msgstr ""
 
-#: src/Admin/SettingsPages/EmailSettings/EmailSettingsPage.php:219
+#: src/Admin/SettingsPages/EmailSettings/EmailSettingsPage.php:220
 msgid "Subscription Expired Notification"
 msgstr ""
 
-#: src/Admin/SettingsPages/EmailSettings/EmailSettingsPage.php:220
-#: src/Admin/SettingsPages/EmailSettings/EmailSettingsPage.php:262
-#: src/Membership/Emails/SubscriptionAfterExpiredNotification.php:47
-#: src/Membership/Emails/SubscriptionExpiredNotification.php:30
+#: src/Admin/SettingsPages/EmailSettings/EmailSettingsPage.php:221
+#: src/Admin/SettingsPages/EmailSettings/EmailSettingsPage.php:263
+#: src/Membership/Emails/SubscriptionAfterExpiredNotification.php:49
+#: src/Membership/Emails/SubscriptionExpiredNotification.php:32
 msgid "Your subscription has expired."
 msgstr ""
 
-#: src/Admin/SettingsPages/EmailSettings/EmailSettingsPage.php:222
+#: src/Admin/SettingsPages/EmailSettings/EmailSettingsPage.php:223
 msgid "Email sent to customer whenever their subscription expires."
 msgstr ""
 
-#: src/Admin/SettingsPages/EmailSettings/EmailSettingsPage.php:229
+#: src/Admin/SettingsPages/EmailSettings/EmailSettingsPage.php:230
 msgid "Subscription Completed Notification"
 msgstr ""
 
-#: src/Admin/SettingsPages/EmailSettings/EmailSettingsPage.php:230
+#: src/Admin/SettingsPages/EmailSettings/EmailSettingsPage.php:231
 #: src/Membership/Emails/SubscriptionCompletedNotification.php:29
 msgid "Your subscription is now complete."
 msgstr ""
 
-#: src/Admin/SettingsPages/EmailSettings/EmailSettingsPage.php:232
+#: src/Admin/SettingsPages/EmailSettings/EmailSettingsPage.php:233
 msgid "Email sent to customer whenever they complete their subscription payments."
 msgstr ""
 
-#: src/Admin/SettingsPages/EmailSettings/EmailSettingsPage.php:239
+#: src/Admin/SettingsPages/EmailSettings/EmailSettingsPage.php:240
 msgid "Upcoming Renewal Reminder"
 msgstr ""
 
-#: src/Admin/SettingsPages/EmailSettings/EmailSettingsPage.php:240
+#: src/Admin/SettingsPages/EmailSettings/EmailSettingsPage.php:241
 #: src/Membership/Emails/SubscriptionRenewalReminder.php:49
 msgid "Your subscription is renewing soon."
 msgstr ""
 
-#: src/Admin/SettingsPages/EmailSettings/EmailSettingsPage.php:242
+#: src/Admin/SettingsPages/EmailSettings/EmailSettingsPage.php:243
 msgid "Email sent to customer to remind them that their subscription is approaching its renewal."
 msgstr ""
 
-#: src/Admin/SettingsPages/EmailSettings/EmailSettingsPage.php:250
+#: src/Admin/SettingsPages/EmailSettings/EmailSettingsPage.php:251
 msgid "Upcoming Expiration Reminder"
 msgstr ""
 
-#: src/Admin/SettingsPages/EmailSettings/EmailSettingsPage.php:251
+#: src/Admin/SettingsPages/EmailSettings/EmailSettingsPage.php:252
 #: src/Membership/Emails/SubscriptionExpirationReminder.php:49
 msgid "Your subscription is expiring soon."
 msgstr ""
 
-#: src/Admin/SettingsPages/EmailSettings/EmailSettingsPage.php:253
+#: src/Admin/SettingsPages/EmailSettings/EmailSettingsPage.php:254
 msgid "Email sent to customer to remind them that their subscription is approaching its expiration."
 msgstr ""
 
-#: src/Admin/SettingsPages/EmailSettings/EmailSettingsPage.php:261
+#: src/Admin/SettingsPages/EmailSettings/EmailSettingsPage.php:262
 msgid "After Subscription Expired Notification"
 msgstr ""
 
-#: src/Admin/SettingsPages/EmailSettings/EmailSettingsPage.php:264
+#: src/Admin/SettingsPages/EmailSettings/EmailSettingsPage.php:265
 msgid "Email sent to customer few days after their subscription expires."
 msgstr ""
 
-#: src/Admin/SettingsPages/EmailSettings/EmailSettingsPage.php:314
+#: src/Admin/SettingsPages/EmailSettings/EmailSettingsPage.php:315
 msgid "Preview Email"
 msgstr ""
 
-#: src/Admin/SettingsPages/EmailSettings/EmailSettingsPage.php:335
+#: src/Admin/SettingsPages/EmailSettings/EmailSettingsPage.php:336
 msgid "Enable Notification"
 msgstr ""
 
-#: src/Admin/SettingsPages/EmailSettings/EmailSettingsPage.php:336
+#: src/Admin/SettingsPages/EmailSettings/EmailSettingsPage.php:337
 #: src/Admin/SettingsPages/GeneralSettings.php:525
 #: src/Admin/SettingsPages/Membership/PaymentSettings.php:134
 msgid "Enable"
 msgstr ""
 
-#: src/Admin/SettingsPages/EmailSettings/EmailSettingsPage.php:339
+#: src/Admin/SettingsPages/EmailSettings/EmailSettingsPage.php:340
 msgid "Check to enable this email notification."
 msgstr ""
 
-#: src/Admin/SettingsPages/EmailSettings/EmailSettingsPage.php:344
+#: src/Admin/SettingsPages/EmailSettings/EmailSettingsPage.php:345
 msgid "Subject Line"
 msgstr ""
 
-#: src/Admin/SettingsPages/EmailSettings/EmailSettingsPage.php:345
+#: src/Admin/SettingsPages/EmailSettings/EmailSettingsPage.php:346
 msgid "Enter the subject or title of the email."
 msgstr ""
 
-#: src/Admin/SettingsPages/EmailSettings/EmailSettingsPage.php:350
+#: src/Admin/SettingsPages/EmailSettings/EmailSettingsPage.php:351
 msgid "Message Body"
 msgstr ""
 
-#: src/Admin/SettingsPages/EmailSettings/EmailSettingsPage.php:358
+#: src/Admin/SettingsPages/EmailSettings/EmailSettingsPage.php:359
 #: src/Admin/SettingsPages/GeneralSettings.php:339
 msgid "Check to Disable"
 msgstr ""
 
-#: src/Admin/SettingsPages/EmailSettings/EmailSettingsPage.php:359
+#: src/Admin/SettingsPages/EmailSettings/EmailSettingsPage.php:360
 msgid "Disable for Free Orders"
 msgstr ""
 
-#: src/Admin/SettingsPages/EmailSettings/EmailSettingsPage.php:360
+#: src/Admin/SettingsPages/EmailSettings/EmailSettingsPage.php:361
 msgid "Optionally disable sending email receipts for free orders."
 msgstr ""
 
-#: src/Admin/SettingsPages/EmailSettings/EmailSettingsPage.php:368
-#: src/Admin/SettingsPages/EmailSettings/EmailSettingsPage.php:377
-#: src/Admin/SettingsPages/EmailSettings/EmailSettingsPage.php:386
+#: src/Admin/SettingsPages/EmailSettings/EmailSettingsPage.php:369
+#: src/Admin/SettingsPages/EmailSettings/EmailSettingsPage.php:378
+#: src/Admin/SettingsPages/EmailSettings/EmailSettingsPage.php:387
 msgid "Reminder Days"
 msgstr ""
 
-#: src/Admin/SettingsPages/EmailSettings/EmailSettingsPage.php:369
+#: src/Admin/SettingsPages/EmailSettings/EmailSettingsPage.php:370
 msgid "The number of days before the upcoming payment due date to notify the customer."
 msgstr ""
 
-#: src/Admin/SettingsPages/EmailSettings/EmailSettingsPage.php:378
+#: src/Admin/SettingsPages/EmailSettings/EmailSettingsPage.php:379
 msgid "The number of days before the subscription expiration due date to notify the customer."
 msgstr ""
 
-#: src/Admin/SettingsPages/EmailSettings/EmailSettingsPage.php:387
+#: src/Admin/SettingsPages/EmailSettings/EmailSettingsPage.php:388
 msgid "The number of days after the subscription expired to notify the customer."
 msgstr ""
 
-#: src/Admin/SettingsPages/EmailSettings/EmailSettingsPage.php:436
+#: src/Admin/SettingsPages/EmailSettings/EmailSettingsPage.php:437
 msgid "Admin Email Address(es)"
 msgstr ""
 
-#: src/Admin/SettingsPages/EmailSettings/EmailSettingsPage.php:437
+#: src/Admin/SettingsPages/EmailSettings/EmailSettingsPage.php:438
 msgid "The Email address to receive admin notifications. Use comma to separate multiple email addresses."
 msgstr ""
 
-#: src/Admin/SettingsPages/EmailSettings/EmailSettingsPage.php:442
+#: src/Admin/SettingsPages/EmailSettings/EmailSettingsPage.php:443
 msgid "Sender Name"
 msgstr ""
 
-#: src/Admin/SettingsPages/EmailSettings/EmailSettingsPage.php:443
+#: src/Admin/SettingsPages/EmailSettings/EmailSettingsPage.php:444
 msgid "The name to use as the sender of all ProfilePress emails. Preferably your website name."
 msgstr ""
 
-#: src/Admin/SettingsPages/EmailSettings/EmailSettingsPage.php:449
+#: src/Admin/SettingsPages/EmailSettings/EmailSettingsPage.php:450
 msgid "Sender Email Address"
 msgstr ""
 
-#: src/Admin/SettingsPages/EmailSettings/EmailSettingsPage.php:450
+#: src/Admin/SettingsPages/EmailSettings/EmailSettingsPage.php:451
 msgid "The email address to use as the sender of all ProfilePress emails."
 msgstr ""
 
-#: src/Admin/SettingsPages/EmailSettings/EmailSettingsPage.php:456
+#: src/Admin/SettingsPages/EmailSettings/EmailSettingsPage.php:457
 msgid "HTML"
 msgstr ""
 
-#: src/Admin/SettingsPages/EmailSettings/EmailSettingsPage.php:457
+#: src/Admin/SettingsPages/EmailSettings/EmailSettingsPage.php:458
 msgid "Plain Text"
 msgstr ""
 
-#: src/Admin/SettingsPages/EmailSettings/EmailSettingsPage.php:460
+#: src/Admin/SettingsPages/EmailSettings/EmailSettingsPage.php:461
 msgid "Content Type"
 msgstr ""
 
-#: src/Admin/SettingsPages/EmailSettings/EmailSettingsPage.php:461
+#: src/Admin/SettingsPages/EmailSettings/EmailSettingsPage.php:462
 msgid "Choose whether to send ProfilePress emails in HTML or plain text. HTML is recommended."
 msgstr ""
 
-#: src/Admin/SettingsPages/EmailSettings/EmailSettingsPage.php:466
+#: src/Admin/SettingsPages/EmailSettings/EmailSettingsPage.php:467
 msgid "Default Template"
 msgstr ""
 
-#: src/Admin/SettingsPages/EmailSettings/EmailSettingsPage.php:467
+#: src/Admin/SettingsPages/EmailSettings/EmailSettingsPage.php:468
 msgid "Custom Email Template"
 msgstr ""
 
-#: src/Admin/SettingsPages/EmailSettings/EmailSettingsPage.php:470
+#: src/Admin/SettingsPages/EmailSettings/EmailSettingsPage.php:471
 msgid "Email Template"
 msgstr ""
 
-#: src/Admin/SettingsPages/EmailSettings/EmailSettingsPage.php:471
+#: src/Admin/SettingsPages/EmailSettings/EmailSettingsPage.php:472
 msgid "Choose \"Custom Email Template\" if you want to code your own email template from scratch."
 msgstr ""
 
-#: src/Admin/SettingsPages/EmailSettings/EmailSettingsPage.php:478
+#: src/Admin/SettingsPages/EmailSettings/EmailSettingsPage.php:479
 msgid "Customize Default Template"
 msgstr ""
 
-#: src/Admin/SettingsPages/EmailSettings/EmailSettingsPage.php:520
+#: src/Admin/SettingsPages/EmailSettings/EmailSettingsPage.php:521
 msgid "Available placeholders for subject and message body"
 msgstr ""
 
@@ -1827,7 +1831,7 @@ msgid "Upgrade Plan"
 msgstr ""
 
 #: src/Admin/SettingsPages/ExtensionsSettingsPage.php:136
-#: src/Classes/AdminNotices.php:324
+#: src/Classes/AdminNotices.php:295
 msgid "Learn More"
 msgstr ""
 
@@ -1856,7 +1860,7 @@ msgid "No form is currently available. %sConsider creating one%s"
 msgstr ""
 
 #: src/Admin/SettingsPages/FormList.php:196
-#: src/Admin/SettingsPages/FormList.php:273
+#: src/Admin/SettingsPages/FormList.php:288
 msgid "Shortcode"
 msgstr ""
 
@@ -1869,7 +1873,7 @@ msgstr ""
 #: src/Admin/SettingsPages/Membership/ExportPage/ProductSalesExport.php:23
 #: src/Admin/SettingsPages/Membership/ExportPage/SalesEarningsExport.php:14
 #: src/Admin/SettingsPages/Membership/OrdersPage/OrderWPListTable.php:58
-#: src/Admin/SettingsPages/Membership/OrdersPage/SettingsPage.php:539
+#: src/Admin/SettingsPages/Membership/OrdersPage/SettingsPage.php:541
 #: src/Admin/SettingsPages/Membership/views/subscriptions/sub-payments-metabox.php:17
 #: src/ShortcodeParser/MyAccount/view-subscription.tmpl.php:122
 msgid "Date"
@@ -1878,7 +1882,7 @@ msgstr ""
 #: src/Admin/SettingsPages/FormList.php:240
 #: src/Admin/SettingsPages/Membership/CouponsPage/CouponWPListTable.php:66
 #: src/Admin/SettingsPages/Membership/CustomersPage/CustomerWPListTable.php:86
-#: src/Admin/SettingsPages/Membership/GroupsPage/GroupWPListTable.php:55
+#: src/Admin/SettingsPages/Membership/GroupsPage/GroupWPListTable.php:58
 #: src/Admin/SettingsPages/Membership/OrdersPage/OrderWPListTable.php:108
 #: src/Admin/SettingsPages/Membership/PlansPage/PlanWPListTable.php:65
 #: src/Admin/SettingsPages/Membership/SubscriptionsPage/SubscriptionWPListTable.php:111
@@ -1896,11 +1900,23 @@ msgstr ""
 
 #: src/Admin/SettingsPages/FormList.php:244
 #: src/Classes/FormPreviewHandler.php:61
-#: src/Functions/custom-settings-api.php:895
+#: src/Functions/custom-settings-api.php:894
 msgid "Preview"
 msgstr ""
 
-#: src/Admin/SettingsPages/FormList.php:275
+#: src/Admin/SettingsPages/FormList.php:276
+msgid "Copy Shortcode"
+msgstr ""
+
+#: src/Admin/SettingsPages/FormList.php:280
+#: src/Admin/SettingsPages/Membership/GroupsPage/GroupWPListTable.php:103
+#: src/Admin/SettingsPages/Membership/PlansPage/PlanWPListTable.php:112
+#: src/Admin/SettingsPages/Membership/views/add-edit-plan-group.php:122
+#: src/Admin/SettingsPages/Membership/views/add-edit-plan.php:341
+msgid "Copied!"
+msgstr ""
+
+#: src/Admin/SettingsPages/FormList.php:290
 msgid "Drag & Drop"
 msgstr ""
 
@@ -2428,9 +2444,9 @@ msgstr ""
 #: src/Admin/SettingsPages/Membership/CouponsPage/CouponWPListTable.php:74
 #: src/Admin/SettingsPages/Membership/CouponsPage/CouponWPListTable.php:201
 #: src/Admin/SettingsPages/Membership/PlansPage/PlanWPListTable.php:74
-#: src/Admin/SettingsPages/Membership/PlansPage/PlanWPListTable.php:173
+#: src/Admin/SettingsPages/Membership/PlansPage/PlanWPListTable.php:184
 #: src/ContentProtection/WPListTable.php:113
-#: src/Functions/custom-settings-api.php:1046
+#: src/Functions/custom-settings-api.php:1045
 msgid "Activate"
 msgstr ""
 
@@ -2618,6 +2634,7 @@ msgstr ""
 #: src/Admin/SettingsPages/GeneralSettings.php:532
 #: src/ContentProtection/ElementorRestriction.php:253
 #: src/ContentProtection/Frontend/PostContent.php:228
+#: src/ContentProtection/Frontend/restricted-template.php:20
 #: src/RegisterActivation/Base.php:135
 msgid "You are unauthorized to view this page."
 msgstr ""
@@ -2941,7 +2958,7 @@ msgid "No coupon code found."
 msgstr ""
 
 #: src/Admin/SettingsPages/Membership/CouponsPage/CouponWPListTable.php:30
-#: src/Functions/custom-settings-api.php:894
+#: src/Functions/custom-settings-api.php:893
 msgid "Code"
 msgstr ""
 
@@ -2987,7 +3004,7 @@ msgstr ""
 #: src/Admin/SettingsPages/Membership/CouponsPage/CouponWPListTable.php:70
 #: src/Admin/SettingsPages/Membership/CouponsPage/CouponWPListTable.php:202
 #: src/Admin/SettingsPages/Membership/PlansPage/PlanWPListTable.php:70
-#: src/Admin/SettingsPages/Membership/PlansPage/PlanWPListTable.php:174
+#: src/Admin/SettingsPages/Membership/PlansPage/PlanWPListTable.php:185
 #: src/ContentProtection/WPListTable.php:109
 msgid "Deactivate"
 msgstr ""
@@ -3008,14 +3025,14 @@ msgstr ""
 
 #: src/Admin/SettingsPages/Membership/CouponsPage/CouponWPListTable.php:133
 #: src/Admin/SettingsPages/Membership/ExportPage/PlansExport.php:24
-#: src/Admin/SettingsPages/Membership/PlansPage/PlanWPListTable.php:109
+#: src/Admin/SettingsPages/Membership/PlansPage/PlanWPListTable.php:120
 #: src/Membership/Models/Customer/CustomerStatus.php:13
 #: src/Membership/Models/Subscription/SubscriptionStatus.php:17
 msgid "Active"
 msgstr ""
 
 #: src/Admin/SettingsPages/Membership/CouponsPage/CouponWPListTable.php:135
-#: src/Admin/SettingsPages/Membership/PlansPage/PlanWPListTable.php:111
+#: src/Admin/SettingsPages/Membership/PlansPage/PlanWPListTable.php:122
 #: src/Membership/Models/Customer/CustomerStatus.php:14
 msgid "Inactive"
 msgstr ""
@@ -3570,7 +3587,7 @@ msgid "Payment Method"
 msgstr ""
 
 #: src/Admin/SettingsPages/Membership/ExportPage/OrdersExport.php:38
-#: src/Admin/SettingsPages/Membership/OrdersPage/SettingsPage.php:534
+#: src/Admin/SettingsPages/Membership/OrdersPage/SettingsPage.php:536
 msgid "Transaction ID"
 msgstr ""
 
@@ -3893,9 +3910,16 @@ msgstr ""
 msgid "Checkout URL"
 msgstr ""
 
-#: src/Admin/SettingsPages/Membership/GroupsPage/GroupWPListTable.php:90
+#: src/Admin/SettingsPages/Membership/GroupsPage/GroupWPListTable.php:93
 #: src/Admin/SettingsPages/Membership/PlansPage/PlanWPListTable.php:102
 msgid "Checkout page not found"
+msgstr ""
+
+#: src/Admin/SettingsPages/Membership/GroupsPage/GroupWPListTable.php:100
+#: src/Admin/SettingsPages/Membership/PlansPage/PlanWPListTable.php:109
+#: src/Admin/SettingsPages/Membership/views/add-edit-plan-group.php:82
+#: src/Admin/SettingsPages/Membership/views/add-edit-plan.php:260
+msgid "Copy URL"
 msgstr ""
 
 #: src/Admin/SettingsPages/Membership/GroupsPage/SettingsPage.php:48
@@ -3979,7 +4003,7 @@ msgid "No customer was selected. Please try again."
 msgstr ""
 
 #: src/Admin/SettingsPages/Membership/OrdersPage/SettingsPage.php:427
-#: src/Admin/SettingsPages/Membership/OrdersPage/SettingsPage.php:568
+#: src/Admin/SettingsPages/Membership/OrdersPage/SettingsPage.php:570
 msgid "Add New Order"
 msgstr ""
 
@@ -3991,23 +4015,23 @@ msgstr ""
 msgid "Enter the total order amount, or leave blank to use the price of the selected plan."
 msgstr ""
 
-#: src/Admin/SettingsPages/Membership/OrdersPage/SettingsPage.php:536
+#: src/Admin/SettingsPages/Membership/OrdersPage/SettingsPage.php:538
 msgid "Enter the transaction ID, if any."
 msgstr ""
 
-#: src/Admin/SettingsPages/Membership/OrdersPage/SettingsPage.php:542
+#: src/Admin/SettingsPages/Membership/OrdersPage/SettingsPage.php:544
 msgid "Enter the purchase date, or leave blank for today's date."
 msgstr ""
 
-#: src/Admin/SettingsPages/Membership/OrdersPage/SettingsPage.php:545
+#: src/Admin/SettingsPages/Membership/OrdersPage/SettingsPage.php:547
 msgid "Send Receipt"
 msgstr ""
 
-#: src/Admin/SettingsPages/Membership/OrdersPage/SettingsPage.php:546
+#: src/Admin/SettingsPages/Membership/OrdersPage/SettingsPage.php:548
 msgid "Check to send the order receipt to the customer."
 msgstr ""
 
-#: src/Admin/SettingsPages/Membership/OrdersPage/SettingsPage.php:573
+#: src/Admin/SettingsPages/Membership/OrdersPage/SettingsPage.php:575
 msgid "Back to Orders"
 msgstr ""
 
@@ -4588,7 +4612,7 @@ msgid "Select the user role to associate with this membership plan. Users that s
 msgstr ""
 
 #: src/Admin/SettingsPages/Membership/views/add-edit-plan.php:64
-msgid "The price of this membership plan. Enter 0 to make this plan free."
+msgid "The price of this membership plan. Enter 0.00 to make this plan free."
 msgstr ""
 
 #: src/Admin/SettingsPages/Membership/views/add-edit-plan.php:80
@@ -5154,59 +5178,55 @@ msgstr ""
 msgid "Admin Bar & Dashboard Access"
 msgstr ""
 
-#: src/Classes/AdminNotices.php:95
+#: src/Classes/AdminNotices.php:88
 msgid "<strong>Important:</strong> No real payment is being processed because ProfilePress is in test mode. Go to <a href=\"%s\">Payment method settings</a> to disable test mode."
 msgstr ""
 
-#: src/Classes/AdminNotices.php:128
+#: src/Classes/AdminNotices.php:121
 msgid "Hey, I noticed you have been using ProfilePress for at least 7 days now - that's awesome! Could you please do us a BIG favor and give it a %1$s5-star rating on WordPress?%2$s This will help us spread the word and boost our motivation - thanks!"
 msgstr ""
 
-#: src/Classes/AdminNotices.php:132
+#: src/Classes/AdminNotices.php:125
 msgid "Sure! I'd love to give a review"
 msgstr ""
 
-#: src/Classes/AdminNotices.php:134
+#: src/Classes/AdminNotices.php:127
 msgid "Dismiss Forever"
 msgstr ""
 
-#: src/Classes/AdminNotices.php:153
+#: src/Classes/AdminNotices.php:146
 msgid "Change Permalink Structure"
 msgstr ""
 
-#: src/Classes/AdminNotices.php:157
+#: src/Classes/AdminNotices.php:150
 msgid "Your site permalink structure is currently set to <code>Plain</code>. This setting is not compatible with ProfilePress. Change your permalink structure to any other setting to avoid issues. We recommend <code>Post name</code>.</p><p>%s"
 msgstr ""
 
-#: src/Classes/AdminNotices.php:179
-msgid "Important news! %1$sWP User Avatar%2$s is now %1$sProfilePress%2$s. We added new features such as member directories, frontend user registration & login forms, user profile, content protection and more. %3$sCheck Them Out%5$s | %4$sDismiss Notice%5$s"
-msgstr ""
-
-#: src/Classes/AdminNotices.php:193
+#: src/Classes/AdminNotices.php:164
 msgid "Did you know that you can sell access to LearnDash courses and groups and enroll users after registration?"
 msgstr ""
 
-#: src/Classes/AdminNotices.php:198
+#: src/Classes/AdminNotices.php:169
 msgid "Did you know that you can sell access to Sensei LMS courses and groups and enroll users after registration?"
 msgstr ""
 
-#: src/Classes/AdminNotices.php:233
+#: src/Classes/AdminNotices.php:204
 msgid "ProfilePress needs to create several pages (Checkout, Order Confirmation, User Profile, My Account, Registration, Login, Member Directory) to function correctly."
 msgstr ""
 
-#: src/Classes/AdminNotices.php:236
+#: src/Classes/AdminNotices.php:207
 msgid "Create Pages"
 msgstr ""
 
-#: src/Classes/AdminNotices.php:236
+#: src/Classes/AdminNotices.php:207
 msgid "No Thanks"
 msgstr ""
 
-#: src/Classes/AdminNotices.php:258
+#: src/Classes/AdminNotices.php:229
 msgid "You enabled Stripe payment method in ProfilePress but did not connect your Stripe account. Connect now to start accepting payments instantly."
 msgstr ""
 
-#: src/Classes/AdminNotices.php:286
+#: src/Classes/AdminNotices.php:257
 msgid "User registration currently disabled. To enable, Go to <a href=\"%1$s\">Settings -> General</a>, and under Membership, check \"Anyone can register\""
 msgstr ""
 
@@ -5249,7 +5269,7 @@ msgstr ""
 
 #: src/Classes/AjaxHandler.php:224
 #: src/Classes/AjaxHandler.php:250
-#: src/Classes/PasswordReset.php:360
+#: src/Classes/PasswordReset.php:355
 msgid "Unexpected error. Please try again."
 msgstr ""
 
@@ -5265,33 +5285,33 @@ msgstr ""
 msgid "The email address you are registering with is not supported."
 msgstr ""
 
-#: src/Classes/EditUserProfile.php:28
+#: src/Classes/EditUserProfile.php:23
 #: src/ShortcodeParser/MyAccount/email-notifications.tmpl.php:17
 msgid "Account was updated successfully."
 msgstr ""
 
-#: src/Classes/EditUserProfile.php:124
+#: src/Classes/EditUserProfile.php:119
 msgid "Email address is invalid. Please try again"
 msgstr ""
 
-#: src/Classes/EditUserProfile.php:128
+#: src/Classes/EditUserProfile.php:123
 msgid "Email address confirmation is invalid. Please try again"
 msgstr ""
 
-#: src/Classes/EditUserProfile.php:132
+#: src/Classes/EditUserProfile.php:127
 msgid "Email addresses do not match. Please try again"
 msgstr ""
 
-#: src/Classes/EditUserProfile.php:141
-#: src/Classes/EditUserProfile.php:150
+#: src/Classes/EditUserProfile.php:136
+#: src/Classes/EditUserProfile.php:145
 msgid "Password do not match. Please try again."
 msgstr ""
 
-#: src/Classes/EditUserProfile.php:146
+#: src/Classes/EditUserProfile.php:141
 msgid "Password is empty or do not match. Please try again."
 msgstr ""
 
-#: src/Classes/EditUserProfile.php:322
+#: src/Classes/EditUserProfile.php:317
 msgid "Something unexpected happened. Please try again"
 msgstr ""
 
@@ -5654,7 +5674,7 @@ msgstr ""
 
 #: src/Classes/Miscellaneous.php:105
 #: src/Membership/Models/Order/OrderMode.php:13
-#: src/Membership/PaymentMethods/Stripe/Stripe.php:255
+#: src/Membership/PaymentMethods/Stripe/Stripe.php:254
 msgid "Live"
 msgstr ""
 
@@ -5675,84 +5695,84 @@ msgstr ""
 msgid "Upgrade to PRO"
 msgstr ""
 
-#: src/Classes/PasswordReset.php:100
+#: src/Classes/PasswordReset.php:95
 msgid "<strong>ERROR</strong>: Password reset email is disabled."
 msgstr ""
 
-#: src/Classes/PasswordReset.php:106
+#: src/Classes/PasswordReset.php:101
 msgid "<strong>ERROR</strong>: Enter a username or e-mail address."
 msgstr ""
 
-#: src/Classes/PasswordReset.php:112
+#: src/Classes/PasswordReset.php:107
 msgid "<strong>ERROR</strong>: There is no user registered with that email address."
 msgstr ""
 
-#: src/Classes/PasswordReset.php:120
+#: src/Classes/PasswordReset.php:115
 msgid "<strong>ERROR</strong>: Invalid username or e-mail."
 msgstr ""
 
-#: src/Classes/PasswordReset.php:206
+#: src/Classes/PasswordReset.php:201
 #: src/Themes/DragDrop/AbstractTheme.php:134
 #: src/Widgets/TabbedWidgetDependency.php:47
 msgid "Check your email for further instructions."
 msgstr ""
 
-#: src/Classes/PasswordReset.php:338
+#: src/Classes/PasswordReset.php:333
 msgid "Sorry, that key appears to be invalid."
 msgstr ""
 
-#: src/Classes/PasswordReset.php:341
+#: src/Classes/PasswordReset.php:336
 #: src/ShortcodeParser/FormProcessor.php:75
 msgid "Passwords do not match."
 msgstr ""
 
-#: src/Classes/PasswordReset.php:344
+#: src/Classes/PasswordReset.php:339
 msgid "Please enter your password."
 msgstr ""
 
-#: src/Classes/PasswordReset.php:347
+#: src/Classes/PasswordReset.php:342
 msgid "Sorry, that key does not appear to be valid."
 msgstr ""
 
-#: src/Classes/PasswordReset.php:350
+#: src/Classes/PasswordReset.php:345
 msgid "Password is not strong enough."
 msgstr ""
 
-#: src/Classes/PasswordReset.php:356
+#: src/Classes/PasswordReset.php:351
 #: src/templates/checkout/form-login.php:28
 msgid "Log in"
 msgstr ""
 
-#: src/Classes/RegistrationAuth.php:223
+#: src/Classes/RegistrationAuth.php:216
 #: src/Membership/Controllers/CheckoutTrait.php:229
 #: src/Membership/Controllers/CheckoutTrait.php:248
 msgid "%s field is required"
 msgstr ""
 
-#: src/Classes/RegistrationAuth.php:232
+#: src/Classes/RegistrationAuth.php:225
 msgid "<strong>ERROR</strong>: This username is invalid because it uses illegal characters. Please enter a valid username."
 msgstr ""
 
-#: src/Classes/RegistrationAuth.php:236
+#: src/Classes/RegistrationAuth.php:229
 #: src/Membership/Controllers/CheckoutTrait.php:270
 msgid "Email address is not valid"
 msgstr ""
 
-#: src/Classes/RegistrationAuth.php:240
+#: src/Classes/RegistrationAuth.php:233
 #: src/Membership/Controllers/CheckoutTrait.php:302
 msgid "Passwords do not match"
 msgstr ""
 
-#: src/Classes/RegistrationAuth.php:244
+#: src/Classes/RegistrationAuth.php:237
 #: src/Membership/Controllers/CheckoutTrait.php:268
 msgid "Email addresses do not match"
 msgstr ""
 
-#: src/Classes/RegistrationAuth.php:248
+#: src/Classes/RegistrationAuth.php:241
 msgid "Password is not strong"
 msgstr ""
 
-#: src/Classes/RegistrationAuth.php:419
+#: src/Classes/RegistrationAuth.php:416
 #: src/Themes/DragDrop/AbstractTheme.php:126
 msgid "Registration successful."
 msgstr ""
@@ -5779,7 +5799,7 @@ msgstr ""
 msgid "ProfilePress Tabbed Widget"
 msgstr ""
 
-#: src/Classes/WelcomeEmailAfterSignup.php:37
+#: src/Classes/WelcomeEmailAfterSignup.php:39
 msgid "[Your Password]"
 msgstr ""
 
@@ -15129,44 +15149,44 @@ msgstr ""
 msgid "Dismiss this notice"
 msgstr ""
 
-#: src/Functions/GlobalFunctions.php:1300
+#: src/Functions/GlobalFunctions.php:1301
 msgid "It must be unique for each field, not a reserve text, in lowercase letters only with an underscore ( _ ) separating words e.g job_title"
 msgstr ""
 
-#: src/Functions/GlobalFunctions.php:1437
+#: src/Functions/GlobalFunctions.php:1438
 msgid "%s (WooCommerce Billing Address)"
 msgstr ""
 
-#: src/Functions/GlobalFunctions.php:1441
+#: src/Functions/GlobalFunctions.php:1442
 msgid "%s (WooCommerce Shipping Address)"
 msgstr ""
 
-#: src/Functions/GlobalFunctions.php:1489
+#: src/Functions/GlobalFunctions.php:1490
 msgid "First and Last Names"
 msgstr ""
 
-#: src/Functions/GlobalFunctions.php:1490
+#: src/Functions/GlobalFunctions.php:1491
 msgid "Last and First Names"
 msgstr ""
 
-#: src/Functions/GlobalFunctions.php:1498
+#: src/Functions/GlobalFunctions.php:1499
 msgid "Registration Date"
 msgstr ""
 
-#: src/Functions/GlobalFunctions.php:1635
+#: src/Functions/GlobalFunctions.php:1638
 msgid "There was an problem while verifying your file."
 msgstr ""
 
-#: src/Functions/GlobalFunctions.php:1640
+#: src/Functions/GlobalFunctions.php:1643
 msgid "Sorry, this file extension is not permitted for security reasons."
 msgstr ""
 
-#: src/Functions/GlobalFunctions.php:1644
+#: src/Functions/GlobalFunctions.php:1647
 msgid "Sorry, this file type is not permitted for security reasons."
 msgstr ""
 
-#: src/Functions/GlobalFunctions.php:1648
-#: src/Functions/GlobalFunctions.php:1652
+#: src/Functions/GlobalFunctions.php:1651
+#: src/Functions/GlobalFunctions.php:1655
 msgid "Error: The file you uploaded is not accepted on our website."
 msgstr ""
 
@@ -16200,7 +16220,7 @@ msgid "Order changed from %s to %s by %s"
 msgstr ""
 
 #: src/Membership/Models/Order/OrderMode.php:14
-#: src/Membership/PaymentMethods/Stripe/Stripe.php:255
+#: src/Membership/PaymentMethods/Stripe/Stripe.php:254
 msgid "Test"
 msgstr ""
 
@@ -16337,17 +16357,17 @@ msgid "These account details will be displayed on the order confirmation page."
 msgstr ""
 
 #: src/Membership/PaymentMethods/BankTransfer/BankTransfer.php:58
-#: src/Membership/PaymentMethods/Stripe/Stripe.php:318
+#: src/Membership/PaymentMethods/Stripe/Stripe.php:317
 msgid "Remove Billing Address"
 msgstr ""
 
 #: src/Membership/PaymentMethods/BankTransfer/BankTransfer.php:60
-#: src/Membership/PaymentMethods/Stripe/Stripe.php:320
+#: src/Membership/PaymentMethods/Stripe/Stripe.php:319
 msgid "Check to remove billing address fields from the checkout page."
 msgstr ""
 
 #: src/Membership/PaymentMethods/BankTransfer/BankTransfer.php:61
-#: src/Membership/PaymentMethods/Stripe/Stripe.php:321
+#: src/Membership/PaymentMethods/Stripe/Stripe.php:320
 msgid "If you do not want the billing address fields displayed on the checkout page, use this setting to remove it."
 msgstr ""
 
@@ -16420,144 +16440,144 @@ msgstr ""
 msgid "Setup Fee"
 msgstr ""
 
-#: src/Membership/PaymentMethods/Stripe/Stripe.php:34
+#: src/Membership/PaymentMethods/Stripe/Stripe.php:33
 msgid "Pay with your credit card via Stripe"
 msgstr ""
 
-#: src/Membership/PaymentMethods/Stripe/Stripe.php:37
+#: src/Membership/PaymentMethods/Stripe/Stripe.php:36
 msgid "Accept various payment methods including Credit Card, Apple & Google Pay via Stripe."
 msgstr ""
 
-#: src/Membership/PaymentMethods/Stripe/Stripe.php:40
+#: src/Membership/PaymentMethods/Stripe/Stripe.php:39
 msgid "NOTE: The free version of ProfilePress includes an additional 2%% fee for processing payments. Remove the fee by %supgrading to premium%s."
 msgstr ""
 
-#: src/Membership/PaymentMethods/Stripe/Stripe.php:83
+#: src/Membership/PaymentMethods/Stripe/Stripe.php:82
 msgid "Stripe Connect Error:"
 msgstr ""
 
-#: src/Membership/PaymentMethods/Stripe/Stripe.php:211
+#: src/Membership/PaymentMethods/Stripe/Stripe.php:210
 msgid "test"
 msgstr ""
 
-#: src/Membership/PaymentMethods/Stripe/Stripe.php:211
+#: src/Membership/PaymentMethods/Stripe/Stripe.php:210
 msgid "live"
 msgstr ""
 
-#: src/Membership/PaymentMethods/Stripe/Stripe.php:221
+#: src/Membership/PaymentMethods/Stripe/Stripe.php:220
 msgid "Your Stripe account is connected in %1$s mode. %2$sDisconnect this account%3$s."
 msgstr ""
 
-#: src/Membership/PaymentMethods/Stripe/Stripe.php:236
+#: src/Membership/PaymentMethods/Stripe/Stripe.php:235
 msgid "Connection Status"
 msgstr ""
 
-#: src/Membership/PaymentMethods/Stripe/Stripe.php:243
+#: src/Membership/PaymentMethods/Stripe/Stripe.php:242
 msgid "Connect now to start accepting payments instantly. This includes an additional 2%% payment processing fee. Remove the fee by %supgrading to premium%s."
 msgstr ""
 
-#: src/Membership/PaymentMethods/Stripe/Stripe.php:261
+#: src/Membership/PaymentMethods/Stripe/Stripe.php:260
 msgid "Webhook Setup"
 msgstr ""
 
-#: src/Membership/PaymentMethods/Stripe/Stripe.php:264
+#: src/Membership/PaymentMethods/Stripe/Stripe.php:263
 msgid "In order for Stripe to function well, ensure the webhook endpoint %1$s is present in the %2$sStripe webhooks settings%3$s. Learn more from our %4$swebhook documentation%3$s"
 msgstr ""
 
-#: src/Membership/PaymentMethods/Stripe/Stripe.php:273
+#: src/Membership/PaymentMethods/Stripe/Stripe.php:272
 msgid "test mode"
 msgstr ""
 
-#: src/Membership/PaymentMethods/Stripe/Stripe.php:273
+#: src/Membership/PaymentMethods/Stripe/Stripe.php:272
 msgid "live mode"
 msgstr ""
 
-#: src/Membership/PaymentMethods/Stripe/Stripe.php:275
+#: src/Membership/PaymentMethods/Stripe/Stripe.php:274
 msgid "Webhook Secret"
 msgstr ""
 
-#: src/Membership/PaymentMethods/Stripe/Stripe.php:278
+#: src/Membership/PaymentMethods/Stripe/Stripe.php:277
 msgid "Retrieve your %3$s \"Signing secret\" from your %1$sStripe webhook settings%2$s. Select the endpoint then click \"Reveal\"."
 msgstr ""
 
-#: src/Membership/PaymentMethods/Stripe/Stripe.php:289
+#: src/Membership/PaymentMethods/Stripe/Stripe.php:288
 msgid "Statement Descriptor"
 msgstr ""
 
-#: src/Membership/PaymentMethods/Stripe/Stripe.php:292
+#: src/Membership/PaymentMethods/Stripe/Stripe.php:291
 msgid "The text that appears on your customer's bank or credit card statements. Choose something they will recognise to help prevent disputes, typically your business name. Must be limited to 22 characters, no special characters %1$s<%2$s, %1$s>%2$s, %1$s'%2$s, or %1$s\"%2$s."
 msgstr ""
 
-#: src/Membership/PaymentMethods/Stripe/Stripe.php:298
+#: src/Membership/PaymentMethods/Stripe/Stripe.php:297
 msgid "Payment Collection Method"
 msgstr ""
 
-#: src/Membership/PaymentMethods/Stripe/Stripe.php:301
+#: src/Membership/PaymentMethods/Stripe/Stripe.php:300
 msgid "Stripe Credit Card Field (On-site)"
 msgstr ""
 
-#: src/Membership/PaymentMethods/Stripe/Stripe.php:302
+#: src/Membership/PaymentMethods/Stripe/Stripe.php:301
 msgid "Stripe Payment Page (Off-site)"
 msgstr ""
 
-#: src/Membership/PaymentMethods/Stripe/Stripe.php:304
+#: src/Membership/PaymentMethods/Stripe/Stripe.php:303
 msgid "Select how payment information will be collected. Could be right on your site with Stripe card fields or off-site through Stripe hosted payment page."
 msgstr ""
 
-#: src/Membership/PaymentMethods/Stripe/Stripe.php:308
+#: src/Membership/PaymentMethods/Stripe/Stripe.php:307
 msgid "Enable Stripe Tax"
 msgstr ""
 
-#: src/Membership/PaymentMethods/Stripe/Stripe.php:310
+#: src/Membership/PaymentMethods/Stripe/Stripe.php:309
 msgid "Check to automatically calculate and charge taxes via Stripe Tax."
 msgstr ""
 
-#: src/Membership/PaymentMethods/Stripe/Stripe.php:312
+#: src/Membership/PaymentMethods/Stripe/Stripe.php:311
 msgid "This is only available when using Stripe Payment Page (Off-site) and have %sStripe Tax%s enabled in your Stripe account."
 msgstr ""
 
-#: src/Membership/PaymentMethods/Stripe/Stripe.php:325
+#: src/Membership/PaymentMethods/Stripe/Stripe.php:324
 msgid "Restrict Stripe Assets"
 msgstr ""
 
-#: src/Membership/PaymentMethods/Stripe/Stripe.php:327
+#: src/Membership/PaymentMethods/Stripe/Stripe.php:326
 msgid "Only load Stripe.com hosted assets on pages that specifically utilize Stripe functionality."
 msgstr ""
 
-#: src/Membership/PaymentMethods/Stripe/Stripe.php:329
+#: src/Membership/PaymentMethods/Stripe/Stripe.php:328
 msgid "Stripe advises that their Javascript library be loaded on every page to take advantage of their advanced fraud detection rules. If you are not concerned with this, enable this setting to only load the Javascript when necessary. %sLearn more%s"
 msgstr ""
 
-#: src/Membership/PaymentMethods/Stripe/Stripe.php:348
+#: src/Membership/PaymentMethods/Stripe/Stripe.php:347
 msgid "Please enter a name for the credit card."
 msgstr ""
 
-#: src/Membership/PaymentMethods/Stripe/Stripe.php:475
+#: src/Membership/PaymentMethods/Stripe/Stripe.php:460
 msgid "Attempted cancellation but was unable. Message was \"%s\"."
 msgstr ""
 
-#: src/Membership/PaymentMethods/Stripe/Stripe.php:588
+#: src/Membership/PaymentMethods/Stripe/Stripe.php:573
 #: src/templates/checkout/credit-card-fields.php:5
 msgid "Name on card"
 msgstr ""
 
-#: src/Membership/PaymentMethods/Stripe/Stripe.php:646
+#: src/Membership/PaymentMethods/Stripe/Stripe.php:631
 msgid "Manage Subscription"
 msgstr ""
 
-#: src/Membership/PaymentMethods/Stripe/Stripe.php:677
+#: src/Membership/PaymentMethods/Stripe/Stripe.php:662
 msgid "Unable to generate Stripe customer portal URL. Please try again"
 msgstr ""
 
-#: src/Membership/PaymentMethods/Stripe/Stripe.php:1011
+#: src/Membership/PaymentMethods/Stripe/Stripe.php:996
 msgid "Refund request is pending"
 msgstr ""
 
-#: src/Membership/PaymentMethods/Stripe/Stripe.php:1014
+#: src/Membership/PaymentMethods/Stripe/Stripe.php:999
 msgid "Refund request failed"
 msgstr ""
 
-#: src/Membership/PaymentMethods/Stripe/Stripe.php:1017
+#: src/Membership/PaymentMethods/Stripe/Stripe.php:1002
 msgid "Refund request failed. Status: %s"
 msgstr ""
 
@@ -16701,7 +16721,7 @@ msgstr ""
 #: src/ShortcodeParser/Builder/PasswordResetBuilder.php:233
 #: src/ShortcodeParser/Builder/RegistrationFormBuilder.php:123
 #: src/ShortcodeParser/Builder/RegistrationFormBuilder.php:136
-#: src/ShortcodeParser/MyAccount/change-password.tmpl.php:48
+#: src/ShortcodeParser/MyAccount/change-password.tmpl.php:50
 msgid "Strength indicator"
 msgstr ""
 
@@ -16741,12 +16761,12 @@ msgid "Display name"
 msgstr ""
 
 #: src/ShortcodeParser/Builder/FieldsShortcodeCallback.php:411
-#: src/ShortcodeParser/MyAccount/edit-profile.tmpl.php:133
+#: src/ShortcodeParser/MyAccount/edit-profile.tmpl.php:135
 msgid "First name"
 msgstr ""
 
 #: src/ShortcodeParser/Builder/FieldsShortcodeCallback.php:444
-#: src/ShortcodeParser/MyAccount/edit-profile.tmpl.php:138
+#: src/ShortcodeParser/MyAccount/edit-profile.tmpl.php:140
 msgid "Last name"
 msgstr ""
 
@@ -16755,7 +16775,7 @@ msgid "Bio description"
 msgstr ""
 
 #: src/ShortcodeParser/Builder/FieldsShortcodeCallback.php:497
-#: src/ShortcodeParser/MyAccount/edit-profile.tmpl.php:113
+#: src/ShortcodeParser/MyAccount/edit-profile.tmpl.php:115
 msgid "Profile picture"
 msgstr ""
 
@@ -16820,7 +16840,7 @@ msgstr ""
 msgid "You have not made any comment."
 msgstr ""
 
-#: src/ShortcodeParser/Builder/FrontendProfileBuilder.php:672
+#: src/ShortcodeParser/Builder/FrontendProfileBuilder.php:664
 msgid "No post written yet."
 msgstr ""
 
@@ -16921,7 +16941,7 @@ msgid "You have an active subscription to this plan. Please go to %syour account
 msgstr ""
 
 #: src/ShortcodeParser/MyAccount/account-settings.tmpl.php:16
-#: src/ShortcodeParser/MyAccount/edit-profile.tmpl.php:34
+#: src/ShortcodeParser/MyAccount/edit-profile.tmpl.php:36
 #: src/ShortcodeParser/MyAccount/MyAccountTag.php:135
 msgid "Account Settings"
 msgstr ""
@@ -16930,26 +16950,26 @@ msgstr ""
 msgid "The following billing address will be used on the checkout page by default."
 msgstr ""
 
-#: src/ShortcodeParser/MyAccount/change-password.tmpl.php:11
+#: src/ShortcodeParser/MyAccount/change-password.tmpl.php:13
 msgid "Password successfully updated."
 msgstr ""
 
-#: src/ShortcodeParser/MyAccount/change-password.tmpl.php:23
-#: src/ShortcodeParser/MyAccount/change-password.tmpl.php:53
+#: src/ShortcodeParser/MyAccount/change-password.tmpl.php:25
+#: src/ShortcodeParser/MyAccount/change-password.tmpl.php:55
 #: src/ShortcodeParser/MyAccount/MyAccountTag.php:101
 msgid "Change Password"
 msgstr ""
 
-#: src/ShortcodeParser/MyAccount/change-password.tmpl.php:30
+#: src/ShortcodeParser/MyAccount/change-password.tmpl.php:32
 msgid "Current password"
 msgstr ""
 
-#: src/ShortcodeParser/MyAccount/change-password.tmpl.php:36
+#: src/ShortcodeParser/MyAccount/change-password.tmpl.php:38
 #: src/ShortcodeParser/PasswordResetTag.php:103
 msgid "New password"
 msgstr ""
 
-#: src/ShortcodeParser/MyAccount/change-password.tmpl.php:42
+#: src/ShortcodeParser/MyAccount/change-password.tmpl.php:44
 msgid "Confirm new password"
 msgstr ""
 
@@ -16962,13 +16982,13 @@ msgstr ""
 msgid "From your account dashboard you can <a href=\"%1$s\">change your password</a> and <a href=\"%2$s\">edit your account details</a>."
 msgstr ""
 
-#: src/ShortcodeParser/MyAccount/delete-account.tmpl.php:12
-#: src/ShortcodeParser/MyAccount/delete-account.tmpl.php:26
+#: src/ShortcodeParser/MyAccount/delete-account.tmpl.php:14
+#: src/ShortcodeParser/MyAccount/delete-account.tmpl.php:28
 #: src/ShortcodeParser/MyAccount/MyAccountTag.php:108
 msgid "Delete Account"
 msgstr ""
 
-#: src/ShortcodeParser/MyAccount/delete-account.tmpl.php:14
+#: src/ShortcodeParser/MyAccount/delete-account.tmpl.php:16
 msgid "Are you sure you want to delete your account? This will erase all of your account data from the site. To delete your account enter your password below."
 msgstr ""
 
@@ -16982,24 +17002,24 @@ msgstr ""
 msgid "You have no downloads."
 msgstr ""
 
-#: src/ShortcodeParser/MyAccount/edit-profile.tmpl.php:91
-#: src/ShortcodeParser/MyAccount/edit-profile.tmpl.php:112
+#: src/ShortcodeParser/MyAccount/edit-profile.tmpl.php:93
+#: src/ShortcodeParser/MyAccount/edit-profile.tmpl.php:114
 msgid "Browse"
 msgstr ""
 
-#: src/ShortcodeParser/MyAccount/edit-profile.tmpl.php:92
+#: src/ShortcodeParser/MyAccount/edit-profile.tmpl.php:94
 msgid "Cover photo (min. width: 1000px)"
 msgstr ""
 
-#: src/ShortcodeParser/MyAccount/edit-profile.tmpl.php:128
+#: src/ShortcodeParser/MyAccount/edit-profile.tmpl.php:130
 msgid "Email address"
 msgstr ""
 
-#: src/ShortcodeParser/MyAccount/edit-profile.tmpl.php:148
+#: src/ShortcodeParser/MyAccount/edit-profile.tmpl.php:150
 msgid "Display name publicly as"
 msgstr ""
 
-#: src/ShortcodeParser/MyAccount/edit-profile.tmpl.php:158
+#: src/ShortcodeParser/MyAccount/edit-profile.tmpl.php:160
 msgid "About yourself"
 msgstr ""
 

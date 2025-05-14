@@ -424,9 +424,7 @@ trait CheckoutTrait
 
             ppress_wp_new_user_notification($user_id, null, 'admin');
 
-            /**
-             * Fires after a user registration is completed.
-             */
+            /** Fires after a user registration is completed. */
             do_action('ppress_after_registration', 0, $user_data, $user_id, false);
         }
 

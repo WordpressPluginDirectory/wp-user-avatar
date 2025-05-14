@@ -23,6 +23,10 @@ function Frontend() {
             _this.defaultUserProfileResponsive();
         });
 
+        $(window).on('ppress_updated_checkout', function () {
+            _this.recaptcha_processing();
+        });
+
         $(document).on('click', '.ppress-confirm-delete', function (e) {
             e.preventDefault();
             if (confirm(pp_ajax_form.confirm_delete)) {
@@ -44,7 +48,9 @@ function Frontend() {
     };
 
     this.recaptcha_processing = function () {
+
         $('.pp-g-recaptcha').each(function (index, el) {
+
             var $site_key = $(el).attr('data-sitekey');
             var $form = $(this).parents('.pp-form-container').find('form');
 
@@ -68,11 +74,17 @@ function Frontend() {
                     });
                 });
             } else {
-                var widgetId1 = grecaptcha.render(el, {
-                    'sitekey': $site_key,
-                    'theme': $(el).attr('data-theme'),
-                    'size': $(el).attr('data-size')
-                });
+
+                try {
+
+                    var widgetId1 = grecaptcha.render(el, {
+                        'sitekey': $site_key,
+                        'theme': $(el).attr('data-theme'),
+                        'size': $(el).attr('data-size')
+                    });
+
+                } catch (error) {
+                }
 
                 $form.on('pp_form_submitted', function () {
                     grecaptcha.reset(widgetId1)
@@ -100,7 +112,7 @@ function Frontend() {
 
     this.submit_reload_form_on_billing_country_field_change = function () {
         $(document).on('change', '.pp-edit-profile-form-wrap select[name=ppress_billing_country]', function (e) {
-            $(document).on('pp_form_edit_profile_success', function() {
+            $(document).on('pp_form_edit_profile_success', function () {
                 window.location.reload();
             });
             $(this).closest('form').find('input.pp-submit-form').trigger('click');

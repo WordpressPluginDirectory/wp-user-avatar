@@ -2864,3 +2864,13 @@ textarea.wp-editor-area {
 .ppress-login-redirect--repeater-item + .ppress-no-login-redirect-rule-message {
     display: none;
 }
+
+.ppress-admin .ppress-copy-url-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.ppress-admin .wp-list-table td .dashicons-admin-page {
+    padding: 5px 0;
+}

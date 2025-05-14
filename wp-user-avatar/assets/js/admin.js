@@ -672,6 +672,18 @@
             }
         });
 
+        $('.ppress-copy-url-icon').on('click', function () {
+            const $input = $(this).siblings('input');
+            const $msg = $(this).siblings('.ppress-copy-msg');
+
+            if ($input.length) {
+                $input[0].select();
+                document.execCommand('copy');
+                $msg.fadeIn(200).delay(1000).fadeOut(200);
+            }
+        });
+
+
         if (typeof postboxes !== 'undefined' && /ppress/.test(pagenow)) {
             postboxes.add_postbox_toggles(pagenow);
         }

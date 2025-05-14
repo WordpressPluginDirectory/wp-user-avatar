@@ -6,6 +6,8 @@ if ( ! defined('ABSPATH')) {
 
 $current_user = get_user_by('id', get_current_user_id());
 
+do_action('ppress_myaccount_delete_account_before');
+
 ?>
     <div class="profilepress-myaccount-delete-account">
 
@@ -34,4 +36,4 @@ $current_user = get_user_by('id', get_current_user_id());
     </div>
 <?php
 
-do_action('ppress_myaccount_delete_Account');
+do_action('ppress_myaccount_delete_account');

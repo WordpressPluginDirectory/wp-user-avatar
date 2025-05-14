@@ -523,11 +523,13 @@ class SettingsPage extends AbstractSettingsPage
                         'label'   => __('Payment Method', 'wp-user-avatar'),
                         'type'    => 'select',
                         'options' => (function () {
-                            return array_reduce(PaymentMethods::get_instance()->get_all(), function ($carry, $item) {
+                            return apply_filters(
+                        'ppress_admin_order_page_enabled_payment_methods',
+                        array_reduce(PaymentMethods::get_instance()->get_all(), function ($carry, $item) {
                                 $carry[$item->id] = $item->method_title;
 
                                 return $carry;
-                            }, ['' => '&mdash;&mdash;&mdash;&mdash;']);
+                            }, ['' => '&mdash;&mdash;&mdash;&mdash;']));
                         })()
                     ],
                     'transaction_id' => [

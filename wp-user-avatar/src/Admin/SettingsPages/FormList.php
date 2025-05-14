@@ -263,9 +263,24 @@ class FormList extends \WP_List_Table
 
         $shortcode = sprintf('[profilepress-%s id="%s"]', $form_type, absint($item['form_id']));
 
-        $output = '<input type="text" onfocus="this.select();" readonly="readonly" value="' . esc_attr($shortcode) . '" class="shortcode-in-list-table" />';
+        ob_start();
+        ?>
+        <div style="display: flex; align-items: center; gap: 5px;">
+            <input type="text"
+                   class="shortcode-in-list-table"
+                   onfocus="this.select();"
+                   readonly="readonly"
+                   value="<?php echo esc_attr($shortcode); ?>"
+                   style="min-width: 200px;" />
 
-        return $output;
+            <button type="button" class="button ppress-copy-url-icon" title="<?php esc_attr_e( 'Copy Shortcode', 'wp-user-avatar' ); ?>">
+                <span class="dashicons dashicons-admin-page"></span>
+            </button>
+
+            <span class="ppress-copy-msg" style="display:none; color:green;"><?php esc_html_e( 'Copied!', 'wp-user-avatar' ); ?></span>
+        </div>
+        <?php
+        return ob_get_clean();
     }
 
     public function column_builder($item)

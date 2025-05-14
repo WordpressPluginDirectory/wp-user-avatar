@@ -8,13 +8,6 @@ use WP_Error;
 
 class RegistrationAuth
 {
-    protected static $registration_form_status;
-
-    public static function is_ajax()
-    {
-        return defined('DOING_AJAX') && DOING_AJAX;
-    }
-
     /**
      * Wrapper function for call to the welcome email class
      *
@@ -24,7 +17,7 @@ class RegistrationAuth
      */
     public static function send_welcome_email($user_id, $password = '', $form_id = '')
     {
-        $status = apply_filters('ppress_activate_send_welcome_email', ppress_get_setting('welcome_message_email_enabled', 'on'));
+        $status = apply_filters('ppress_activate_send_welcome_email', ppress_get_setting('welcome_message_email_enabled', 'on'), $user_id, $form_id);
 
         if ($status == 'on') {
 
@@ -52,7 +45,7 @@ class RegistrationAuth
             return Autologin::initialize($user_id, $form_id, $redirect);
         }
 
-        $auto_login_option = apply_filters('ppress_activate_auto_login_after_signup', ppress_get_setting('set_auto_login_after_reg', ''), $form_id);
+        $auto_login_option = apply_filters('ppress_activate_auto_login_after_signup', ppress_get_setting('set_auto_login_after_reg', ''), $form_id, $user_id);
 
         if ($auto_login_option == 'on') {
             return Autologin::initialize($user_id, $form_id);
@@ -72,7 +65,7 @@ class RegistrationAuth
         esc_url_raw($no_login_redirect);
 
         do_action('ppress_before_no_login_redirect_after_reg', $no_login_redirect, $form_id);
-        if (self::is_ajax()) {
+        if (wp_doing_ajax()) {
             // we are returning array to uniquely identify redirect.
             return [$no_login_redirect];
         }
@@ -139,12 +132,12 @@ class RegistrationAuth
             }
         }
 
-        $email = isset($segregated_userdata['reg_email']) ? $segregated_userdata['reg_email'] : '';
+        $email = $segregated_userdata['reg_email'] ?? '';
 
-        $email2 = isset($segregated_userdata['reg_email2']) ? $segregated_userdata['reg_email2'] : null;
+        $email2 = $segregated_userdata['reg_email2'] ?? null;
 
         // get convert the form post data to userdata for use by wp_insert_users
-        $username = isset($segregated_userdata['reg_username']) ? $segregated_userdata['reg_username'] : '';
+        $username = $segregated_userdata['reg_username'] ?? '';
 
         // Handle username creation when username requirement is disabled.
         if (ppress_is_signup_form_username_disabled($form_id, $is_melange)) {
@@ -158,38 +151,38 @@ class RegistrationAuth
             }
         }
 
-        $username = apply_filters('ppress_registration_username_value', $username);
+        $username = apply_filters('ppress_registration_username_value', $username, $form_id);
 
-        $password = apply_filters('ppress_registration_password_value', isset($segregated_userdata['reg_password']) ? $segregated_userdata['reg_password'] : '');
+        $password = apply_filters('ppress_registration_password_value', $segregated_userdata['reg_password'] ?? '', $form_id);
 
         $flag_to_send_password_reset = false;
 
         // if the reg_password field isn't present in registration, generate a password for the user and set a flag to send a password reset message
         if (empty($password) && (empty($segregated_userdata['reg_password_present']) || $segregated_userdata['reg_password_present'] != 'true')) {
             $password                    = wp_generate_password(24);
-            $flag_to_send_password_reset = apply_filters('ppress_enable_auto_send_password_reset_flag', true);
+            $flag_to_send_password_reset = apply_filters('ppress_enable_auto_send_password_reset_flag', true, $form_id);
         }
 
-        $password2    = isset($segregated_userdata['reg_password2']) ? $segregated_userdata['reg_password2'] : null;
-        $website      = isset($segregated_userdata['reg_website']) ? $segregated_userdata['reg_website'] : '';
-        $nickname     = isset($segregated_userdata['reg_nickname']) ? $segregated_userdata['reg_nickname'] : '';
-        $display_name = isset($segregated_userdata['reg_display_name']) ? $segregated_userdata['reg_display_name'] : '';
-        $first_name   = isset($segregated_userdata['reg_first_name']) ? $segregated_userdata['reg_first_name'] : '';
-        $last_name    = isset($segregated_userdata['reg_last_name']) ? $segregated_userdata['reg_last_name'] : '';
-        $bio          = isset($segregated_userdata['reg_bio']) ? $segregated_userdata['reg_bio'] : '';
-        $role         = isset($segregated_userdata['reg_select_role']) ? $segregated_userdata['reg_select_role'] : '';
+        $password2    = $segregated_userdata['reg_password2'] ?? null;
+        $website      = $segregated_userdata['reg_website'] ?? '';
+        $nickname     = $segregated_userdata['reg_nickname'] ?? '';
+        $display_name = $segregated_userdata['reg_display_name'] ?? '';
+        $first_name   = $segregated_userdata['reg_first_name'] ?? '';
+        $last_name    = $segregated_userdata['reg_last_name'] ?? '';
+        $bio          = $segregated_userdata['reg_bio'] ?? '';
+        $role         = $segregated_userdata['reg_select_role'] ?? '';
 
         // real uer data
         $real_userdata = array(
             'user_login'   => $username,
             'user_pass'    => $password,
-            'user_email'   => apply_filters('ppress_registration_email_value', $email),
-            'user_url'     => apply_filters('ppress_registration_website_value', $website),
-            'nickname'     => apply_filters('ppress_registration_nickname_value', $nickname),
-            'display_name' => apply_filters('ppress_registration_display_name_value', $display_name),
-            'first_name'   => apply_filters('ppress_registration_first_name_value', $first_name),
-            'last_name'    => apply_filters('ppress_registration_last_name_value', $last_name),
-            'description'  => apply_filters('ppress_registration_bio_value', $bio),
+            'user_email'   => apply_filters('ppress_registration_email_value', $email, $form_id),
+            'user_url'     => apply_filters('ppress_registration_website_value', $website, $form_id),
+            'nickname'     => apply_filters('ppress_registration_nickname_value', $nickname, $form_id),
+            'display_name' => apply_filters('ppress_registration_display_name_value', $display_name, $form_id),
+            'first_name'   => apply_filters('ppress_registration_first_name_value', $first_name, $form_id),
+            'last_name'    => apply_filters('ppress_registration_last_name_value', $last_name, $form_id),
+            'description'  => apply_filters('ppress_registration_bio_value', $bio, $form_id),
         );
 
         if ( ! empty($role)) {
@@ -283,8 +276,8 @@ class RegistrationAuth
         $upload_errors = '';
         if ( ! empty($uploads)) {
             foreach ($uploads as $field_key => $uploaded_filename_or_wp_error) {
-                if (is_wp_error($uploads[$field_key])) {
-                    $upload_errors .= $uploads[$field_key]->get_error_message() . '<br/>';
+                if (is_wp_error($uploaded_filename_or_wp_error)) {
+                    $upload_errors .= $uploaded_filename_or_wp_error->get_error_message() . '<br/>';
                 }
             }
 
@@ -296,7 +289,7 @@ class RegistrationAuth
 
 
         // --------START ---------   validation for avatar upload ----------------------//
-        if (isset($files['reg_avatar']['name']) && ! empty($files['reg_avatar']['name'])) {
+        if ( ! empty($files['reg_avatar']['name'])) {
             $upload_avatar = ImageUploader::process($files['reg_avatar']);
 
             if (is_wp_error($upload_avatar)) {
@@ -307,7 +300,7 @@ class RegistrationAuth
 
 
         // --------START ---------   validation for cover photo upload ----------------------//
-        if (isset($files['reg_cover_image']['name']) && ! empty($files['reg_cover_image']['name'])) {
+        if ( ! empty($files['reg_cover_image']['name'])) {
 
             $upload_cover_image = ImageUploader::process($files['reg_cover_image'], ImageUploader::COVER_IMAGE, PPRESS_COVER_IMAGE_UPLOAD_DIR);
 
@@ -320,7 +313,7 @@ class RegistrationAuth
         do_action('ppress_before_registration', $form_id, $user_data);
 
         // proceed to registration using wp_insert_user method which return the new user id
-        $user_id = wp_insert_user($real_userdata);
+        $user_id = wp_insert_user(apply_filters('ppress_registration_real_userdata', $real_userdata, $form_id, $post));
 
         if (is_wp_error($user_id)) {
             return '<div class="profilepress-reg-status">' . $user_id->get_error_message() . '</div>';
@@ -328,18 +321,22 @@ class RegistrationAuth
 
         // --------START ---------   register custom field ----------------------//
 
-        $custom_usermeta['pp_profile_avatar']      = isset($upload_avatar) ? $upload_avatar : null;
-        $custom_usermeta['pp_profile_cover_image'] = isset($upload_cover_image) ? $upload_cover_image : null;
+        $custom_usermeta['pp_profile_avatar']      = $upload_avatar ?? null;
+        $custom_usermeta['pp_profile_cover_image'] = $upload_cover_image ?? null;
 
         // if we get to this point, it means the files pass validation defined above.
         // array of files uploaded. Array key is the "custom field key" and the filename as the array value.
         $custom_usermeta['pp_uploaded_files'] = $uploads;
 
+        $custom_usermeta = apply_filters('ppress_registration_custom_usermeta', $custom_usermeta, $user_id, $form_id, $post);
+
         // if $user_id is no WP_Error, add the extra user profile field
         if (is_array($custom_usermeta)) {
 
             foreach ($custom_usermeta as $key => $value) {
+
                 if ( ! empty($value)) {
+
                     update_user_meta($user_id, $key, $value);
                     // the 'edit_profile' parameter is used to distinguish it from same action hook in RegistrationAuth
                     do_action('ppress_after_custom_field_update', $key, $value, $user_id, 'registration');
@@ -374,7 +371,7 @@ class RegistrationAuth
             }
         }
 
-        if ($should_send_welcome_email) {
+        if (apply_filters('ppress_registration_should_send_welcome_email', $should_send_welcome_email, $user_id, $user_data)) {
             self::send_welcome_email($user_id, $password, $form_id);
         }
 
@@ -406,7 +403,7 @@ class RegistrationAuth
             $response = self::auto_login_after_reg($user_id, $form_id, $redirect);
         }
 
-        if (self::is_ajax() && isset($response) && ! empty($response) && is_array($response)) {
+        if (wp_doing_ajax() && isset($response) && ! empty($response) && is_array($response)) {
             // $response should be an array containing the url to redirect to.
             return $response;
         }
@@ -426,7 +423,7 @@ class RegistrationAuth
             }
         }
 
-        return apply_filters('ppress_registration_success_message', ! empty($success_message) ? wp_kses_post($success_message) : $default_success_message);
+        return apply_filters('ppress_registration_success_message', ! empty($success_message) ? wp_kses_post($success_message) : $default_success_message, $user_id, $form_id, $user_data);
     }
 
     /**
@@ -461,7 +458,7 @@ class RegistrationAuth
 
             preg_match('/options="([,\s\w]+)"/', $matches[0], $matches2);
 
-            $options = isset($matches2[1]) ? $matches2[1] : [];
+            $options = $matches2[1] ?? [];
         }
 
         //if no options attribute was found in the shortcode, default to all list of editable roles

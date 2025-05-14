@@ -8,6 +8,8 @@ if ( ! defined('ABSPATH')) {
 
 $current_user = get_user_by('id', get_current_user_id());
 
+do_action('ppress_myaccount_change_password_before');
+
 $success_message = apply_filters('ppress_password_change_confirmation_message', esc_html__('Password successfully updated.', 'wp-user-avatar'));
 ?>
     <div class="profilepress-myaccount-change-password">

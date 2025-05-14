@@ -13,6 +13,8 @@ if ( ! defined('ABSPATH')) {
 
 $current_user_id = get_current_user_id();
 
+do_action('ppress_myaccount_edit_profile_before');
+
 $contact_infos = [];
 $custom_fields = [];
 

@@ -242,11 +242,10 @@ class Custom_Settings_Page_Api
      */
     public static function sanitize_data($data)
     {
-        if (is_string($data)) {
-            return esc_html($data);
-        }
+        if (is_string($data)) return esc_html($data);
 
         $sanitized_data = [];
+
         foreach ($data as $key => $value) {
             // skip sanitation. useful for fields that expects html
             if (($cValue = apply_filters('wp_cspa_sanitize_skip', false, $key, $value))) {
@@ -254,10 +253,10 @@ class Custom_Settings_Page_Api
                 continue;
             }
 
-            if (is_array($data[$key])) {
-                $sanitized_data[$key] = self::sanitize_data($data[$key]);
+            if (is_array($value)) {
+                $sanitized_data[$key] = self::sanitize_data($value);
             } else {
-                $sanitized_data[$key] = esc_html(stripslashes($data[$key]));
+                $sanitized_data[$key] = esc_html(stripslashes($value));
             }
         }
 

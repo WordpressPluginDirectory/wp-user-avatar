@@ -48,7 +48,10 @@ class GroupWPListTable extends \WP_List_Table
     {
         $group_id = absint($item->id);
 
-        $edit_link   = esc_url(add_query_arg(['ppress_group_action' => 'edit', 'id' => $group_id], PPRESS_MEMBERSHIP_GROUPS_SETTINGS_PAGE));
+        $edit_link   = esc_url(add_query_arg([
+            'ppress_group_action' => 'edit',
+            'id'                  => $group_id
+        ], PPRESS_MEMBERSHIP_GROUPS_SETTINGS_PAGE));
         $delete_link = self::delete_group_url($group_id);
 
         $actions = [
@@ -89,14 +92,28 @@ class GroupWPListTable extends \WP_List_Table
 
         if ( ! $url) return esc_html__('Checkout page not found', 'wp-user-avatar');
 
-        return '<input type="text" onfocus="this.select();" readonly="readonly" value="' . esc_url($url) . '" style="width:100%;max-width:80%" />';
+        ob_start();
+        ?>
+        <div style="display: flex; align-items: center; gap: 5px;">
+            <input type="text" class="ppress-checkout-url" onfocus="this.select();" readonly="readonly" value="<?php echo esc_url($url); ?>" style="min-width: 200px;"/>
+
+            <button type="button" class="button ppress-copy-url-icon" title="<?php esc_attr_e('Copy URL', 'wp-user-avatar'); ?>">
+                <span class="dashicons dashicons-admin-page"></span>
+            </button>
+            <span class="ppress-copy-msg" style="display:none; color:green;"><?php esc_html_e('Copied!', 'wp-user-avatar'); ?></span>
+        </div>
+        <?php
+        return ob_get_clean();
+
     }
 
     public static function delete_group_url($group_id)
     {
-        $nonce_delete = wp_create_nonce('pp_group_delete_rule');
-
-        return add_query_arg(['action' => 'delete', 'id' => $group_id, '_wpnonce' => $nonce_delete], PPRESS_MEMBERSHIP_GROUPS_SETTINGS_PAGE);
+        return add_query_arg([
+            'action'   => 'delete',
+            'id'       => $group_id,
+            '_wpnonce' => wp_create_nonce('pp_group_delete_rule')
+        ], PPRESS_MEMBERSHIP_GROUPS_SETTINGS_PAGE);
     }
 
     public function get_groups($per_page, $current_page = 1)
@@ -115,7 +132,7 @@ class GroupWPListTable extends \WP_List_Table
 
         $this->process_bulk_action();
 
-        $per_page = $this->get_items_per_page('groups_per_page', 10);
+        $per_page     = $this->get_items_per_page('groups_per_page', 10);
         $current_page = $this->get_pagenum();
         $total_items  = $this->record_count();
 

@@ -283,7 +283,7 @@ class SettingsPage extends AbstractSettingsPage
         if (ppressGET_var('ppress_customer_action') == 'new') {
 
             $instance->main_content([
-                [
+                apply_filters('ppress_admin_new_customer_form_fields', [
                     'account_type'  => [
                         'label' => __('User Account', 'wp-user-avatar'),
                         'type'  => 'custom_field_block',
@@ -316,7 +316,7 @@ class SettingsPage extends AbstractSettingsPage
                         'type'  => 'custom_field_block',
                         'data'  => self::password_field()
                     ]
-                ]
+                ])
             ]);
 
             $instance->remove_white_design();

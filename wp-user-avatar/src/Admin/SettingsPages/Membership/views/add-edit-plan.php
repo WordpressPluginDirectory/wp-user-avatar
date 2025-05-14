@@ -61,7 +61,7 @@ $plan_details = [
         'id'          => 'price',
         'type'        => 'price',
         'label'       => esc_html__('Price', 'wp-user-avatar') . sprintf(' (%s)', ppress_get_currency_symbol()),
-        'description' => esc_html__('The price of this membership plan. Enter 0 to make this plan free.', 'wp-user-avatar')
+        'description' => esc_html__('The price of this membership plan. Enter 0.00 to make this plan free.', 'wp-user-avatar')
     ]
 ];
 
@@ -148,7 +148,7 @@ if ( ! ExtensionManager::is_premium()) {
         'Campaign Monitor' => [
             esc_html__("Subscribe members to your Campaign Monitor lists when they register or subscribe to a membership plan and sync membership and profile changes with Campaign Monitor.", 'wp-user-avatar')
         ],
-        'WooCommerce' => [
+        'WooCommerce'      => [
             esc_html__("Sell paid memberships via WooCommerce, and create members-only discounts.", 'wp-user-avatar')
         ]
     ];
@@ -246,7 +246,20 @@ add_action('add_meta_boxes', function () use ($subscription_settings, $plan_deta
                 ?>
                 <div class="ppress-subscription-plan-payment-links">
                     <p>
-                        <input type="text" onfocus="this.select();" readonly="readonly" value="<?= esc_url($checkout_url) ?>"/>
+                        <input
+                                type="text"
+                                id="ppress-checkout-url"
+                                onfocus="this.select();"
+                                readonly="readonly"
+                                value="<?php echo esc_url($checkout_url); ?>"
+                                style="width: 100%;"
+                        />
+                    </p>
+                    <p style="display: flex; align-items: center; gap: 10px;">
+                        <button type="button" class="button" id="ppress-copy-url-btn">
+                            <?php esc_html_e('Copy URL', 'wp-user-avatar'); ?>
+                        </button>
+                        <span id="ppress-copy-msg" style="color: green; display: none;"></span>
                     </p>
                 </div>
                 <?php
@@ -315,6 +328,22 @@ do_action('add_meta_boxes', 'ppmembershipplan', new WP_Post(new stdClass()));
                 }).trigger('change');
 
             });
+
+            $('#ppress-copy-url-btn').on('click', function () {
+
+                var input = $('#ppress-checkout-url')[0];
+                var msg = $('#ppress-copy-msg');
+
+                input.select();
+                input.setSelectionRange(0, 99999); // For mobile
+
+                document.execCommand('copy');
+                msg.text('<?php esc_html_e("Copied!", "wp-user-avatar"); ?>')
+                    .css('color', 'green')
+                    .show()
+                    .fadeOut(3000);
+            });
+
         })(jQuery);
     </script>
     <?php

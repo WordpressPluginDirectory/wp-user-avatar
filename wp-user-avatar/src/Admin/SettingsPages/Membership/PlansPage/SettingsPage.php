@@ -111,7 +111,7 @@ class SettingsPage extends AbstractSettingsPage
             $plan->user_role = $new_role;
         }
 
-        $plan->name                = sanitize_text_field($_POST['name']);
+        $plan->name                = stripslashes(sanitize_text_field($_POST['name']));
         $plan->description         = stripslashes(wp_kses_post($_POST['description']));
         $plan->order_note          = stripslashes(wp_kses_post($_POST['order_note']));
         $plan->price               = ppress_sanitize_amount($_POST['price']);

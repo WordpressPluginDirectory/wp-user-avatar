@@ -108,14 +108,16 @@ define("PPRESS_FILE_UPLOAD_URL", apply_filters('ppress_files_url', WP_CONTENT_UR
 class Base extends DBTables
 {
     // core contact info fields
-    const cif_facebook = 'facebook';
-    const cif_twitter = 'twitter';
-    const cif_linkedin = 'linkedin';
-    const cif_youtube = 'youtube';
-    const cif_vk = 'vk';
-    const cif_instagram = 'instagram';
-    const cif_github = 'github';
-    const cif_pinterest = 'pinterest';
+    const cif_facebook     = 'facebook';
+    const cif_twitter      = 'twitter';
+    const cif_linkedin     = 'linkedin';
+    const cif_youtube      = 'youtube';
+    const cif_vk           = 'vk';
+    const cif_instagram    = 'instagram';
+    const cif_github       = 'github';
+    const cif_pinterest    = 'pinterest';
+    const cif_bluesky      = 'bluesky';
+    const cif_threads      = 'threads';
 
     public function __construct()
     {

@@ -14,7 +14,7 @@ class ImageUploader
      * @param string $image_id used to identify in the code if image is an avatar or cover photo.
      * @param mixed|void $path
      *
-     * @return string|string[]|WP_Error|null
+     * @return string|WP_Error|null
      */
     public static function process($image, $image_id = 'avatar', $path = PPRESS_AVATAR_UPLOAD_DIR)
     {
@@ -123,13 +123,15 @@ class ImageUploader
                 /** WP User Avatar Adapter STARTS */
                 global $wp_user_avatar, $wpua_resize_crop, $wpua_resize_h, $wpua_resize_upload, $wpua_resize_w;
 
-                if ( (bool)$wpua_resize_upload === true) {
+                if ((bool)$wpua_resize_upload === true) {
 
                     $uploaded_image = wp_get_image_editor($image_upload_dir . $file_name);
 
                     if ( ! is_wp_error($uploaded_image)) {
 
                         $uploaded_image->resize($wpua_resize_w, $wpua_resize_h, $wpua_resize_crop == '1');
+
+                        $uploaded_image->save($image_upload_dir . $file_name);
                     }
                 }
                 /** WP User Avatar Adapter ENDS */

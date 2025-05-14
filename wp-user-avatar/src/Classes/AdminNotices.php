@@ -61,8 +61,6 @@ class AdminNotices
 
         $this->review_plugin_notice();
 
-        $this->wp_user_avatar_now_ppress_notice();
-
         $this->addons_promo_notices();
     }
 
@@ -72,11 +70,6 @@ class AdminNotices
 
             if ($_GET['ppress_admin_action'] == 'dismiss_leave_review_forever') {
                 update_option('ppress_dismiss_leave_review_forever', true);
-            }
-
-            if ($_GET['ppress_admin_action'] == 'dismiss_wp_user_avatar_now_ppress') {
-
-                PAnD::set_admin_notice_cache('wp_user_avatar_now_ppress_notice', 'forever');
             }
 
             wp_safe_redirect(esc_url_raw(remove_query_arg('ppress_admin_action')));
@@ -162,28 +155,6 @@ class AdminNotices
             echo "<p>$notice</p>";
             echo '</div>';
         }
-    }
-
-    /**
-     * Let user avatar plugin users know it is now ProfilePress
-     */
-    public function wp_user_avatar_now_ppress_notice()
-    {
-        if ( ! PAnD::is_admin_notice_active('wp_user_avatar_now_ppress_notice-forever')) return;
-
-        if (get_option('ppress_is_from_wp_user_avatar', false) != 'true') return;
-
-        $dismiss_url = esc_url(add_query_arg('ppress_admin_action', 'dismiss_wp_user_avatar_now_ppress'));
-
-        $notice = sprintf(
-            __('Important news! %1$sWP User Avatar%2$s is now %1$sProfilePress%2$s. We added new features such as member directories, frontend user registration & login forms, user profile, content protection and more. %3$sCheck Them Out%5$s | %4$sDismiss Notice%5$s', 'wp-user-avatar'),
-            '<strong>', '</strong>',
-            '<a href="' . PPRESS_SETTINGS_SETTING_GENERAL_PAGE . '">', '<a href="' . $dismiss_url . '">', '</a>'
-        );
-
-        echo '<div data-dismissible="wp_user_avatar_now_ppress_notice-forever" class="update-nag notice notice-warning is-dismissible">';
-        echo "<p>$notice</p>";
-        echo '</div>';
     }
 
     public function addons_promo_notices()

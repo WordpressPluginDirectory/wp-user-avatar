@@ -125,6 +125,7 @@ class EmailSettingsPage
                 'recipient'    => esc_html__('Users', 'wp-user-avatar'),
                 'placeholders' => [
                     '{{username}}'            => esc_html__('Username of the registered user.', 'wp-user-avatar'),
+                    '{{userid}}'              => esc_html__('User ID of the registered user.', 'wp-user-avatar'),
                     '{{email}}'               => esc_html__('Email address of the registered user.', 'wp-user-avatar'),
                     '{{password}}'            => esc_html__('Password of the registered user.', 'wp-user-avatar'),
                     '{{site_title}}'          => esc_html__('Website title or name.', 'wp-user-avatar'),

@@ -76,7 +76,11 @@ add_action('add_meta_boxes', function () use ($group_details, $group_data) {
                 ?>
                 <div class="ppress-subscription-plan-payment-links">
                     <p>
-                        <input type="text" onfocus="this.select();" readonly="readonly" value="<?= esc_url($group_data->get_checkout_url()) ?>"/>
+                        <input type="text" id="ppress-group-checkout-url" onfocus="this.select();" readonly="readonly" value="<?= esc_url($group_data->get_checkout_url()) ?>" style="width: 100%;"/>
+                    </p>
+                    <p style="display: flex; align-items: center; gap: 10px;">
+                        <button type="button" class="button" id="ppress-copy-url-btn"><?php esc_html_e('Copy URL', 'wp-user-avatar'); ?></button>
+                        <span id="ppress-copy-msg" style="color: green; display: none;"></span>
                     </p>
                 </div>
                 <?php
@@ -85,19 +89,43 @@ add_action('add_meta_boxes', function () use ($group_details, $group_data) {
             'sidebar'
         );
     }
+
 });
 
 do_action('add_meta_boxes', 'ppmembershipgroup', new WP_Post(new stdClass()));
 ?>
-<div id="poststuff">
-    <div id="post-body" class="metabox-holder columns-2">
+    <div id="poststuff">
+        <div id="post-body" class="metabox-holder columns-2">
 
-        <div id="postbox-container-1" class="postbox-container">
-            <?php do_meta_boxes('ppmembershipgroup', 'sidebar', ''); ?>
+            <div id="postbox-container-1" class="postbox-container">
+                <?php do_meta_boxes('ppmembershipgroup', 'sidebar', ''); ?>
+            </div>
+            <div id="postbox-container-2" class="postbox-container">
+                <?php do_meta_boxes('ppmembershipgroup', 'advanced', ''); ?>
+            </div>
         </div>
-        <div id="postbox-container-2" class="postbox-container">
-            <?php do_meta_boxes('ppmembershipgroup', 'advanced', ''); ?>
-        </div>
+        <br class="clear">
     </div>
-    <br class="clear">
-</div>
+
+<?php add_action('admin_footer', function () { ?>
+    <script type="text/javascript">
+        (function ($) {
+
+            $('#ppress-copy-url-btn').on('click', function () {
+                var input = $('#ppress-group-checkout-url')[0];
+                var msg = $('#ppress-copy-msg');
+
+                input.select();
+                input.setSelectionRange(0, 99999); // For mobile
+
+                document.execCommand('copy');
+                msg.text('<?php esc_html_e("Copied!", "wp-user-avatar");?>')
+                    .css('color', 'green')
+                    .show()
+                    .fadeOut(3000);
+            });
+
+        })(jQuery);
+    </script>
+    <?php
+});

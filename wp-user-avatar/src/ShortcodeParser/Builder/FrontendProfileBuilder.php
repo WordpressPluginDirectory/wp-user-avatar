@@ -379,38 +379,30 @@ class FrontendProfileBuilder
         return apply_filters('ppress_profile_cpf', $data, self::$user_data);
     }
 
-    public function profile_user_uploaded_file($atts)
+    public static function get_user_uploaded_file($user_id, $field_key, $is_raw = false)
     {
-        $atts = ppress_normalize_attributes($atts);
-
-        $atts = shortcode_atts(
-            array(
-                'key' => '',
-                'raw' => false,
-            ),
-            $atts
-        );
-
-        $key = esc_attr($atts['key']);
-
-        $user_upload_data = get_user_meta(self::$user_data->ID, 'pp_uploaded_files', true);
+        $user_upload_data = get_user_meta($user_id, 'pp_uploaded_files', true);
 
         if (empty($user_upload_data)) return '';
 
-        $filename = isset($user_upload_data[$key]) ? $user_upload_data[$key] : '';
+        $filename = $user_upload_data[$field_key] ?? '';
 
         if (empty($filename)) return '';
 
         $link = PPRESS_FILE_UPLOAD_URL . $filename;
 
-        if ( ! empty($atts['raw']) && ($atts['raw'] === true || $atts['raw'] == 'true')) {
-            $return = $link;
-        } else {
-            $return = "<a href='$link'>$filename</a>";
-        }
+        return $is_raw === true || $is_raw == 'true' ? $link : "<a href='$link'>$filename</a>";
+    }
+
+    public function profile_user_uploaded_file($atts)
+    {
+        $atts = ppress_normalize_attributes($atts);
+
+        $atts = shortcode_atts(['key' => '', 'raw' => false], $atts);
+
+        $return = self::get_user_uploaded_file(self::$user_data->ID, esc_attr($atts['key']), $atts['raw']);
 
         return apply_filters('ppress_profile_file', $return, self::$user_data);
-
     }
 
     /**

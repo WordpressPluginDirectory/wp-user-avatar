@@ -14,16 +14,6 @@ class LoginAuth
     private static $redirect, $secure_cookie, $user, $username, $password, $login_form_id;
 
     /**
-     * Called to validate login credentials
-     *
-     * @return string
-     */
-    public static function is_ajax()
-    {
-        return defined('DOING_AJAX') && DOING_AJAX;
-    }
-
-    /**
      * Authenticate login
      *
      * @param string $username
@@ -95,7 +85,7 @@ class LoginAuth
         $login_redirection = self::after_do_login();
 
         // if ajax, return the url to redirect to
-        if (self::is_ajax()) return $login_redirection;
+        if (wp_doing_ajax()) return $login_redirection;
 
         nocache_headers();
 
@@ -158,7 +148,7 @@ class LoginAuth
         $login_redirection = self::after_do_login();
 
         // if ajax, return the url to redirect to
-        if (self::is_ajax()) {
+        if (wp_doing_ajax()) {
             wp_send_json(['success' => true, 'redirect' => $login_redirection]);
         }
 

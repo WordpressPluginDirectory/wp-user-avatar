@@ -4,11 +4,6 @@ namespace ProfilePress\Core\Classes;
 
 class Autologin
 {
-    public static function is_ajax()
-    {
-        return defined('DOING_AJAX') && DOING_AJAX;
-    }
-
     /**
      * Initialize class
      *
@@ -64,7 +59,7 @@ class Autologin
         /** Setup a custom location for "auto login after registration" */
         $login_redirection = apply_filters('ppress_auto_login_redirection', $login_redirect, $login_id, $user_id);
 
-        if (self::is_ajax()) {
+        if (wp_doing_ajax()) {
             // we are returning array to uniquely identify redirect.
             return [$login_redirection];
         }

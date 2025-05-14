@@ -6,11 +6,6 @@ use WP_Error;
 
 class PasswordReset
 {
-    protected static function is_ajax()
-    {
-        return defined('DOING_AJAX') && DOING_AJAX;
-    }
-
     /**
      * Change the password reset title.
      *
@@ -205,7 +200,7 @@ class PasswordReset
 
         $success_msg = ! empty($success_message) ? $success_message : apply_filters('ppress_default_password_reset_text', '<h4>' . esc_html__('Check your email for further instructions.', 'wp-user-avatar') . '</h4>');
 
-        if (self::is_ajax()) return [$success_msg];
+        if (wp_doing_ajax()) return [$success_msg];
 
         return $success_msg;
     }
@@ -223,13 +218,13 @@ class PasswordReset
         if (is_wp_error($user)) {
             if ($user->get_error_code() === 'expired_key') {
 
-                if (self::is_ajax()) return self::do_password_reset_status_messages('expired_key');
+                if (wp_doing_ajax()) return self::do_password_reset_status_messages('expired_key');
 
                 wp_safe_redirect(ppress_password_reset_url() . '?login=expiredkey');
                 exit;
             }
 
-            if (self::is_ajax()) return self::do_password_reset_status_messages('expired_key');
+            if (wp_doing_ajax()) return self::do_password_reset_status_messages('expired_key');
 
             wp_safe_redirect(ppress_password_reset_url() . '?login=invalidkey');
             exit;
@@ -239,7 +234,7 @@ class PasswordReset
 
             if ($_POST['password1'] != $_POST['password2']) {
 
-                if (self::is_ajax()) {
+                if (wp_doing_ajax()) {
                     return self::do_password_reset_status_messages('password_mismatch');
                 }
 
@@ -259,7 +254,7 @@ class PasswordReset
 
             if (empty($_POST['password1'])) {
 
-                if (self::is_ajax()) return self::do_password_reset_status_messages('password_empty');
+                if (wp_doing_ajax()) return self::do_password_reset_status_messages('password_empty');
 
                 // Empty password
                 $redirect_url = add_query_arg(
@@ -277,7 +272,7 @@ class PasswordReset
 
             if (isset($_POST['pp_enforce_password_meter']) && ($_POST['pp_enforce_password_meter'] != '1')) {
 
-                if (self::is_ajax()) return self::do_password_reset_status_messages('weak_password');
+                if (wp_doing_ajax()) return self::do_password_reset_status_messages('weak_password');
 
                 // Empty password
                 $redirect_url = add_query_arg(
@@ -296,7 +291,7 @@ class PasswordReset
             // Everything is cool now.
             reset_password($user, $_POST['password1']);
 
-            if (self::is_ajax()) {
+            if (wp_doing_ajax()) {
                 return [self::do_password_reset_status_messages('changed')];
             }
 
@@ -305,7 +300,7 @@ class PasswordReset
             exit;
         }
 
-        if (self::is_ajax()) {
+        if (wp_doing_ajax()) {
             return self::do_password_reset_status_messages('invalid');
         }
 

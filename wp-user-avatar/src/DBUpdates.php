@@ -162,7 +162,10 @@ class DBUpdates
 
         $table = DBTables::profile_fields_db_table();
 
-        $wpdb->query("ALTER TABLE $table CHANGE options options longtext NULL;");
+        if ($wpdb->get_var($wpdb->prepare("SHOW TABLES LIKE %s", $table))) {
+            // Table exists, proceed with altering the table
+            $wpdb->query("ALTER TABLE $table CHANGE options options longtext NULL;");
+        }
     }
 
     public function update_routine_11()

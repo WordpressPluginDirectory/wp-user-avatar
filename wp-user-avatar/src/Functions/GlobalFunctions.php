@@ -4,9 +4,10 @@ use ProfilePress\Core\Admin\SettingsPages\MailOptin;
 use ProfilePress\Core\Base;
 use ProfilePress\Core\Classes\ExtensionManager as EM;
 use ProfilePress\Core\Classes\FormRepository as FR;
-use ProfilePress\Core\Classes\PROFILEPRESS_sql as PROFILEPRESS_sql;
+use ProfilePress\Core\Classes\PROFILEPRESS_sql;
 use ProfilePress\Core\Classes\SendEmail;
 use ProfilePress\Core\Membership\CheckoutFields;
+use ProfilePress\Core\ShortcodeParser\Builder\FrontendProfileBuilder;
 
 /** Plugin DB settings data */
 function ppress_db_data()
@@ -88,7 +89,7 @@ function ppress_settings_by_key($key = '', $default = false, $is_empty = false)
         return isset($data[$key]) && ( ! empty($data[$key]) || ppress_is_boolean($data[$key])) ? $data[$key] : $default;
     }
 
-    return isset($data[$key]) ? $data[$key] : $default;
+    return $data[$key] ?? $default;
 }
 
 function ppress_get_setting($key = '', $default = false, $is_empty = false)
@@ -1570,6 +1571,8 @@ function ppress_social_network_fields()
         Base::cif_instagram => 'Instagram',
         Base::cif_github    => 'GitHub',
         Base::cif_pinterest => 'Pinterest',
+        Base::cif_bluesky   => 'Bluesky',
+        Base::cif_threads   => 'Threads',
     ]);
 }
 
@@ -1827,12 +1830,18 @@ function ppress_form_has_field($form_id, $form_type, $field_shortcode_tag)
     return false;
 }
 
+/**
+ * @param $message
+ * @param WP_User $user
+ *
+ * @return array|mixed|string|string[]
+ */
 function ppress_custom_profile_field_search_replace($message, $user)
 {
     // handle support for custom fields placeholder.
     preg_match_all('#({{[a-z_-]+}})#', $message, $matches);
 
-    if (isset($matches[1]) && ! empty($matches[1])) {
+    if ( ! empty($matches[1])) {
 
         foreach ($matches[1] as $match) {
 
@@ -1840,13 +1849,15 @@ function ppress_custom_profile_field_search_replace($message, $user)
 
             $value = '';
 
-            if (isset($user->{$key})) {
+            $field_type = PROFILEPRESS_sql::get_field_type($key);
+
+            if ($field_type == 'file') {
+                $value = FrontendProfileBuilder::get_user_uploaded_file($user->ID, $key);
+            } elseif (isset($user->{$key})) {
 
                 $value = $user->{$key};
 
-                if (is_array($value)) {
-                    $value = implode(', ', $value);
-                }
+                if (is_array($value)) $value = implode(', ', $value);
             }
 
             $message = str_replace($match, $value, $message);

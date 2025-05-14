@@ -113,7 +113,7 @@ class FieldsShortcodeCallback
         $valid_atts = array();
 
         foreach ($atts as $key => $value) {
-            if ( ! in_array($key, $invalid_atts) && strpos($key, 'on') !== 0 && is_string($key) && is_string($value)) {
+            if ( ! in_array($key, $invalid_atts) && strpos($key, 'on') !== 0 && is_string($key) && (is_string($value) || ppress_is_boolean($value))) {
                 $valid_atts[esc_attr($key)] = esc_attr($value);
             }
         }
@@ -533,7 +533,7 @@ class FieldsShortcodeCallback
 
         $atts = array_replace(['type' => 'text'], $atts);
 
-        if ( ! isset($atts['key']) || empty($atts['key'])) {
+        if (empty($atts['key'])) {
             return esc_html__('Field key is missing', 'wp-user-avatar');
         }
 
@@ -1041,7 +1041,7 @@ class FieldsShortcodeCallback
 
         $type = ! empty($atts['type']) ? $atts['type'] : $type;
 
-        if (empty($type) || ! $type) {
+        if (empty($type)) {
             $type = 'text';
         }
 
@@ -1141,7 +1141,7 @@ class FieldsShortcodeCallback
         $atts['value'] = isset($atts['value']) ? esc_attr($atts['value']) : $value;
 
         $form_type = $this->form_type;
-        $form_id   = isset($GLOBALS['pp_registration_form_id']) ? $GLOBALS['pp_registration_form_id'] : 0;
+        $form_id   = $GLOBALS['pp_registration_form_id'] ?? 0;
         if ($form_type == FormRepository::EDIT_PROFILE_TYPE) {
             $form_id = isset($GLOBALS['pp_edit_profile_form_id']) ? esc_attr($GLOBALS['pp_edit_profile_form_id']) : 0;
         }

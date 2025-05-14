@@ -101,7 +101,18 @@ class PlanWPListTable extends \WP_List_Table
 
         if ( ! $url) return esc_html__('Checkout page not found', 'wp-user-avatar');
 
-        return '<input type="text" onfocus="this.select();" readonly="readonly" value="' . esc_url($url) . '" />';
+        ob_start();
+        ?>
+        <div style="display: flex; align-items: center; gap: 5px;">
+            <input type="text" class="ppress-checkout-url" onfocus="this.select();" readonly="readonly" value="<?php echo esc_url($url); ?>" style="min-width: 200px;"/>
+
+            <button type="button" class="button ppress-copy-url-icon" title="<?php esc_attr_e('Copy URL', 'wp-user-avatar'); ?>">
+                <span class="dashicons dashicons-admin-page"></span>
+            </button>
+            <span class="ppress-copy-msg" style="display:none; color:green;"><?php esc_html_e('Copied!', 'wp-user-avatar'); ?></span>
+        </div>
+        <?php
+        return ob_get_clean();
     }
 
     public function column_status(PlanEntity $item)
@@ -137,7 +148,7 @@ class PlanWPListTable extends \WP_List_Table
 
         $this->process_bulk_action();
 
-        $per_page = $this->get_items_per_page('plans_per_page', 10);
+        $per_page     = $this->get_items_per_page('plans_per_page', 10);
         $current_page = $this->get_pagenum();
         $total_items  = $this->record_count();
 

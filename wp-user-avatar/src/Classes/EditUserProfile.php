@@ -4,11 +4,6 @@ namespace ProfilePress\Core\Classes;
 
 class EditUserProfile
 {
-    public static function is_ajax()
-    {
-        return defined('DOING_AJAX') && DOING_AJAX;
-    }
-
     public static function get_success_message($form_id = 0, $is_melange = false)
     {
         $success_message = FormRepository::get_form_meta($form_id, FormRepository::EDIT_PROFILE_TYPE, FormRepository::SUCCESS_MESSAGE);
@@ -43,7 +38,7 @@ class EditUserProfile
 
         $edit_profile_response = self::update_user_profile($form_id, $redirect);
 
-        if ( ! empty($edit_profile_response) && self::is_ajax()) {
+        if ( ! empty($edit_profile_response) && wp_doing_ajax()) {
             $ajax_response = [];
 
             if (is_string($edit_profile_response)) {
@@ -89,7 +84,7 @@ class EditUserProfile
      */
     public static function update_user_profile($form_id, $redirect = '')
     {
-        if (self::is_ajax()) {
+        if (wp_doing_ajax()) {
             ppress_verify_ajax_nonce();
         } else {
             ppress_verify_nonce();
@@ -224,7 +219,7 @@ class EditUserProfile
             self::delete_deprecated_wp_user_avatar_image();
             /** WP User Avatar Adapter ENDS */
 
-            if (self::is_ajax()) {
+            if (wp_doing_ajax()) {
                 $ajax_response['avatar_url'] = PPRESS_AVATAR_UPLOAD_URL . $upload_avatar;
             }
         }
@@ -239,7 +234,7 @@ class EditUserProfile
 
             $custom_usermeta['pp_profile_cover_image'] = $upload_cover_image;
 
-            if (self::is_ajax()) {
+            if (wp_doing_ajax()) {
                 $ajax_response['cover_image_url'] = PPRESS_COVER_IMAGE_UPLOAD_URL . $upload_cover_image;
             }
         }
@@ -303,7 +298,7 @@ class EditUserProfile
             do_action('ppress_after_profile_update', $user_data, $form_id, $old_user_data);
 
             // success flag is used by ajax mode. see self::process_func()
-            if (self::is_ajax()) {
+            if (wp_doing_ajax()) {
                 $ajax_response['status'] = 'success';
 
                 return $ajax_response;
