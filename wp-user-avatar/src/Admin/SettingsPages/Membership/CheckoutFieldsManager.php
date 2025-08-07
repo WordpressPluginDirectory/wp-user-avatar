@@ -83,7 +83,7 @@ class CheckoutFieldsManager
 
         if ($fieldGroup == 'billing') {
             $standard_fields = CheckoutFields::standard_billing_fields();
-            $custom_fields = [];
+            $custom_fields   = apply_filters('ppress_checkout_billing_custom_fields', []);
         }
 
         echo '<select class="ppress-checkout-field-list">';

@@ -25,7 +25,9 @@ use ProfilePress\Core\Membership\Services\SubscriptionService;
  */
 function ppress_get_plan($plan_id)
 {
-    return PlanFactory::fromId($plan_id);
+    return ppress_cache_transform('ppress_get_plan_' . $plan_id, function () use ($plan_id) {
+        return PlanFactory::fromId($plan_id);
+    });
 }
 
 /**
@@ -586,11 +588,9 @@ function ppress_get_payment_mode()
 function ppress_local_datetime_to_utc($date, $format = 'Y-m-d H:i:s')
 {
     try {
-        $a = new DateTime($date, wp_timezone());
-        $a->setTimezone(new DateTimeZone('UTC'));
-
-        return $a->format($format);
-
+        return (new DateTimeImmutable($date, wp_timezone()))
+            ->setTimezone(new DateTimeZone('UTC'))
+            ->format($format);
     } catch (\Exception $e) {
         return false;
     }
@@ -970,9 +970,11 @@ function ppress_subscribe_user_to_plan($plan_id, $customer_id, $order_data = [],
 
     $order->id              = $order_id;
     $order->subscription_id = $subscription_id;
+
     if ($order->is_completed()) {
-        $order->date_completed = current_time('mysql', true);
+        $order->date_completed = $order_data['date_created'];
     }
+
     $order->save();
 
     if ($send_receipt && $order->is_completed()) {

@@ -79,7 +79,9 @@ class SettingsPage extends AbstractSettingsPage
             $subscription->status = sanitize_text_field($_POST['sub_status']);
         }
 
-        $subscription->initial_amount = ppress_sanitize_amount($_POST['sub_initial_amount']);
+        if ( ! empty($_POST['sub_initial_amount'])) {
+            $subscription->initial_amount = ppress_sanitize_amount($_POST['sub_initial_amount']);
+        }
 
         if ( ! empty($_POST['sub_initial_tax'])) {
             $subscription->initial_tax = ppress_sanitize_amount($_POST['sub_initial_tax']);
@@ -103,18 +105,22 @@ class SettingsPage extends AbstractSettingsPage
 
         $subscription_id = $subscription->save();
 
-        $cloned_subscription         = clone $subscription;
+        $cloned_subscription = clone $subscription;
         // doing this so transition from old to new status via update_status() becomes accurate.
         $cloned_subscription->status = $subscription_old_status;
 
         switch ($subscription->status) {
+            case SubscriptionStatus::ACTIVE :
+                $cloned_subscription->activate_subscription();
+                break;
+            case SubscriptionStatus::TRIALLING :
+                $cloned_subscription->enable_subscription_trial();
+                break;
             case SubscriptionStatus::EXPIRED :
                 $cloned_subscription->expire(true);
                 break;
             case SubscriptionStatus::CANCELLED :
-                $cloned_subscription->cancel(
-                    $cloned_subscription->has_cancellation_requested() === false
-                );
+                $cloned_subscription->cancel(true);
                 break;
             case SubscriptionStatus::COMPLETED :
                 $cloned_subscription->complete();

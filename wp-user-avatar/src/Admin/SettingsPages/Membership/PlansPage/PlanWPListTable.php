@@ -83,14 +83,14 @@ class PlanWPListTable extends \WP_List_Table
 
     public function column_billing_details(PlanEntity $item)
     {
-        $billing_data = wp_json_encode([
+        $billing_data = wp_json_encode(apply_filters('ppress_admin_membership_plan_billing_data', [
             'price'               => ppress_sanitize_amount($item->price),
             'billing_frequency'   => sanitize_text_field($item->billing_frequency),
             'total_payments'      => absint($item->total_payments),
             'signup_fee'          => ppress_sanitize_amount($item->signup_fee),
             'subscription_length' => sanitize_text_field($item->subscription_length),
-            'free_trial'          => sanitize_text_field($item->free_trial)
-        ]);
+            'free_trial'          => sanitize_text_field($item->free_trial),
+        ], $item));
 
         printf('<div class="ppress-plan-billing-details" data-billing-details="%s"></div>', esc_attr($billing_data));
     }

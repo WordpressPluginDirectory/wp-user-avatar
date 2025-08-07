@@ -338,7 +338,9 @@ class WPListTable extends \WP_List_Table
     public function get_bulk_actions()
     {
         $actions = [
-            'bulk-delete' => esc_html__('Delete', 'wp-user-avatar')
+            'bulk-activate'   => esc_html__('Activate', 'wp-user-avatar'),
+            'bulk-deactivate' => esc_html__('Deactivate', 'wp-user-avatar'),
+            'bulk-delete'     => esc_html__('Delete', 'wp-user-avatar')
         ];
 
         return $actions;
@@ -361,81 +363,56 @@ class WPListTable extends \WP_List_Table
 
     public function process_bulk_action()
     {
-        $rule_id = absint(ppress_var($_GET, 'id', 0));
-
-        // Bail if user is not an admin or without admin privileges.
+        // Early return if user doesn't have admin privileges
         if ( ! current_user_can('manage_options')) return;
 
-        if ('deactivate' === $this->current_action()) {
+        $action  = $this->current_action();
+        $rule_id = absint(ppress_var($_GET, 'id', 0));
 
-            check_admin_referer('pp_content_protection_deactivate_rule');
+        // Handle single actions
+        if (in_array($action, ['activate', 'deactivate', 'delete', 'duplicate'])) {
 
-            if ( ! current_user_can('manage_options')) return;
+            check_admin_referer("pp_content_protection_{$action}_rule");
 
-            $meta = PROFILEPRESS_sql::get_meta_value($rule_id, SettingsPage::META_DATA_KEY);
-
-            $meta['is_active'] = 'false';
-
-            PROFILEPRESS_sql::update_meta_value($rule_id, SettingsPage::META_DATA_KEY, $meta);
-
-            ppress_do_admin_redirect(PPRESS_CONTENT_PROTECTION_SETTINGS_PAGE);
-        }
-
-        if ('activate' === $this->current_action()) {
-
-            check_admin_referer('pp_content_protection_activate_rule');
-
-            if ( ! current_user_can('manage_options')) return;
-
-            $meta = PROFILEPRESS_sql::get_meta_value($rule_id, SettingsPage::META_DATA_KEY);
-
-            $meta['is_active'] = 'true';
-
-            PROFILEPRESS_sql::update_meta_value($rule_id, SettingsPage::META_DATA_KEY, $meta);
-
-            ppress_do_admin_redirect(PPRESS_CONTENT_PROTECTION_SETTINGS_PAGE);
-        }
-
-        if ('delete' === $this->current_action()) {
-
-            check_admin_referer('pp_content_protection_delete_rule');
-
-            if ( ! current_user_can('manage_options')) return;
-
-            if (PROFILEPRESS_sql::delete_meta_data($rule_id)) {
-
-                do_action('ppress_content_protection_delete_rule', $rule_id);
-
-                ppress_do_admin_redirect(PPRESS_CONTENT_PROTECTION_SETTINGS_PAGE);
+            if ($action === 'activate' || $action === 'deactivate') {
+                $meta              = PROFILEPRESS_sql::get_meta_value($rule_id, SettingsPage::META_DATA_KEY);
+                $meta['is_active'] = $action === 'activate' ? 'true' : 'false';
+                PROFILEPRESS_sql::update_meta_value($rule_id, SettingsPage::META_DATA_KEY, $meta);
+            } elseif ($action === 'delete') {
+                if (PROFILEPRESS_sql::delete_meta_data($rule_id)) {
+                    do_action('ppress_content_protection_delete_rule', $rule_id);
+                }
+            } elseif ($action === 'duplicate') {
+                $meta = PROFILEPRESS_sql::get_meta_value($rule_id, SettingsPage::META_DATA_KEY);
+                if (isset($meta['title']) && is_string($meta['title'])) {
+                    $meta['title'] .= ' (Copy)';
+                }
+                PROFILEPRESS_sql::add_meta_data(SettingsPage::META_DATA_KEY, $meta);
+                do_action('ppress_content_protection_duplicate_rule', $rule_id);
             }
-        }
-
-        if ('duplicate' === $this->current_action()) {
-
-            check_admin_referer('pp_content_protection_duplicate_rule');
-
-            if ( ! current_user_can('manage_options')) return;
-
-            $meta = PROFILEPRESS_sql::get_meta_value($rule_id, SettingsPage::META_DATA_KEY);
-
-            PROFILEPRESS_sql::add_meta_data(SettingsPage::META_DATA_KEY, $meta);
-
-            do_action('ppress_content_protection_duplicate_rule', $rule_id);
 
             ppress_do_admin_redirect(PPRESS_CONTENT_PROTECTION_SETTINGS_PAGE);
         }
 
-        if ('bulk-delete' === $this->current_action()) {
-
+        // Handle bulk actions
+        if (in_array($action, ['bulk-delete', 'bulk-activate', 'bulk-deactivate'])) {
             check_admin_referer('bulk-' . $this->_args['plural']);
 
-            $delete_ids = array_map('absint', $_POST['rule_id']);
+            $ids = array_map('absint', $_POST['rule_id']);
 
-            foreach ($delete_ids as $rule_id) {
-                PROFILEPRESS_sql::delete_meta_data($rule_id);
+            foreach ($ids as $id) {
+                if ($action === 'bulk-delete') {
+                    PROFILEPRESS_sql::delete_meta_data($id);
+                } elseif ($action === 'bulk-activate' || $action === 'bulk-deactivate') {
+                    $meta              = PROFILEPRESS_sql::get_meta_value($id, SettingsPage::META_DATA_KEY);
+                    $meta['is_active'] = $action === 'bulk-activate' ? 'true' : 'false';
+                    PROFILEPRESS_sql::update_meta_value($id, SettingsPage::META_DATA_KEY, $meta);
+                }
             }
 
-            do_action('ppress_content_protection_after_bulk_delete', $delete_ids);
+            $hook_action = str_replace('bulk-', '', $action);
+
+            do_action("ppress_content_protection_after_bulk_{$hook_action}", $ids);
 
             ppress_do_admin_redirect(PPRESS_CONTENT_PROTECTION_SETTINGS_PAGE);
         }

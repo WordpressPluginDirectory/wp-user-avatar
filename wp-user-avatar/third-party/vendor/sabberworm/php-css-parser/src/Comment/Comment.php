@@ -4,14 +4,11 @@ namespace ProfilePressVendor\Sabberworm\CSS\Comment;
 
 use ProfilePressVendor\Sabberworm\CSS\OutputFormat;
 use ProfilePressVendor\Sabberworm\CSS\Renderable;
-class Comment implements Renderable
+use ProfilePressVendor\Sabberworm\CSS\Position\Position;
+use ProfilePressVendor\Sabberworm\CSS\Position\Positionable;
+class Comment implements Positionable, Renderable
 {
-    /**
-     * @var int
-     *
-     * @internal since 8.8.0
-     */
-    protected $iLineNo;
+    use Position;
     /**
      * @var string
      *
@@ -25,7 +22,7 @@ class Comment implements Renderable
     public function __construct($sComment = '', $iLineNo = 0)
     {
         $this->sComment = $sComment;
-        $this->iLineNo = $iLineNo;
+        $this->setPosition($iLineNo);
     }
     /**
      * @return string
@@ -33,13 +30,6 @@ class Comment implements Renderable
     public function getComment()
     {
         return $this->sComment;
-    }
-    /**
-     * @return int
-     */
-    public function getLineNo()
-    {
-        return $this->iLineNo;
     }
     /**
      * @param string $sComment

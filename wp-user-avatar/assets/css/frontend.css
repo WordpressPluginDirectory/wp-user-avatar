@@ -609,6 +609,7 @@ html .pp-form-container .select2 input.select2-search__field {
 .pp-form-container .pp-form-wrapper .pp-form-field-wrap input[type=checkbox]:checked::before,
 .pp-form-container .pp-form-wrapper .pp-form-field-wrap input[type=radio]:checked::before {
     float: left !important;
+    transform: none;
     display: inline-block !important;
     vertical-align: middle !important;
     speak: none;

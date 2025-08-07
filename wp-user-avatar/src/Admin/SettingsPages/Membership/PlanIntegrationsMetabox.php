@@ -115,7 +115,7 @@ class PlanIntegrationsMetabox
 
     public function textarea($name, $options)
     {
-        $placeholder = isset($options['placeholder']) ? $options['placeholder'] : '';
+        $placeholder = $options['placeholder'] ?? '';
         printf(
             '<textarea class="short" name="%1$s" id="%1$s" placeholder="%2$s">%3$s</textarea>',
             esc_attr($name), esc_attr($placeholder), esc_textarea($this->saved_values_bucket($name))
@@ -124,7 +124,7 @@ class PlanIntegrationsMetabox
 
     public function checkbox($name, $options)
     {
-        $checkbox_label = isset($options['checkbox_label']) ? $options['checkbox_label'] : '';
+        $checkbox_label = $options['checkbox_label'] ?? '';
 
         printf('<input type="hidden" style="display: none" name="%1$s" value="false">', esc_attr($name));
 
@@ -218,7 +218,7 @@ class PlanIntegrationsMetabox
                 width: 140px;
             }
 
-            .ppview .postbox#pp-form-builder-metabox input {
+            .ppview .postbox#pp-form-builder-metabox input:not([type=checkbox]) {
                 width: 100% !important;
                 max-width: 100% !important;
             }

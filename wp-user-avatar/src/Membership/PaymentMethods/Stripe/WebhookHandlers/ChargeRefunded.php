@@ -24,10 +24,12 @@ class ChargeRefunded implements WebhookHandlerInterface
             $order->refund_order();
             $subscription = SubscriptionFactory::fromId($order->subscription_id);
 
-            // cancel non-recurring order subscription it doesnt have a stripe sub created.
             if ( ! $subscription->is_recurring()) {
-                $subscription->cancel();
+                $subscription->cancel(); // cancelled one-time/lifetime sub are considered inactive if cancelled
             }
+
+            $last_order = $subscription->get_last_order();
+            if ($last_order && $order->get_id() == $last_order->get_id()) $subscription->expire();
 
         } else {
             // If this was partially refunded, don't change the status.

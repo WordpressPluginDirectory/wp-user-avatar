@@ -63,7 +63,7 @@ abstract class AbstractTheme implements ThemeInterface
      */
     public function disallowed_settings_fields()
     {
-        return ['pp-custom-html', 'pp-recaptcha', 'pp-user-avatar', 'pp-user-cover-image', $this->tag_name . '-cpf-agreeable'];
+        return ['pp-custom-html', 'pp-recaptcha', 'pp-turnstile', 'pp-user-avatar', 'pp-user-cover-image', $this->tag_name . '-cpf-agreeable'];
     }
 
     public function minified_form_css()

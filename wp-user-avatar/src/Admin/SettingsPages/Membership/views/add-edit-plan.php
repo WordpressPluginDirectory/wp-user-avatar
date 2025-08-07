@@ -65,12 +65,20 @@ $plan_details = [
     ]
 ];
 
-$subscription_settings = [
+$subscription_settings = apply_filters('ppress_admin_membership_plan_subscription_settings', [
     [
-        'id'      => 'billing_frequency',
-        'type'    => 'select',
-        'label'   => esc_html__('Billing Frequency', 'wp-user-avatar'),
-        'options' => SubscriptionBillingFrequency::get_all()
+        'id'          => 'billing_frequency',
+        'type'        => 'select',
+        'label'       => esc_html__('Billing Frequency', 'wp-user-avatar'),
+        'options'     => SubscriptionBillingFrequency::get_all(),
+        'description' => ! ExtensionManager::is_premium() ?
+            '<p class="notice notice-info inline">'.sprintf(
+                esc_html__('Users who subscribe to a one-time payment plan get lifetime subscriptions. If you want their subscription to expire after a particular duration or at a specific date, %1$supgrade to premium%2$s to get the %3$sFixed Subscription Expiration addon%2$s.', 'wp-user-avatar'),
+                '<a target="_blank" href="https://profilepress.com/pricing/?utm_source=wp_dashboard&utm_medium=upgrade&utm_campaign=edit_plan_page_subscription_settings_metabox">',
+                '</a>',
+                '<a target="_blank" href="https://profilepress.com/addons/fixed-subscription-expiration/?utm_source=wp_dashboard&utm_medium=upgrade&utm_campaign=edit_plan_page_subscription_settings_metabox">',
+            ) . '</p>' :
+            ''
     ],
     [
         'id'      => 'subscription_length',
@@ -100,7 +108,7 @@ $subscription_settings = [
         'label'       => esc_html__('Free Trial', 'wp-user-avatar'),
         'description' => esc_html__('Allow members free access for a specified duration of time before charging them.', 'wp-user-avatar')
     ]
-];
+]);
 
 $file_downloads_setting_url = add_query_arg(['view' => 'payments', 'section' => 'file-downloads'], PPRESS_SETTINGS_SETTING_PAGE);
 
@@ -323,6 +331,10 @@ do_action('add_meta_boxes', 'ppmembershipplan', new WP_Post(new stdClass()));
                             'signup_fee': $('.form-field #signup_fee').val(),
                             'subscription_length': $('.form-field #subscription_length').val(),
                             'free_trial': $('.form-field #free_trial').val(),
+                            'subscription_expiration_type': $('.form-field #subscription_expiration').val(),
+                            'subscription_expiration_value': $('.form-field #plan-expire-value').val(),
+                            'subscription_expiration_unit': $('.form-field #plan-expire-unit').val(),
+                            'subscription_expiration_date': $('.form-field #subscription_expiration_date').val(),
                         })
                     );
                 }).trigger('change');

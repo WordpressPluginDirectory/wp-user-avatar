@@ -377,7 +377,7 @@ class DeclarationBlock extends RuleSet
             return;
         }
         $oRule = $aRules['background'];
-        $aBgProperties = ['background-color' => ['transparent'], 'background-image' => ['none'], 'background-repeat' => ['repeat'], 'background-attachment' => ['scroll'], 'background-position' => [new Size(0, '%', \false, $this->iLineNo), new Size(0, '%', \false, $this->iLineNo)]];
+        $aBgProperties = ['background-color' => ['transparent'], 'background-image' => ['none'], 'background-repeat' => ['repeat'], 'background-attachment' => ['scroll'], 'background-position' => [new Size(0, '%', \false, $this->getLineNo()), new Size(0, '%', \false, $this->getLineNo())]];
         $mRuleValue = $oRule->getValue();
         $aValues = [];
         if (!$mRuleValue instanceof RuleValueList) {
@@ -675,7 +675,7 @@ class DeclarationBlock extends RuleSet
                 $aLHValues = $mRuleValue->getListComponents();
             }
             if ($aLHValues[0] !== 'normal') {
-                $val = new RuleValueList('/', $this->iLineNo);
+                $val = new RuleValueList('/', $this->getLineNo());
                 $val->addListComponent($aFSValues[0]);
                 $val->addListComponent($aLHValues[0]);
                 $oNewRule->addValue($val);
@@ -691,7 +691,7 @@ class DeclarationBlock extends RuleSet
         } else {
             $aFFValues = $mRuleValue->getListComponents();
         }
-        $oFFValue = new RuleValueList(',', $this->iLineNo);
+        $oFFValue = new RuleValueList(',', $this->getLineNo());
         $oFFValue->setListComponents($aFFValues);
         $oNewRule->addValue($oFFValue);
         $this->addRule($oNewRule);
@@ -722,7 +722,7 @@ class DeclarationBlock extends RuleSet
         $sResult = $oOutputFormat->comments($this);
         if (count($this->aSelectors) === 0) {
             // If all the selectors have been removed, this declaration block becomes invalid
-            throw new OutputException("Attempt to print declaration block with missing selector", $this->iLineNo);
+            throw new OutputException('Attempt to print declaration block with missing selector', $this->getLineNumber());
         }
         $sResult .= $oOutputFormat->sBeforeDeclarationBlock;
         $sResult .= $oOutputFormat->implode($oOutputFormat->spaceBeforeSelectorSeparator() . ',' . $oOutputFormat->spaceAfterSelectorSeparator(), $this->aSelectors);

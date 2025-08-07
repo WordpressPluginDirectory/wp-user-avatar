@@ -3,7 +3,6 @@
 namespace ProfilePress\Core\Membership\Models\Subscription;
 
 use ProfilePress\Core\Base;
-use ProfilePress\Core\Classes\PROFILEPRESS_sql;
 use ProfilePress\Core\Membership\Models\AbstractModel;
 use ProfilePress\Core\Membership\Models\Customer\CustomerFactory;
 use ProfilePress\Core\Membership\Models\ModelInterface;
@@ -178,8 +177,6 @@ class SubscriptionEntity extends AbstractModel implements ModelInterface
      */
     public function is_active()
     {
-        $ret = false;
-
         $active_statuses = [
             SubscriptionStatus::ACTIVE,
             SubscriptionStatus::CANCELLED,
@@ -188,23 +185,25 @@ class SubscriptionEntity extends AbstractModel implements ModelInterface
             SubscriptionStatus::TRIALLING,
         ];
 
-        $last_order = $this->get_last_order();
-
         // one-time payments with lifetime expiration is considered not active if they are cancelled
         // unlike recurring sub which is only not active if expired.
         if ($this->is_lifetime() && $this->is_cancelled()) {
-            $ret = false;
-        }
-        if (
-            apply_filters('ppress_subscription_disable_active_status_on_refund', true) &&
-            $this->is_cancelled() && $last_order instanceof OrderEntity && $last_order->is_refunded()
-        ) {
-            $ret = false;
-        } elseif ( ! $this->is_expired() && in_array($this->status, $active_statuses, true)) {
-            $ret = true;
+            return apply_filters('ppress_subscription_is_active', false, $this->id, $this);
         }
 
-        return apply_filters('ppress_subscription_is_active', $ret, $this->id, $this);
+        $last_order = $this->get_last_order();
+
+        if (apply_filters('ppress_subscription_disable_active_status_on_refund', true) &&
+            $this->is_cancelled() &&
+            $last_order instanceof OrderEntity &&
+            $last_order->is_refunded()) {
+            return apply_filters('ppress_subscription_is_active', false, $this->id, $this);
+        }
+
+        // Active if not expired and has active status
+        $is_active = ! $this->is_expired() && in_array($this->status, $active_statuses, true);
+
+        return apply_filters('ppress_subscription_is_active', $is_active, $this->id, $this);
     }
 
     public function is_expired()
@@ -258,9 +257,17 @@ class SubscriptionEntity extends AbstractModel implements ModelInterface
         return $this->billing_frequency != SubscriptionBillingFrequency::ONE_TIME;
     }
 
+    /**
+     * Check if a subscription is lifetime, without any expiration
+     *
+     * @return bool
+     */
     public function is_lifetime()
     {
-        return ! $this->is_recurring() || Calculator::init($this->recurring_amount)->isNegativeOrZero();
+        // expiration_date db column is 0000-00-00 00:00:00 if subscription is lifetime, meaning no renewal date
+        // converting to timestamp result in negative integer hence the ppress_strtotime_utc() check for determining this.
+        return ppress_strtotime_utc($this->expiration_date) <= 0 ||
+               ($this->is_recurring() && Calculator::init($this->recurring_amount)->isNegativeOrZero());
     }
 
     public function has_trial()
@@ -349,27 +356,9 @@ class SubscriptionEntity extends AbstractModel implements ModelInterface
         ], true);
     }
 
-    public function set_trial_period($period)
-    {
-        $valid_periods = (new \ReflectionClass(SubscriptionTrialPeriod::class))->getConstants();
-
-        if (in_array($period, $valid_periods)) {
-            $this->trial_period = $period;
-        }
-    }
-
     public function get_profile_id()
     {
         return apply_filters('ppress_subscription_profile_id', $this->profile_id, $this->get_id(), $this);
-    }
-
-    protected function set_status($status)
-    {
-        $valid_statuses = (new \ReflectionClass(SubscriptionStatus::class))->getConstants();
-
-        if (in_array($status, $valid_statuses)) {
-            $this->status = $status;
-        }
     }
 
     public function get_status()
@@ -380,6 +369,13 @@ class SubscriptionEntity extends AbstractModel implements ModelInterface
     public function get_status_label()
     {
         return SubscriptionStatus::get_label($this->get_status());
+    }
+
+    public function get_renewal_expiration_date_label()
+    {
+        return ! $this->is_active() || ! $this->is_recurring() ?
+            esc_html__('Expiration Date', 'wp-user-avatar') :
+            esc_html__('Renewal Date', 'wp-user-avatar');
     }
 
     public function get_payment_method()
@@ -609,30 +605,12 @@ class SubscriptionEntity extends AbstractModel implements ModelInterface
         return apply_filters('ppress_subscription_can_cancel', false, $this);
     }
 
-    public function has_cancellation_requested()
-    {
-        $val = PROFILEPRESS_sql::get_meta_data_by_key('subscription_cancellation_requested_' . $this->id);
-
-        return is_array($val) && isset($val[0]['meta_value']) && 'true' == $val[0]['meta_value'];
-    }
-
-    public function add_cancellation_requested()
-    {
-        $this->delete_cancellation_requested(); // cleanup first
-        PROFILEPRESS_sql::add_meta_data('subscription_cancellation_requested_' . $this->id, 'true');
-    }
-
-    public function delete_cancellation_requested()
-    {
-        PROFILEPRESS_sql::delete_meta_data_by_meta_key('subscription_cancellation_requested_' . $this->id);
-    }
-
     /**
      * @param bool $gateway_cancel set to true to cancel sub in gateway too.
      *
      * @return false|void
      */
-    public function cancel($gateway_cancel = false, $cancel_immediately = false)
+    public function cancel($gateway_cancel = false)
     {
         if ($this->is_cancelled()) return false;
 
@@ -640,21 +618,17 @@ class SubscriptionEntity extends AbstractModel implements ModelInterface
 
         $old_status = $this->status;
 
-        $this->update_status(SubscriptionStatus::CANCELLED);
+        if ($old_status != SubscriptionStatus::EXPIRED) {
+            $this->update_status(SubscriptionStatus::CANCELLED);
+        }
 
         if ($gateway_cancel === true && $sub->can_cancel()) {
-            if ($cancel_immediately === true) {
-                PaymentMethods::get_instance()->get_by_id($this->get_payment_method())->cancel_immediately($sub);
-            } else {
-                PaymentMethods::get_instance()->get_by_id($this->get_payment_method())->cancel($sub);
-            }
+            PaymentMethods::get_instance()->get_by_id($this->get_payment_method())->cancel($sub);
         }
 
         if ($this->is_lifetime()) {
             $this->remove_plan_role_from_customer();
         }
-
-        $this->add_cancellation_requested();
 
         do_action('ppress_subscription_cancelled', $this, $old_status);
     }
@@ -710,7 +684,7 @@ class SubscriptionEntity extends AbstractModel implements ModelInterface
      * @param $change_expiry_date
      * @param int $expiration_date timestamp in UTC
      *
-     * @return void
+     * @return false|int
      */
     public function renew($change_expiry_date = true, $expiration_date = '')
     {
@@ -760,13 +734,15 @@ class SubscriptionEntity extends AbstractModel implements ModelInterface
         }
 
         $this->status = SubscriptionStatus::ACTIVE;
-        $this->save();
+        $status       = $this->save();
 
         $this->add_plan_role_to_customer();
 
         $this->maybe_complete_subscription();
 
         do_action('ppress_subscription_post_renew', $this->id, $expiration, $this);
+
+        return $status;
     }
 
     public function maybe_complete_subscription()

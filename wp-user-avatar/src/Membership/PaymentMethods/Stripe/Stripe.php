@@ -425,12 +425,12 @@ class Stripe extends AbstractPaymentMethod
     }
 
     /**
-     * @param $subscription
-     * @param $cancel_immediately
+     * @param SubscriptionEntity $subscription
      *
      * @return bool
+     *
      */
-    private function stripe_cancel($subscription, $cancel_immediately = false)
+    private function stripe_cancel($subscription)
     {
         try {
 
@@ -439,19 +439,7 @@ class Stripe extends AbstractPaymentMethod
 
             if ('canceled' === $stripeSubObj->status || empty($subscription->profile_id)) return false;
 
-            if (false === $cancel_immediately) {
-
-                if (in_array($stripeSubObj->cancel_at_period_end, ['true', true], true)) return false;
-
-                if (in_array($stripeSubObj->status, ['active', 'trialing'], true)) {
-                    APIClass::stripeClient()->subscriptions->update($subscription->profile_id, ['cancel_at_period_end' => true]);
-                } else {
-                    APIClass::stripeClient()->subscriptions->cancel($subscription->profile_id);
-                }
-
-            } else {
-                APIClass::stripeClient()->subscriptions->cancel($subscription->profile_id);
-            }
+            APIClass::stripeClient()->subscriptions->cancel($subscription->profile_id);
 
         } catch (\Exception $e) {
 
@@ -466,18 +454,6 @@ class Stripe extends AbstractPaymentMethod
         }
 
         return true;
-    }
-
-    /**
-     * Cancels a subscription immediately.
-     *
-     * @param SubscriptionEntity $subscription
-     *
-     * @return bool
-     */
-    public function cancel_immediately($subscription)
-    {
-        return $this->stripe_cancel($subscription, true);
     }
 
     /**

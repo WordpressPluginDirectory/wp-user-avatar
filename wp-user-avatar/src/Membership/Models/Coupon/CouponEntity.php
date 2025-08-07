@@ -222,23 +222,23 @@ class CouponEntity extends AbstractModel implements ModelInterface
         $end_date   = ! empty($this->get_end_date()) ? $this->get_end_date() . ' 23:59:59' : '';
 
         if ( ! empty($start_date) && empty($end_date)) {
-            $result = (new Carbon($start_date, wp_timezone()))
-                ->lessThanOrEqualTo(Carbon::now(wp_timezone()));
+            $result = (new CarbonImmutable($start_date, wp_timezone()))
+                ->lessThanOrEqualTo(CarbonImmutable::now(wp_timezone()));
 
             if ( ! $result) return false;
         }
 
         if ( ! empty($end_date) && empty($start_date)) {
-            $result = (new Carbon($end_date, wp_timezone()))
-                ->greaterThanOrEqualTo(Carbon::now(wp_timezone()));
+            $result = (new CarbonImmutable($end_date, wp_timezone()))
+                ->greaterThanOrEqualTo(CarbonImmutable::now(wp_timezone()));
 
             if ( ! $result) return false;
         }
 
         if ( ! empty($start_date) && ! empty($end_date)) {
-            $result = Carbon::now(wp_timezone())->isBetween(
-                new Carbon($start_date, wp_timezone()),
-                new Carbon($end_date, wp_timezone())
+            $result = CarbonImmutable::now(wp_timezone())->isBetween(
+                new CarbonImmutable($start_date, wp_timezone()),
+                new CarbonImmutable($end_date, wp_timezone())
             );
 
             if ( ! $result) return false;

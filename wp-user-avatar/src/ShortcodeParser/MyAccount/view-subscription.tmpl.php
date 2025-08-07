@@ -39,7 +39,7 @@ $payment_method = PaymentMethods::get_instance()->get_by_id($sub->get_payment_me
             $parent_order = OrderFactory::fromId($sub->parent_order_id);
             $actions      = [];
 
-            if ( ! $sub->has_cancellation_requested() && $sub->can_cancel()) {
+            if ( $sub->can_cancel()) {
                 $actions['cancel'] = esc_html__('Cancel', 'wp-user-avatar');
             }
 
@@ -83,7 +83,7 @@ $payment_method = PaymentMethods::get_instance()->get_by_id($sub->get_payment_me
                             <td><?= ppress_format_date($sub->created_date) ?></td>
                         </tr>
                         <tr>
-                            <td><?php echo ($sub->is_cancelled() || $sub->has_cancellation_requested()) ? esc_html__('Expiration Date', 'wp-user-avatar') : esc_html__('Renewal Date', 'wp-user-avatar'); ?></td>
+                            <td><?php echo $sub->get_renewal_expiration_date_label() ?></td>
                             <td><?= $sub->get_formatted_expiration_date() ?></td>
                         </tr>
                         <tr>

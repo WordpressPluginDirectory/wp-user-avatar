@@ -4,6 +4,8 @@ namespace ProfilePressVendor\Sabberworm\CSS\Property;
 
 use ProfilePressVendor\Sabberworm\CSS\Comment\Comment;
 use ProfilePressVendor\Sabberworm\CSS\OutputFormat;
+use ProfilePressVendor\Sabberworm\CSS\Position\Position;
+use ProfilePressVendor\Sabberworm\CSS\Position\Positionable;
 use ProfilePressVendor\Sabberworm\CSS\Value\CSSString;
 /**
  * Class representing an `@charset` rule.
@@ -13,8 +15,9 @@ use ProfilePressVendor\Sabberworm\CSS\Value\CSSString;
  * - May only appear at the very top of a Document’s contents.
  * - Must not appear more than once.
  */
-class Charset implements AtRule
+class Charset implements AtRule, Positionable
 {
+    use Position;
     /**
      * @var CSSString
      */
@@ -38,15 +41,8 @@ class Charset implements AtRule
     public function __construct(CSSString $oCharset, $iLineNo = 0)
     {
         $this->oCharset = $oCharset;
-        $this->iLineNo = $iLineNo;
+        $this->setPosition($iLineNo);
         $this->aComments = [];
-    }
-    /**
-     * @return int
-     */
-    public function getLineNo()
-    {
-        return $this->iLineNo;
     }
     /**
      * @param string|CSSString $oCharset

@@ -75,7 +75,7 @@ class Init
 
                 $courses = is_array($courses) ? array_map('absint', $plan->get_plan_extras('tutorlms_courses')) : [];
 
-                if (is_array($courses) && in_array($course_id, $courses, true)) {
+                if (in_array($course_id, $courses, true)) {
                     $ids[] = $plan->get_id();
                 }
             }
@@ -182,7 +182,7 @@ class Init
 
                     <div class="tutor-course-single-btn-group">
                         <form class="tutor-enrol-course-form" method="get" action="<?php echo esc_url($plan->get_checkout_url()); ?>">
-                            <input type="hidden" name="plan" value="<?php esc_html_e($plan_ids[0]); ?>">
+                            <input type="hidden" name="plan" value="<?php esc_attr_e($plan_ids[0]); ?>">
                             <button type="submit" class="tutor-btn tutor-btn-primary tutor-btn-lg tutor-btn-block tutor-mt-24 tutor-enroll-course-button">
                                 <?php esc_html_e('Subscribe Now', 'tutor'); ?>
                             </button>

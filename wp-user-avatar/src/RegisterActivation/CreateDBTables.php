@@ -35,7 +35,7 @@ class CreateDBTables
         // @see wp_get_db_schema()
         $sqls[] = "CREATE TABLE IF NOT EXISTS $forms_meta_table (
                   meta_id bigint(20) unsigned NOT NULL AUTO_INCREMENT,
-                  form_id bigint(20) NOT NULL,
+                  form_id bigint(20) unsigned NOT NULL,
                   form_type varchar(20) DEFAULT NULL,
                   meta_key varchar(255) DEFAULT NULL,
                   meta_value longtext,
@@ -46,7 +46,7 @@ class CreateDBTables
 				) $collate;
 				";
         $sqls[] = "CREATE TABLE IF NOT EXISTS $meta_data_table (
-                  id bigint(20) NOT NULL AUTO_INCREMENT,
+                  id bigint(20) unsigned NOT NULL AUTO_INCREMENT,
                   meta_key varchar(50) DEFAULT NULL,
                   meta_value longtext,
                   flag varchar(20) DEFAULT NULL,
@@ -168,8 +168,8 @@ class CreateDBTables
                     ) $collate;
 				";
         $sqls[] = "CREATE TABLE IF NOT EXISTS $order_meta_table (
-                      meta_id bigint(20) NOT NULL AUTO_INCREMENT,
-                      ppress_order_id bigint(20) NOT NULL,
+                      meta_id bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+                      ppress_order_id bigint(20) unsigned NOT NULL,
                       meta_key varchar(255) COLLATE utf8mb4_unicode_520_ci DEFAULT NULL,
                       meta_value longtext COLLATE utf8mb4_unicode_520_ci,
                       PRIMARY KEY (meta_id)

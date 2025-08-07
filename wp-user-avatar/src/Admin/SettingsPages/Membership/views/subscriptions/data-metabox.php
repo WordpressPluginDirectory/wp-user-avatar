@@ -158,7 +158,7 @@ if ( ! empty($payment_method_string)) {
             </p>
 
             <p class="mb-form-field sub_expiration_date">
-                <label for="sub_expiration_date"><?php _e('Renewal Date:', 'wp-user-avatar'); ?></label>
+                <label for="sub_expiration_date"><?php echo $subscription_data->get_renewal_expiration_date_label() . ':' ?></label>
                 <?php if ($subscription_data->is_lifetime()) : ?>
                     <input id="sub_expiration_date" type="text" value="<?= esc_attr(esc_html__('Lifetime', 'wp-user-avatar')) ?>" readonly/>
                 <?php else : ?>

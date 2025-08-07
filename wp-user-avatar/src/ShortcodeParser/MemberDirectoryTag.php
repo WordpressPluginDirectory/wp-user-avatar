@@ -39,7 +39,7 @@ class MemberDirectoryTag
                 $url
             );
 
-            $url .= '#pp-member-directory-' . $directory_id;
+            $url .= apply_filters('ppress_member_directory_anchor', '#pp-member-directory-' . $directory_id, $directory_id);
 
             wp_safe_redirect($url);
             exit;

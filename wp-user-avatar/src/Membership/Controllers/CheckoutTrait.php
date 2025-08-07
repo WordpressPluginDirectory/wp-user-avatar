@@ -22,6 +22,8 @@ use ProfilePress\Core\Membership\Repositories\SubscriptionRepository;
 use ProfilePress\Core\Membership\Services\Calculator;
 use ProfilePress\Core\Membership\Services\OrderService;
 use ProfilePress\Core\Membership\Services\SubscriptionService;
+use ProfilePress\Libsodium\UserModeration\UserModeration;
+use ProfilePress\Libsodium\UserModeration\UserModerationNotification;
 
 trait CheckoutTrait
 {
@@ -124,7 +126,7 @@ trait CheckoutTrait
 
         $subscription->expiration_date = SubscriptionService::init()->get_plan_expiration_datetime($plan_id);
 
-        if (Calculator::init($subscription->recurring_amount)->isNegativeOrZero()) {
+        if ($subscription->is_recurring() && Calculator::init($subscription->recurring_amount)->isNegativeOrZero()) {
             $subscription->expiration_date = '';
         }
 
@@ -316,8 +318,8 @@ trait CheckoutTrait
         $uploads = FileUploader::init();
         if ( ! empty($uploads)) {
             foreach ($uploads as $field_key => $uploaded_filename_or_wp_error) {
-                if (is_wp_error($uploads[$field_key])) {
-                    $error_bucket->add('file_upload_error', $uploads[$field_key]->get_error_message());
+                if (is_wp_error($uploaded_filename_or_wp_error)) {
+                    $error_bucket->add('file_upload_error', $uploaded_filename_or_wp_error->get_error_message());
                 }
             }
         }
@@ -331,7 +333,7 @@ trait CheckoutTrait
 
         $real_userdata = array_filter(apply_filters('ppress_checkout_registration_user_data', [
             'user_login'   => ! empty($username) ? $username : (is_user_logged_in() ? wp_get_current_user()->user_login : $email),
-            'user_pass'    => isset($password) ? $password : '',
+            'user_pass'    => $password ?? '',
             'user_email'   => $email,
             'user_url'     => ppressPOST_var(CF::ACCOUNT_WEBSITE, ''),
             'nickname'     => ppressPOST_var(CF::ACCOUNT_NICKNAME, ''),
@@ -420,7 +422,28 @@ trait CheckoutTrait
             // record signup via
             add_user_meta($user_id, '_pp_signup_via', 'checkout');
 
-            RegistrationAuth::send_welcome_email($user_id, $password);
+            $should_send_welcome_email = true;
+
+            // if moderation is active, set new registered users as pending
+            if (
+                class_exists('ProfilePress\Libsodium\UserModeration\UserModeration') &&
+                UserModeration::moderation_is_active() &&
+                apply_filters('ppress_checkout_registration_user_moderation_support', false, $user_id)
+            ) {
+
+                if (apply_filters('ppress_user_moderation_make_pending', true, 'checkout', $user_data)) {
+
+                    $should_send_welcome_email = false;
+
+                    UserModeration::make_pending($user_id);
+                    UserModerationNotification::pending($user_id);
+                    UserModerationNotification::pending_admin_notification($user_id);
+                }
+            }
+
+            if (apply_filters('ppress_registration_should_send_welcome_email', $should_send_welcome_email, $user_id, $user_data)) {
+                RegistrationAuth::send_welcome_email($user_id, $password, 'checkout');
+            }
 
             ppress_wp_new_user_notification($user_id, null, 'admin');
 

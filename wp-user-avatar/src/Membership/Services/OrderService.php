@@ -193,11 +193,7 @@ class OrderService
         }
 
         // Lifetime upgrades are calculated differently because the amount of time left is unlimited.
-        if ($toPlan->is_lifetime()) {
-            $prorated = Calculator::init($new_price)->minus($credit)->val();
-        } else {
-            $prorated = Calculator::init($new_price)->minus($credit)->val();
-        }
+        $prorated = Calculator::init($new_price)->minus($credit)->val();
 
         return apply_filters('ppress_get_time_based_pro_rated_upgrade_cost', $prorated, $from_sub_id, $to_plan_id);
     }
@@ -479,11 +475,11 @@ class OrderService
      */
     public function record_subscription_renewal_order($args, $subscription)
     {
-        $args = wp_parse_args($args, array(
+        $args = wp_parse_args($args, [
             'total_amount'   => '', // This is the full amount that was charged at the gateway, INCLUDING tax.
             'transaction_id' => '',
             'payment_method' => '',
-        ));
+        ]);
 
         $orders = OrderRepository::init()->retrieveBy([
             'transaction_id' => $args['transaction_id'],

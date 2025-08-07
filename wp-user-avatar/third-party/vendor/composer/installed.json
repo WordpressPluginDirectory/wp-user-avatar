@@ -558,17 +558,17 @@
         },
         {
             "name": "sabberworm\/php-css-parser",
-            "version": "v8.8.0",
-            "version_normalized": "8.8.0.0",
+            "version": "v8.9.0",
+            "version_normalized": "8.9.0.0",
             "source": {
                 "type": "git",
                 "url": "https:\/\/github.com\/MyIntervals\/PHP-CSS-Parser.git",
-                "reference": "3de493bdddfd1f051249af725c7e0d2c38fed740"
+                "reference": "d8e916507b88e389e26d4ab03c904a082aa66bb9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https:\/\/api.github.com\/repos\/MyIntervals\/PHP-CSS-Parser\/zipball\/3de493bdddfd1f051249af725c7e0d2c38fed740",
-                "reference": "3de493bdddfd1f051249af725c7e0d2c38fed740",
+                "url": "https:\/\/api.github.com\/repos\/MyIntervals\/PHP-CSS-Parser\/zipball\/d8e916507b88e389e26d4ab03c904a082aa66bb9",
+                "reference": "d8e916507b88e389e26d4ab03c904a082aa66bb9",
                 "shasum": ""
             },
             "require": {
@@ -576,12 +576,13 @@
                 "php": "^5.6.20 || ^7.0.0 || ~8.0.0 || ~8.1.0 || ~8.2.0 || ~8.3.0 || ~8.4.0"
             },
             "require-dev": {
-                "phpunit\/phpunit": "5.7.27 || 6.5.14 || 7.5.20 || 8.5.41"
+                "phpunit\/phpunit": "5.7.27 || 6.5.14 || 7.5.20 || 8.5.41",
+                "rawr\/cross-data-providers": "^2.0.0"
             },
             "suggest": {
                 "ext-mbstring": "for parsing UTF-8 CSS"
             },
-            "time": "2025-03-23T17:59:05+00:00",
+            "time": "2025-07-11T13:20:48+00:00",
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -620,32 +621,32 @@
             ],
             "support": {
                 "issues": "https:\/\/github.com\/MyIntervals\/PHP-CSS-Parser\/issues",
-                "source": "https:\/\/github.com\/MyIntervals\/PHP-CSS-Parser\/tree\/v8.8.0"
+                "source": "https:\/\/github.com\/MyIntervals\/PHP-CSS-Parser\/tree\/v8.9.0"
             },
             "install-path": "..\/sabberworm\/php-css-parser"
         },
         {
             "name": "sniccowp\/php-scoper-wordpress-excludes",
-            "version": "6.8.0",
-            "version_normalized": "6.8.0.0",
+            "version": "6.8.1",
+            "version_normalized": "6.8.1.0",
             "source": {
                 "type": "git",
                 "url": "https:\/\/github.com\/snicco\/php-scoper-wordpress-excludes.git",
-                "reference": "ff50b9ebab8943d50243d9be24fadd983a955300"
+                "reference": "c2c18f89a9aa2d7ef1998d233b9ed00d0deff5dd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https:\/\/api.github.com\/repos\/snicco\/php-scoper-wordpress-excludes\/zipball\/ff50b9ebab8943d50243d9be24fadd983a955300",
-                "reference": "ff50b9ebab8943d50243d9be24fadd983a955300",
+                "url": "https:\/\/api.github.com\/repos\/snicco\/php-scoper-wordpress-excludes\/zipball\/c2c18f89a9aa2d7ef1998d233b9ed00d0deff5dd",
+                "reference": "c2c18f89a9aa2d7ef1998d233b9ed00d0deff5dd",
                 "shasum": ""
             },
             "require-dev": {
                 "php": "^7.4",
                 "php-stubs\/wordpress-globals": "0.2.0",
-                "php-stubs\/wordpress-stubs": "6.8.0",
+                "php-stubs\/wordpress-stubs": "6.8.1",
                 "sniccowp\/php-scoper-excludes": "dev-master"
             },
-            "time": "2025-04-21T15:38:21+00:00",
+            "time": "2025-05-03T00:01:53+00:00",
             "type": "library",
             "installation-source": "dist",
             "notification-url": "https:\/\/packagist.org\/downloads\/",
@@ -670,7 +671,7 @@
             ],
             "support": {
                 "issues": "https:\/\/github.com\/snicco\/php-scoper-wordpress-excludes\/issues",
-                "source": "https:\/\/github.com\/snicco\/php-scoper-wordpress-excludes\/tree\/6.8.0"
+                "source": "https:\/\/github.com\/snicco\/php-scoper-wordpress-excludes\/tree\/6.8.1"
             },
             "install-path": "..\/sniccowp\/php-scoper-wordpress-excludes"
         },

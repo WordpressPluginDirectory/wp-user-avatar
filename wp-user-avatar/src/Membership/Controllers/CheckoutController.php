@@ -4,6 +4,7 @@ namespace ProfilePress\Core\Membership\Controllers;
 
 use ProfilePress\Core\Classes\LoginAuth;
 use ProfilePress\Core\Membership\Emails\SubscriptionCancelledNotification;
+use ProfilePress\Core\Membership\Emails\SubscriptionExpiredNotification;
 use ProfilePress\Core\Membership\Models\Coupon\CouponFactory;
 use ProfilePress\Core\Membership\Models\Customer\CustomerFactory;
 use ProfilePress\Core\Membership\Models\Group\GroupFactory;
@@ -336,8 +337,9 @@ class CheckoutController extends BaseController
 
                     // do not send subscription cancelled email
                     remove_action('ppress_subscription_cancelled', [SubscriptionCancelledNotification::init(), 'dispatch_email'], 10);
+                    remove_action('ppress_subscription_expired', [SubscriptionExpiredNotification::init(), 'dispatch_email'], 10);
 
-                    $sub->cancel(true, true);
+                    $sub->cancel(true);
                     $sub->expire();
 
                     SubscriptionFactory::fromId($subscription_id)->update_meta('_upgraded_from_sub_id', $sub->get_id());

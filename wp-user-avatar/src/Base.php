@@ -179,6 +179,7 @@ class Base extends DBTables
         LoginRedirect::get_instance();
 
         Integrations\TutorLMS\Init::get_instance();
+        Integrations\AcademyLMS\Init::get_instance();
 
         LicenseUpgrader::get_instance();
 

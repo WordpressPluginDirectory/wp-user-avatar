@@ -1,16 +1,11 @@
 <?php
 
-use ProfilePress\Core\Admin\SettingsPages\Membership\OrdersPage\OrderWPListTable;
 use ProfilePress\Core\Admin\SettingsPages\Membership\SubscriptionsPage\SubscriptionWPListTable;
 use ProfilePress\Core\Membership\Models\Plan\PlanFactory;
-use ProfilePress\Core\Membership\Models\Subscription\SubscriptionBillingFrequency;
 use ProfilePress\Core\Membership\Models\Subscription\SubscriptionEntity;
 
 /** @global SubscriptionEntity[] $subscriptions */
-
 ?>
-
-
 <div id="ppress-submetabox-items">
     <div class="ppress-submetabox-items-table-wrapper">
         <table cellpadding="0" cellspacing="0" class="ppress-submetabox-items-table">

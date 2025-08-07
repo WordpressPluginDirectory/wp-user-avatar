@@ -60,7 +60,7 @@ $total_pages = ceil(absint($total_subs) / absint($per_page));
                                     </dd>
                                 </div>
                                 <div>
-                                    <dt><?php esc_html_e('Renewal Date', 'wp-user-avatar'); ?></dt>
+                                    <dt><?php echo $sub->get_renewal_expiration_date_label() ?></dt>
                                     <dd>
                                         <?php echo $sub->get_formatted_expiration_date() ?>
                                     </dd>

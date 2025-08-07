@@ -446,11 +446,11 @@ abstract class AbstractPaymentMethod implements PaymentMethodInterface
             return;
         }
 
-        return $this->cancel_immediately($subscription);
+        return $this->cancel($subscription);
     }
 
     /**
-     * Cancels a subscription. If possible, cancel at the period end. If not possible, cancel immediately.
+     * Cancels a subscription.
      *
      * @param SubscriptionEntity $subscription
      *
@@ -459,18 +459,6 @@ abstract class AbstractPaymentMethod implements PaymentMethodInterface
     public function cancel($subscription)
     {
 
-    }
-
-    /**
-     * Cancels a subscription immediately.
-     *
-     * @param SubscriptionEntity $subscription
-     *
-     * @return bool
-     */
-    public function cancel_immediately($subscription)
-    {
-        return $this->cancel($subscription);
     }
 
     /**

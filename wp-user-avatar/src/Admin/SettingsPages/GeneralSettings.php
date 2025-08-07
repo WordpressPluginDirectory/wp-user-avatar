@@ -356,6 +356,12 @@ class GeneralSettings extends AbstractSettingsPage
                         admin_url('profile.php')
                     )
                 ],
+                'disable_admin_edit_profile_redirect' => [
+                    'type'           => 'checkbox',
+                    'checkbox_label' => esc_html__('Disable Redirect for administrators', 'wp-user-avatar'),
+                    'value'          => 'yes',
+                    'description'    => esc_html__('When enabled, administrators will not be redirected from the default profile page.', 'wp-user-avatar'),
+                ],
                 'myac_edit_account_endpoint'              => [
                     'type'        => 'text',
                     'value'       => 'edit-profile',

@@ -2,29 +2,26 @@
 
 namespace ProfilePressVendor\Sabberworm\CSS\Value;
 
+use ProfilePressVendor\Sabberworm\CSS\CSSElement;
 use ProfilePressVendor\Sabberworm\CSS\Parsing\ParserState;
 use ProfilePressVendor\Sabberworm\CSS\Parsing\SourceException;
 use ProfilePressVendor\Sabberworm\CSS\Parsing\UnexpectedEOFException;
 use ProfilePressVendor\Sabberworm\CSS\Parsing\UnexpectedTokenException;
-use ProfilePressVendor\Sabberworm\CSS\Renderable;
+use ProfilePressVendor\Sabberworm\CSS\Position\Position;
+use ProfilePressVendor\Sabberworm\CSS\Position\Positionable;
 /**
  * Abstract base class for specific classes of CSS values: `Size`, `Color`, `CSSString` and `URL`, and another
  * abstract subclass `ValueList`.
  */
-abstract class Value implements Renderable
+abstract class Value implements CSSElement, Positionable
 {
-    /**
-     * @var int
-     *
-     * @internal since 8.8.0
-     */
-    protected $iLineNo;
+    use Position;
     /**
      * @param int $iLineNo
      */
     public function __construct($iLineNo = 0)
     {
-        $this->iLineNo = $iLineNo;
+        $this->setPosition($iLineNo);
     }
     /**
      * @param array<array-key, string> $aListDelimiters
@@ -192,12 +189,5 @@ abstract class Value implements Renderable
             $sRange .= $oParserState->consume(1);
         } while (strlen($sRange) < $iCodepointMaxLength && preg_match("/[A-Fa-f0-9\\?-]/", $oParserState->peek()));
         return "U+{$sRange}";
-    }
-    /**
-     * @return int
-     */
-    public function getLineNo()
-    {
-        return $this->iLineNo;
     }
 }

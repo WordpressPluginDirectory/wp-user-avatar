@@ -25,7 +25,7 @@ class CouponWPListTable extends \WP_List_Table
 
     public function get_columns()
     {
-        $columns = [
+        return [
             'cb'          => '<input type="checkbox" />',
             'coupon_code' => esc_html__('Code', 'wp-user-avatar'),
             'discount'    => esc_html__('Discount', 'wp-user-avatar'),
@@ -34,8 +34,6 @@ class CouponWPListTable extends \WP_List_Table
             'start_date'  => esc_html__('Start Date', 'wp-user-avatar'),
             'end_date'    => esc_html__('End Date', 'wp-user-avatar'),
         ];
-
-        return $columns;
     }
 
     /**

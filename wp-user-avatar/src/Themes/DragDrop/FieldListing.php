@@ -105,6 +105,11 @@ class FieldListing
         return $field_type == 'pp-recaptcha';
     }
 
+    public function is_cloudflare_turnstile($field_type)
+    {
+        return $field_type == 'pp-turnstile';
+    }
+
     public function is_recaptcha_v3($field_type)
     {
         return $this->is_recaptcha($field_type) && class_exists('ProfilePress\Libsodium\Recaptcha\Recaptcha') && Recaptcha::$type == 'v3';
@@ -119,6 +124,8 @@ class FieldListing
             $field_type = $field_setting['fieldType'];
 
             if ($this->is_recaptcha($field_type) && ! EM::is_enabled(EM::RECAPTCHA)) continue;
+
+            if ($this->is_cloudflare_turnstile($field_type) && ! EM::is_enabled(EM::TURNSTILE)) continue;
 
             if (isset($this->defaults, $this->defaults[$field_type])) {
                 $field_setting = wp_parse_args($field_setting, $this->defaults[$field_type]);
@@ -212,7 +219,7 @@ class FieldListing
 
             $field_setting['class'] = "pp-form-field{$saved_classes}";
 
-            if ($this->is_recaptcha($field_type) || $this->is_avatar($field_type) || $this->is_cover_image($field_type)) {
+            if ($this->is_recaptcha($field_type) || $this->is_cloudflare_turnstile($field_type) || $this->is_avatar($field_type) || $this->is_cover_image($field_type)) {
                 $field_setting['class'] = $saved_classes;
             }
 

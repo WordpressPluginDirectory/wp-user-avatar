@@ -6,9 +6,9 @@ use ProfilePress\Core\Membership\Models\Coupon\CouponUnit;
 
 class SettingsFieldsParser
 {
-    protected $config;
-    protected $dbData;
-    protected $field_class;
+    public $config;
+    public $dbData;
+    public $field_class;
 
     public function __construct($config, $dbData = [], $field_class = 'ppress-plan-control')
     {
@@ -22,10 +22,7 @@ class SettingsFieldsParser
         $field_id    = sanitize_text_field($config['id']);
         $placeholder = esc_attr(ppress_var($config, 'placeholder', ''));
 
-        $field_data = ppressPOST_var(
-            $field_id,
-            isset($this->dbData->$field_id) ? $this->dbData->$field_id : ''
-        );
+        $field_data = $this->get_field_data($field_id, $config);
 
         switch ($config['type']) {
             case 'text':
@@ -42,21 +39,19 @@ class SettingsFieldsParser
                 break;
             case 'discount':
                 printf('<span class="ppress-amount-type-wrapper">
-                            <input type="text" required="required" class="%3$s" id="amount" name="amount" value="%6$s" placeholder="0">
-							<label for="ppress-discount-type" class="screen-reader-text">%s</label>
+                            <input type="text" required="required" class="%1$s" id="amount" name="amount" value="%2$s" placeholder="0">
+							<label for="ppress-discount-type" class="screen-reader-text">%3$s</label>
 							<select name="unit" id="ppress-discount-type">
-								<option value="percent" %7$s>&#37;</option>
-								<option value="flat" %8$s>%5$s</option>
+								<option value="percent" %4$s>&#37;</option>
+								<option value="flat" %5$s>%6$s</option>
 							</select>
 						</span>',
-                    esc_attr($field_id),
-                    esc_attr($field_data),
                     esc_attr($this->field_class),
-                    esc_html__('Discount Type', 'wp-user-avatar'),
-                    ppress_get_currency_symbol(),
-                    $this->dbData->amount,
-                    selected($this->dbData->unit, CouponUnit::PERCENTAGE, false),
-                    selected($this->dbData->unit, CouponUnit::FLAT, false)
+                    $this->get_field_data('amount', $config),
+                    esc_attr($field_id),
+                    selected($this->get_field_data('unit', $config), CouponUnit::PERCENTAGE, false),
+                    selected($this->get_field_data('unit', $config), CouponUnit::FLAT, false),
+                    ppress_get_currency_symbol()
                 );
                 break;
             case 'wp_editor':
@@ -67,7 +62,10 @@ class SettingsFieldsParser
                 // add core media button back.
                 add_action('media_buttons', 'media_buttons');
 
-                wp_editor(wp_kses_post($field_data), sanitize_text_field($field_id), ["editor_height" => 100, 'editor_class' => 'ppress-plan-control']);
+                wp_editor(wp_kses_post($field_data), sanitize_text_field($field_id), [
+                    "editor_height" => 100,
+                    'editor_class'  => 'ppress-plan-control'
+                ]);
                 break;
             case 'select':
                 if (is_array($config['options']) && ! empty($config['options'])) {
@@ -114,7 +112,18 @@ class SettingsFieldsParser
                 printf('<input type="hidden" name="%1$s" value="false">', $field_id);
                 printf('<label><input type="checkbox" name="%1$s" value="true"%2$s>%3$s</label>', $field_id, checked('true', $field_data, false), $checkbox_label);
                 break;
+            default:
+                do_action('ppress_admin_settings_fields_parser_field', $field_data, $config, $this);
         }
+    }
+
+    public function get_field_data($field_id, $config)
+    {
+        return apply_filters(
+            'ppress_admin_settings_fields_parser_field_value',
+            ppressPOST_var($field_id, $this->dbData->$field_id ?? ''),
+            $field_id, $this->dbData, $config, $this
+        );
     }
 
     public function build()
@@ -130,7 +139,7 @@ class SettingsFieldsParser
                     <td>
                         <?php $this->field_output($config); ?>
                         <?php if ( ! empty($config['description'])) : ?>
-                            <p class="description"><?php echo esc_attr($config['description']); ?></p>
+                            <p class="description"><?php echo wp_kses_post($config['description']); ?></p>
                         <?php endif; ?>
                     </td>
                 </tr>

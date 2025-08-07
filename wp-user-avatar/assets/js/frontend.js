@@ -36,6 +36,8 @@ function Frontend() {
 
         this.submit_reload_form_on_billing_country_field_change();
 
+        this.myaccount_password_strength_meter();
+
         // only enable if pp_disable_ajax_form filter is false.
         if (pp_ajax_form.disable_ajax_form === 'true') return;
 
@@ -43,8 +45,6 @@ function Frontend() {
         $(document).on('submit', 'form[data-pp-form-submit="signup"]', this.ajax_registration);
         $(document).on('submit', 'form[data-pp-form-submit="passwordreset"]', this.ajax_password_reset);
         $(document).on('submit', 'form[data-pp-form-submit="editprofile"]', this.ajax_edit_profile);
-
-        this.myaccount_password_strength_meter();
     };
 
     this.recaptcha_processing = function () {

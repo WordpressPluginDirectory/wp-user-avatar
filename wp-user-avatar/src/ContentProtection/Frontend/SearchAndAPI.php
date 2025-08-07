@@ -16,8 +16,11 @@ class SearchAndAPI
     {
         // Determine if this query is for a frontend WP search or a REST API search.
         if (
-            ( ! is_admin() && $query->is_main_query() && $query->is_search()) ||
-            (defined('REST_REQUEST') && REST_REQUEST && strpos($_SERVER['REQUEST_URI'], '/wp/v2/search') !== false)
+            apply_filters('ppress_is_search_and_api_exclude_posts', true) &&
+            (
+                ( ! is_admin() && $query->is_main_query() && $query->is_search()) ||
+                (defined('REST_REQUEST') && REST_REQUEST && strpos($_SERVER['REQUEST_URI'], '/wp/v2/search') !== false)
+            )
         ) {
 
             $metas = PROFILEPRESS_sql::get_meta_data_by_key(SettingsPage::META_DATA_KEY);

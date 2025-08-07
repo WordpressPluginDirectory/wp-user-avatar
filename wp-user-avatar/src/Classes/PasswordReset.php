@@ -355,6 +355,10 @@ class PasswordReset
                 $error = esc_html__('Unexpected error. Please try again.', 'wp-user-avatar');
         }
 
+        if ($type === 'changed') {
+            return '<div class="profilepress-reset-status success">' . $error . '</div>';
+        }
+
         return '<div class="profilepress-reset-status">' . $error . '</div>';
     }
 

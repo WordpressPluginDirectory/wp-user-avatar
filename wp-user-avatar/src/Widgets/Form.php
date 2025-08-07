@@ -18,9 +18,9 @@ class Form extends WP_Widget
 
     public function widget($args, $instance)
     {
-        $chosen_form = sanitize_text_field($instance['chosen_form']);
+        $chosen_form = sanitize_text_field($instance['chosen_form'] ?? '');
 
-        $hide_widget = $instance['hide'];
+        $hide_widget = $instance['hide'] ?? '';
 
         if ('yes' == $hide_widget && is_user_logged_in()) return;
 

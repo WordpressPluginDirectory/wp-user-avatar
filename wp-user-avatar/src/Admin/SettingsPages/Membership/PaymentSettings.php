@@ -138,14 +138,6 @@ class PaymentSettings extends AbstractSettingsPage
             ]
         ];
 
-        if (ExtensionManager::is_enabled(ExtensionManager::RECAPTCHA)) {
-            $settings[1]['checkout_recaptcha'] = [
-                'label'       => esc_html__('Checkout reCAPTCHA', 'wp-user-avatar'),
-                'description' => esc_html__('Enable to display reCAPTCHA on the checkout page to prevent spam and abuse.', 'wp-user-avatar'),
-                'type'        => 'checkbox'
-            ];
-        }
-
         if (ExtensionManager::is_enabled(ExtensionManager::SOCIAL_LOGIN)) {
             $settings[1]['checkout_social_login_buttons'] = [
                 'label'       => esc_html__('Checkout Social Login', 'wp-user-avatar'),

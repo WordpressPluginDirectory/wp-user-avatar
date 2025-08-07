@@ -3,10 +3,7 @@
 namespace ProfilePress\Core\Membership\Services;
 
 use ProfilePress\Core\Classes\PROFILEPRESS_sql;
-use ProfilePress\Core\Membership\Models\Customer\CustomerFactory;
-use ProfilePress\Core\Membership\Models\Order\OrderFactory;
 use ProfilePress\Core\Membership\Models\Subscription\SubscriptionBillingFrequency;
-use ProfilePress\Core\Membership\Models\Subscription\SubscriptionEntity;
 use ProfilePress\Core\Membership\Models\Subscription\SubscriptionFactory;
 use ProfilePress\Core\Membership\Repositories\SubscriptionRepository;
 use ProfilePress\Core\ShortcodeParser\MyAccount\MyAccountTag;
@@ -16,44 +13,49 @@ class SubscriptionService
 {
     public function get_plan_expiration_datetime($plan_id)
     {
+        $expiration_datetime = '';
+
         $plan = ppress_get_plan($plan_id);
 
-        if ( ! $plan->is_recurring()) return '';
+        if ($plan->is_recurring()) {
 
-        $carbon = CarbonImmutable::now(wp_timezone());
+            $carbon = CarbonImmutable::now(wp_timezone());
 
-        if ($plan->has_free_trial()) {
+            if ($plan->has_free_trial()) {
 
-            $duration = explode('_', $plan->get_free_trial());
-            $period   = $carbon->add($duration[0], $duration[1]);
+                $duration = explode('_', $plan->get_free_trial());
+                $period   = $carbon->add($duration[0], $duration[1]);
 
-        } else {
+            } else {
 
-            $period = $plan->billing_frequency;
+                $period = $plan->billing_frequency;
 
-            switch ($period) {
-                case SubscriptionBillingFrequency::DAILY :
-                    $period = $carbon->addDay();
-                    break;
-                case SubscriptionBillingFrequency::WEEKLY :
-                    $period = $carbon->addWeek();
-                    break;
-                case SubscriptionBillingFrequency::QUARTERLY :
-                    $period = $carbon->addMonths(3);
-                    break;
-                case SubscriptionBillingFrequency::EVERY_6_MONTHS :
-                    $period = $carbon->addMonths(6);
-                    break;
-                case SubscriptionBillingFrequency::YEARLY :
-                    $period = $carbon->addYear();
-                    break;
-                default:
-                    $period = $carbon->addMonth();
-                    break;
+                switch ($period) {
+                    case SubscriptionBillingFrequency::DAILY :
+                        $period = $carbon->addDay();
+                        break;
+                    case SubscriptionBillingFrequency::WEEKLY :
+                        $period = $carbon->addWeek();
+                        break;
+                    case SubscriptionBillingFrequency::QUARTERLY :
+                        $period = $carbon->addMonths(3);
+                        break;
+                    case SubscriptionBillingFrequency::EVERY_6_MONTHS :
+                        $period = $carbon->addMonths(6);
+                        break;
+                    case SubscriptionBillingFrequency::YEARLY :
+                        $period = $carbon->addYear();
+                        break;
+                    default:
+                        $period = $carbon->addMonth();
+                        break;
+                }
             }
+
+            $expiration_datetime = $period->toDateTimeString();
         }
 
-        return apply_filters('ppress_plan_expiration_datetime', $period->toDateTimeString(), $plan_id);
+        return apply_filters('ppress_plan_expiration_datetime', $expiration_datetime, $plan_id, $plan);
     }
 
     /**

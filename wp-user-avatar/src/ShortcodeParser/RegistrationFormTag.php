@@ -51,7 +51,7 @@ class RegistrationFormTag extends FormProcessor
 
             return apply_filters(
                 'ppress_signup_form_already_loggedin_message',
-                wpautop(esc_html__('You are already registered.', 'wp-user-avatar')),
+                wpautop('<div class="ppress-already-registered-message">' . esc_html__('You are already registered.', 'wp-user-avatar') . '</div>'),
                 $registration_form,
                 $id
             );

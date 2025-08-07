@@ -54,7 +54,7 @@ class SubscriptionWPListTable extends \WP_List_Table
             'renewal_date'    => esc_html__('Renewal Date', 'wp-user-avatar'),
         ];
 
-        if (ppressGET_var('status') == SubscriptionStatus::EXPIRED) {
+        if (in_array(ppressGET_var('status'), [SubscriptionStatus::EXPIRED, SubscriptionStatus::CANCELLED])) {
             $columns['renewal_date'] = esc_html__('Expiration Date', 'wp-user-avatar');
         }
 
@@ -97,7 +97,10 @@ class SubscriptionWPListTable extends \WP_List_Table
 
     public static function view_edit_subscription_url($subscription_id)
     {
-        return esc_url(add_query_arg(['ppress_subscription_action' => 'edit', 'id' => $subscription_id], PPRESS_MEMBERSHIP_SUBSCRIPTIONS_SETTINGS_PAGE));
+        return esc_url(add_query_arg([
+            'ppress_subscription_action' => 'edit',
+            'id'                         => $subscription_id
+        ], PPRESS_MEMBERSHIP_SUBSCRIPTIONS_SETTINGS_PAGE));
     }
 
     public function column_subscription(SubscriptionEntity $subscription)
@@ -177,7 +180,11 @@ class SubscriptionWPListTable extends \WP_List_Table
     {
         $nonce_delete = wp_create_nonce('pp_subscription_delete_rule');
 
-        return add_query_arg(['action' => 'delete', 'id' => $subscription_id, '_wpnonce' => $nonce_delete], PPRESS_MEMBERSHIP_SUBSCRIPTIONS_SETTINGS_PAGE);
+        return add_query_arg([
+            'action'   => 'delete',
+            'id'       => $subscription_id,
+            '_wpnonce' => $nonce_delete
+        ], PPRESS_MEMBERSHIP_SUBSCRIPTIONS_SETTINGS_PAGE);
     }
 
     public function record_count()

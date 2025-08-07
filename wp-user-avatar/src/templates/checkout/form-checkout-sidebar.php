@@ -129,7 +129,7 @@ $billing_frequency = $plan->is_recurring() ? ' ' . SubscriptionBillingFrequency:
         <?php if ($plan->is_recurring()) : ?>
             <div class="ppress-checkout_charge_details">
                 <?php printf(
-                    esc_html__('You\'ll be charged %1$stoday%2$s', 'wp-user-avatar'),
+                    esc_html__('You will be charged %1$stoday%2$s', 'wp-user-avatar'),
                     sprintf('<span>%s ', ppress_display_amount($cart_vars->initial_amount)), '</span>',
                 );
 
@@ -140,13 +140,21 @@ $billing_frequency = $plan->is_recurring() ? ' ' . SubscriptionBillingFrequency:
                     printf(
                         esc_html__('then %1$s starting %2$s.', 'wp-user-avatar'),
                         sprintf('<span>%s %s</span>', ppress_display_amount($cart_vars->recurring_amount), strtolower(SubscriptionBillingFrequency::get_label($plan->billing_frequency))),
-                        apply_filters('ppress_checkout_sidebar_order_expiration_date_time', (new DateTime($cart_vars->expiration_date, new DateTimeZone('UTC')))->setTimezone(wp_timezone())->format('j M, Y'), $cart_vars, $plan)
+                        apply_filters('ppress_checkout_sidebar_order_expiration_date_time', ppress_format_date($cart_vars->expiration_date, 'j M, Y'), $cart_vars, $plan)
                     );
                 }
 
                 if ($plan->get_total_payments() > 0) {
                     printf('&nbsp;' . esc_html__('%s payments total.', 'wp-user-avatar'), '<strong>' . $plan->get_total_payments() . '</strong>');
                 }
+                ?>
+            </div>
+        <?php elseif ( ! empty($cart_vars->expiration_date) && ppress_strtotime_utc($cart_vars->expiration_date) > 0) : ?>
+            <div class="ppress-checkout_charge_details">
+                <?php printf(
+                    esc_html__('After payment, your subscription will expire on %1$s', 'wp-user-avatar'),
+                    '<span>' . ppress_format_date($cart_vars->expiration_date, 'j F, Y') . '</span>'
+                );
                 ?>
             </div>
         <?php endif; ?>

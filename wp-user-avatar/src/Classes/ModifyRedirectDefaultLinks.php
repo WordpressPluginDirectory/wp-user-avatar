@@ -258,10 +258,14 @@ class ModifyRedirectDefaultLinks
     {
         if (ppress_settings_by_key('redirect_default_edit_profile_to_custom') == 'yes') {
 
-            add_filter('edit_profile_url', function ($url) {
+            // Disable edit profile redirect for administrator.
+            $is_disable_for_admin = apply_filters('ppress_disable_admin_edit_profile_redirect', ppress_settings_by_key('disable_admin_edit_profile_redirect') === 'yes') && current_user_can('delete_users');
+
+            add_filter('edit_profile_url', function ($url) use ($is_disable_for_admin) {
+
                 $page_id = ppress_settings_by_key('edit_user_profile_url');
 
-                if ( ! empty($page_id)) {
+                if ( ! $is_disable_for_admin && ! empty($page_id)) {
                     $url = esc_url_raw(get_permalink($page_id));
                 }
 
@@ -269,10 +273,7 @@ class ModifyRedirectDefaultLinks
 
             }, 9999999999);
 
-            // Filter to disable edit profile redirect for administrator.
-            $disable = apply_filters('ppress_disable_admin_edit_profile_redirect', false);
-
-            if ($disable && current_user_can('delete_users')) return;
+            if ($is_disable_for_admin) return;
 
             if ( ! empty(ppress_get_setting('edit_user_profile_url'))) {
 

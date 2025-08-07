@@ -4,11 +4,14 @@ namespace ProfilePressVendor\Sabberworm\CSS\Property;
 
 use ProfilePressVendor\Sabberworm\CSS\Comment\Comment;
 use ProfilePressVendor\Sabberworm\CSS\OutputFormat;
+use ProfilePressVendor\Sabberworm\CSS\Position\Position;
+use ProfilePressVendor\Sabberworm\CSS\Position\Positionable;
 /**
  * `CSSNamespace` represents an `@namespace` rule.
  */
-class CSSNamespace implements AtRule
+class CSSNamespace implements AtRule, Positionable
 {
+    use Position;
     /**
      * @var string
      */
@@ -36,15 +39,8 @@ class CSSNamespace implements AtRule
     {
         $this->mUrl = $mUrl;
         $this->sPrefix = $sPrefix;
-        $this->iLineNo = $iLineNo;
+        $this->setPosition($iLineNo);
         $this->aComments = [];
-    }
-    /**
-     * @return int
-     */
-    public function getLineNo()
-    {
-        return $this->iLineNo;
     }
     /**
      * @return string

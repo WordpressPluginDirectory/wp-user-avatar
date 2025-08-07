@@ -109,9 +109,14 @@ class PlanEntity extends AbstractModel implements ModelInterface
         return apply_filters('ppress_subscription_is_auto_renew', $result, $this);
     }
 
+    /**
+     * Check if a membership plan is of a one-time payment, not a subscription
+     *
+     * @return bool
+     */
     public function is_lifetime()
     {
-        return ! empty($this->billing_frequency) && $this->billing_frequency == 'lifetime';
+        return ! empty($this->billing_frequency) && $this->billing_frequency == SubscriptionBillingFrequency::LIFETIME;
     }
 
     public function has_free_trial()
@@ -136,7 +141,7 @@ class PlanEntity extends AbstractModel implements ModelInterface
      */
     public function get_price()
     {
-        return ppress_sanitize_amount($this->price);
+        return apply_filters('ppress_membership_plan_price', ppress_sanitize_amount($this->price), $this);
     }
 
     public function get_billing_frequency()

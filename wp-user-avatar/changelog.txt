@@ -1,5 +1,44 @@
 ﻿== Changelog ==
 
+= 4.16.4 =
+* Pro: [AffiliateWP](https://profilepress.com/addons/affiliatewp/?ref=changelog) and [SliceWP](https://profilepress.com/addons/slicewp/?ref=changelog) addons.
+* Fixed bug where subscription remained active after last order refund.
+* Fixed bug with missing date_completed data for manual order creation.
+* Added ppress_checkout_before_account_info_fields action hook.
+* Added filter ppress_stripe_subscription_set_cancelled_action_as_expired.
+* Added ppress_membership_plan_price filter.
+* Added ppress_checkout_group_selector_plans filter.
+* Fixed a couple of PHP notices.
+
+= 4.16.3 =
+* Pro: [Cloudflare Turnstile addon](https://profilepress.com/addons/cloudflare-turnstile/?ref=changelog).
+* Fixed membership plan description in checkout and backend.
+* Added ppress_data_export_writer_use_alternative filter for alternate data export.
+* Added Size atts to User Avatar URL Shortcode.
+
+= 4.16.2 =
+* Pro: [MailerLite Integration addon](https://profilepress.com/addons/mailerlite/?ref=changelog).
+* Pro: [Fixed Subscription Expiration addon](https://profilepress.com/addons/fixed-subscription-expiration/?ref=changelog).
+* Fixed bug where welcome email was not sent when users are added by admin.
+* Fixed bug where password strength-meter didn't work in myaccount page if ajaxmode is disabled.
+* Added checkout user moderation behind ppress_checkout_registration_user_moderation_support filter.
+* Added ppress_is_search_and_api_exclude_posts filter.
+
+= 4.16.1 =
+* Fixed fatal error on new installation.
+
+= 4.16.0 =
+* Added [Academy LMS](https://profilepress.com/addons/academy-lms/?ref=changelog) integration.
+* Option to Disable Redirect from (/wp-admin/profile.php) for administrators.
+* Fixed bug where no address fields could break non-card stripe payments.
+* Fixed bug with failure to switch to change_plan checkout when group checkout is accessed by active sub users.
+* Fixed bug with failing trigger hooks when sub is manually set to active and trial.
+* Fixed bug where SubscriptionExpiredNotification could be sent on sub upgrade/downgrade.
+* Fixed bug where sub could be set to cancelled when it has expired.
+* Simplified cancellation flow by removing cancellation at end of period in Stripe
+* Added a Copy Shortcode Button to form listing and builder pages.
+* Added more bulk-actions to Content Protection listing page.
+
 = 4.15.25 =
 * Fixed bug with frontend JS script loading.
 

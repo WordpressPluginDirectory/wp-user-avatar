@@ -269,7 +269,7 @@ class PostContent
     {
         global $post;
 
-        if ( ! is_object($post)) return false;
+        if ( ! is_object($post)) return '';
 
         $length = apply_filters('ppress_content_protection_excerpt_length', 100);
 

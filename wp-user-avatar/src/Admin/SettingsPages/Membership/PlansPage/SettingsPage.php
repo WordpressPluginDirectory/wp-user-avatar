@@ -160,7 +160,7 @@ class SettingsPage extends AbstractSettingsPage
             }
         }
 
-        $plan_extras = $plan->get_meta('plan_extras');
+        $plan_extras = $plan->get_meta($plan::PLAN_EXTRAS);
 
         if ( ! is_array($plan_extras) || empty($plan_extras)) {
             $plan_extras = [];
@@ -298,14 +298,24 @@ class SettingsPage extends AbstractSettingsPage
 
         </script>
         <script type="text/html" id="tmpl-ppress-plan-summary">
+            <# var subscription_expiration_unit_map = {days: '<?= esc_html__('Days', 'wp-user-avatar') ?>',weeks: '<?= esc_html__('Weeks', 'wp-user-avatar') ?>',months: '<?= esc_html__('Months', 'wp-user-avatar') ?>',years: '<?= esc_html__('Years', 'wp-user-avatar') ?>'} #>
             <# var total_payments = data.free_trial != 'disabled' ? data.total_payments - 1 : data.total_payments; #>
             <# var billing_frequency_id = data.billing_frequency; #>
             <# var billing_frequency = ppress_transform_plan_frequency(data.billing_frequency) #>
             <# var billing_frequency_desc = data.billing_frequency == '6_month' ? 6*total_payments + " <?= __('months', 'wp-user-avatar') ?>" :  total_payments+ ' '+billing_frequency+'s' #>
             <# var total_payments_desc = billing_frequency_id != 'lifetime' && total_payments >= 1 ? ', <?= esc_html__('for', 'wp-user-avatar') ?> '+ billing_frequency_desc : ''; #>
             <# var signup_fee_desc = billing_frequency_id != 'lifetime' && data.signup_fee > 0 ? '<?= sprintf(esc_html__(' and a %s signup fee', 'wp-user-avatar'), "'+ppress_transform_currency(data.signup_fee)+'") ?>' : ''; #>
+
             <# var subscription_length_desc = data.subscription_length != 'fixed' ? '<?= esc_html__('Renews indefinitely', 'wp-user-avatar') ?>' : ''; #>
-            <# var subscription_length_desc = billing_frequency_id == 'lifetime' ? '<?= esc_html__('Never expires', 'wp-user-avatar') ?>' : subscription_length_desc; #>
+            <# subscription_length_desc = billing_frequency_id == 'lifetime' ? '<?= esc_html__('Never expires', 'wp-user-avatar') ?>' : subscription_length_desc; #>
+
+            <# if (data.subscription_expiration_type == 'specific_date' && data.subscription_expiration_date) { #>
+            <# subscription_length_desc = '<?= esc_html__('Expires at', 'wp-user-avatar') ?> ' + data.subscription_expiration_date; #>
+            <# } else if (data.subscription_expiration_type == 'relative_date' && data.subscription_expiration_value && data.subscription_expiration_unit) { #>
+            <# var unit_label = subscription_expiration_unit_map[data.subscription_expiration_unit]; #>
+            <# subscription_length_desc = '<?= esc_html__('Expires after', 'wp-user-avatar') ?> ' + data.subscription_expiration_value + ' ' + unit_label; #>
+            <# } #>
+
             <# var free_trial_desc = data.free_trial != 'disabled' ? '<?= sprintf(esc_html__('Includes a %s free trial', 'wp-user-avatar'), "'+data.free_trial+'") ?>' : ''; #>
             <# free_trial_desc = free_trial_desc.replace('_', '-'); #>
             <p>{{ ppress_transform_currency(data.price) }} / {{billing_frequency}}{{total_payments_desc}}{{{signup_fee_desc}}}</p>

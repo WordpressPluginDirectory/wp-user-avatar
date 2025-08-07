@@ -56,6 +56,8 @@ $cart_vars = OrderService::init()->checkout_order_calculation([
             <?php else: ?>
 
                 <?php if ( ! $isChangePlanIdSelected) : ?>
+        
+        <?php do_action('ppress_checkout_before_account_info_fields', $planObj, $groupObj, $changePlanSubId); ?>
 
                     <div class="ppress-main-checkout-form__block__fieldset">
                         <fieldset id="ppress_checkout_account_info">

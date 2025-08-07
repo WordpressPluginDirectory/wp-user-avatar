@@ -166,7 +166,7 @@ $customer_id = CustomerFactory::fromUserId(get_current_user_id())->id;
                                 <th><?php esc_html_e('Subscription', 'wp-user-avatar') ?></th>
                                 <th><?php esc_html_e('Terms', 'wp-user-avatar') ?></th>
                                 <th><?php esc_html_e('Status', 'wp-user-avatar') ?></th>
-                                <th><?php esc_html_e('Renewal Date', 'wp-user-avatar') ?></th>
+                                <th><?php echo $subscription->get_renewal_expiration_date_label() ?></th>
                             </tr>
                             </thead>
                             <tbody>

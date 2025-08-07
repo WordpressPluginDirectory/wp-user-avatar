@@ -229,15 +229,21 @@ class FrontendProfileBuilder
     }
 
     /**
-     * Return user avatar image url
+     * Return the user avatar image URL
+     *
+     * @param array $atts Shortcode attributes
      *
      * @return string image url
      */
-    public function user_avatar_url()
+    public function user_avatar_url($atts)
     {
         $user_id = self::$user_data->ID;
 
-        return apply_filters('ppress_profile_avatar_url', get_avatar_url($user_id, ['ppress-full' => true]), self::$user_data);
+        $args = ['ppress-full' => true];
+
+        if ( ! empty($atts['size'])) $args['size'] = absint($atts['size']);
+
+        return apply_filters('ppress_profile_avatar_url', get_avatar_url($user_id, $args), self::$user_data);
     }
 
     /**

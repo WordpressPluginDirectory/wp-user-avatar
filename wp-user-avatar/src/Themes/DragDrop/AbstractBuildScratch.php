@@ -796,6 +796,7 @@ $google_font
 	font-weight: $submit_button_font_weight;
 	background: $submit_button_bg_color;
 	color: $submit_button_text_color;
+	top: auto;
 }
 
 .pp-form-container #pp-$form_type-$form_id.ppBuildScratch .pp-form-submit-button-wrap input[type="submit"]:hover,

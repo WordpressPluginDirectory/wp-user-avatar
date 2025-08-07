@@ -3,6 +3,7 @@
 namespace ProfilePress\Core\Admin\SettingsPages\Membership\CustomersPage;
 
 use ProfilePress\Core\Admin\SettingsPages\AbstractSettingsPage;
+use ProfilePress\Core\Classes\RegistrationAuth;
 use ProfilePress\Core\Admin\SettingsPages\Membership\ContextualStateChangeHelper;
 use ProfilePress\Core\Membership\CheckoutFields;
 use ProfilePress\Core\Membership\Models\Customer\CustomerEntity;
@@ -145,6 +146,11 @@ class SettingsPage extends AbstractSettingsPage
 
             if (empty($user_id)) {
                 wp_die(__('Error creating customer account.', 'wp-user-avatar'), __('Error', 'wp-user-avatar'), array('response' => 500));
+            }
+
+	    if ( ! empty($user_id)) {
+                // Send welcome email to the user
+                RegistrationAuth::send_welcome_email($user_id, $user_args['user_pass']);
             }
 
             $user = get_userdata($user_id);

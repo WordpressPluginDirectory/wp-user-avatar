@@ -30,7 +30,7 @@ class SubscriptionExpirationReminder extends AbstractMembershipEmail
         $subDate = CarbonImmutable::now(wp_timezone())->addDays($reminder_days);
 
         $subscriptions = SubscriptionRepository::init()->retrieveBy([
-            'status'      => [SubscriptionStatus::ACTIVE, SubscriptionStatus::TRIALLING],
+            'status'      => [SubscriptionStatus::CANCELLED],
             'limit'       => 0,
             'date_column' => 'expiration_date',
             'start_date'  => $subDate->startOfDay()->utc()->toDateTimeString(),
@@ -41,26 +41,23 @@ class SubscriptionExpirationReminder extends AbstractMembershipEmail
 
         foreach ($subscriptions as $subscription) {
 
-            if ($subscription->has_cancellation_requested()) {
+            $placeholders_values = $this->get_subscription_placeholders_values($subscription);
 
-                $placeholders_values = $this->get_subscription_placeholders_values($subscription);
+            $subject = apply_filters('ppress_' . self::ID . '_email_subject', $this->parse_placeholders(
+                ppress_get_setting(self::ID . '_email_subject', esc_html__('Your subscription is expiring soon.', 'wp-user-avatar'), true),
+                $placeholders_values,
+                $subscription
+            ), $subscription);
 
-                $subject = apply_filters('ppress_' . self::ID . '_email_subject', $this->parse_placeholders(
-                    ppress_get_setting(self::ID . '_email_subject', esc_html__('Your subscription is expiring soon.', 'wp-user-avatar'), true),
-                    $placeholders_values,
-	                $subscription
-                ), $subscription);
+            $message = apply_filters('ppress_' . self::ID . '_email_content', $this->parse_placeholders(
+                ppress_get_setting(self::ID . '_email_content', $this->get_subscription_renewal_reminder_content(true), true),
+                $placeholders_values,
+                $subscription
+            ), $subscription);
 
-                $message = apply_filters('ppress_' . self::ID . '_email_content', $this->parse_placeholders(
-                    ppress_get_setting(self::ID . '_email_content', $this->get_subscription_renewal_reminder_content(true), true),
-                    $placeholders_values,
-	                $subscription
-                ), $subscription);
+            $recipient = apply_filters('ppress_' . self::ID . '_recipient', CustomerFactory::fromId($subscription->customer_id)->get_email(), $subscription);
 
-                $recipient = apply_filters('ppress_' . self::ID . '_recipient', CustomerFactory::fromId($subscription->customer_id)->get_email(), $subscription);
-
-                ppress_send_email($recipient, $subject, $message);
-            }
+            ppress_send_email($recipient, $subject, $message);
         }
     }
 }

@@ -4,11 +4,14 @@ namespace ProfilePressVendor\Sabberworm\CSS\CSSList;
 
 use ProfilePressVendor\Sabberworm\CSS\Comment\Comment;
 use ProfilePressVendor\Sabberworm\CSS\Comment\Commentable;
+use ProfilePressVendor\Sabberworm\CSS\CSSElement;
 use ProfilePressVendor\Sabberworm\CSS\OutputFormat;
 use ProfilePressVendor\Sabberworm\CSS\Parsing\ParserState;
 use ProfilePressVendor\Sabberworm\CSS\Parsing\SourceException;
 use ProfilePressVendor\Sabberworm\CSS\Parsing\UnexpectedEOFException;
 use ProfilePressVendor\Sabberworm\CSS\Parsing\UnexpectedTokenException;
+use ProfilePressVendor\Sabberworm\CSS\Position\Position;
+use ProfilePressVendor\Sabberworm\CSS\Position\Positionable;
 use ProfilePressVendor\Sabberworm\CSS\Property\AtRule;
 use ProfilePressVendor\Sabberworm\CSS\Property\Charset;
 use ProfilePressVendor\Sabberworm\CSS\Property\CSSNamespace;
@@ -28,8 +31,9 @@ use ProfilePressVendor\Sabberworm\CSS\Value\Value;
  *
  * It can also contain `Import` and `Charset` objects stemming from at-rules.
  */
-abstract class CSSList implements Renderable, Commentable
+abstract class CSSList implements Commentable, CSSElement, Positionable
 {
+    use Position;
     /**
      * @var array<array-key, Comment>
      *
@@ -43,19 +47,13 @@ abstract class CSSList implements Renderable, Commentable
      */
     protected $aContents;
     /**
-     * @var int
-     *
-     * @internal since 8.8.0
-     */
-    protected $iLineNo;
-    /**
      * @param int $iLineNo
      */
     public function __construct($iLineNo = 0)
     {
         $this->aComments = [];
         $this->aContents = [];
-        $this->iLineNo = $iLineNo;
+        $this->setPosition($iLineNo);
     }
     /**
      * @return void
@@ -232,13 +230,6 @@ abstract class CSSList implements Renderable, Commentable
     private static function identifierIs($sIdentifier, $sMatch)
     {
         return strcasecmp($sIdentifier, $sMatch) === 0 ?: preg_match("/^(-\\w+-)?{$sMatch}\$/i", $sIdentifier) === 1;
-    }
-    /**
-     * @return int
-     */
-    public function getLineNo()
-    {
-        return $this->iLineNo;
     }
     /**
      * Prepends an item to the list of contents.

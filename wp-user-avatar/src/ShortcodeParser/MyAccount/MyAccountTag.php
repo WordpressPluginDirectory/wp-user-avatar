@@ -76,7 +76,6 @@ class MyAccountTag extends FormProcessor
                 ],
                 'list-downloads'     => [
                     'title'    => esc_html__('Downloads', 'wp-user-avatar'),
-                    /** @todo implement customizing this endpoint */
                     'endpoint' => esc_html(ppress_settings_by_key('myac_downloads_endpoint', 'list-downloads', true)),
                     'priority' => 35,
                     'icon'     => 'file_download',
@@ -84,7 +83,6 @@ class MyAccountTag extends FormProcessor
                 ],
                 'billing-details'    => [
                     'title'    => esc_html__('Billing Address', 'wp-user-avatar'),
-                    /** @todo implement customizing this endpoint */
                     'endpoint' => esc_html(ppress_settings_by_key('myac_billing_details_endpoint', 'my-billing-address', true)),
                     'priority' => 40,
                     'icon'     => 'map',

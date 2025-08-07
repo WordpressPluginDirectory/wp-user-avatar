@@ -42,6 +42,11 @@ abstract class AbstractExport
         }
 
         $writer = Writer::createFromPath($file, 'w+');
+
+        if (apply_filters('ppress_data_export_writer_use_alternative', false)) {
+            $writer = Writer::createFromFileObject(new \SplTempFileObject());
+        }
+
         $writer->insertOne($this->headers());
         $writer->insertAll($data);
 

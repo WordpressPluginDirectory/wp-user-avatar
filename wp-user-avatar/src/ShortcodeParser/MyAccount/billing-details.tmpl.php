@@ -43,6 +43,8 @@ printf(
         esc_html__('The following billing address will be used on the checkout page by default.', 'wp-user-avatar'))
 );
 
+$billing_details_fields = apply_filters('ppress_myaccount_billing_details_fields', $billing_details_fields);
+
 if (is_array($billing_details_fields) && ! empty($billing_details_fields)) :
 
     foreach ($billing_details_fields as $field_key => $field) :

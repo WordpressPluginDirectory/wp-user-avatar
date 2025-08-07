@@ -19,9 +19,9 @@ class FrontendController extends BaseController
     {
         if (ppress_is_checkout()) {
 
-            if (is_user_logged_in() && isset($_GET['plan'])) {
+            if (is_user_logged_in() && (isset($_GET['plan']) || ! empty($_GET['group']))) {
 
-                $plan_group_id = PlanFactory::fromId(intval($_GET['plan']))->get_group_id();
+                $plan_group_id = ! empty($_GET['group']) ? absint($_GET['group']) : PlanFactory::fromId(intval($_GET['plan']))->get_group_id();
 
                 if (is_int($plan_group_id)) {
 
@@ -162,7 +162,7 @@ class FrontendController extends BaseController
      */
     public function exclude_page_from_pantheon_server_cache()
     {
-        if (apply_filters('ppress_enable_pantheon_caching_exclusion', true) && !empty($_ENV['PANTHEON_ENVIRONMENT'])) {
+        if (apply_filters('ppress_enable_pantheon_caching_exclusion', true) && ! empty($_ENV['PANTHEON_ENVIRONMENT'])) {
             $domain = $_SERVER['HTTP_HOST'];
             $path   = wp_parse_url(get_permalink(), PHP_URL_PATH);
             setcookie('NO_CACHE', '1', time() + 0, $path, $domain);

@@ -1185,6 +1185,8 @@ function ppress_get_error_log($type = 'debug')
 
 function ppress_log_error($message, $type = 'debug')
 {
+    if (is_array($message)) wp_json_encode($message);
+
     $log_folder = PPRESS_ERROR_LOG_FOLDER;
 
     // does bugs folder exist? if NO, create it.

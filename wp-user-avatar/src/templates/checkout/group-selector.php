@@ -8,6 +8,8 @@ use ProfilePress\Core\Membership\Models\Subscription\SubscriptionBillingFrequenc
 
 $group = GroupFactory::fromId($plan->get_group_id());
 
+$plan_ids = apply_filters('ppress_checkout_group_selector_plans', $group->get_plan_ids(), $group);
+
 echo '<div class="ppress-main-checkout-form__block__fieldset">';
 
 if ($group->plans_display_field == 'select') {
@@ -15,7 +17,7 @@ if ($group->plans_display_field == 'select') {
     echo '<select name="group_selector">';
     printf('<option value="" disabled>%s</option>', esc_html__('Select membership plan', 'wp-user-avatar'));
 
-    foreach ($group->get_plan_ids() as $plan_id) {
+    foreach ($plan_ids as $plan_id) {
 
         $_plan             = ppress_get_plan($plan_id);
         $billing_frequency = $_plan->is_recurring() ? ' ' . SubscriptionBillingFrequency::get_label($_plan->billing_frequency) : '';
@@ -33,7 +35,7 @@ if ($group->plans_display_field == 'select') {
 
 } else {
 
-    foreach ($group->get_plan_ids() as $plan_id) {
+    foreach ($plan_ids as $plan_id) {
 
         $_plan             = ppress_get_plan($plan_id);
         $billing_frequency = $_plan->is_recurring() ? ' ' . SubscriptionBillingFrequency::get_label($_plan->billing_frequency) : '';

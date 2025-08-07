@@ -223,7 +223,7 @@ class OrderRepository extends BaseRepository
      * @param $args
      * @param $count
      *
-     * @return OrderEntity[]|string|int
+     * @return int|OrderEntity[]
      */
     public function retrieveBy($args = array(), $count = false)
     {

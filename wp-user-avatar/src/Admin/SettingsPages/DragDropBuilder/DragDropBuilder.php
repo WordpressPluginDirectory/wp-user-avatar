@@ -1213,6 +1213,31 @@ class DragDropBuilder
     public function print_template()
     {
         $this->sidebar_fields_block_tmpl();
+        ?>
+        <script>
+            setTimeout(function () {
+                var copyBtn = document.getElementById('copy-shortcode-btn');
+                var input = document.getElementById('ppress-shortcode');
+
+                copyBtn.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    input.select();
+                    input.setSelectionRange(0, 99999); // For mobile support
+
+                    try {
+                        var successful = document.execCommand('copy');
+                        if (successful) {
+                            copyBtn.textContent = "<?php esc_html_e('Copied!', 'wp-user-avatar'); ?>";
+                            setTimeout(function() {
+                                copyBtn.textContent = "<?php esc_html_e('Copy Shortcode', 'wp-user-avatar'); ?>";
+                            }, 2000);
+                        }
+                    } catch (err) {
+                    }
+                });
+            }, 2000);
+        </script>
+        <?php
     }
 
     public function sidebar_fields_block_tmpl()
@@ -1289,11 +1314,14 @@ class DragDropBuilder
             </div>
             <div class="inside">
                 <p class="description">
-                    <label for="ppress-shortcode"><?php esc_html_e('Copy this shortcode and paste it into your post, page, or text widget content:', 'wp-user-avatar') ?></label>
-                    <span class="shortcode wp-ui-highlight">
-                        <input type="text" id="ppress-shortcode" onfocus="this.select();" readonly="readonly" class="large-text code" value="<?= esc_attr($shortcode) ?>">
-                    </span>
+                    <label for="ppress-shortcode"><?php esc_html_e('Copy this shortcode and paste it into your post, page, or text widget content:', 'wp-user-avatar'); ?></label>
                 </p>
+                <div style="display: flex; align-items: center; gap: 10px; margin-top: 5px;">
+                    <input type="text" id="ppress-shortcode" onfocus="this.select();" readonly="readonly" class="large-text code" value="<?= esc_attr($shortcode) ?>" style="flex:1;color: #fff;background-color:#2271b1;border-color:#2271b1;"/>
+                    <a href="#" id="copy-shortcode-btn" class="pp-copy-shortcode button button-large">
+                        <?php _e('Copy Shortcode', 'wp-user-avatar'); ?>
+                    </a>
+                </div>
             </div>
         </div>
         <?php
