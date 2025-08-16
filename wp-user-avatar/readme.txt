@@ -5,7 +5,7 @@ Tags: membership, ecommerce, user registration, user profile, memberships
 Requires at least: 6.0
 Requires PHP: 7.4
 Tested up to: 6.8
-Stable tag: 4.16.4
+Stable tag: 4.16.5
 License: GPLv2 or later
 
 Setup paid membership, accept payment, sell subscription & digital product, paywall, create login & registration form, user profile & member directory
@@ -189,6 +189,13 @@ Any file type can be sold using ProfilePress ecommerce and membership plugin, in
 11. Content Protection
 
 == Changelog ==
+
+= Paid Membership, Ecommerce & User Registration 4.16.5 =
+* Added multiple user role selection when editing users.
+* Fixed bug where shortcode could be executed as profile information
+* Fixed bug where registration blocking feature did not work during checkout.
+* Fixed Stripe bug where only country field in checkout lead to error.
+
 
 = Paid Membership, Ecommerce & User Registration 4.16.4 =
 * Pro: [AffiliateWP](https://profilepress.com/addons/affiliatewp/?ref=changelog) and [SliceWP](https://profilepress.com/addons/slicewp/?ref=changelog) addons.

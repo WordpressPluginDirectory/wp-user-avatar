@@ -1,5 +1,11 @@
 ﻿== Changelog ==
 
+= 4.16.5 =
+* Added multiple user role selection when editing users.
+* Fixed bug where shortcode could be executed as profile information
+* Fixed bug where registration blocking feature did not work during checkout.
+* Fixed Stripe bug where only country field in checkout lead to error.
+
 = 4.16.4 =
 * Pro: [AffiliateWP](https://profilepress.com/addons/affiliatewp/?ref=changelog) and [SliceWP](https://profilepress.com/addons/slicewp/?ref=changelog) addons.
 * Fixed bug where subscription remained active after last order refund.

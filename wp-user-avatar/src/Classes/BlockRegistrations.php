@@ -6,7 +6,10 @@ class BlockRegistrations
 {
     public static function init()
     {
-        add_filter('ppress_registration_validation', array(__CLASS__, 'do_action'), 999999, 3);
+        add_filter('ppress_registration_validation', [__CLASS__, 'do_action'], 999999, 3);
+        add_filter('ppress_checkout_registration_validation', function ($error_bucket, $user_data) {
+            return self::do_action($error_bucket, 0, $user_data);
+        }, 999999, 2);
     }
 
     /**
@@ -55,7 +58,7 @@ class BlockRegistrations
                 );
 
 
-                if (is_array($allowed_email_addresses) && ! empty($allowed_email_addresses)) {
+                if ( ! empty($allowed_email_addresses)) {
 
                     if ( ! self::is_email_matches($user_email, $allowed_email_addresses)) {
                         $reg_errors->add('blocked_email_address', $blocked_error_message);
@@ -67,7 +70,7 @@ class BlockRegistrations
 
                 $allowed_email_addresses = array_map('trim', explode("\n", $allowed_email_addresses_list));
 
-                if (is_array($allowed_email_addresses) && ! empty($allowed_email_addresses)) {
+                if ( ! empty($allowed_email_addresses)) {
 
                     if (self::is_email_matches($user_email, $allowed_email_addresses)) {
                         return $reg_errors;
@@ -79,7 +82,7 @@ class BlockRegistrations
 
                 $blocked_email_addresses = array_map('trim', explode("\n", $blocked_email_addresses_list));
 
-                if (is_array($blocked_email_addresses) && ! empty($blocked_email_addresses)) {
+                if ( ! empty($blocked_email_addresses)) {
 
                     if (self::is_email_matches($user_email, $blocked_email_addresses)) {
                         $reg_errors->add('blocked_email_address', $blocked_error_message);

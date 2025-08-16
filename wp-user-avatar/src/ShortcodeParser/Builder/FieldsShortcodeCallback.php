@@ -87,7 +87,7 @@ class FieldsShortcodeCallback
             return sanitize_text_field($field['label_name']);
         }
 
-        return ucfirst(str_replace('_', ' ', $key));
+        return ucfirst(str_replace(['ppress_', '_'], ['', ' '], $key));
     }
 
     public static function sanitize_field_attributes($atts)

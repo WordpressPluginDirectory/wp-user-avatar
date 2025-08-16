@@ -21,6 +21,7 @@ use ProfilePress\Core\Admin\SettingsPages\Membership\PaymentSettings;
 use ProfilePress\Core\Admin\SettingsPages\Membership\PlansPage\SettingsPage as PlansSettingsPage;
 use ProfilePress\Core\Admin\SettingsPages\Membership\SubscriptionsPage\SettingsPage as SubscriptionsPageSettingsPage;
 use ProfilePress\Core\Admin\SettingsPages\ToolsSettingsPage;
+use ProfilePress\Core\Admin\UserRolesEdit;
 use ProfilePress\Core\Classes\BlockRegistrations;
 use ProfilePress\Core\Classes\DisableConcurrentLogins;
 use ProfilePress\Core\Classes\GlobalSiteAccess;
@@ -108,16 +109,16 @@ define("PPRESS_FILE_UPLOAD_URL", apply_filters('ppress_files_url', WP_CONTENT_UR
 class Base extends DBTables
 {
     // core contact info fields
-    const cif_facebook     = 'facebook';
-    const cif_twitter      = 'twitter';
-    const cif_linkedin     = 'linkedin';
-    const cif_youtube      = 'youtube';
-    const cif_vk           = 'vk';
-    const cif_instagram    = 'instagram';
-    const cif_github       = 'github';
-    const cif_pinterest    = 'pinterest';
-    const cif_bluesky      = 'bluesky';
-    const cif_threads      = 'threads';
+    const cif_facebook = 'facebook';
+    const cif_twitter = 'twitter';
+    const cif_linkedin = 'linkedin';
+    const cif_youtube = 'youtube';
+    const cif_vk = 'vk';
+    const cif_instagram = 'instagram';
+    const cif_github = 'github';
+    const cif_pinterest = 'pinterest';
+    const cif_bluesky = 'bluesky';
+    const cif_threads = 'threads';
 
     public function __construct()
     {
@@ -234,6 +235,7 @@ class Base extends DBTables
         Admin\SettingsPages\Membership\TaxSettings\SettingsPage::get_instance();
 
         ProfileCustomFields::get_instance();
+        UserRolesEdit::get_instance();
         EmailSettingsPage::get_instance();
         ToolsSettingsPage::get_instance();
 

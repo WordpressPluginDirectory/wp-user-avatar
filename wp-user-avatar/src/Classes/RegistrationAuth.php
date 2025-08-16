@@ -128,7 +128,7 @@ class RegistrationAuth
                 }
 
                 // sanitize_textarea_field is used to preserve any line breaks
-                $segregated_userdata[$key] = sanitize_textarea_field($value);
+                $segregated_userdata[$key] = strip_shortcodes(sanitize_textarea_field($value));
             }
         }
 
