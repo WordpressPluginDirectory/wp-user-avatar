@@ -5,7 +5,7 @@ Tags: membership, ecommerce, user registration, user profile, memberships
 Requires at least: 6.0
 Requires PHP: 7.4
 Tested up to: 6.8
-Stable tag: 4.16.5
+Stable tag: 4.16.6
 License: GPLv2 or later
 
 Setup paid membership, accept payment, sell subscription & digital product, paywall, create login & registration form, user profile & member directory
@@ -122,6 +122,8 @@ Extend the capabilities of ProfilePress with our powerful addons and remove the 
 * [LearnDash](https://profilepress.com/addons/learndash/?utm_source=wprepo&utm_medium=link&utm_campaign=liteversion) – Sell access to LearnDash courses and groups, enroll users after signup via a custom LearnDash registration form, and let users view their enrolled courses on the My Account page.
 * [LifterLMS](https://profilepress.com/addons/lifterlms/?utm_source=wprepo&utm_medium=link&utm_campaign=liteversion) – Sell access to LifterLMS courses and memberships, enroll users after signup via a custom LifterLMS registration form, and let users view their enrolled courses on the My Account page.
 * [Sensei LMS](https://profilepress.com/addons/sensei-lms/?utm_source=wprepo&utm_medium=link&utm_campaign=liteversion) – Sell access to Sensei LMS courses and groups, enroll users after registration, and let users view their enrolled courses on the My Account page.
+* [MasterStudy LMS](https://profilepress.com/addons/masterstudy-lms/?utm_source=wprepo&utm_medium=link&utm_campaign=liteversion) – Restrict access to Masterstudy LMS courses until after payment and enroll users after registration.
+* [FluentCommunity](https://profilepress.com/addons/fluentcommunity/?utm_source=wprepo&utm_medium=link&utm_campaign=liteversion) – Sell access to FluentCommunity spaces and courses, and enroll users after WordPress registration to specific courses and spaces.
 * [Google reCAPTCHA](https://profilepress.com/addons/recaptcha/?utm_source=wprepo&utm_medium=link&utm_campaign=liteversion) – Protect your user registration, login, checkout and password reset forms against spam and bot attacks using Google reCAPTCHA.
 * [Cloudflare Turnstile](https://profilepress.com/addons/cloudflare-turnstile/?utm_source=wprepo&utm_medium=link&utm_campaign=liteversion) – Stop spam registrations and bot attacks on your WordPress login, registration, and checkout forms by implementing Cloudflare Turnstile.
 * [Site Creation](https://profilepress.com/addons/site-creation/?utm_source=wprepo&utm_medium=link&utm_campaign=liteversion) – Allow users to create new sites on a multisite network via a user registration form powered by ProfilePress.
@@ -130,8 +132,7 @@ Extend the capabilities of ProfilePress with our powerful addons and remove the 
 * [MailerLite](https://profilepress.com/addons/mailerlite/?utm_source=wprepo&utm_medium=link&utm_campaign=liteversion) – Add WordPress users to MailerLite groups when they register, subscribe to membership plans via checkout form, and automatically sync profile changes with MailerLite.
 * [AffiliateWP](https://profilepress.com/addons/affiliatewp/?utm_source=wprepo&utm_medium=link&utm_campaign=liteversion) – Launch an affiliate program for your WordPress membership website using AffiliateWP plugin.
 * [SliceWP](https://profilepress.com/addons/slicewp/?utm_source=wprepo&utm_medium=link&utm_campaign=liteversion) – Use SliceWP affiliate plugin to add an affiliate program to your WordPress membership website.
-* [BuddyBoss/BuddyPress Profile Sync](https://profilepress.com/addons/buddypress-profile-sync/?utm_source=wprepo&utm_medium=link&utm_campaign=liteversion) –  This addon provides 2-way synchronization between WordPress profile fields and BuddyBoss/BuddyPress extended profile.
-* [Join BuddyPress Groups](https://profilepress.com/addons/join-buddypress-groups/?utm_source=wprepo&utm_medium=link&utm_campaign=liteversion) –  Let users select the BuddyBoss/BuddyPress groups to join during registration.
+* [BuddyBoss/BuddyPress](https://profilepress.com/addons/buddypress/?utm_source=wprepo&utm_medium=link&utm_campaign=liteversion) –  Sell access to groups, let users select groups to join during registration and sync WordPress profile fields with BuddyPress/BuddyBoss extended profile.
 * [Akismet](https://profilepress.com/addons/akismet/?utm_source=wprepo&utm_medium=link&utm_campaign=liteversion) –  Block spam and bot user registrations with Akismet and keep your membership site safe and secured.
 * [Polylang](https://profilepress.com/addons/polylang/?utm_source=wprepo&utm_medium=link&utm_campaign=liteversion) –  Build multilingual login, registration, password reset, and edit profile forms.
 
@@ -190,6 +191,14 @@ Any file type can be sold using ProfilePress ecommerce and membership plugin, in
 
 == Changelog ==
 
+= Paid Membership, Ecommerce & User Registration 4.16.6 =
+* Pro: [FluentCommunity addon](https://profilepress.com/addons/fluentcommunity/?ref=changelog).
+* Pro: [MasterStudy LMS addon](https://profilepress.com/addons/masterstudy-lms/?ref=changelog).
+* Added auto scroll to form error messages.
+* Added support for plan pre-selection as query parameters to group checkout URL.
+* Fixed bug where content protection on blog page did not work.
+* Improved compatibility with WPML.
+
 = Paid Membership, Ecommerce & User Registration 4.16.5 =
 * Added multiple user role selection when editing users.
 * Fixed bug where shortcode could be executed as profile information
@@ -206,19 +215,5 @@ Any file type can be sold using ProfilePress ecommerce and membership plugin, in
 * Added ppress_membership_plan_price filter.
 * Added ppress_checkout_group_selector_plans filter.
 * Fixed a couple of PHP notices.
-
-= Paid Membership, Ecommerce & User Registration 4.16.3 =
-* Pro: [Cloudflare Turnstile addon](https://profilepress.com/addons/cloudflare-turnstile/?ref=changelog).
-* Fixed membership plan description in checkout and backend.
-* Added ppress_data_export_writer_use_alternative filter for alternate data export.
-* Added Size attribute to User Avatar URL Shortcode.
-
-= Paid Membership, Ecommerce & User Registration 4.16.2 =
-* Pro: [MailerLite Integration addon](https://profilepress.com/addons/mailerlite/?ref=changelog).
-* Pro: [Fixed Subscription Expiration addon](https://profilepress.com/addons/fixed-subscription-expiration/?ref=changelog).
-* Fixed bug where welcome email was not sent when users are added by admin.
-* Fixed bug where password strength-meter didn't work in myaccount page if ajaxmode is disabled.
-* Added checkout user moderation behind ppress_checkout_registration_user_moderation_support filter.
-* Added ppress_is_search_and_api_exclude_posts filter.
 
 See the [changelog file](https://plugins.svn.wordpress.org/wp-user-avatar/trunk/changelog.txt) for full change log information.

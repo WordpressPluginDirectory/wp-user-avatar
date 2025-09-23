@@ -1,5 +1,13 @@
 ﻿== Changelog ==
 
+= 4.16.6 =
+* Pro: [FluentCommunity addon](https://profilepress.com/addons/fluentcommunity/?ref=changelog).
+* Pro: [MasterStudy LMS addon](https://profilepress.com/addons/masterstudy-lms/?ref=changelog).
+* Added auto scroll to form error messages.
+* Added support for plan pre-selection as query parameters to group checkout URL.
+* Fixed bug where content protection on blog page did not work.
+* Improved compatibility with WPML.
+
 = 4.16.5 =
 * Added multiple user role selection when editing users.
 * Fixed bug where shortcode could be executed as profile information

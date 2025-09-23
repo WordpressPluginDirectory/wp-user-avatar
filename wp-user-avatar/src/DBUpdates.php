@@ -10,7 +10,7 @@ class DBUpdates
 {
     public static $instance;
 
-    const DB_VER = 12;
+    const DB_VER = 13;
 
     public function init_options()
     {
@@ -189,6 +189,16 @@ class DBUpdates
         if ($wpdb->get_var($wpdb->prepare("SHOW TABLES LIKE %s", $table))) {
             $wpdb->query("ALTER TABLE $table CHANGE id id bigint(20) unsigned NOT NULL AUTO_INCREMENT;");
             $wpdb->query("ALTER TABLE $table CHANGE user_id user_id bigint(20) unsigned NOT NULL;");
+        }
+    }
+
+    public function update_routine_13()
+    {
+        $db = get_option(ExtensionManager::DB_OPTION_NAME, []);
+
+        if (in_array('true', [ppress_var($db, 'join_buddypress_groups'), ppress_var($db, 'buddypress_sync')])) {
+            $db['buddypress'] = 'true';
+            update_option(ExtensionManager::DB_OPTION_NAME, $db);
         }
     }
 

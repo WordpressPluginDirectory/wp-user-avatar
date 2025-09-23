@@ -573,29 +573,29 @@ class GeneralSettings extends AbstractSettingsPage
 
         if (class_exists('\BuddyPress')) {
             $args['buddypress_settings'] = apply_filters('ppress_buddypress_settings_page', [
-                    'tab_title'                     => esc_html__('BuddyPress', 'wp-user-avatar'),
-                    'section_title'                 => esc_html__('BuddyPress Settings', 'wp-user-avatar'),
+                    'tab_title'                     => esc_html__('BuddyPress / BuddyBoss', 'wp-user-avatar'),
+                    'section_title'                 => esc_html__('BuddyPress / BuddyBoss Settings', 'wp-user-avatar'),
                     'dashicon'                      => 'dashicons-buddicons-buddypress-logo',
                     'redirect_bp_registration_page' => [
                         'type'           => 'checkbox',
                         'value'          => 'yes',
                         'label'          => esc_html__('Registration Page', 'wp-user-avatar'),
                         'checkbox_label' => esc_html__('Check to enable', 'wp-user-avatar'),
-                        'description'    => sprintf(__('Check to redirect BuddyPress registration page to your selected %s', 'wp-user-avatar'), '<a href="#global_settings?set_registration_url_row">custom registration page</a>')
+                        'description'    => sprintf(__('Check to redirect BuddyPress or BuddyBoss registration page to your selected %s', 'wp-user-avatar'), '<a href="#global_settings?set_registration_url_row">custom registration page</a>')
                     ],
                     'override_bp_avatar'            => [
                         'type'           => 'checkbox',
                         'label'          => esc_html__('Override Avatar', 'wp-user-avatar'),
                         'value'          => 'yes',
                         'checkbox_label' => esc_html__('Check to enable', 'wp-user-avatar'),
-                        'description'    => esc_html__('Check to override BuddyPress users uploaded avatars with that of ProfilePress.', 'wp-user-avatar')
+                        'description'    => esc_html__('Check to override BuddyPress/BuddyBoss users uploaded avatars with that of ProfilePress.', 'wp-user-avatar')
                     ],
                     'override_bp_profile_url'       => [
                         'type'           => 'checkbox',
                         'value'          => 'yes',
                         'label'          => esc_html__('Override Profile URL', 'wp-user-avatar'),
                         'checkbox_label' => esc_html__('Check to enable', 'wp-user-avatar'),
-                        'description'    => esc_html__('Check to change the profile URL of BuddyPress users to ProfilePress front-end profile.', 'wp-user-avatar')
+                        'description'    => esc_html__('Check to change the profile URL of BuddyPress/BuddyBoss users to ProfilePress front-end profile.', 'wp-user-avatar')
                     ]
                 ]
             );

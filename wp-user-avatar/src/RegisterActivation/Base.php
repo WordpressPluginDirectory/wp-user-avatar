@@ -72,7 +72,6 @@ class Base
 
     public static function create_default_forms()
     {
-
         FR::add_form(
             esc_html__('Default Registration', 'wp-user-avatar'),
             FR::REGISTRATION_TYPE,

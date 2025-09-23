@@ -175,6 +175,11 @@ function Frontend() {
                     window.edit_profile_msg_class = $(response.message).attr('class');
 
                     $editprofile_form.before(response.message);
+
+                    // Auto-scroll to the error message
+                    if (response.message && response.message.includes('profilepress-edit-profile-status')) {
+                        _this.scroll_to_notices($('.profilepress-edit-profile-status'));
+                    }
                 }
 
                 if ('redirect' in response) {
@@ -290,6 +295,11 @@ function Frontend() {
                         $signup_form.parents('.lucidContainer').before(response.message)
                     } else {
                         $signup_form.before(response.message);
+                    }
+
+                    // Auto-scroll to the error message
+                    if (response.message && response.message.includes('profilepress-reg-status')) {
+                        _this.scroll_to_notices();
                     }
                 } else if ('redirect' in response) {
                     $signup_form.trigger('pp_registration_success', [response]);
@@ -444,6 +454,16 @@ function Frontend() {
 
     this._remove_status_notice = function () {
         $('.profilepress-login-status,.pp-tab-status,.profilepress-edit-profile-success,.profilepress-edit-profile-status,.pp-reset-success,.profilepress-reset-status,.profilepress-reg-status').remove();
+    };
+
+    this.scroll_to_notices = function (scrollElement) {
+        // Default to profilepress-reg-status if no specific element provided
+        scrollElement = scrollElement || $('.profilepress-reg-status');
+        if (scrollElement.length) {
+            $('html, body').animate({
+                scrollTop: (scrollElement.offset().top - 100)
+            }, 1000);
+        }
     };
 
     this.defaultUserProfileResponsive = function () {

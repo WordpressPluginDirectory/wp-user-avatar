@@ -2,7 +2,7 @@
 
 $terms_page_id = ppress_settings_by_key('terms_page_id');
 
-if ( ! $terms_page_id || empty($terms_page_id)) return;
+if (empty($terms_page_id)) return;
 
 $label = ppress_settings_by_key(
     'terms_agreement_label',
@@ -21,8 +21,20 @@ $page = get_post($terms_page_id);
 <div class="ppress-checkout-form__terms_condition_wrap">
     <?php if ( ! empty($terms_page_id)) : $page = get_post($terms_page_id);
 
-        if ($page && 'publish' === $page->post_status && $page->post_content && ! has_shortcode($page->post_content, 'profilepress-checkout')) :?>
-            <div class="ppress-checkout-form__terms_condition__content"><?= wp_kses_post($page->post_content) ?></div>
+        if ($page && 'publish' === $page->post_status && $page->post_content && ! has_shortcode($page->post_content, 'profilepress-checkout')) :
+            $post_content = $page->post_content;
+            // remove redundant DIVI tags
+            $post_content = preg_replace(['/\[et_.+\]/', '/\[\/et_.+\]/'], '', $post_content);
+
+            // remove VC tags and empty paragraphs (<p></p>)
+            $post_content = preg_replace([
+                '/\[vc(.*?)\]/',
+                '/<p[^>]*><\\/p[^>]*>/',
+                '/\[\/vc(.*?)\]/'
+            ], '', $post_content);
+
+            ?>
+            <div class="ppress-checkout-form__terms_condition__content"><?= wp_kses_post($post_content) ?></div>
         <?php endif; ?>
 
     <?php endif; ?>
@@ -30,8 +42,7 @@ $page = get_post($terms_page_id);
     <div class="ppress-checkout-form__terms_condition__checkbox_wrap">
         <label class="ppress-checkout-form__terms_condition__checkbox__label">
             <input id="ppress-terms" name="ppress-terms" type="checkbox" class="ppress-checkout-field__input">
-            <?= $label ?> <span class="ppress-required">*</span>
-        </label>
+            <?= $label ?> <span class="ppress-required">*</span> </label>
     </div>
 
 </div>

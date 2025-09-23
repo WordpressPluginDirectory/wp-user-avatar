@@ -51,6 +51,9 @@ class FrontendController extends BaseController
                     $group_plan_ids = $group->get_plan_ids();
                     if ( ! empty($group_plan_ids)) {
                         $_GET['plan'] = $group->get_default_plan_id();
+                        if (isset($_GET['default']) && in_array(intval($_GET['default']), $group_plan_ids)) {
+                            $_GET['plan'] = intval($_GET['default']);
+                        }
                     }
                 }
             }

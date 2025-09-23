@@ -184,7 +184,7 @@ class PostContent
                                 $is_restricted = $access_condition;
                             }
                             break;
-                        };
+                        }
                     }
                 }
             }
@@ -194,11 +194,21 @@ class PostContent
 
         if ($skip_cache === true) return $callback();
 
-        static $cache = null;
+        // Use post-specific cache if available
+        global $post;
 
-        if (is_null($cache)) $cache = $callback();
+        if ( ! empty($post->ID)) {
+            static $cache = [];
+            if ( ! isset($cache[$post->ID])) $cache[$post->ID] = $callback();
 
-        return $cache;
+            return $cache[$post->ID];
+        }
+
+        static $cache2 = null;
+
+        if (is_null($cache2)) $cache2 = $callback();
+
+        return $cache2;
     }
 
     public function the_content($content)
@@ -305,8 +315,10 @@ class PostContent
             if ($more) {
                 $the_excerpt = strip_shortcodes(strip_tags(stripslashes(substr($the_excerpt, 0, $length)), $tags));
             } else {
-                $the_excerpt   = strip_shortcodes(strip_tags(stripslashes($the_excerpt), $tags));
-                $the_excerpt   = preg_split('/\b/', $the_excerpt, $length * 2 + 1);
+                $the_excerpt = strip_shortcodes(strip_tags(stripslashes($the_excerpt), $tags));
+
+                // Enhanced regex pattern to support both English word boundaries and CJK (Chinese, Japanese, and Korean) character boundaries
+                $the_excerpt   = preg_split('/\b|(?<=[\x{4e00}-\x{9fff}])(?=[\x{4e00}-\x{9fff}])/u', $the_excerpt, $length * 2 + 1);
                 $excerpt_waste = array_pop($the_excerpt);
                 $the_excerpt   = implode($the_excerpt);
 

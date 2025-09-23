@@ -12,5 +12,27 @@
                 </key>
             </key>
         </key>
+        <key name="ppress_settings_data">
+            <key name="*email_subject"/>
+            <key name="*email_content"/>
+            <key name="receipt_additional_info"/>
+            <key name="receipt_view_button_label"/>
+            <key name="terms_agreement_label"/>
+            <key name="*checkout_checkbox_label"/>
+        </key>
+        <key name="ppress_payment_methods">
+            <key name="stripe_title"/>
+            <key name="stripe_description"/>
+            <key name="bank_transfer_title"/>
+            <key name="bank_transfer_description"/>
+            <key name="bank_transfer_account_details"/>
+            <key name="mollie_title"/>
+            <key name="mollie_description"/>
+            <key name="paypal_title"/>
+            <key name="paypal_description"/>
+        </key>
+        <key name="ppress_taxes">
+            <key name="eu_vat_number_label"/>
+        </key>
     </admin-texts>
 </wpml-config>

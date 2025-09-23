@@ -150,6 +150,8 @@ class Base extends DBTables
         add_action('admin_init', function () {
             if (get_option('ppress_plugin_activated') != 'true') {
                 RegisterActivation\Base::run_install();
+                delete_option('ppress_db_ver');
+                DBUpdates::get_instance()->maybe_update();
             }
         });
 

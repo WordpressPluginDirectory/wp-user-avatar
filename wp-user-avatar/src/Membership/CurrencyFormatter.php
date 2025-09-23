@@ -205,7 +205,7 @@ class CurrencyFormatter
         }
 
         if ( ! empty($this->suffix)) {
-            $formatted = apply_filters('ppress' . strtolower($this->currency_code) . '_currency_filter_after', $formatted, $this->currency_code, $amount);
+            $formatted = apply_filters('ppress_' . strtolower($this->currency_code) . '_currency_filter_after', $formatted, $this->currency_code, $amount);
         }
 
         // Add the "-" sign back to the start of the string.

@@ -35,8 +35,6 @@ class Autologin
 
                 wp_set_auth_cookie($user_id, true, $secure_cookie);
                 wp_set_current_user($user_id);
-
-                get_user_by('id', $user_id);
             }
 
             do_action('ppress_before_auto_login_redirect', $login_id, $user_id);

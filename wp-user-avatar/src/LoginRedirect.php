@@ -60,7 +60,7 @@ class LoginRedirect
                 foreach ($membership_plan_rules as $plan_id => $redirect_url_slug) {
 
                     if (ppress_has_active_subscription($user_id, $plan_id)) {
-                        return home_url($redirect_url_slug);
+                        return home_url($this->cleanup_redirect_slug($redirect_url_slug));
                     }
                 }
             }
@@ -72,13 +72,22 @@ class LoginRedirect
                 foreach ($user_role_rules as $user_role => $redirect_url_slug) {
 
                     if (in_array($user_role, $user_roles, true)) {
-                        return home_url($redirect_url_slug);
+                        return home_url($this->cleanup_redirect_slug($redirect_url_slug));
                     }
                 }
             }
         }
 
         return $default_url;
+    }
+
+    private function cleanup_redirect_slug($slug)
+    {
+        if (strstr($slug, 'http')) {
+            $slug = str_replace(home_url('/'), '', $slug);
+        }
+
+        return $slug;
     }
 
     public function enqueue_script()
