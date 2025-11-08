@@ -53,6 +53,8 @@ function ppress_is_any_active_plan()
 
         $table = Base::subscription_plans_db_table();
 
+        if ( ! $wpdb->get_var("SHOW TABLES LIKE '$table'")) return false;
+
         return absint($wpdb->get_var("SELECT COUNT(id) FROM $table WHERE status = 'true'")) > 0;
     });
 }

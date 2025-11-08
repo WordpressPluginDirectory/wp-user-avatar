@@ -107,7 +107,7 @@ class Stripe extends AbstractPaymentMethod
 
     public function maybe_update_webhook()
     {
-        if (apply_filters('ppress_stripe_disable_maybe_update_webhook', false)) return;
+        if (wp_doing_ajax() || apply_filters('ppress_stripe_disable_maybe_update_webhook', false)) return;
 
         try {
 

@@ -60,7 +60,7 @@ class FieldListing
 
         // the str_replace sorcery checks if field type contains any of the strings https://stackoverflow.com/a/42311760/2648410
         // we are using edit-profile-password and reg-password because we have other password custom fields that ends with -password
-        if (str_replace(['-username', 'reg-password', 'edit-profile-password', '-email'], '', $field_type) != $field_type) return true;
+        if (str_replace(['-username', 'reg-password', 'login-password', 'edit-profile-password', '-email'], '', $field_type) != $field_type) return true;
 
         return isset($field_setting['required']) && ($field_setting['required'] === true || $field_setting['required'] == 'true' || $field_setting['required'] == '1');
     }

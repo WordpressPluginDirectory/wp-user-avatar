@@ -138,7 +138,7 @@ class MemberDirectoryListing
 
                 $output .= sprintf('<div class="ppress-md-profile-item-wrap %s">', $raw_field_type);
 
-                if ( ! empty($field_title) && $raw_field_type != 'profile-website') {
+                if ( ! empty($field_title) && ! empty($parsed_shortcode) && $raw_field_type != 'profile-website') {
                     $output .= sprintf('<span class="ppress-md-profile-item-title">%s:</span> ', wp_kses_post($field_title));
                 }
 

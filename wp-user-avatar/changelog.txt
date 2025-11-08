@@ -1,5 +1,9 @@
 ﻿== Changelog ==
 
+= 4.16.7 =
+* Fixed bug where label is shown for empty data in member directory.
+* Added user roles as classes to member directory item wrapper.
+
 = 4.16.6 =
 * Pro: [FluentCommunity addon](https://profilepress.com/addons/fluentcommunity/?ref=changelog).
 * Pro: [MasterStudy LMS addon](https://profilepress.com/addons/masterstudy-lms/?ref=changelog).

@@ -744,6 +744,7 @@ $google_font
 }
 
 .pp-form-container #pp-$form_type-$form_id.ppBuildScratch .pp-form-field-wrap input[type=text]:focus,
+.pp-form-container #pp-$form_type-$form_id.ppBuildScratch .pp-form-field-wrap input[type=password]:focus,
 .pp-form-container #pp-$form_type-$form_id.ppBuildScratch .pp-form-field-wrap select:focus,
 .pp-form-container #pp-$form_type-$form_id.ppBuildScratch .pp-form-field-wrap textarea:focus {
     outline: 0;

@@ -2,14 +2,14 @@
 # This file is distributed under the same license as the ProfilePress plugin.
 msgid ""
 msgstr ""
-"Project-Id-Version: ProfilePress 4.16.6\n"
+"Project-Id-Version: ProfilePress 4.16.7\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wp-user-avatar\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2025-09-23T10:05:31+00:00\n"
+"POT-Creation-Date: 2025-11-08T09:17:57+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.8.1\n"
 "X-Domain: wp-user-avatar\n"
@@ -15209,671 +15209,671 @@ msgstr ""
 msgid "Error: The file you uploaded is not accepted on our website."
 msgstr ""
 
-#: src/Functions/MSFunctions.php:107
+#: src/Functions/MSFunctions.php:109
 msgid "United States (US) dollar"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:108
+#: src/Functions/MSFunctions.php:110
 msgid "Euro"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:109
+#: src/Functions/MSFunctions.php:111
 msgid "Pound sterling"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:110
+#: src/Functions/MSFunctions.php:112
 msgid "United Arab Emirates dirham"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:111
+#: src/Functions/MSFunctions.php:113
 msgid "Afghan afghani"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:112
+#: src/Functions/MSFunctions.php:114
 msgid "Albanian lek"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:113
+#: src/Functions/MSFunctions.php:115
 msgid "Armenian dram"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:114
+#: src/Functions/MSFunctions.php:116
 msgid "Netherlands Antillean guilder"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:115
+#: src/Functions/MSFunctions.php:117
 msgid "Angolan kwanza"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:116
+#: src/Functions/MSFunctions.php:118
 msgid "Argentine peso"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:117
+#: src/Functions/MSFunctions.php:119
 msgid "Australian dollar"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:118
+#: src/Functions/MSFunctions.php:120
 msgid "Aruban florin"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:119
+#: src/Functions/MSFunctions.php:121
 msgid "Azerbaijani manat"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:120
+#: src/Functions/MSFunctions.php:122
 msgid "Bosnia and Herzegovina convertible mark"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:121
+#: src/Functions/MSFunctions.php:123
 msgid "Barbadian dollar"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:122
+#: src/Functions/MSFunctions.php:124
 msgid "Bangladeshi taka"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:123
+#: src/Functions/MSFunctions.php:125
 msgid "Bulgarian lev"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:124
+#: src/Functions/MSFunctions.php:126
 msgid "Bahraini dinar"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:125
+#: src/Functions/MSFunctions.php:127
 msgid "Burundian franc"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:126
+#: src/Functions/MSFunctions.php:128
 msgid "Bermudian dollar"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:127
+#: src/Functions/MSFunctions.php:129
 msgid "Brunei dollar"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:128
+#: src/Functions/MSFunctions.php:130
 msgid "Bolivian boliviano"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:129
+#: src/Functions/MSFunctions.php:131
 msgid "Brazilian real"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:130
+#: src/Functions/MSFunctions.php:132
 msgid "Bahamian dollar"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:131
+#: src/Functions/MSFunctions.php:133
 msgid "Bitcoin"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:132
+#: src/Functions/MSFunctions.php:134
 msgid "Bhutanese ngultrum"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:133
+#: src/Functions/MSFunctions.php:135
 msgid "Botswana pula"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:134
+#: src/Functions/MSFunctions.php:136
 msgid "Belarusian ruble (old)"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:135
+#: src/Functions/MSFunctions.php:137
 msgid "Belarusian ruble"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:136
+#: src/Functions/MSFunctions.php:138
 msgid "Belize dollar"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:137
+#: src/Functions/MSFunctions.php:139
 msgid "Canadian dollar"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:138
+#: src/Functions/MSFunctions.php:140
 msgid "Congolese franc"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:139
+#: src/Functions/MSFunctions.php:141
 msgid "Swiss franc"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:140
+#: src/Functions/MSFunctions.php:142
 msgid "Chilean peso"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:141
+#: src/Functions/MSFunctions.php:143
 msgid "Chinese yuan"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:142
+#: src/Functions/MSFunctions.php:144
 msgid "Colombian peso"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:143
+#: src/Functions/MSFunctions.php:145
 msgid "Costa Rican col&oacute;n"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:144
+#: src/Functions/MSFunctions.php:146
 msgid "Cuban convertible peso"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:145
+#: src/Functions/MSFunctions.php:147
 msgid "Cuban peso"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:146
+#: src/Functions/MSFunctions.php:148
 msgid "Cape Verdean escudo"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:147
+#: src/Functions/MSFunctions.php:149
 msgid "Czech koruna"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:148
+#: src/Functions/MSFunctions.php:150
 msgid "Djiboutian franc"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:149
+#: src/Functions/MSFunctions.php:151
 msgid "Danish krone"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:150
+#: src/Functions/MSFunctions.php:152
 msgid "Dominican peso"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:151
+#: src/Functions/MSFunctions.php:153
 msgid "Algerian dinar"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:152
+#: src/Functions/MSFunctions.php:154
 msgid "Egyptian pound"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:153
+#: src/Functions/MSFunctions.php:155
 msgid "Eritrean nakfa"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:154
+#: src/Functions/MSFunctions.php:156
 msgid "Ethiopian birr"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:155
+#: src/Functions/MSFunctions.php:157
 msgid "Fijian dollar"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:156
+#: src/Functions/MSFunctions.php:158
 msgid "Falkland Islands pound"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:157
+#: src/Functions/MSFunctions.php:159
 msgid "Georgian lari"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:158
+#: src/Functions/MSFunctions.php:160
 msgid "Guernsey pound"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:159
+#: src/Functions/MSFunctions.php:161
 msgid "Ghana cedi"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:160
+#: src/Functions/MSFunctions.php:162
 msgid "Gibraltar pound"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:161
+#: src/Functions/MSFunctions.php:163
 msgid "Gambian dalasi"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:162
+#: src/Functions/MSFunctions.php:164
 msgid "Guinean franc"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:163
+#: src/Functions/MSFunctions.php:165
 msgid "Guatemalan quetzal"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:164
+#: src/Functions/MSFunctions.php:166
 msgid "Guyanese dollar"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:165
+#: src/Functions/MSFunctions.php:167
 msgid "Hong Kong dollar"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:166
+#: src/Functions/MSFunctions.php:168
 msgid "Honduran lempira"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:167
+#: src/Functions/MSFunctions.php:169
 msgid "Croatian kuna"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:168
+#: src/Functions/MSFunctions.php:170
 msgid "Haitian gourde"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:169
+#: src/Functions/MSFunctions.php:171
 msgid "Hungarian forint"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:170
+#: src/Functions/MSFunctions.php:172
 msgid "Indonesian rupiah"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:171
+#: src/Functions/MSFunctions.php:173
 msgid "Israeli new shekel"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:172
+#: src/Functions/MSFunctions.php:174
 msgid "Manx pound"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:173
+#: src/Functions/MSFunctions.php:175
 msgid "Indian rupee"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:174
+#: src/Functions/MSFunctions.php:176
 msgid "Iraqi dinar"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:175
+#: src/Functions/MSFunctions.php:177
 msgid "Iranian rial"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:176
+#: src/Functions/MSFunctions.php:178
 msgid "Iranian toman"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:177
+#: src/Functions/MSFunctions.php:179
 msgid "Icelandic kr&oacute;na"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:178
+#: src/Functions/MSFunctions.php:180
 msgid "Jersey pound"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:179
+#: src/Functions/MSFunctions.php:181
 msgid "Jamaican dollar"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:180
+#: src/Functions/MSFunctions.php:182
 msgid "Jordanian dinar"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:181
+#: src/Functions/MSFunctions.php:183
 msgid "Japanese yen"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:182
+#: src/Functions/MSFunctions.php:184
 msgid "Kenyan shilling"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:183
+#: src/Functions/MSFunctions.php:185
 msgid "Kyrgyzstani som"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:184
+#: src/Functions/MSFunctions.php:186
 msgid "Cambodian riel"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:185
+#: src/Functions/MSFunctions.php:187
 msgid "Comorian franc"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:186
+#: src/Functions/MSFunctions.php:188
 msgid "North Korean won"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:187
+#: src/Functions/MSFunctions.php:189
 msgid "South Korean won"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:188
+#: src/Functions/MSFunctions.php:190
 msgid "Kuwaiti dinar"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:189
+#: src/Functions/MSFunctions.php:191
 msgid "Cayman Islands dollar"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:190
+#: src/Functions/MSFunctions.php:192
 msgid "Kazakhstani tenge"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:191
+#: src/Functions/MSFunctions.php:193
 msgid "Lao kip"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:192
+#: src/Functions/MSFunctions.php:194
 msgid "Lebanese pound"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:193
+#: src/Functions/MSFunctions.php:195
 msgid "Sri Lankan rupee"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:194
+#: src/Functions/MSFunctions.php:196
 msgid "Liberian dollar"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:195
+#: src/Functions/MSFunctions.php:197
 msgid "Lesotho loti"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:196
+#: src/Functions/MSFunctions.php:198
 msgid "Libyan dinar"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:197
+#: src/Functions/MSFunctions.php:199
 msgid "Moroccan dirham"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:198
+#: src/Functions/MSFunctions.php:200
 msgid "Moldovan leu"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:199
+#: src/Functions/MSFunctions.php:201
 msgid "Malagasy ariary"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:200
+#: src/Functions/MSFunctions.php:202
 msgid "Macedonian denar"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:201
+#: src/Functions/MSFunctions.php:203
 msgid "Burmese kyat"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:202
+#: src/Functions/MSFunctions.php:204
 msgid "Mongolian t&ouml;gr&ouml;g"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:203
+#: src/Functions/MSFunctions.php:205
 msgid "Macanese pataca"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:204
+#: src/Functions/MSFunctions.php:206
 msgid "Mauritanian ouguiya"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:205
+#: src/Functions/MSFunctions.php:207
 msgid "Mauritian rupee"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:206
+#: src/Functions/MSFunctions.php:208
 msgid "Maldivian rufiyaa"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:207
+#: src/Functions/MSFunctions.php:209
 msgid "Malawian kwacha"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:208
+#: src/Functions/MSFunctions.php:210
 msgid "Mexican peso"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:209
+#: src/Functions/MSFunctions.php:211
 msgid "Malaysian ringgit"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:210
+#: src/Functions/MSFunctions.php:212
 msgid "Mozambican metical"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:211
+#: src/Functions/MSFunctions.php:213
 msgid "Namibian dollar"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:212
+#: src/Functions/MSFunctions.php:214
 msgid "Nigerian naira"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:213
+#: src/Functions/MSFunctions.php:215
 msgid "Nicaraguan c&oacute;rdoba"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:214
+#: src/Functions/MSFunctions.php:216
 msgid "Norwegian krone"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:215
+#: src/Functions/MSFunctions.php:217
 msgid "Nepalese rupee"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:216
+#: src/Functions/MSFunctions.php:218
 msgid "New Zealand dollar"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:217
+#: src/Functions/MSFunctions.php:219
 msgid "Omani rial"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:218
+#: src/Functions/MSFunctions.php:220
 msgid "Panamanian balboa"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:219
+#: src/Functions/MSFunctions.php:221
 msgid "Sol"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:220
+#: src/Functions/MSFunctions.php:222
 msgid "Papua New Guinean kina"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:221
+#: src/Functions/MSFunctions.php:223
 msgid "Philippine peso"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:222
+#: src/Functions/MSFunctions.php:224
 msgid "Pakistani rupee"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:223
+#: src/Functions/MSFunctions.php:225
 msgid "Polish z&#x142;oty"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:224
+#: src/Functions/MSFunctions.php:226
 msgid "Transnistrian ruble"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:225
+#: src/Functions/MSFunctions.php:227
 msgid "Paraguayan guaran&iacute;"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:226
+#: src/Functions/MSFunctions.php:228
 msgid "Qatari riyal"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:227
+#: src/Functions/MSFunctions.php:229
 msgid "Romanian leu"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:228
+#: src/Functions/MSFunctions.php:230
 msgid "Serbian dinar"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:229
+#: src/Functions/MSFunctions.php:231
 msgid "Russian ruble"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:230
+#: src/Functions/MSFunctions.php:232
 msgid "Rwandan franc"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:231
+#: src/Functions/MSFunctions.php:233
 msgid "Saudi riyal"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:232
+#: src/Functions/MSFunctions.php:234
 msgid "Solomon Islands dollar"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:233
+#: src/Functions/MSFunctions.php:235
 msgid "Seychellois rupee"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:234
+#: src/Functions/MSFunctions.php:236
 msgid "Sudanese pound"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:235
+#: src/Functions/MSFunctions.php:237
 msgid "Swedish krona"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:236
+#: src/Functions/MSFunctions.php:238
 msgid "Singapore dollar"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:237
+#: src/Functions/MSFunctions.php:239
 msgid "Saint Helena pound"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:238
+#: src/Functions/MSFunctions.php:240
 msgid "Sierra Leonean leone"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:239
+#: src/Functions/MSFunctions.php:241
 msgid "Somali shilling"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:240
+#: src/Functions/MSFunctions.php:242
 msgid "Surinamese dollar"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:241
+#: src/Functions/MSFunctions.php:243
 msgid "South Sudanese pound"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:242
+#: src/Functions/MSFunctions.php:244
 msgid "S&atilde;o Tom&eacute; and Pr&iacute;ncipe dobra"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:243
+#: src/Functions/MSFunctions.php:245
 msgid "Syrian pound"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:244
+#: src/Functions/MSFunctions.php:246
 msgid "Swazi lilangeni"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:245
+#: src/Functions/MSFunctions.php:247
 msgid "Thai baht"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:246
+#: src/Functions/MSFunctions.php:248
 msgid "Tajikistani somoni"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:247
+#: src/Functions/MSFunctions.php:249
 msgid "Turkmenistan manat"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:248
+#: src/Functions/MSFunctions.php:250
 msgid "Tunisian dinar"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:249
+#: src/Functions/MSFunctions.php:251
 msgid "Tongan pa&#x2bb;anga"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:250
+#: src/Functions/MSFunctions.php:252
 msgid "Turkish lira"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:251
+#: src/Functions/MSFunctions.php:253
 msgid "Trinidad and Tobago dollar"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:252
+#: src/Functions/MSFunctions.php:254
 msgid "New Taiwan dollar"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:253
+#: src/Functions/MSFunctions.php:255
 msgid "Tanzanian shilling"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:254
+#: src/Functions/MSFunctions.php:256
 msgid "Ukrainian hryvnia"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:255
+#: src/Functions/MSFunctions.php:257
 msgid "Ugandan shilling"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:256
+#: src/Functions/MSFunctions.php:258
 msgid "Uruguayan peso"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:257
+#: src/Functions/MSFunctions.php:259
 msgid "Uzbekistani som"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:258
+#: src/Functions/MSFunctions.php:260
 msgid "Venezuelan bol&iacute;var"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:259
+#: src/Functions/MSFunctions.php:261
 msgid "Bol&iacute;var soberano"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:260
+#: src/Functions/MSFunctions.php:262
 msgid "Vietnamese &#x111;&#x1ed3;ng"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:261
+#: src/Functions/MSFunctions.php:263
 msgid "Vanuatu vatu"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:262
+#: src/Functions/MSFunctions.php:264
 msgid "Samoan t&#x101;l&#x101;"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:263
+#: src/Functions/MSFunctions.php:265
 msgid "Central African CFA franc"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:264
+#: src/Functions/MSFunctions.php:266
 msgid "East Caribbean dollar"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:265
+#: src/Functions/MSFunctions.php:267
 msgid "West African CFA franc"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:266
+#: src/Functions/MSFunctions.php:268
 msgid "CFP franc"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:267
+#: src/Functions/MSFunctions.php:269
 msgid "Yemeni rial"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:268
+#: src/Functions/MSFunctions.php:270
 msgid "South African rand"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:269
+#: src/Functions/MSFunctions.php:271
 msgid "Zambian kwacha"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:885
+#: src/Functions/MSFunctions.php:887
 msgid "Unable to create customer. Please try again"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:912
+#: src/Functions/MSFunctions.php:914
 msgid "Customer already has an active subscription for %s."
 msgstr ""
 
-#: src/Functions/MSFunctions.php:939
+#: src/Functions/MSFunctions.php:941
 msgid "Unable to add new order. Please try again"
 msgstr ""
 
-#: src/Functions/MSFunctions.php:967
+#: src/Functions/MSFunctions.php:969
 msgid "Unable to add new subscription. Please try again"
 msgstr ""
 

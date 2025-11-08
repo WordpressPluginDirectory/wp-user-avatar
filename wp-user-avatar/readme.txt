@@ -5,7 +5,7 @@ Tags: membership, ecommerce, user registration, user profile, memberships
 Requires at least: 6.0
 Requires PHP: 7.4
 Tested up to: 6.8
-Stable tag: 4.16.6
+Stable tag: 4.16.7
 License: GPLv2 or later
 
 Setup paid membership, accept payment, sell subscription & digital product, paywall, create login & registration form, user profile & member directory
@@ -190,6 +190,10 @@ Any file type can be sold using ProfilePress ecommerce and membership plugin, in
 11. Content Protection
 
 == Changelog ==
+
+= Paid Membership, Ecommerce & User Registration 4.16.7 =
+* Fixed bug where label is shown for empty data in member directory.
+* Added user roles as classes to member directory item wrapper.
 
 = Paid Membership, Ecommerce & User Registration 4.16.6 =
 * Pro: [FluentCommunity addon](https://profilepress.com/addons/fluentcommunity/?ref=changelog).

@@ -160,10 +160,16 @@ class WebhookHelpers
     public static function delete($endpoint_id, $without_persist = false)
     {
         if ( ! empty($endpoint_id)) {
-            $endpoint = APIClass::stripeClient()->webhookEndpoints->delete($endpoint_id);
 
-            if ( ! $without_persist) {
-                self::persist($endpoint, true);
+            try {
+
+                $endpoint = APIClass::stripeClient()->webhookEndpoints->delete($endpoint_id);
+
+                if ( ! $without_persist) {
+                    self::persist($endpoint, true);
+                }
+
+            } catch (\Exception $e) {
             }
         }
     }

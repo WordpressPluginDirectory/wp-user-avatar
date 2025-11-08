@@ -164,9 +164,11 @@ class DefaultTemplate extends AbstractMemberDirectoryTheme
                 $display_name = do_shortcode('[profile-display-name]', true);
 
                 $social_profile_icons = $this->social_profile_icons();
+
+                $user_roles_class = implode(' ', (array)$user->roles);
                 ?>
 
-                <div class="ppmd-member-wrap">
+                <div class="ppmd-member-wrap <?php echo $user_roles_class; ?>">
                     <?php if ($cover_image_enabled) : ?>
                         <div class="ppmd-member-cover">
                             <div class="ppress-md-member-cover-e">

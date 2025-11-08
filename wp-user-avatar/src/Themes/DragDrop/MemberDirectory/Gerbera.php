@@ -90,9 +90,11 @@ class Gerbera extends AbstractMemberDirectoryTheme
 
             // important we parse immediately because FrontendProfileBuilder resets for every user.
             $display_name = do_shortcode('[profile-display-name]', true);
+
+            $user_roles_class = implode(' ', (array) $user->roles);
             ?>
 
-            <div class="pppress_md_gerbera_members-item">
+            <div class="pppress_md_gerbera_members-item <?php echo $user_roles_class; ?>">
 
                 <?php if ($profile_picture_enabled) : ?>
                     <div class="pppress_md_gerbera_members_avatar">
