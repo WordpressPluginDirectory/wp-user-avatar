@@ -13,6 +13,8 @@ class CheckoutSessionAsyncPaymentFailed implements WebhookHandlerInterface
 
         $order = OrderFactory::fromOrderKey($event_data['client_reference_id']);
 
-        $order->fail_order();
+        if ($order->exists()) {
+            $order->fail_order();
+        }
     }
 }

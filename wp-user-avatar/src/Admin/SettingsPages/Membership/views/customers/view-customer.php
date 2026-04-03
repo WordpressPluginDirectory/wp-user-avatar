@@ -57,11 +57,13 @@ add_action('add_meta_boxes', function () use ($customer_data) {
         'ppress-membership-customer-private-note',
         __('Private Note', 'wp-user-avatar'),
         function () use ($customer_data) {
+            $note = apply_filters('ppress_admin_customer_private_note', $customer_data->private_note, $customer_data);
             printf(
                 '<textarea name="private_note" style="%s">%s</textarea>',
                 'min-height:100px;width:100% !important;max-width:100% !important;',
-                sanitize_textarea_field($customer_data->private_note)
+                sanitize_textarea_field($note)
             );
+            do_action('ppress_admin_customer_after_private_note', $customer_data);
         },
         'ppmembershipcustomer',
         'sidebar'

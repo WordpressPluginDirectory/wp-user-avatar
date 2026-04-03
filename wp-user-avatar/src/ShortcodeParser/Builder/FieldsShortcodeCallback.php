@@ -804,7 +804,7 @@ class FieldsShortcodeCallback
                     );
                 }
 
-                $db_data = isset($atts['value']) ? $atts['value'] : (isset($this->current_user->$key) ? $this->current_user->$key : '');
+                $db_data = $atts['value'] ?? (isset($this->current_user->$key) ? $this->current_user->$key : '');
 
                 if ($this->form_type == FormRepository::EDIT_PROFILE_TYPE) {
                     $selected = '';
@@ -1041,14 +1041,12 @@ class FieldsShortcodeCallback
 
         $type = ! empty($atts['type']) ? $atts['type'] : $type;
 
-        if (empty($type)) {
-            $type = 'text';
-        }
+        if (empty($type)) $type = 'text';
 
         $html = esc_html__('custom field not defined', 'wp-user-avatar');
 
         if ($type == 'select') {
-            $atts['options']     = isset($atts['options']) ? $atts['options'] : PROFILEPRESS_sql::get_field_option_values($key);
+            $atts['options']     = $atts['options'] ?? PROFILEPRESS_sql::get_field_option_values($key);
             $atts['is_multiple'] = ppress_is_select_field_multi_selectable($key) ? '1' : '';
             $html                = $this->select_dropdown_field($atts);
         }

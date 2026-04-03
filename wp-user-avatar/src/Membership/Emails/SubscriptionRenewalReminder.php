@@ -34,7 +34,8 @@ class SubscriptionRenewalReminder extends AbstractMembershipEmail
             'limit'       => 0,
             'date_column' => 'expiration_date',
             'start_date'  => $subDate->startOfDay()->utc()->toDateTimeString(),
-            'end_date'    => $subDate->endOfDay()->utc()->toDateTimeString()
+            'end_date'    => $subDate->endOfDay()->utc()->toDateTimeString(),
+            'profile_id' => 'NOT_EMPTY'
         ]);
 
         if ( ! is_array($subscriptions) || empty($subscriptions)) return;

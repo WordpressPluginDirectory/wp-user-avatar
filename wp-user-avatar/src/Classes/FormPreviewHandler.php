@@ -11,8 +11,26 @@ class FormPreviewHandler
     {
         if ( ! isset($_GET['pp_preview_form'], $_GET['type'])) return;
 
+        // Restrict preview to administrators.
+        if ( ! is_user_logged_in() || ! current_user_can('manage_options')) return;
+
         $this->_form_id   = absint($_GET['pp_preview_form']);
-        $this->_form_type = sanitize_text_field($_GET['type']);
+        $this->_form_type = strtolower(sanitize_text_field($_GET['type']));
+
+        $allowed_types = [
+            FormRepository::LOGIN_TYPE,
+            FormRepository::REGISTRATION_TYPE,
+            FormRepository::PASSWORD_RESET_TYPE,
+            FormRepository::EDIT_PROFILE_TYPE,
+            FormRepository::MELANGE_TYPE,
+            FormRepository::USER_PROFILE_TYPE,
+            FormRepository::MEMBERS_DIRECTORY_TYPE,
+        ];
+
+        if ( ! in_array($this->_form_type, $allowed_types, true)) return;
+
+        // Ensure the form ID exists for the specified type.
+        if ( ! FormRepository::form_id_exist($this->_form_id, $this->_form_type)) return;
 
         add_action('pre_get_posts', array($this, 'pre_get_posts'));
 
@@ -66,7 +84,7 @@ class FormPreviewHandler
      */
     function the_content()
     {
-        if ( ! is_user_logged_in()) return esc_html__('You must be logged in to preview a form.', 'wp-user-avatar');
+        if ( ! function_exists('is_user_logged_in') || ! is_user_logged_in()) return esc_html__('You must be logged in to preview a form.', 'wp-user-avatar');
 
         return do_shortcode(sprintf("[profilepress-%s id='%d']", $this->_form_type, $this->_form_id));
     }

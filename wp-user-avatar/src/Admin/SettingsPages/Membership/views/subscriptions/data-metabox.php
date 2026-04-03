@@ -71,7 +71,7 @@ if ( ! empty($payment_method_string)) {
                 <p class="mb-form-field sub_terms">
                     <?php printf(
                         '<strong>%s:</strong> <a href="%s">#%s</a>',
-                        __('Upgraded from', 'wp-user-avatar'),
+                        __('Changed from', 'wp-user-avatar'),
                         SubscriptionWPListTable::view_edit_subscription_url($upgraded_from),
                         $upgraded_from
                     ); ?>
@@ -82,7 +82,7 @@ if ( ! empty($payment_method_string)) {
                 <p class="mb-form-field sub_terms">
                     <?php printf(
                         '<strong>%s:</strong> <a href="%s">#%s</a>',
-                        __('Upgraded to', 'wp-user-avatar'),
+                        __('Changed to', 'wp-user-avatar'),
                         SubscriptionWPListTable::view_edit_subscription_url($upgraded_to),
                         $upgraded_to
                     ); ?>

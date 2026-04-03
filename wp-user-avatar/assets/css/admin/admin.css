@@ -400,6 +400,10 @@
     margin-right: 5px;
 }
 
+.pp-settings-wrap h2.nav-tab-wrapper .nav-tab .dashicons {
+    display: none;
+}
+
 .ppview .pp-settings-wrap h2.nav-tab-wrapper {
     flex: 1;
     border-bottom: none;
@@ -424,6 +428,7 @@
     border-right: 1px solid #c8d7e1;
     width: 99%;
     color: #2e4453;
+    border-left: 4px solid #046BD2;
 }
 
 .ppview .pp-settings-wrap .metabox-holder {
@@ -511,7 +516,7 @@
 #pp-sub-bar .pp-new-toolbar ul li a:hover,
 #pp-sub-bar .pp-new-toolbar ul li a.pp-type-active {
     color: #fff;
-    background: #007cba;
+    background: var(--wp-admin-theme-color, #007cba);
 }
 
 .pp-add-new-form-wrapper .pp-optin-clear, .pp-add-new-form-wrapper .pp-template-clear {
@@ -1038,8 +1043,12 @@
     width: 80% !important;
 }
 
+.ppressWP7higher .pp_edit_form #titlediv .pp-form-save-changes {
+    margin: 0 !important;
+}
+
 #titlewrap input.ppSCB-save-btn {
-    margin: 0px 10px 5px;
+    margin: 0 10px 5px;
     vertical-align: top;
     height: 35px;
 }
@@ -1298,6 +1307,10 @@ textarea.wp-editor-area {
 
 .ppress_settings_data .pp-email-notifications .pp-email-configure span {
     line-height: 24px;
+}
+
+.ppressWP7higher .ppress_settings_data .pp-email-notifications .pp-email-configure span {
+    line-height: 1.9;
 }
 
 .ppress_settings_data .pp-email-notifications .column-configure {
@@ -1740,7 +1753,7 @@ textarea.wp-editor-area {
 }
 
 .ppress-extensions-items-wrap .ppress-extension-card-install-activate input[type=checkbox]:checked + .ppress-extension-use-switch {
-    background-color: #007cba;
+    background-color: var(--wp-admin-theme-color, #007cba);
 }
 
 .ppress-extensions-items-wrap .ppress-extension-card-install-activate input[type=checkbox] {
@@ -1798,7 +1811,7 @@ textarea.wp-editor-area {
     margin-top: 10px;
     padding: 20px;
     background: #fff;
-    border-left: 3px solid #007cba;
+    border-left: 3px solid var(--wp-admin-theme-color, #007cba);
     line-height: 1.5;
     font-size: 14px;
 }
@@ -1834,7 +1847,7 @@ textarea.wp-editor-area {
 
 .ppress-extensions-upsell-wrap .ppress-extensions-upsell-highlight {
     font-weight: bold;
-    color: #007cba;
+    color: var(--wp-admin-theme-color, #007cba);
 }
 
 /* new admin pages header */
@@ -2003,7 +2016,7 @@ textarea.wp-editor-area {
 }
 
 .ppview .pp-alert-notice-info {
-    border-left-color: #72aee6;
+    border-left-color: var(--wp-admin-theme-color, #72aee6);
 }
 
 .ppview .pp-alert-notice p,
@@ -2301,6 +2314,11 @@ textarea.wp-editor-area {
     margin-bottom: 0
 }
 
+.ppressWP7higher #ppress-filters .button-secondary {
+    line-height: 2.30769231;
+    min-height: auto;
+}
+
 #ppress-filters .search-form {
     margin: 0
 }
@@ -2385,6 +2403,10 @@ textarea.wp-editor-area {
     margin-left: -1px;
     border-top-left-radius: 0;
     border-bottom-left-radius: 0
+}
+
+.ppressWP7higher .ppress-from-to-wrapper input {
+    min-height: 32px;
 }
 
 .ppress-from-to-wrapper span#ppress-end-date-wrap {
@@ -2873,4 +2895,9 @@ textarea.wp-editor-area {
 
 .ppress-admin .wp-list-table td .dashicons-admin-page {
     padding: 5px 0;
+}
+
+.ppressWP7higher.ppress-admin .wp-list-table td .dashicons-admin-page {
+    padding: 0;
+    line-height: normal;
 }

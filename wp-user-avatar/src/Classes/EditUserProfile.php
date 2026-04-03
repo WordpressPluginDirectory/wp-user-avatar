@@ -243,8 +243,8 @@ class EditUserProfile
         $uploads       = FileUploader::init();
         $upload_errors = '';
         foreach ($uploads as $field_key => $uploaded_filename_or_wp_error) {
-            if (is_wp_error($uploads[$field_key])) {
-                $upload_errors .= $uploads[$field_key]->get_error_message() . '<br/>';
+            if (is_wp_error($uploaded_filename_or_wp_error)) {
+                $upload_errors .= $uploaded_filename_or_wp_error->get_error_message() . '<br/>';
             }
         }
 
@@ -259,7 +259,7 @@ class EditUserProfile
         // fom overriding it.
         // we then merge the old and new uploads before saving the data to user meta table.
         foreach ($uploads as $key => $value) {
-            if (is_null($value) || empty($value)) {
+            if (empty($value)) {
                 unset($uploads[$key]);
             }
         }

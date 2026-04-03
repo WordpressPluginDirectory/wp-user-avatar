@@ -30,17 +30,17 @@ function ppress_update_settings($key, $value)
 function ppress_woocommerce_billing_fields()
 {
     return array(
-        'billing_first_name',
-        'billing_last_name',
-        'billing_company',
-        'billing_address_1',
-        'billing_address_2',
-        'billing_city',
-        'billing_postcode',
-        'billing_country',
-        'billing_state',
-        'billing_phone',
-        'billing_email'
+            'billing_first_name',
+            'billing_last_name',
+            'billing_company',
+            'billing_address_1',
+            'billing_address_2',
+            'billing_city',
+            'billing_postcode',
+            'billing_country',
+            'billing_state',
+            'billing_phone',
+            'billing_email'
     );
 }
 
@@ -52,15 +52,15 @@ function ppress_woocommerce_billing_fields()
 function ppress_woocommerce_shipping_fields()
 {
     return array(
-        'shipping_first_name',
-        'shipping_last_name',
-        'shipping_company',
-        'shipping_address_1',
-        'shipping_address_2',
-        'shipping_city',
-        'shipping_postcode',
-        'shipping_country',
-        'shipping_state'
+            'shipping_first_name',
+            'shipping_last_name',
+            'shipping_company',
+            'shipping_address_1',
+            'shipping_address_2',
+            'shipping_city',
+            'shipping_postcode',
+            'shipping_country',
+            'shipping_state'
     );
 }
 
@@ -296,9 +296,9 @@ function ppress_get_frontend_profile_url($username_or_id)
     }
 
     return apply_filters(
-        'ppress_frontend_profile_url',
-        home_url(ppress_get_profile_slug() . '/' . rawurlencode($username_or_id)),
-        $username_or_id
+            'ppress_frontend_profile_url',
+            home_url(ppress_get_profile_slug() . '/' . rawurlencode($username_or_id)),
+            $username_or_id
     );
 }
 
@@ -480,12 +480,12 @@ function ppress_site_title()
     $blog_name = get_option('blogname');
 
     return ! empty($blog_name) ? wp_specialchars_decode($blog_name, ENT_QUOTES) : str_replace(
-        array(
-            'http://',
-            'https://',
-        ),
-        '',
-        site_url()
+            array(
+                    'http://',
+                    'https://',
+            ),
+            '',
+            site_url()
     );
 }
 
@@ -498,17 +498,17 @@ function ppress_site_title()
 function ppress_is_admin_page()
 {
     $pp_builder_pages = [
-        PPRESS_SETTINGS_SLUG,
-        PPRESS_MEMBERSHIP_ORDERS_SETTINGS_SLUG,
-        PPRESS_MEMBERSHIP_SUBSCRIPTIONS_SETTINGS_SLUG,
-        PPRESS_MEMBERSHIP_PLANS_SETTINGS_SLUG,
-        PPRESS_MEMBERSHIP_CUSTOMERS_SETTINGS_SLUG,
-        PPRESS_FORMS_SETTINGS_SLUG,
-        PPRESS_MEMBER_DIRECTORIES_SLUG,
-        PPRESS_CONTENT_PROTECTION_SETTINGS_SLUG,
-        PPRESS_EXTENSIONS_SETTINGS_SLUG,
-        PPRESS_DASHBOARD_SETTINGS_SLUG,
-        MailOptin::SLUG
+            PPRESS_SETTINGS_SLUG,
+            PPRESS_MEMBERSHIP_ORDERS_SETTINGS_SLUG,
+            PPRESS_MEMBERSHIP_SUBSCRIPTIONS_SETTINGS_SLUG,
+            PPRESS_MEMBERSHIP_PLANS_SETTINGS_SLUG,
+            PPRESS_MEMBERSHIP_CUSTOMERS_SETTINGS_SLUG,
+            PPRESS_FORMS_SETTINGS_SLUG,
+            PPRESS_MEMBER_DIRECTORIES_SLUG,
+            PPRESS_CONTENT_PROTECTION_SETTINGS_SLUG,
+            PPRESS_EXTENSIONS_SETTINGS_SLUG,
+            PPRESS_DASHBOARD_SETTINGS_SLUG,
+            MailOptin::SLUG
     ];
 
     return (isset($_GET['page']) && in_array($_GET['page'], $pp_builder_pages)) ||
@@ -577,19 +577,19 @@ function ppress_other_field_atts($atts)
     if ( ! is_array($atts)) return $atts;
 
     $official_atts = array(
-        'name',
-        'class',
-        'id',
-        'value',
-        'title',
-        'required',
-        'placeholder',
-        'key',
-        'field_key',
-        'limit',
-        'options',
-        'checkbox_text',
-        'processing_label'
+            'name',
+            'class',
+            'id',
+            'value',
+            'title',
+            'required',
+            'placeholder',
+            'key',
+            'field_key',
+            'limit',
+            'options',
+            'checkbox_text',
+            'processing_label'
     );
 
     $other_atts = array();
@@ -648,11 +648,11 @@ function ppress_get_do_password_reset_url($user_login, $key)
     if (apply_filters('ppress_front_end_do_password_reset', true) && ! empty($page_id)) {
 
         $url = add_query_arg(
-            array(
-                'key'   => $key,
-                'login' => rawurlencode($user_login)
-            ),
-            ppress_password_reset_url()
+                array(
+                        'key'   => $key,
+                        'login' => rawurlencode($user_login)
+                ),
+                ppress_password_reset_url()
         );
     }
 
@@ -686,10 +686,10 @@ function ppress_is_slug_nice_name($slug)
     global $wpdb;
 
     $response = $wpdb->get_var(
-        $wpdb->prepare(
-            "SELECT user_login FROM {$wpdb->prefix}users WHERE user_nicename = '%s'",
-            array($slug)
-        )
+            $wpdb->prepare(
+                    "SELECT user_login FROM {$wpdb->prefix}users WHERE user_nicename = '%s'",
+                    array($slug)
+            )
     );
 
     // if response isn't null, the username/user_login is returned.
@@ -766,35 +766,36 @@ function ppress_wp_new_user_notification($user_id, $deprecated = null, $notify =
             $title = ppress_get_setting('new_user_admin_email_email_subject', sprintf(__('[%s] New User Registration'), $blogname), true);
 
             $search = array(
-                '{{username}}',
-                '{{user_email}}',
-                '{{site_title}}',
-                '{{first_name}}',
-                '{{last_name}}'
+                    '{{username}}',
+                    '{{user_email}}',
+                    '{{site_title}}',
+                    '{{first_name}}',
+                    '{{last_name}}'
             );
 
             $replace = array(
-                $user->user_login,
-                $user->user_email,
-                $blogname,
-                $user->first_name,
-                $user->last_name
+                    $user->user_login,
+                    $user->user_email,
+                    $blogname,
+                    $user->first_name,
+                    $user->last_name
             );
 
             $message = htmlspecialchars_decode(
-                apply_filters(
-                    'ppress_signup_admin_email_message',
-                    str_replace($search, $replace, $message),
-                    $user
-                )
+                    apply_filters(
+                            'ppress_signup_admin_email_message',
+                            str_replace($search, $replace, $message),
+                            $user
+                    )
             );
 
             $title = apply_filters(
-                'ppress_signup_admin_email_subject',
-                str_replace($search, $replace, $title),
-                $user
+                    'ppress_signup_admin_email_subject',
+                    str_replace($search, $replace, $title),
+                    $user
             );
 
+            $title   = ppress_custom_profile_field_search_replace($title, $user);
             $message = ppress_custom_profile_field_search_replace($message, $user);
 
             $admin_email = apply_filters('ppress_signup_notification_admin_email', ppress_get_admin_notification_emails());
@@ -834,11 +835,11 @@ function ppress_wp_new_user_notification($user_id, $deprecated = null, $notify =
     $message .= wp_login_url() . "\r\n";
 
     $wp_new_user_notification_email = array(
-        'to'      => $user->user_email,
+            'to'      => $user->user_email,
         /* translators: Login details notification email subject. %s: Site title. */
-        'subject' => __('[%s] Login Details'),
-        'message' => $message,
-        'headers' => '',
+            'subject' => __('[%s] Login Details'),
+            'message' => $message,
+            'headers' => '',
     );
 
     /**
@@ -862,10 +863,10 @@ function ppress_wp_new_user_notification($user_id, $deprecated = null, $notify =
     $wp_new_user_notification_email = apply_filters('wp_new_user_notification_email', $wp_new_user_notification_email, $user, $blogname);
 
     wp_mail(
-        $wp_new_user_notification_email['to'],
-        wp_specialchars_decode(sprintf($wp_new_user_notification_email['subject'], $blogname)),
-        $wp_new_user_notification_email['message'],
-        $wp_new_user_notification_email['headers']
+            $wp_new_user_notification_email['to'],
+            wp_specialchars_decode(sprintf($wp_new_user_notification_email['subject'], $blogname)),
+            $wp_new_user_notification_email['message'],
+            $wp_new_user_notification_email['headers']
     );
 
     if ($switched_locale) {
@@ -1055,9 +1056,8 @@ function ppress_minify_css($buffer)
 {
     $buffer = preg_replace('!/\*[^*]*\*+([^/][^*]*\*+)*/!', '', $buffer);
     $buffer = str_replace(': ', ':', $buffer);
-    $buffer = str_replace(array("\r\n", "\r", "\n", "\t", '  ', '    ', '    '), '', $buffer);
 
-    return $buffer;
+    return str_replace(array("\r\n", "\r", "\n", "\t", '  ', '    ', '    '), '', $buffer);
 }
 
 function ppress_minify_js($code)
@@ -1066,10 +1066,9 @@ function ppress_minify_js($code)
     $code = str_replace(array("\n", "\r"), '', $code);
     // replace all multiple spaces by one space
     $code = preg_replace('!\s+!', ' ', $code);
-    // replace some unneeded spaces, modify as needed
-    $code = str_replace(array(' {', ' }', '{ ', '; '), array('{', '}', '{', ';'), $code);
 
-    return $code;
+    // replace some unneeded spaces, modify as needed
+    return str_replace(array(' {', ' }', '{ ', '; '), array('{', '}', '{', ';'), $code);
 }
 
 function ppress_minify_html($html)
@@ -1091,13 +1090,13 @@ function ppress_get_ip_address()
     $user_ip = '127.0.0.1';
 
     $keys = array(
-        'HTTP_CLIENT_IP',
-        'HTTP_X_FORWARDED_FOR',
-        'HTTP_X_FORWARDED',
-        'HTTP_X_CLUSTER_CLIENT_IP',
-        'HTTP_FORWARDED_FOR',
-        'HTTP_FORWARDED',
-        'REMOTE_ADDR',
+            'HTTP_CLIENT_IP',
+            'HTTP_X_FORWARDED_FOR',
+            'HTTP_X_FORWARDED',
+            'HTTP_X_CLUSTER_CLIENT_IP',
+            'HTTP_FORWARDED_FOR',
+            'HTTP_FORWARDED',
+            'REMOTE_ADDR',
     );
 
     foreach ($keys as $key) {
@@ -1306,33 +1305,33 @@ function ppress_dnd_field_key_description()
 function ppress_reserved_field_keys()
 {
     return [
-        'ID',
-        'id',
-        'user_pass',
-        'user_login',
-        'user_nicename',
-        'user_url',
-        'user_email',
-        'display_name',
-        'nickname',
-        'first_name',
-        'last_name',
-        'description',
-        'rich_editing',
-        'syntax_highlighting',
-        'comment_shortcuts',
-        'admin_color',
-        'use_ssl',
-        'user_registered',
-        'user_activation_key',
-        'spam',
-        'show_admin_bar_front',
-        'role',
-        'locale',
-        'deleted',
-        'user_level',
-        'user_status',
-        'user_description'
+            'ID',
+            'id',
+            'user_pass',
+            'user_login',
+            'user_nicename',
+            'user_url',
+            'user_email',
+            'display_name',
+            'nickname',
+            'first_name',
+            'last_name',
+            'description',
+            'rich_editing',
+            'syntax_highlighting',
+            'comment_shortcuts',
+            'admin_color',
+            'use_ssl',
+            'user_registered',
+            'user_activation_key',
+            'spam',
+            'show_admin_bar_front',
+            'role',
+            'locale',
+            'deleted',
+            'user_level',
+            'user_status',
+            'user_description'
     ];
 }
 
@@ -1346,10 +1345,10 @@ function ppress_is_boolean($maybe_bool)
         $maybe_bool = strtolower($maybe_bool);
 
         $valid_boolean_values = array(
-            'false',
-            'true',
-            '0',
-            '1',
+                'false',
+                'true',
+                '0',
+                '1',
         );
 
         return in_array($maybe_bool, $valid_boolean_values, true);
@@ -1489,16 +1488,16 @@ function ppress_standard_fields_key_value_pair($remove_default = false)
     }
 
     return array_merge($fields, [
-        'first_last_names'  => esc_html__('First and Last Names', 'wp-user-avatar'),
-        'last_first_names'  => esc_html__('Last and First Names', 'wp-user-avatar'),
-        'username'          => esc_html__('Username', 'wp-user-avatar'),
-        'first-name'        => esc_html__('First Name', 'wp-user-avatar'),
-        'last-name'         => esc_html__('Last Name', 'wp-user-avatar'),
-        'nickname'          => esc_html__('Nickname', 'wp-user-avatar'),
-        'display-name'      => esc_html__('Display Name', 'wp-user-avatar'),
-        'email'             => esc_html__('Email Address', 'wp-user-avatar'),
-        'bio'               => esc_html__('Biography', 'wp-user-avatar'),
-        'registration_date' => esc_html__('Registration Date', 'wp-user-avatar'),
+            'first_last_names'  => esc_html__('First and Last Names', 'wp-user-avatar'),
+            'last_first_names'  => esc_html__('Last and First Names', 'wp-user-avatar'),
+            'username'          => esc_html__('Username', 'wp-user-avatar'),
+            'first-name'        => esc_html__('First Name', 'wp-user-avatar'),
+            'last-name'         => esc_html__('Last Name', 'wp-user-avatar'),
+            'nickname'          => esc_html__('Nickname', 'wp-user-avatar'),
+            'display-name'      => esc_html__('Display Name', 'wp-user-avatar'),
+            'email'             => esc_html__('Email Address', 'wp-user-avatar'),
+            'bio'               => esc_html__('Biography', 'wp-user-avatar'),
+            'registration_date' => esc_html__('Registration Date', 'wp-user-avatar'),
     ]);
 }
 
@@ -1565,32 +1564,32 @@ function ppress_is_my_account_page()
 function ppress_social_network_fields()
 {
     return apply_filters('ppress_core_contact_info_fields', [
-        Base::cif_facebook  => 'Facebook',
-        Base::cif_twitter   => 'Twitter',
-        Base::cif_linkedin  => 'LinkedIn',
-        Base::cif_vk        => 'VK',
-        Base::cif_youtube   => 'YouTube',
-        Base::cif_instagram => 'Instagram',
-        Base::cif_github    => 'GitHub',
-        Base::cif_pinterest => 'Pinterest',
-        Base::cif_bluesky   => 'Bluesky',
-        Base::cif_threads   => 'Threads',
+            Base::cif_facebook  => 'Facebook',
+            Base::cif_twitter   => 'Twitter',
+            Base::cif_linkedin  => 'LinkedIn',
+            Base::cif_vk        => 'VK',
+            Base::cif_youtube   => 'YouTube',
+            Base::cif_instagram => 'Instagram',
+            Base::cif_github    => 'GitHub',
+            Base::cif_pinterest => 'Pinterest',
+            Base::cif_bluesky   => 'Bluesky',
+            Base::cif_threads   => 'Threads',
     ]);
 }
 
 function ppress_social_login_networks()
 {
     return apply_filters('ppress_social_login_networks', [
-        'facebook'     => 'Facebook',
-        'twitter'      => 'X/Twitter',
-        'google'       => 'Google',
-        'linkedin'     => 'LinkedIn',
-        'microsoft'    => 'Microsoft',
-        'yahoo'        => 'Yahoo',
-        'amazon'       => 'Amazon',
-        'github'       => 'GitHub',
-        'wordpresscom' => 'WordPress.com',
-        'vk'           => 'VK.com'
+            'facebook'     => 'Facebook',
+            'twitter'      => 'X/Twitter',
+            'google'       => 'Google',
+            'linkedin'     => 'LinkedIn',
+            'microsoft'    => 'Microsoft',
+            'yahoo'        => 'Yahoo',
+            'amazon'       => 'Amazon',
+            'github'       => 'GitHub',
+            'wordpresscom' => 'WordPress.com',
+            'vk'           => 'VK.com'
     ]);
 }
 
@@ -1701,6 +1700,19 @@ function ppress_clean($var, $callback = 'sanitize_textarea_field')
     } else {
         return is_scalar($var) ? call_user_func($callback, $var) : $var;
     }
+}
+
+/**
+ * Stripe shortcode tag and sanitize data
+ *
+ * @param $var
+ * @param $callback
+ *
+ * @return void
+ */
+function ppress_strip_shortcodes_clean($var)
+{
+    return ppress_clean(ppress_clean($var), 'strip_shortcodes');
 }
 
 /**

@@ -581,7 +581,7 @@ abstract class AbstractMemberDirectoryTheme extends AbstractTheme
 
     protected function search_filter_sort_structure()
     {
-        $is_filters_expanded = false;
+         $is_filters_expanded = apply_filters('ppressmd_member_directory_filters_expanded', false, $this->form_id, $this);
 
         $query_params = $this->search_filter_query_params();
 

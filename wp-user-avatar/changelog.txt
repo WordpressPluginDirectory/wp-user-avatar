@@ -1,5 +1,42 @@
 ﻿== Changelog ==
 
+= 4.16.13 =
+* Improved admin UI for WP7
+* Fixed bug where users can upgrade/downgrade to a plan not authorized for them.
+* Fixed bug where subscription renewal email is sent when autorenewal is disabled.
+* Ensure expiration email is sent when active/trialling subscriptions are not auto-renewable.
+* Added support for specifying subscription status in content protection shortcode
+* Added ppress_restriction_shortcode_rule_latest_only filter.
+* Added filter for overriding Stripe billing intervals.
+* Added a filter to allow per-field filename customization.
+* Added filter for adding custom columns to the subscriptions list table.
+* Added action hook and filter for customer details metaboxes.
+
+= 4.16.12 =
+* Fixed issue with plan upgrade by wrong user.
+* Fixed bug where empty subscription records could be created.
+
+= 4.16.11 =
+* Added filter ppressmd_member_directory_filters_expanded.
+* Fixed a security issue where a user could cancel another user subscription.
+
+= 4.16.10 =
+* Improvement: Cancel subscription in gateway before deletion.
+* Security Fix: Arbitrary Shortcode Execution via Checkout Billing Fields.
+
+= 4.16.9 =
+* Added billing address data to customer export.
+* Added ppress_is_third_party_2fa_active filter.
+* Fixed a likely fatal error on form preview.
+* Fixed bug where account info data got lost on group checkout refresh.
+* Fixed bug where checkout overrides previously uploaded files.
+* Fixed bug where download link requiring logged in users worked for other logged in users.
+* Add custom field placeholder support to admin new user email notification.
+
+= 4.16.8 =
+* Fixed security issue with arbitrary shortcode execution on form preview.
+* Fixed couple of PHP notices.
+
 = 4.16.7 =
 * Fixed bug where label is shown for empty data in member directory.
 * Added user roles as classes to member directory item wrapper.

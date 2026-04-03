@@ -13,7 +13,6 @@ use ProfilePress\Core\Membership\Models\Order\OrderFactory;
 use ProfilePress\Core\Membership\Models\Order\OrderStatus;
 use ProfilePress\Core\Membership\Models\Order\OrderType;
 use ProfilePress\Core\Membership\Models\Plan\PlanFactory;
-use ProfilePress\Core\Membership\Models\Subscription\SubscriptionBillingFrequency;
 use ProfilePress\Core\Membership\Models\Subscription\SubscriptionEntity;
 use ProfilePress\Core\Membership\Models\Subscription\SubscriptionFactory;
 use ProfilePress\Core\Membership\Models\Subscription\SubscriptionStatus;

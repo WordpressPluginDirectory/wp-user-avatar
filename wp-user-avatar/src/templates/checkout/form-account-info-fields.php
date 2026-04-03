@@ -2,6 +2,9 @@
 
 use ProfilePress\Core\Membership\CheckoutFields;
 
+
+echo '<div class="ppress-checkout_account_info-wrap">';
+
 foreach (CheckoutFields::account_info_fields() as $field_key => $field) {
 
     $skip_fields = CheckoutFields::logged_in_hidden_fields();
@@ -30,6 +33,7 @@ foreach (CheckoutFields::account_info_fields() as $field_key => $field) {
     echo CheckoutFields::render_field($field_key, $is_required);
     echo '</div>';
 }
+echo '</div>';
 
 
 if (is_user_logged_in()) {

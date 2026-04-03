@@ -13,13 +13,12 @@ class DownloadHandler
     }
 
     /**
-     * Used to process a signed URL for processing downloads
-     *
+     * //[0=> 'order ID', 1=> 'plan ID', 2 => 'file index']
      * @return array|false
      */
-    private function process_signed_download_url()
+    private function get_download_url_parts()
     {
-        $parts = parse_url(add_query_arg(array()));
+        $parts = parse_url(add_query_arg([]));
         wp_parse_str($parts['query'], $query_args);
         $url = add_query_arg($query_args, site_url());
 
@@ -27,10 +26,24 @@ class DownloadHandler
 
         if ( ! $valid_token) return false;
 
-        $order_parts = explode(':', rawurldecode($_GET['ppress_file']));
-        $order_id    = isset($order_parts[0]) ? (int)$order_parts[0] : null;
-        $plan_id     = isset($order_parts[1]) ? (int)$order_parts[1] : null;
-        $file_index  = isset($order_parts[2]) ? (int)$order_parts[2] : null;
+        //[0=> 'order ID', 1=> 'plan ID', 2 => 'file index']
+        return explode(':', rawurldecode($_GET['ppress_file']));
+    }
+
+    /**
+     * Used to process a signed URL for processing downloads
+     *
+     * @return array|false
+     */
+    private function process_signed_download_url()
+    {
+        $order_parts = $this->get_download_url_parts();
+
+        if ( ! $order_parts) return false;
+
+        $order_id   = isset($order_parts[0]) ? (int)$order_parts[0] : null;
+        $plan_id    = isset($order_parts[1]) ? (int)$order_parts[1] : null;
+        $file_index = isset($order_parts[2]) ? (int)$order_parts[2] : null;
 
         $downloads = ppress_get_plan($plan_id)->get_downloads();
 
@@ -310,19 +323,27 @@ class DownloadHandler
 
     public function process_download()
     {
-        if (empty($_GET['ppress_file']) || empty($_GET['ttl']) || empty($_GET['token'])) {
-            return;
-        }
+        if (empty($_GET['ppress_file']) || empty($_GET['ttl']) || empty($_GET['token'])) return;
 
-        if ('true' === ppress_get_file_downloads_setting('access_restriction') && ! is_user_logged_in()) {
-            wp_die(__('You must be logged in to download files.', 'wp-user-avatar') . ' <a href="' . esc_url(wp_login_url(ppress_get_current_url_query_string())) . '">' . __('Login', 'wp-user-avatar') . '</a>', __('Log in to Download Files', 'wp-user-avatar'), 403);
+        if ('true' === ppress_get_file_downloads_setting('access_restriction')) {
+            if ( ! is_user_logged_in()) {
+                wp_die(__('You must be logged in to download files.', 'wp-user-avatar') . ' <a href="' . esc_url(wp_login_url(ppress_get_current_url_query_string())) . '">' . __('Login', 'wp-user-avatar') . '</a>', __('Log in to Download Files', 'wp-user-avatar'), 403);
+            }
+
+            $order_parts = $this->get_download_url_parts();
+
+            $order = OrderFactory::fromId($order_parts[0]);
+
+            if ($order->get_customer()->get_user_id() !== get_current_user_id()) {
+                wp_die(__('You are not allowed to access this file', 'wp-user-avatar'), __('File download error', 'wp-user-avatar'), 403);
+            }
         }
 
         $args = $this->process_signed_download_url();
 
         if ( ! $args['has_access']) {
             $error_message = __('You do not have permission to download this file', 'wp-user-avatar');
-            wp_die(apply_filters('ppress_deny_download_message', $error_message, __('Order Verification Failed', 'wp-user-avatar')), __('Error', 'wp-user-avatar'), array('response' => 403));
+            wp_die(apply_filters('ppress_deny_download_message', $error_message, __('Order Verification Failed', 'wp-user-avatar')), __('Error', 'wp-user-avatar'), ['response' => 403]);
         }
 
         $method = $raw_method = ppress_get_file_downloads_setting('download_method', 'direct', true);
@@ -394,8 +415,7 @@ class DownloadHandler
 
         if (( ! isset($file_details['scheme']) || ! in_array($file_details['scheme'], $schemes)) && isset($file_details['path']) && file_exists($requested_file)) {
             /** This is an absolute path */
-            $direct    = true;
-            $file_path = $requested_file;
+            $direct = true;
         } elseif (defined('UPLOADS') && strpos($requested_file, UPLOADS) !== false) {
             /**
              * This is a local file given by URL so we need to figure out the path

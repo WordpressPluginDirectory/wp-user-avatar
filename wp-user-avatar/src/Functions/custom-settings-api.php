@@ -570,7 +570,7 @@ class Custom_Settings_Page_Api
     public function _text($db_options, $key, $args)
     {
         $key         =ppress_sanitize_key($key);
-        $label       = esc_attr($args['label']);
+        $label       = esc_attr($args['label'] ?? '');
         $defvalue    = sanitize_text_field($args['value'] ?? '');
         $description = $args['description'] ?? '';
         $tr_id       = isset($args['tr_id']) ? $args['tr_id'] : "{$key}_row";
@@ -652,7 +652,7 @@ class Custom_Settings_Page_Api
     public function _number($db_options, $key, $args)
     {
         $key         = esc_attr($key);
-        $label       = esc_attr($args['label']);
+        $label       = esc_attr($args['label'] ?? '');
         $defvalue    = sanitize_text_field($args['value'] ?? '');
         $tr_id       = isset($args['tr_id']) ? $args['tr_id'] : "{$key}_row";
         $description = $args['description'] ?? '';
@@ -687,7 +687,7 @@ class Custom_Settings_Page_Api
     public function _password($db_options, $key, $args)
     {
         $key         = esc_attr($key);
-        $label       = esc_attr($args['label']);
+        $label       = esc_attr($args['label'] ?? '');
         $defvalue    = sanitize_text_field($args['value'] ?? '');
         $tr_id       = isset($args['tr_id']) ? $args['tr_id'] : "{$key}_row";
         $disabled    = isset($args['disabled']) && $args['disabled'] === true ? 'disabled="disabled"' : '';
@@ -722,7 +722,7 @@ class Custom_Settings_Page_Api
     public function _hidden($db_options, $key, $args)
     {
         $key         = esc_attr($key);
-        $label       = esc_attr($args['label']);
+        $label       = esc_attr($args['label'] ?? '');
         $description = $args['description'] ?? '';
         $tr_id       = isset($args['tr_id']) ? $args['tr_id'] : "{$key}_row";
         $option_name = $this->option_name;
@@ -757,7 +757,7 @@ class Custom_Settings_Page_Api
     public function _textarea($db_options, $key, $args)
     {
         $key         = esc_attr($key);
-        $label       = esc_attr($args['label']);
+        $label       = esc_attr($args['label'] ?? '');
         $description = $args['description'] ?? '';
         $tr_id       = isset($args['tr_id']) ? $args['tr_id'] : "{$key}_row";
         $rows        = ! empty($args['rows']) ? $args['rows'] : 5;
@@ -796,7 +796,7 @@ class Custom_Settings_Page_Api
     public function _codemirror($db_options, $key, $args)
     {
         $key         = esc_attr($key);
-        $label       = esc_attr($args['label']);
+        $label       = esc_attr($args['label'] ?? '');
         $description = $args['description'] ?? '';
         $tr_id       = isset($args['tr_id']) ? $args['tr_id'] : "{$key}_row";
         $option_name = $this->option_name;
@@ -839,7 +839,7 @@ class Custom_Settings_Page_Api
         do_action('wp_cspa_media_button');
 
         $key         = esc_attr($key);
-        $label       = esc_attr($args['label']);
+        $label       = esc_attr($args['label'] ?? '');
         $description = $args['description'] ?? '';
         $tr_id       = isset($args['tr_id']) ? $args['tr_id'] : "{$key}_row";
         $option_name = $this->option_name;
@@ -875,7 +875,7 @@ class Custom_Settings_Page_Api
     public function _email_editor($db_options, $key, $args)
     {
         $key         = esc_attr($key);
-        $label       = esc_attr($args['label']);
+        $label       = esc_attr($args['label'] ?? '');
         $description = $args['description'] ?? '';
         $tr_id       = isset($args['tr_id']) ? $args['tr_id'] : "{$key}_row";
         $option_name = $this->option_name;
@@ -922,7 +922,7 @@ class Custom_Settings_Page_Api
     public function _select($db_options, $key, $args)
     {
         $key                  = esc_attr($key);
-        $label                = esc_attr($args['label']);
+        $label                = esc_attr($args['label'] ?? '');
         $description          = $args['description'] ?? '';
         $tr_id                = isset($args['tr_id']) ? $args['tr_id'] : "{$key}_row";
         $disabled             = isset($args['disabled']) && $args['disabled'] === true ? 'disabled="disabled"' : '';
@@ -989,7 +989,7 @@ class Custom_Settings_Page_Api
     public function _select2($db_options, $key, $args)
     {
         $key                  = esc_attr($key);
-        $label                = esc_attr($args['label']);
+        $label                = esc_attr($args['label'] ?? '');
         $description          = $args['description'] ?? '';
         $tr_id                = isset($args['tr_id']) ? $args['tr_id'] : "{$key}_row";
         $disabled             = isset($args['disabled']) && $args['disabled'] === true ? 'disabled="disabled"' : '';
@@ -1039,7 +1039,7 @@ class Custom_Settings_Page_Api
     public function _checkbox($db_options, $key, $args)
     {
         $key            = esc_attr($key);
-        $label          = esc_attr($args['label']);
+        $label          = esc_attr($args['label'] ?? '');
         $description    = $args['description'] ?? '';
         $tr_id          = isset($args['tr_id']) ? $args['tr_id'] : "{$key}_row";
         $checkbox_label = ! empty($args['checkbox_label']) ? sanitize_text_field($args['checkbox_label']) : esc_html__('Activate', 'wp-user-avatar');

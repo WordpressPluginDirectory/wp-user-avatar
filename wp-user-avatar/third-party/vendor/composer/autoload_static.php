@@ -15,12 +15,12 @@ class ComposerStaticInit8e1a004d4bdd56825e4d70be58246b69
     );
 
     public static $prefixLengthsPsr4 = array (
-        'S' => 
+        'S' =>
         array (
             'Symfony\\Polyfill\\Php80\\' => 23,
             'Symfony\\Polyfill\\Mbstring\\' => 26,
         ),
-        'P' => 
+        'P' =>
         array (
             'ProfilePressVendor\\Symfony\\Contracts\\Translation\\' => 49,
             'ProfilePressVendor\\Symfony\\Component\\Translation\\' => 49,
@@ -39,63 +39,63 @@ class ComposerStaticInit8e1a004d4bdd56825e4d70be58246b69
     );
 
     public static $prefixDirsPsr4 = array (
-        'Symfony\\Polyfill\\Php80\\' => 
+        'Symfony\\Polyfill\\Php80\\' =>
         array (
             0 => __DIR__ . '/..' . '/symfony/polyfill-php80',
         ),
-        'Symfony\\Polyfill\\Mbstring\\' => 
+        'Symfony\\Polyfill\\Mbstring\\' =>
         array (
             0 => __DIR__ . '/..' . '/symfony/polyfill-mbstring',
         ),
-        'ProfilePressVendor\\Symfony\\Contracts\\Translation\\' => 
+        'ProfilePressVendor\\Symfony\\Contracts\\Translation\\' =>
         array (
             0 => __DIR__ . '/..' . '/symfony/translation-contracts',
         ),
-        'ProfilePressVendor\\Symfony\\Component\\Translation\\' => 
+        'ProfilePressVendor\\Symfony\\Component\\Translation\\' =>
         array (
             0 => __DIR__ . '/..' . '/symfony/translation',
         ),
-        'ProfilePressVendor\\Symfony\\Component\\CssSelector\\' => 
+        'ProfilePressVendor\\Symfony\\Component\\CssSelector\\' =>
         array (
             0 => __DIR__ . '/..' . '/symfony/css-selector',
         ),
-        'ProfilePressVendor\\Stripe\\' => 
+        'ProfilePressVendor\\Stripe\\' =>
         array (
             0 => __DIR__ . '/..' . '/stripe/stripe-php/lib',
         ),
-        'ProfilePressVendor\\Sabberworm\\CSS\\' => 
+        'ProfilePressVendor\\Sabberworm\\CSS\\' =>
         array (
             0 => __DIR__ . '/..' . '/sabberworm/php-css-parser/src',
         ),
-        'ProfilePressVendor\\Psr\\Clock\\' => 
+        'ProfilePressVendor\\Psr\\Clock\\' =>
         array (
             0 => __DIR__ . '/..' . '/psr/clock/src',
         ),
-        'ProfilePressVendor\\ProfilePress\\Core\\' => 
+        'ProfilePressVendor\\ProfilePress\\Core\\' =>
         array (
             0 => __DIR__ . '/../..' . '/src',
         ),
-        'ProfilePressVendor\\Pelago\\Emogrifier\\' => 
+        'ProfilePressVendor\\Pelago\\Emogrifier\\' =>
         array (
             0 => __DIR__ . '/..' . '/pelago/emogrifier/src',
         ),
-        'ProfilePressVendor\\League\\Csv\\' => 
+        'ProfilePressVendor\\League\\Csv\\' =>
         array (
             0 => __DIR__ . '/..' . '/league/csv/src',
         ),
-        'ProfilePressVendor\\Carbon\\Doctrine\\' => 
+        'ProfilePressVendor\\Carbon\\Doctrine\\' =>
         array (
             0 => __DIR__ . '/..' . '/carbonphp/carbon-doctrine-types/src/Carbon/Doctrine',
         ),
-        'ProfilePressVendor\\Carbon\\' => 
+        'ProfilePressVendor\\Carbon\\' =>
         array (
             0 => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon',
         ),
-        'ProfilePressVendor\\Brick\\Math\\' => 
+        'ProfilePressVendor\\Brick\\Math\\' =>
         array (
             0 => __DIR__ . '/..' . '/brick/math/src',
         ),
-        'ProfilePressVendor\\Barryvdh\\Composer\\' => 
+        'ProfilePressVendor\\Barryvdh\\Composer\\' =>
         array (
             0 => __DIR__ . '/..' . '/barryvdh/composer-cleanup-plugin/src',
         ),

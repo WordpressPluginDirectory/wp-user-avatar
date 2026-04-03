@@ -86,7 +86,7 @@ class FileUploader
             return ! empty($value);
         });
 
-        if ( ! is_array($allowed_extensions) || empty($allowed_extensions)) $allowed_extensions = [];
+        if (empty($allowed_extensions)) $allowed_extensions = [];
 
         $filename = $file['name'];
 
@@ -100,7 +100,7 @@ class FileUploader
         $file_upload_dir = apply_filters('ppress_file_upload_dir', PPRESS_FILE_UPLOAD_DIR, $field_key);
 
         // ensure a safe filename
-        $file_name = preg_replace("/[^A-Z0-9._-]/i", "_", $filename);
+        $file_name = apply_filters('ppress_file_upload_filename', preg_replace("/[^A-Z0-9._-]/i", "_", $filename), $field_key, $file);
 
         // don't overwrite an existing file
         $i                = 0;

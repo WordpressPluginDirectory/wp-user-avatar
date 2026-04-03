@@ -220,6 +220,10 @@ abstract class FieldBase implements FieldInterface
 
     public function field_bar_tmpl()
     {
+        static $flag = null;
+
+        if(is_null($flag)) {
+        $flag = true;
         ?>
         <script type="text/html" id="tmpl-pp-form-builder-field-bar">
             <# var fieldBarTitle = typeof data.fieldBarTitle !== 'undefined' && data.fieldBarTitle != '' ? data.fieldBarTitle : data.fieldTitle; #>
@@ -241,5 +245,6 @@ abstract class FieldBase implements FieldInterface
             </div>
         </script>
         <?php
+        }
     }
 }

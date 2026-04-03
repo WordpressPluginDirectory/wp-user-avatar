@@ -58,7 +58,12 @@ class SubscriptionWPListTable extends \WP_List_Table
             $columns['renewal_date'] = esc_html__('Expiration Date', 'wp-user-avatar');
         }
 
-        return $columns;
+        /**
+         * Filter subscription table columns to allow custom columns to be added.
+         *
+         * @param array $columns Array of columns with column key => column label pairs.
+         */
+        return apply_filters('ppress_subscription_table_columns', $columns);
     }
 
     public function get_views()
@@ -174,6 +179,20 @@ class SubscriptionWPListTable extends \WP_List_Table
     public function column_status(SubscriptionEntity $subscription)
     {
         return self::get_subscription_status_badge($subscription->status);
+    }
+
+	/**
+    * Handle rendering of custom subscription table columns.
+    *
+    * Allows developers to add custom columns via the ppress_subscription_table_columns filter,
+    * and render them via the ppress_subscription_table_column_{column_name} filter.
+    *
+    * @param SubscriptionEntity $subscription The subscription entity.
+    * @param string $column_name The name of the column being rendered.
+    */
+    public function column_default($subscription, $column_name)
+    {
+        return apply_filters("ppress_subscription_table_column_{$column_name}", '', $subscription, $column_name);
     }
 
     public static function delete_subscription_url($subscription_id)

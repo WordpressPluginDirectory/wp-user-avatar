@@ -160,7 +160,7 @@ class CustomerEntity extends AbstractModel implements ModelInterface
             return $count === true ? 0 : [];
         }
 
-        $args['number']      = isset($args['number']) ? $args['number'] : 0;
+        $args['number']      = $args['number'] ?? 0;
         $args['customer_id'] = $this->id;
 
         return OrderRepository::init()->retrieveBy($args, $count);

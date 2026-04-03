@@ -46,15 +46,15 @@ class SettingsPage extends AbstractSettingsPage
         global $ppress_customer_page;
 
         $hook = $ppress_customer_page = add_submenu_page(
-            PPRESS_DASHBOARD_SETTINGS_SLUG,
-            $this->admin_page_title() . ' - ProfilePress',
-            esc_html__('Customers', 'wp-user-avatar'),
-            'manage_options',
-            PPRESS_MEMBERSHIP_CUSTOMERS_SETTINGS_SLUG,
-            array($this, 'admin_page_callback')
+                PPRESS_DASHBOARD_SETTINGS_SLUG,
+                $this->admin_page_title() . ' - ProfilePress',
+                esc_html__('Customers', 'wp-user-avatar'),
+                'manage_options',
+                PPRESS_MEMBERSHIP_CUSTOMERS_SETTINGS_SLUG,
+                [$this, 'admin_page_callback']
         );
 
-        add_action("load-$hook", array($this, 'add_options'));
+        add_action("load-$hook", [$this, 'add_options']);
 
         do_action('ppress_membership_customers_settings_page_register', $hook);
     }
@@ -89,7 +89,11 @@ class SettingsPage extends AbstractSettingsPage
 
         do_action('ppress_customer_updated', $customer_id);
 
-        wp_safe_redirect(add_query_arg(['ppress_customer_action' => 'view', 'id' => $customer_id, 'saved' => 'true'], PPRESS_MEMBERSHIP_CUSTOMERS_SETTINGS_PAGE));
+        wp_safe_redirect(add_query_arg([
+                'ppress_customer_action' => 'view',
+                'id'                     => $customer_id,
+                'saved'                  => 'true'
+        ], PPRESS_MEMBERSHIP_CUSTOMERS_SETTINGS_PAGE));
         exit;
     }
 
@@ -101,8 +105,8 @@ class SettingsPage extends AbstractSettingsPage
     {
         if ( ! isset($_POST['save_ppress_customers'])) return;
 
-        if ( ! current_user_can( 'create_users' ) ) {
-            wp_die( __( 'You do not have permission to perform this action.', 'wp-user-avatar' ), __( 'Error', 'wp-user-avatar' ), array( 'response' => 403 ) );
+        if ( ! current_user_can('create_users')) {
+            wp_die(__('You do not have permission to perform this action.', 'wp-user-avatar'), __('Error', 'wp-user-avatar'), array('response' => 403));
         }
 
         check_admin_referer('wp-csa-nonce', 'wp_csa_nonce');
@@ -129,11 +133,11 @@ class SettingsPage extends AbstractSettingsPage
             }
 
             $user_args = array(
-                'user_login' => sanitize_text_field($user_login),
-                'user_email' => sanitize_text_field($customer_email),
-                'user_pass'  => ! empty($_POST['pass1']) ? $_POST['pass1'] : wp_generate_password(24),
-                'first_name' => ! empty($customer_data['first_name']) ? sanitize_text_field($customer_data['first_name']) : '',
-                'last_name'  => ! empty($customer_data['last_name']) ? sanitize_text_field($customer_data['last_name']) : ''
+                    'user_login' => sanitize_text_field($user_login),
+                    'user_email' => sanitize_text_field($customer_email),
+                    'user_pass'  => ! empty($_POST['pass1']) ? $_POST['pass1'] : wp_generate_password(24),
+                    'first_name' => ! empty($customer_data['first_name']) ? sanitize_text_field($customer_data['first_name']) : '',
+                    'last_name'  => ! empty($customer_data['last_name']) ? sanitize_text_field($customer_data['last_name']) : ''
             );
 
             $user_args['display_name'] = trim($user_args['first_name'] . ' ' . $user_args['last_name']);
@@ -148,12 +152,11 @@ class SettingsPage extends AbstractSettingsPage
                 wp_die(__('Error creating customer account.', 'wp-user-avatar'), __('Error', 'wp-user-avatar'), array('response' => 500));
             }
 
-	    if ( ! empty($user_id)) {
-                // Send welcome email to the user
-                RegistrationAuth::send_welcome_email($user_id, $user_args['user_pass']);
-            }
+            // Send welcome email to the user
+            RegistrationAuth::send_welcome_email($user_id, $user_args['user_pass']);
 
             $user = get_userdata($user_id);
+
         } else {
 
             $user = get_user_by('id', $customer_user_id);
@@ -194,10 +197,10 @@ class SettingsPage extends AbstractSettingsPage
         $results['results'] = [];
 
         $users = get_users([
-            'search'         => '*' . $search . '*',
-            'search_columns' => ['user_email', 'user_login', 'user_nicename', 'display_name'],
-            'fields'         => ['ID', 'user_email', 'user_login'],
-            'number'         => 1000
+                'search'         => '*' . $search . '*',
+                'search_columns' => ['user_email', 'user_login', 'user_nicename', 'display_name'],
+                'fields'         => ['ID', 'user_email', 'user_login'],
+                'number'         => 1000
         ]);
 
         if (is_array($users) && ! empty($users)) {
@@ -205,8 +208,8 @@ class SettingsPage extends AbstractSettingsPage
             foreach ($users as $user) {
 
                 $results['results'][$user->ID] = array(
-                    'id'   => $user->ID,
-                    'text' => sprintf('%s (%s)', $user->user_login, $user->user_email),
+                        'id'   => $user->ID,
+                        'text' => sprintf('%s (%s)', $user->user_login, $user->user_email),
                 );
             }
         }
@@ -239,9 +242,9 @@ class SettingsPage extends AbstractSettingsPage
     public function add_options()
     {
         $args = [
-            'label'   => esc_html__('Customers', 'wp-user-avatar'),
-            'default' => 10,
-            'option'  => 'customers_per_page'
+                'label'   => esc_html__('Customers', 'wp-user-avatar'),
+                'default' => 10,
+                'option'  => 'customers_per_page'
         ];
 
         add_screen_option('per_page', $args);
@@ -289,40 +292,40 @@ class SettingsPage extends AbstractSettingsPage
         if (ppressGET_var('ppress_customer_action') == 'new') {
 
             $instance->main_content([
-                apply_filters('ppress_admin_new_customer_form_fields', [
-                    'account_type'  => [
-                        'label' => __('User Account', 'wp-user-avatar'),
-                        'type'  => 'custom_field_block',
-                        'data'  => self::user_account_type_settings()
-                    ],
-                    'search_user'   => [
-                        'label'      => __('Search User', 'wp-user-avatar'),
-                        'type'       => 'select',
-                        'options'    => [],
-                        'attributes' => ['class' => 'ppress-select2-field customer_wp_user']
-                    ],
-                    'first_name'    => [
-                        'label' => __('First Name', 'wp-user-avatar'),
-                        'type'  => 'text'
-                    ],
-                    'last_name'     => [
-                        'label' => __('Last Name', 'wp-user-avatar'),
-                        'type'  => 'text'
-                    ],
-                    'email'         => [
-                        'label' => __('Email Address', 'wp-user-avatar'),
-                        'type'  => 'text'
-                    ],
-                    'username'      => [
-                        'label' => __('Username', 'wp-user-avatar'),
-                        'type'  => 'text'
-                    ],
-                    'password'      => [
-                        'label' => __('Password', 'wp-user-avatar'),
-                        'type'  => 'custom_field_block',
-                        'data'  => self::password_field()
-                    ]
-                ])
+                    apply_filters('ppress_admin_new_customer_form_fields', [
+                            'account_type' => [
+                                    'label' => __('User Account', 'wp-user-avatar'),
+                                    'type'  => 'custom_field_block',
+                                    'data'  => self::user_account_type_settings()
+                            ],
+                            'search_user'  => [
+                                    'label'      => __('Search User', 'wp-user-avatar'),
+                                    'type'       => 'select',
+                                    'options'    => [],
+                                    'attributes' => ['class' => 'ppress-select2-field customer_wp_user']
+                            ],
+                            'first_name'   => [
+                                    'label' => __('First Name', 'wp-user-avatar'),
+                                    'type'  => 'text'
+                            ],
+                            'last_name'    => [
+                                    'label' => __('Last Name', 'wp-user-avatar'),
+                                    'type'  => 'text'
+                            ],
+                            'email'        => [
+                                    'label' => __('Email Address', 'wp-user-avatar'),
+                                    'type'  => 'text'
+                            ],
+                            'username'     => [
+                                    'label' => __('Username', 'wp-user-avatar'),
+                                    'type'  => 'text'
+                            ],
+                            'password'     => [
+                                    'label' => __('Password', 'wp-user-avatar'),
+                                    'type'  => 'custom_field_block',
+                                    'data'  => self::password_field()
+                            ]
+                    ])
             ]);
 
             $instance->remove_white_design();
@@ -340,13 +343,13 @@ class SettingsPage extends AbstractSettingsPage
     protected static function user_account_type_settings()
     {
         $html = sprintf(
-            '<label><input checked class="user-account-type" type="radio" name="user_account_type" value="new">%s</label>&nbsp;&nbsp;',
-            __('New Account', 'wp-user-avatar')
+                '<label><input checked class="user-account-type" type="radio" name="user_account_type" value="new">%s</label>&nbsp;&nbsp;',
+                __('New Account', 'wp-user-avatar')
         );
 
         $html .= sprintf(
-            '<label><input class="user-account-type" type="radio" name="user_account_type" value="existing">%s</label>&nbsp;&nbsp;',
-            __('Existing Account', 'wp-user-avatar')
+                '<label><input class="user-account-type" type="radio" name="user_account_type" value="existing">%s</label>&nbsp;&nbsp;',
+                __('Existing Account', 'wp-user-avatar')
         );
 
         return $html;

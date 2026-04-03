@@ -51,7 +51,7 @@ class CheckoutSessionAsyncPaymentSucceeded implements WebhookHandlerInterface
             $order->complete_order($transaction_id);
         }
 
-        if ( ! $subscription->is_active()) {
+        if ( $subscription->exists() && ! $subscription->is_active()) {
 
             if ($event_data['mode'] == 'subscription') {
 

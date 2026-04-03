@@ -609,7 +609,7 @@ class MyAccountTag extends FormProcessor
                             ?>
                             <a class="ppmyac-dashboard-item <?= $key ?><?= self::is_endpoint($key) ? ' isactive' : ''; ?>" href="<?= esc_url($href); ?>">
                                 <i class="ppmyac-icons">
-                                    <?= isset($tab['icon']) ? $tab['icon'] : 'settings'; ?>
+                                    <?= $tab['icon'] ?? 'settings'; ?>
                                 </i>
                                 <?= $tab['title'] ?>
                             </a>

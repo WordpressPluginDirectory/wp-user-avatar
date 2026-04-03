@@ -129,7 +129,7 @@ export default function () {
             // Save payment details to a temporary object
             let paymentDetails = {};
 
-            $('.ppress-checkout-form__payment_method :input').each(function () {
+            $('.ppress-checkout-form__payment_method :input, .ppress-checkout_account_info-wrap :input').each(function () {
 
                 let ID = $(this).attr('id');
 
@@ -154,7 +154,7 @@ export default function () {
 
             // Fill in the payment details if possible without overwriting data if set.
             if (!$.isEmptyObject(paymentDetails)) {
-                $('.ppress-checkout-form__payment_method :input').each(function () {
+                $('.ppress-checkout-form__payment_method :input, .ppress-checkout_account_info-wrap :input').each(function () {
                     let ID = $(this).attr('id');
                     if (ID) {
                         if ($.inArray($(this).attr('type'), ['checkbox', 'radio']) !== -1) {

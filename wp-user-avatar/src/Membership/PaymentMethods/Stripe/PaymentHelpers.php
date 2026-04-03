@@ -131,6 +131,9 @@ class PaymentHelpers
                 break;
         }
 
+        $frequency = apply_filters('ppress_stripe_billing_frequency_interval', $frequency, $subscription->billing_frequency, $subscription);
+        $period    = apply_filters('ppress_stripe_billing_period_interval_count', $period, $subscription->billing_frequency, $subscription);
+
         $stripe_product_id = 'ppress_prod_' . ppress_md5($subscription->plan_id);
 
         $plan = PlanFactory::fromId($subscription->plan_id);

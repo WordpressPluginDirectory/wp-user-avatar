@@ -237,8 +237,14 @@ class SubscriptionRepository extends BaseRepository
         }
 
         if ( ! empty($args['profile_id'])) {
-            $sql           .= " AND profile_id = %s";
-            $replacement[] = sanitize_text_field($args['profile_id']);
+            if ($args['profile_id'] === 'NOT_EMPTY') {
+                $sql .= " AND profile_id IS NOT NULL AND profile_id <> ''";
+            } elseif ($args['profile_id'] === 'EMPTY') {
+                $sql .= " AND (profile_id IS NULL OR profile_id = '')";
+            } else {
+                $sql           .= " AND profile_id = %s";
+                $replacement[] = sanitize_text_field($args['profile_id']);
+            }
         }
 
         if (

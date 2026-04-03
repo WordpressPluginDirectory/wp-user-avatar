@@ -201,7 +201,7 @@ class RegisterScripts
         );
 
         wp_localize_script('ppress-form-builder', 'pp_form_builder', [
-            'confirm_delete' => esc_html__('Are you sure?', 'wp-user-avatar')
+            'confirm_delete' => apply_filters('ppress_confirm_delete_message', esc_html__('Are you sure?', 'wp-user-avatar'))
         ]);
 
         wp_enqueue_script('ppress-jquery-blockui', PPRESS_ASSETS_URL . '/js/jquery.blockUI.js', array('jquery'), PPRESS_VERSION_NUMBER);

@@ -13,7 +13,7 @@ use ProfilePress\Core\Membership\Models\Plan\PlanEntity;
 
 $changePlanId = SubscriptionFactory::fromId($changePlanSubId)->get_plan_id();
 
-/** @var bool true if we on change plan checkout and selected plan is same as plan to switch from */
+// if we on change plan checkout and selected plan is same as plan to switch from */
 $isChangePlanIdSelected = $changePlanId == $planObj->id;
 
 $cart_vars = OrderService::init()->checkout_order_calculation([

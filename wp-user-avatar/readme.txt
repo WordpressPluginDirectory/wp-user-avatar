@@ -4,8 +4,8 @@ Donate link: https://profilepress.com/pricing/
 Tags: membership, ecommerce, user registration, user profile, memberships
 Requires at least: 6.0
 Requires PHP: 7.4
-Tested up to: 6.8
-Stable tag: 4.16.7
+Tested up to: 7.0
+Stable tag: 4.16.13
 License: GPLv2 or later
 
 Setup paid membership, accept payment, sell subscription & digital product, paywall, create login & registration form, user profile & member directory
@@ -191,6 +191,43 @@ Any file type can be sold using ProfilePress ecommerce and membership plugin, in
 
 == Changelog ==
 
+= Paid Membership, Ecommerce & User Registration 4.16.13 =
+* Improved admin UI for WP7
+* Fixed bug where users can upgrade/downgrade to a plan not authorized for them.
+* Fixed bug where subscription renewal email is sent when autorenewal is disabled.
+* Ensure expiration email is sent when active/trialling subscriptions are not auto-renewable.
+* Added support for specifying subscription status in content protection shortcode
+* Added ppress_restriction_shortcode_rule_latest_only filter.
+* Added filter for overriding Stripe billing intervals.
+* Added a filter to allow per-field filename customization.
+* Added filter for adding custom columns to the subscriptions list table.
+* Added action hook and filter for customer details metaboxes.
+
+= Paid Membership, Ecommerce & User Registration 4.16.12 =
+* Fixed issue with plan upgrade by wrong user.
+* Fixed bug where empty subscription records could be created.
+
+= Paid Membership, Ecommerce & User Registration 4.16.11 =
+* Added filter ppressmd_member_directory_filters_expanded.
+* Fixed a security issue where a user could cancel another user subscription.
+
+= Paid Membership, Ecommerce & User Registration 4.16.10 =
+* Improvement: Cancel subscription in gateway before deletion.
+* Security Fix: Arbitrary Shortcode Execution via Checkout Billing Fields.
+
+= Paid Membership, Ecommerce & User Registration 4.16.9 =
+* Added billing address data to customer export.
+* Added ppress_is_third_party_2fa_active filter.
+* Fixed a likely fatal error on form preview.
+* Fixed bug where account info data got lost on group checkout refresh.
+* Fixed bug where checkout overrides previously uploaded files.
+* Fixed bug where download link requiring logged in users worked for other logged-in users.
+* Add custom field placeholder support to admin new user email notification.
+
+= Paid Membership, Ecommerce & User Registration 4.16.8 =
+* Fixed security issue with arbitrary shortcode execution on form preview.
+* Fixed couple of PHP notices.
+
 = Paid Membership, Ecommerce & User Registration 4.16.7 =
 * Fixed bug where label is shown for empty data in member directory.
 * Added user roles as classes to member directory item wrapper.
@@ -202,22 +239,5 @@ Any file type can be sold using ProfilePress ecommerce and membership plugin, in
 * Added support for plan pre-selection as query parameters to group checkout URL.
 * Fixed bug where content protection on blog page did not work.
 * Improved compatibility with WPML.
-
-= Paid Membership, Ecommerce & User Registration 4.16.5 =
-* Added multiple user role selection when editing users.
-* Fixed bug where shortcode could be executed as profile information
-* Fixed bug where registration blocking feature did not work during checkout.
-* Fixed Stripe bug where only country field in checkout lead to error.
-
-
-= Paid Membership, Ecommerce & User Registration 4.16.4 =
-* Pro: [AffiliateWP](https://profilepress.com/addons/affiliatewp/?ref=changelog) and [SliceWP](https://profilepress.com/addons/slicewp/?ref=changelog) addons.
-* Fixed bug where subscription remained active after last order refund.
-* Fixed bug with missing date_completed data for manual order creation.
-* Added ppress_checkout_before_account_info_fields action hook.
-* Added filter ppress_stripe_subscription_set_cancelled_action_as_expired.
-* Added ppress_membership_plan_price filter.
-* Added ppress_checkout_group_selector_plans filter.
-* Fixed a couple of PHP notices.
 
 See the [changelog file](https://plugins.svn.wordpress.org/wp-user-avatar/trunk/changelog.txt) for full change log information.

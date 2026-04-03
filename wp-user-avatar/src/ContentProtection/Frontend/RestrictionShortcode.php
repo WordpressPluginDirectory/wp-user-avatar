@@ -17,17 +17,18 @@ class RestrictionShortcode
             'roles'  => '',
             'users'  => '',
             'plans'  => '',
+            'status' => '',
             'action' => 'show' // value can be "show" or "hide"
         ), $atts);
 
         if ($atts['action'] == 'hide') {
-            return $this->rule_matches($atts['roles'], $atts['users'], $atts['plans']) ? '' : \do_shortcode($content);
+            return $this->rule_matches($atts['roles'], $atts['users'], $atts['plans'], $atts['status']) ? '' : \do_shortcode($content);
         } else {
-            return $this->rule_matches($atts['roles'], $atts['users'], $atts['plans']) ? \do_shortcode($content) : '';
+            return $this->rule_matches($atts['roles'], $atts['users'], $atts['plans'], $atts['status']) ? \do_shortcode($content) : '';
         }
     }
 
-    public function rule_matches($roles = '', $user_ids = '', $plans = '')
+    public function rule_matches($roles = '', $user_ids = '', $plans = '', $sub_status = false)
     {
         if (is_user_logged_in()) {
 
@@ -40,7 +41,20 @@ class RestrictionShortcode
                 $customer = CustomerFactory::fromUserId($current_user_id);
 
                 foreach ($plans as $plan_id) {
-                    if ($customer->has_active_subscription($plan_id)) return true;
+
+                    if ( ! empty($sub_status)) {
+
+                        $latestOnly = apply_filters('ppress_restriction_shortcode_rule_latest_only', false);
+
+                        if ($latestOnly) {
+                            $subs = $customer->get_subscriptions([], ['number' => 1]);
+                            if ( ! empty($subs) && $subs[0]->status == $sub_status) return true;
+                        } else {
+                            if ($customer->has_any_status_subscription($plan_id, [$sub_status])) return true;
+                        }
+                    } else {
+                        if ($customer->has_active_subscription($plan_id)) return true;
+                    }
                 }
             }
 

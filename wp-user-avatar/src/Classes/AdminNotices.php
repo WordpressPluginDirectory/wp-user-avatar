@@ -42,6 +42,12 @@ class AdminNotices
             $classes .= ' ppress-admin ';
         }
 
+        global $wp_version;
+
+        if (version_compare($wp_version, '6.9.4', '>')) {
+            $classes .= ' ppressWP7higher';
+        }
+
         return $classes;
     }
 
@@ -81,8 +87,8 @@ class AdminNotices
     {
         if (ppress_is_test_mode() && current_user_can('manage_options')) {
             $link = add_query_arg(
-                ['view' => 'payments', 'section' => 'payment-methods'],
-                PPRESS_SETTINGS_SETTING_PAGE
+                    ['view' => 'payments', 'section' => 'payment-methods'],
+                    PPRESS_SETTINGS_SETTING_PAGE
             );
 
             $notice = sprintf(__('<strong>Important:</strong> No real payment is being processed because ProfilePress is in test mode. Go to <a href="%s">Payment method settings</a> to disable test mode.', 'wp-user-avatar'), $link);
@@ -118,9 +124,9 @@ class AdminNotices
         $dismiss_url = esc_url(add_query_arg('ppress_admin_action', 'dismiss_leave_review_forever'));
 
         $notice = sprintf(
-            __('Hey, I noticed you have been using ProfilePress for at least 7 days now - that\'s awesome! Could you please do us a BIG favor and give it a %1$s5-star rating on WordPress?%2$s This will help us spread the word and boost our motivation - thanks!', 'wp-user-avatar'),
-            '<a href="' . $review_url . '" target="_blank">',
-            '</a>'
+                __('Hey, I noticed you have been using ProfilePress for at least 7 days now - that\'s awesome! Could you please do us a BIG favor and give it a %1$s5-star rating on WordPress?%2$s This will help us spread the word and boost our motivation - thanks!', 'wp-user-avatar'),
+                '<a href="' . $review_url . '" target="_blank">',
+                '</a>'
         );
         $label  = __('Sure! I\'d love to give a review', 'wp-user-avatar');
 
@@ -141,14 +147,14 @@ class AdminNotices
         if (is_admin() && current_user_can('administrator') && ! get_option('permalink_structure')) {
 
             $change_permalink_button = sprintf(
-                '<a class="button" href="%s">%s</a>',
-                admin_url('options-permalink.php'),
-                __('Change Permalink Structure', 'wp-user-avatar')
+                    '<a class="button" href="%s">%s</a>',
+                    admin_url('options-permalink.php'),
+                    __('Change Permalink Structure', 'wp-user-avatar')
             );
 
             $notice = sprintf(
-                __("Your site permalink structure is currently set to <code>Plain</code>. This setting is not compatible with ProfilePress. Change your permalink structure to any other setting to avoid issues. We recommend <code>Post name</code>.</p><p>%s", 'wp-user-avatar'),
-                $change_permalink_button
+                    __("Your site permalink structure is currently set to <code>Plain</code>. This setting is not compatible with ProfilePress. Change your permalink structure to any other setting to avoid issues. We recommend <code>Post name</code>.</p><p>%s", 'wp-user-avatar'),
+                    $change_permalink_button
             );
 
             echo '<div data-dismissible="ppress_seo_friendly_permalink_not_set-2" class="update-nag notice notice-warning is-dismissible">';
@@ -160,16 +166,16 @@ class AdminNotices
     public function addons_promo_notices()
     {
         $notices = [
-            'learndash' => [
-                'message'   => esc_html__('Did you know that you can sell access to LearnDash courses and groups and enroll users after registration?', 'wp-user-avatar'),
-                'url'       => 'https://profilepress.com/article/setting-up-learndash-addon/',
-                'condition' => class_exists('\SFWD_LMS')
-            ],
-            'sensei'    => [
-                'message'   => esc_html__('Did you know that you can sell access to Sensei LMS courses and groups and enroll users after registration?', 'wp-user-avatar'),
-                'url'       => 'https://profilepress.com/article/setting-up-sensei-lms-addon/',
-                'condition' => function_exists('Sensei')
-            ]
+                'learndash' => [
+                        'message'   => esc_html__('Did you know that you can sell access to LearnDash courses and groups and enroll users after registration?', 'wp-user-avatar'),
+                        'url'       => 'https://profilepress.com/article/setting-up-learndash-addon/',
+                        'condition' => class_exists('\SFWD_LMS')
+                ],
+                'sensei'    => [
+                        'message'   => esc_html__('Did you know that you can sell access to Sensei LMS courses and groups and enroll users after registration?', 'wp-user-avatar'),
+                        'url'       => 'https://profilepress.com/article/setting-up-sensei-lms-addon/',
+                        'condition' => function_exists('Sensei')
+                ]
         ];
 
         foreach ($notices as $notice_id => $notice) {
@@ -184,8 +190,8 @@ class AdminNotices
 
                     echo '<div data-dismissible="' . $notice_pand_key . '" class="notice notice-info is-dismissible">';
                     printf(
-                        '<p>%s <a target="_blank" href="%s">%s</a></p>',
-                        $notice['message'], $url, esc_html__('Learn more', 'wp-user-avatar'));
+                            '<p>%s <a target="_blank" href="%s">%s</a></p>',
+                            $notice['message'], $url, esc_html__('Learn more', 'wp-user-avatar'));
                     echo '</div>';
                 }
             }
@@ -198,13 +204,16 @@ class AdminNotices
             return;
         }
 
-        $create_page_url = esc_url(add_query_arg(['ppress_create_pages' => 'true', 'ppress_nonce' => wp_create_nonce('ppress_create_pages')]));
+        $create_page_url = esc_url(add_query_arg([
+                'ppress_create_pages' => 'true',
+                'ppress_nonce'        => wp_create_nonce('ppress_create_pages')
+        ]));
 
         $class   = 'notice notice-info is-dismissible';
         $message = __('ProfilePress needs to create several pages (Checkout, Order Confirmation, User Profile, My Account, Registration, Login, Member Directory) to function correctly.', 'wp-user-avatar');
         $buttons = sprintf(
-            '<a href="%s" class="button button-primary">%s</a> <a href="#" class="button-secondary dismiss-this">%s</a>',
-            $create_page_url, esc_html__('Create Pages', 'wp-user-avatar'), esc_html__('No Thanks', 'wp-user-avatar')
+                '<a href="%s" class="button button-primary">%s</a> <a href="#" class="button-secondary dismiss-this">%s</a>',
+                $create_page_url, esc_html__('Create Pages', 'wp-user-avatar'), esc_html__('No Thanks', 'wp-user-avatar')
         );
 
         printf('<div data-dismissible="ppress-create-plugin-pages-notice-forever" class="%1$s"><p>%2$s</p><p>%3$s</p></div>', esc_attr($class), esc_html($message), $buttons);
@@ -217,8 +226,8 @@ class AdminNotices
         }
 
         if (
-            ppress_get_payment_method_setting('stripe_enabled') != 'true' ||
-            ! empty(Helpers::get_secret_key())
+                ppress_get_payment_method_setting('stripe_enabled') != 'true' ||
+                ! empty(Helpers::get_secret_key())
         ) {
             return;
         }
@@ -226,7 +235,7 @@ class AdminNotices
         $class = 'notice notice-info is-dismissible';
 
         $message = $this->stripe_connect_notice_html(
-            esc_html__('You enabled Stripe payment method in ProfilePress but did not connect your Stripe account. Connect now to start accepting payments instantly.', 'wp-user-avatar')
+                esc_html__('You enabled Stripe payment method in ProfilePress but did not connect your Stripe account. Connect now to start accepting payments instantly.', 'wp-user-avatar')
         );
 
         printf('<div data-dismissible="ppress-connect-enabled-stripe-method-7" class="%1$s">%2$s</div>', esc_attr($class), $message);

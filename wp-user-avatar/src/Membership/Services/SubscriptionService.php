@@ -67,6 +67,10 @@ class SubscriptionService
     {
         $sub = SubscriptionFactory::fromId($sub_id);
 
+        if ($sub->exists()) {
+            $sub->cancel(true);
+        }
+
         $sub->remove_plan_role_from_customer();
 
         $result = SubscriptionRepository::init()->delete($sub_id);

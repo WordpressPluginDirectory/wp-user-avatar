@@ -37,6 +37,22 @@ class SubscriptionExpirationReminder extends AbstractMembershipEmail
             'end_date'    => $subDate->endOfDay()->utc()->toDateTimeString()
         ]);
 
+        $this->handler($subscriptions);
+
+        $subscriptions = SubscriptionRepository::init()->retrieveBy([
+            'status'      => [SubscriptionStatus::ACTIVE, SubscriptionStatus::TRIALLING],
+            'limit'       => 0,
+            'date_column' => 'expiration_date',
+            'start_date'  => $subDate->startOfDay()->utc()->toDateTimeString(),
+            'end_date'    => $subDate->endOfDay()->utc()->toDateTimeString(),
+            'profile_id'  => 'EMPTY'
+        ]);
+
+        $this->handler($subscriptions);
+    }
+
+    private function handler($subscriptions)
+    {
         if ( ! is_array($subscriptions) || empty($subscriptions)) return;
 
         foreach ($subscriptions as $subscription) {

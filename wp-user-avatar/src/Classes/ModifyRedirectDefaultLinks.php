@@ -40,33 +40,35 @@ class ModifyRedirectDefaultLinks
     {
         global $pagenow;
 
+        $is_active = false;
+
         if ('wp-login.php' == $pagenow) {
 
             if (class_exists('Jetpack') && \Jetpack::is_module_active('sso')) {
-                return true;
+                $is_active = true;
             }
 
-            if (function_exists('wd_di') && class_exists('\WP_Defender\Model\Setting\Two_Fa')) {
+            if ( ! $is_active && function_exists('wd_di') && class_exists('\WP_Defender\Model\Setting\Two_Fa')) {
                 try {
-                    if (wd_di()->get(\WP_Defender\Model\Setting\Two_Fa::class)->enabled) return true;
+                    if (wd_di()->get(\WP_Defender\Model\Setting\Two_Fa::class)->enabled) $is_active = true;
                 } catch (\Exception $e) {
                 }
             }
 
-            if (defined('WORDFENCE_VERSION') || defined('WORDFENCE_LS_VERSION')) {
-                return true;
+            if ( ! $is_active && (defined('WORDFENCE_VERSION') || defined('WORDFENCE_LS_VERSION'))) {
+                $is_active = true;
             }
 
-            if (defined('WP_2FA_VERSION')) return true;
+            if ( ! $is_active && defined('WP_2FA_VERSION')) $is_active = true;
 
-            if (defined('SIMBA_TFA_PLUGIN_DIR')) return true;
+            if ( ! $is_active && defined('SIMBA_TFA_PLUGIN_DIR')) $is_active = true;
 
-            if (class_exists('\SG_Security\Options_Service\Options_Service') && \SG_Security\Options_Service\Options_Service::is_enabled('sg2fa')) {
-                return true;
+            if ( ! $is_active && class_exists('\SG_Security\Options_Service\Options_Service') && \SG_Security\Options_Service\Options_Service::is_enabled('sg2fa')) {
+                $is_active = true;
             }
         }
 
-        return false;
+        return apply_filters('ppress_is_third_party_2fa_active', $is_active);
     }
 
     /**

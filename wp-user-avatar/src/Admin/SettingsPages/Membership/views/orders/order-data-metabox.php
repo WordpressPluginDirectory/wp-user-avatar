@@ -153,7 +153,7 @@ echo '</p>';
 
                     $method_name = str_replace('ppress_', '', $field_id);
 
-                    $detail = $order_data->$method_name;
+                    $detail = strip_shortcodes(esc_attr($order_data->$method_name));
 
                     echo '<p class="ppress-metabox-form-field">';
                     printf('<label for="%s">%s</label>', $field_id, $field['label']);

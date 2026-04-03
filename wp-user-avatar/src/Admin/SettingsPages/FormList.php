@@ -385,9 +385,7 @@ class FormList extends \WP_List_Table
                 }
             }
 
-
             ppress_do_admin_redirect($url);
-
         }
 
         if ('clone' === $this->current_action()) {
