@@ -32,7 +32,9 @@ class SelectRole extends FieldBase
                 'options' => [
                     'label'       => esc_html__('Options', 'wp-user-avatar'),
                     'field'       => self::INPUT_FIELD,
-                    'description' => esc_html__('Enter comma separated list of roles to include in the select dropdown.', 'wp-user-avatar')
+                    'description' => esc_html__('Enter comma separated list of roles to include in the select dropdown.', 'wp-user-avatar') .
+                                     '<br><strong>' . esc_html__('Note:', 'wp-user-avatar') . '</strong> ' .
+                                     esc_html__('If left empty, all roles except administrator will be available for selection during registration.', 'wp-user-avatar')
                 ]
             ],
             parent::SETTINGS_TAB => [

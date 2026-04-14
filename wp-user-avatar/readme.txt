@@ -5,7 +5,7 @@ Tags: membership, ecommerce, user registration, user profile, memberships
 Requires at least: 6.0
 Requires PHP: 7.4
 Tested up to: 7.0
-Stable tag: 4.16.13
+Stable tag: 4.16.14
 License: GPLv2 or later
 
 Setup paid membership, accept payment, sell subscription & digital product, paywall, create login & registration form, user profile & member directory
@@ -190,6 +190,16 @@ Any file type can be sold using ProfilePress ecommerce and membership plugin, in
 11. Content Protection
 
 == Changelog ==
+
+= Paid Membership, Ecommerce & User Registration 4.16.14 =
+* Added filtering by status to plan listing page.
+* Fixed avatar distortion on account page.
+* Fixed bug where plan duplication missed some data.
+* Fixed bug with form preview resulting to FATAL error.
+* Fixed XSS in member and profile listing frontend displays.
+* Improvement: reject Stripe webhooks when Webhook secret is not configured.
+* Made customer meta labels translatable.
+* Add warning to Select Role field in form builder if options are empty.
 
 = Paid Membership, Ecommerce & User Registration 4.16.13 =
 * Improved admin UI for WP7

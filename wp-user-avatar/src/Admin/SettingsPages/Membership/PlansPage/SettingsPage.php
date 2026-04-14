@@ -251,6 +251,7 @@ class SettingsPage extends AbstractSettingsPage
 
         $this->planListTable->prepare_items(); // has to be here.
 
+        $this->planListTable->views();
         echo '<form method="post">';
         $this->planListTable->display();
         echo '</form>';

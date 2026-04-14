@@ -139,13 +139,19 @@ class PlanRepository extends BaseRepository
      *
      * @return PlanEntity[]|array
      */
-    public function retrieveAll($limit = 0, $current_page = 1)
+    public function retrieveAll($limit = 0, $current_page = 1, $status = '')
     {
         global $wpdb;
 
         $replacement = [1];
         $sql         = "SELECT * FROM $this->table";
         $sql         .= " WHERE 1=%d"; // fixes Notice: wpdb::prepare was called incorrectly. The query argument of wpdb::prepare() must have a placeholder
+
+        if ( ! empty($status)) {
+            $sql           .= " AND status = %s";
+            $replacement[] = $status;
+        }
+
         $sql         .= " ORDER BY id DESC";
         if ($limit > 0) {
             $sql           .= " LIMIT %d";
@@ -164,5 +170,15 @@ class PlanRepository extends BaseRepository
         }
 
         return [];
+    }
+
+    public function get_count_by_status($status)
+    {
+        return $this->wpdb()->get_var(
+            $this->wpdb()->prepare(
+                "SELECT COUNT(id) FROM $this->table WHERE status = %s",
+                $status
+            )
+        );
     }
 }

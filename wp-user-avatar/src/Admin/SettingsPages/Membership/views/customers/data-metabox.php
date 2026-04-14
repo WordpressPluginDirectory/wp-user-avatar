@@ -42,12 +42,12 @@ echo '<div class="ppress-membership-customer-details">';
                         <span class="customer-email"><?php echo $customer_data->get_email() ?></span>
 
                         <span class="customer-since">
-						<?php printf('Customer since %s', $customer_data->get_date_created()) ?>
+						<?php printf(esc_html__('Customer since %s', 'wp-user-avatar'), esc_html($customer_data->get_date_created())) ?>
                     </span>
 
                         <?php if ( ! empty($customer_data->get_last_login())) : ?>
                             <span class="last-login">
-						    <?php printf('Last login on %s', $customer_data->get_last_login()) ?>
+						    <?php printf(esc_html__('Last login on %s', 'wp-user-avatar'), esc_html($customer_data->get_last_login())) ?>
                         </span>
                         <?php endif; ?>
 
@@ -75,7 +75,7 @@ echo '<div class="ppress-membership-customer-details">';
                     </div>
                 </div>
 
-				<?php do_action('ppress_admin_customer_data_after_customer_info', $customer_id, $customer_data); ?>
+                <?php do_action('ppress_admin_customer_data_after_customer_info', $customer_id, $customer_data); ?>
 
             </div>
         </div>

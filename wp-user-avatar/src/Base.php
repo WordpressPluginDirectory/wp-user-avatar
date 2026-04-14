@@ -174,7 +174,9 @@ class Base extends DBTables
         ProfileUrlRewrite::get_instance();
         WidgetsInit::init();
         AdminBarDashboardAccess\Init::get_instance();
-        FormPreviewHandler::get_instance();
+        add_action('plugins_loaded', function () {
+            FormPreviewHandler::get_instance();
+        });
         ContentProtection\Init::get_instance();
         NavigationMenuLinks\Init::init();
         Membership\Init::init();

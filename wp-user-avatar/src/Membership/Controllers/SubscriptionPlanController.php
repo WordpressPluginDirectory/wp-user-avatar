@@ -58,9 +58,14 @@ class SubscriptionPlanController extends BaseController
     {
         $plan = is_int($id_or_obj) ? ppress_get_plan($id_or_obj) : $id_or_obj;
 
+        $meta_data       = $plan->meta_data;
         $plan->name      .= ' – Copy';
         $plan->user_role = '';
         $result          = PlanRepository::init()->add($plan);
+
+        if ($result && ! empty($meta_data)) {
+            PlanRepository::init()->updateColumn($result, 'meta_data', wp_json_encode($meta_data));
+        }
 
         do_action('ppress_membership_duplicate_plan', $plan);
 

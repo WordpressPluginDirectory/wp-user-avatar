@@ -158,7 +158,7 @@ class ProfileFieldListing
                 if ( ! empty($field_key) && strpos($field_type, 'profile-cpf') !== false) {
 
                     if (in_array($field_key, array_keys(ppress_social_network_fields()))) {
-                        $parsed_shortcode = sprintf('<a href="%s">%s</a>', $parsed_shortcode, ppress_var(ppress_social_network_fields(), $field_key));
+                        $parsed_shortcode = sprintf('<a href="%s">%s</a>', esc_url($parsed_shortcode), ppress_var(ppress_social_network_fields(), $field_key));
                     }
 
                     $custom_field_type = PROFILEPRESS_sql::get_field_type($field_key);

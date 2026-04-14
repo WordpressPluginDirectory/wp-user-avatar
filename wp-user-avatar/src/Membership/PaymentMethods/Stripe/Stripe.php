@@ -997,6 +997,12 @@ class Stripe extends AbstractPaymentMethod
             $endpoint_secret = PPRESS_STRIPE_WEBHOOK_SECRET;
         }
 
+        // If there is no webhook secret configured, we can't verify the webhook, so we bail early.
+        if (empty($endpoint_secret)) {
+            http_response_code(400);
+            exit();
+        }
+
         $payload    = @file_get_contents('php://input');
         $sig_header = $_SERVER['HTTP_STRIPE_SIGNATURE'];
 

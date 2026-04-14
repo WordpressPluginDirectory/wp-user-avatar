@@ -8,6 +8,8 @@ use ProfilePress\Core\Membership\Repositories\PlanRepository;
 
 class PlanWPListTable extends \WP_List_Table
 {
+    private $views_count = [];
+
     public function __construct()
     {
         parent::__construct(array(
@@ -15,6 +17,10 @@ class PlanWPListTable extends \WP_List_Table
             'plural'   => 'ppress-membership-plans',
             'ajax'     => false
         ));
+
+        $this->views_count['all']      = PlanRepository::init()->record_count();
+        $this->views_count['active']   = PlanRepository::init()->get_count_by_status('true');
+        $this->views_count['inactive'] = PlanRepository::init()->get_count_by_status('false');
     }
 
     public function no_items()
@@ -134,11 +140,20 @@ class PlanWPListTable extends \WP_List_Table
 
     public function get_plans($per_page, $current_page = 1)
     {
-        return PlanRepository::init()->retrieveAll($per_page, $current_page);
+        $status     = ppressGET_var('status', 'all');
+        $status_map = ['active' => 'true', 'inactive' => 'false'];
+
+        return PlanRepository::init()->retrieveAll($per_page, $current_page, $status_map[$status] ?? '');
     }
 
     public function record_count()
     {
+        $status = ppressGET_var('status', 'all');
+
+        if ($status != 'all' && isset($this->views_count[$status])) {
+            return $this->views_count[$status];
+        }
+
         return PlanRepository::init()->record_count();
     }
 
@@ -290,5 +305,31 @@ class PlanWPListTable extends \WP_List_Table
     public function get_table_classes()
     {
         return array('widefat', 'fixed', 'striped', 'subscription_plan', 'ppview');
+    }
+
+    public function get_views()
+    {
+        $views = [];
+
+        $args = [
+            'all'      => esc_html__('All', 'wp-user-avatar'),
+            'active'   => esc_html__('Active', 'wp-user-avatar'),
+            'inactive' => esc_html__('Inactive', 'wp-user-avatar'),
+        ];
+
+        foreach ($args as $id => $status) {
+
+            $url = $id == 'all' ? PPRESS_MEMBERSHIP_SUBSCRIPTION_PLANS_SETTINGS_PAGE : add_query_arg(['status' => $id], PPRESS_MEMBERSHIP_SUBSCRIPTION_PLANS_SETTINGS_PAGE);
+
+            $views[$id] = sprintf(
+                '<a href="%s"%s>%s <span class="count">(%s)</span></a>',
+                $url,
+                ppressGET_var('status', 'all') == $id ? ' class="current"' : '',
+                $status,
+                $this->views_count[$id]
+            );
+        }
+
+        return $views;
     }
 }

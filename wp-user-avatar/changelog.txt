@@ -1,5 +1,15 @@
 ﻿== Changelog ==
 
+= 4.16.14 =
+* Added filtering by status to plan listing page.
+* Fixed avatar distortion on account page.
+* Fixed bug where plan duplication missed some data.
+* Fixed bug with form preview resulting to FATAL error.
+* Fixed XSS in member and profile listing frontend displays.
+* Improvement: reject Stripe webhooks when Webhook secret is not configured.
+* Made customer meta labels translatable.
+* Add warning to Select Role field in form builder if options are empty.
+
 = 4.16.13 =
 * Improved admin UI for WP7
 * Fixed bug where users can upgrade/downgrade to a plan not authorized for them.

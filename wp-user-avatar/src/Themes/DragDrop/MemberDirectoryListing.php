@@ -93,7 +93,7 @@ class MemberDirectoryListing
 
                 if ( ! empty($field_key) && $raw_field_type == 'profile-cpf') {
                     if (in_array($field_key, array_keys(ppress_social_network_fields()))) {
-                        $parsed_shortcode = sprintf('<a href="%s">%s</a>', $parsed_shortcode, ppress_var(ppress_social_network_fields(), $field_key));
+                        $parsed_shortcode = sprintf('<a href="%s">%s</a>', esc_url($parsed_shortcode), ppress_var(ppress_social_network_fields(), $field_key));
                     }
 
                     $custom_field_type = PROFILEPRESS_sql::get_field_type($field_key);
@@ -129,7 +129,7 @@ class MemberDirectoryListing
 
                     $parsed_shortcode = sprintf(
                         '<a href="%s">%s</a>',
-                        $parsed_shortcode,
+                        esc_url($parsed_shortcode),
                         ! empty($field_title) ? wp_kses_post($field_title) : esc_html__('Website', 'wp-user-avatar')
                     );
                     $parsed_shortcode = make_clickable($parsed_shortcode);
@@ -142,7 +142,7 @@ class MemberDirectoryListing
                     $output .= sprintf('<span class="ppress-md-profile-item-title">%s:</span> ', wp_kses_post($field_title));
                 }
 
-                $output .= sprintf('%s', $parsed_shortcode);
+                $output .= sprintf('%s', wp_kses_post($parsed_shortcode));
 
                 $output .= '</div>';
             }

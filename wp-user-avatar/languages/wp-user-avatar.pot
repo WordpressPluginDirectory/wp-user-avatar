@@ -2,14 +2,14 @@
 # This file is distributed under the same license as the ProfilePress plugin.
 msgid ""
 msgstr ""
-"Project-Id-Version: ProfilePress 4.16.13\n"
+"Project-Id-Version: ProfilePress 4.16.14\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wp-user-avatar\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-04-02T10:53:21+00:00\n"
+"POT-Creation-Date: 2026-04-13T12:46:40+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: wp-user-avatar\n"
@@ -500,7 +500,7 @@ msgstr ""
 #: src/Admin/SettingsPages/DragDropBuilder/DragDropBuilder.php:1230
 #: src/Admin/SettingsPages/FormList.php:280
 #: src/Admin/SettingsPages/Membership/GroupsPage/GroupWPListTable.php:103
-#: src/Admin/SettingsPages/Membership/PlansPage/PlanWPListTable.php:112
+#: src/Admin/SettingsPages/Membership/PlansPage/PlanWPListTable.php:118
 #: src/Admin/SettingsPages/Membership/views/add-edit-plan-group.php:122
 #: src/Admin/SettingsPages/Membership/views/add-edit-plan.php:353
 msgid "Copied!"
@@ -713,8 +713,8 @@ msgstr ""
 #: src/Admin/SettingsPages/Membership/GroupsPage/GroupWPListTable.php:167
 #: src/Admin/SettingsPages/Membership/OrdersPage/OrderWPListTable.php:112
 #: src/Admin/SettingsPages/Membership/OrdersPage/OrderWPListTable.php:265
-#: src/Admin/SettingsPages/Membership/PlansPage/PlanWPListTable.php:77
-#: src/Admin/SettingsPages/Membership/PlansPage/PlanWPListTable.php:183
+#: src/Admin/SettingsPages/Membership/PlansPage/PlanWPListTable.php:83
+#: src/Admin/SettingsPages/Membership/PlansPage/PlanWPListTable.php:198
 #: src/Admin/SettingsPages/Membership/SubscriptionsPage/SubscriptionWPListTable.php:122
 #: src/Admin/SettingsPages/Membership/SubscriptionsPage/SubscriptionWPListTable.php:289
 #: src/Admin/SettingsPages/Membership/views/checkout-field-item.php:45
@@ -791,7 +791,7 @@ msgstr ""
 #: src/Admin/SettingsPages/DragDropBuilder/Fields/ProfilePicture.php:31
 #: src/Admin/SettingsPages/DragDropBuilder/Fields/RadioButtons.php:53
 #: src/Admin/SettingsPages/DragDropBuilder/Fields/SelectDropdown.php:58
-#: src/Admin/SettingsPages/DragDropBuilder/Fields/SelectRole.php:41
+#: src/Admin/SettingsPages/DragDropBuilder/Fields/SelectRole.php:43
 #: src/Admin/SettingsPages/DragDropBuilder/Fields/SingleCheckbox.php:47
 #: src/Admin/SettingsPages/DragDropBuilder/Fields/Textarea.php:48
 #: src/Admin/SettingsPages/DragDropBuilder/Fields/TextBox.php:48
@@ -821,7 +821,7 @@ msgstr ""
 #: src/Admin/SettingsPages/DragDropBuilder/Fields/ProfilePicture.php:32
 #: src/Admin/SettingsPages/DragDropBuilder/Fields/RadioButtons.php:54
 #: src/Admin/SettingsPages/DragDropBuilder/Fields/SelectDropdown.php:59
-#: src/Admin/SettingsPages/DragDropBuilder/Fields/SelectRole.php:42
+#: src/Admin/SettingsPages/DragDropBuilder/Fields/SelectRole.php:44
 #: src/Admin/SettingsPages/DragDropBuilder/Fields/SingleCheckbox.php:48
 #: src/Admin/SettingsPages/DragDropBuilder/Fields/Textarea.php:49
 #: src/Admin/SettingsPages/DragDropBuilder/Fields/TextBox.php:49
@@ -861,7 +861,7 @@ msgstr ""
 #: src/Admin/SettingsPages/DragDropBuilder/Fields/ProfilePicture.php:38
 #: src/Admin/SettingsPages/DragDropBuilder/Fields/RadioButtons.php:60
 #: src/Admin/SettingsPages/DragDropBuilder/Fields/SelectDropdown.php:65
-#: src/Admin/SettingsPages/DragDropBuilder/Fields/SelectRole.php:48
+#: src/Admin/SettingsPages/DragDropBuilder/Fields/SelectRole.php:50
 #: src/Admin/SettingsPages/DragDropBuilder/Fields/SingleCheckbox.php:54
 #: src/Admin/SettingsPages/DragDropBuilder/Fields/Textarea.php:55
 #: src/Admin/SettingsPages/DragDropBuilder/Fields/TextBox.php:55
@@ -902,7 +902,7 @@ msgstr ""
 #: src/Admin/SettingsPages/DragDropBuilder/Fields/ProfilePicture.php:40
 #: src/Admin/SettingsPages/DragDropBuilder/Fields/RadioButtons.php:62
 #: src/Admin/SettingsPages/DragDropBuilder/Fields/SelectDropdown.php:67
-#: src/Admin/SettingsPages/DragDropBuilder/Fields/SelectRole.php:50
+#: src/Admin/SettingsPages/DragDropBuilder/Fields/SelectRole.php:52
 #: src/Admin/SettingsPages/DragDropBuilder/Fields/SingleCheckbox.php:56
 #: src/Admin/SettingsPages/DragDropBuilder/Fields/Textarea.php:57
 #: src/Admin/SettingsPages/DragDropBuilder/Fields/TextBox.php:57
@@ -1183,6 +1183,14 @@ msgstr ""
 
 #: src/Admin/SettingsPages/DragDropBuilder/Fields/SelectRole.php:35
 msgid "Enter comma separated list of roles to include in the select dropdown."
+msgstr ""
+
+#: src/Admin/SettingsPages/DragDropBuilder/Fields/SelectRole.php:36
+msgid "Note:"
+msgstr ""
+
+#: src/Admin/SettingsPages/DragDropBuilder/Fields/SelectRole.php:37
+msgid "If left empty, all roles except administrator will be available for selection during registration."
 msgstr ""
 
 #: src/Admin/SettingsPages/DragDropBuilder/Fields/SingleCheckbox.php:22
@@ -1922,7 +1930,7 @@ msgstr ""
 #: src/Admin/SettingsPages/Membership/CustomersPage/CustomerWPListTable.php:86
 #: src/Admin/SettingsPages/Membership/GroupsPage/GroupWPListTable.php:58
 #: src/Admin/SettingsPages/Membership/OrdersPage/OrderWPListTable.php:108
-#: src/Admin/SettingsPages/Membership/PlansPage/PlanWPListTable.php:65
+#: src/Admin/SettingsPages/Membership/PlansPage/PlanWPListTable.php:71
 #: src/Admin/SettingsPages/Membership/SubscriptionsPage/SubscriptionWPListTable.php:119
 #: src/Admin/SettingsPages/Membership/views/customers/data-metabox.php:86
 #: src/Admin/SettingsPages/Membership/views/orders/order-data-metabox.php:120
@@ -1931,7 +1939,7 @@ msgid "Edit"
 msgstr ""
 
 #: src/Admin/SettingsPages/FormList.php:242
-#: src/Admin/SettingsPages/Membership/PlansPage/PlanWPListTable.php:66
+#: src/Admin/SettingsPages/Membership/PlansPage/PlanWPListTable.php:72
 #: src/ContentProtection/WPListTable.php:101
 msgid "Duplicate"
 msgstr ""
@@ -2478,8 +2486,8 @@ msgstr ""
 #: src/Admin/SettingsPages/GeneralSettings.php:352
 #: src/Admin/SettingsPages/Membership/CouponsPage/CouponWPListTable.php:72
 #: src/Admin/SettingsPages/Membership/CouponsPage/CouponWPListTable.php:199
-#: src/Admin/SettingsPages/Membership/PlansPage/PlanWPListTable.php:74
-#: src/Admin/SettingsPages/Membership/PlansPage/PlanWPListTable.php:184
+#: src/Admin/SettingsPages/Membership/PlansPage/PlanWPListTable.php:80
+#: src/Admin/SettingsPages/Membership/PlansPage/PlanWPListTable.php:199
 #: src/ContentProtection/WPListTable.php:113
 #: src/ContentProtection/WPListTable.php:341
 #: src/Functions/custom-settings-api.php:1045
@@ -3034,7 +3042,7 @@ msgstr ""
 #: src/Admin/SettingsPages/Membership/CouponsPage/CouponWPListTable.php:33
 #: src/Admin/SettingsPages/Membership/ExportPage/SubscriptionsExport.php:14
 #: src/Admin/SettingsPages/Membership/OrdersPage/OrderWPListTable.php:56
-#: src/Admin/SettingsPages/Membership/PlansPage/PlanWPListTable.php:32
+#: src/Admin/SettingsPages/Membership/PlansPage/PlanWPListTable.php:38
 #: src/Admin/SettingsPages/Membership/SubscriptionsPage/SubscriptionWPListTable.php:52
 #: src/Admin/SettingsPages/Membership/views/customers/subcriptions-metabox.php:15
 #: src/Admin/SettingsPages/Membership/views/subscriptions/sub-payments-metabox.php:18
@@ -3059,8 +3067,8 @@ msgstr ""
 
 #: src/Admin/SettingsPages/Membership/CouponsPage/CouponWPListTable.php:68
 #: src/Admin/SettingsPages/Membership/CouponsPage/CouponWPListTable.php:200
-#: src/Admin/SettingsPages/Membership/PlansPage/PlanWPListTable.php:70
-#: src/Admin/SettingsPages/Membership/PlansPage/PlanWPListTable.php:185
+#: src/Admin/SettingsPages/Membership/PlansPage/PlanWPListTable.php:76
+#: src/Admin/SettingsPages/Membership/PlansPage/PlanWPListTable.php:200
 #: src/ContentProtection/WPListTable.php:109
 #: src/ContentProtection/WPListTable.php:342
 msgid "Deactivate"
@@ -3082,14 +3090,16 @@ msgstr ""
 
 #: src/Admin/SettingsPages/Membership/CouponsPage/CouponWPListTable.php:131
 #: src/Admin/SettingsPages/Membership/ExportPage/PlansExport.php:24
-#: src/Admin/SettingsPages/Membership/PlansPage/PlanWPListTable.php:120
+#: src/Admin/SettingsPages/Membership/PlansPage/PlanWPListTable.php:126
+#: src/Admin/SettingsPages/Membership/PlansPage/PlanWPListTable.php:316
 #: src/Membership/Models/Customer/CustomerStatus.php:13
 #: src/Membership/Models/Subscription/SubscriptionStatus.php:17
 msgid "Active"
 msgstr ""
 
 #: src/Admin/SettingsPages/Membership/CouponsPage/CouponWPListTable.php:133
-#: src/Admin/SettingsPages/Membership/PlansPage/PlanWPListTable.php:122
+#: src/Admin/SettingsPages/Membership/PlansPage/PlanWPListTable.php:128
+#: src/Admin/SettingsPages/Membership/PlansPage/PlanWPListTable.php:317
 #: src/Membership/Models/Customer/CustomerStatus.php:14
 msgid "Inactive"
 msgstr ""
@@ -3183,6 +3193,7 @@ msgstr ""
 
 #: src/Admin/SettingsPages/Membership/CustomersPage/CustomerWPListTable.php:157
 #: src/Admin/SettingsPages/Membership/OrdersPage/OrderWPListTable.php:68
+#: src/Admin/SettingsPages/Membership/PlansPage/PlanWPListTable.php:315
 #: src/Admin/SettingsPages/Membership/SubscriptionsPage/SubscriptionWPListTable.php:73
 msgid "All"
 msgstr ""
@@ -3978,19 +3989,19 @@ msgid "Plans in Group"
 msgstr ""
 
 #: src/Admin/SettingsPages/Membership/GroupsPage/GroupWPListTable.php:31
-#: src/Admin/SettingsPages/Membership/PlansPage/PlanWPListTable.php:31
+#: src/Admin/SettingsPages/Membership/PlansPage/PlanWPListTable.php:37
 #: src/Admin/SettingsPages/Membership/views/add-edit-plan-group.php:74
 #: src/Admin/SettingsPages/Membership/views/add-edit-plan.php:251
 msgid "Checkout URL"
 msgstr ""
 
 #: src/Admin/SettingsPages/Membership/GroupsPage/GroupWPListTable.php:93
-#: src/Admin/SettingsPages/Membership/PlansPage/PlanWPListTable.php:102
+#: src/Admin/SettingsPages/Membership/PlansPage/PlanWPListTable.php:108
 msgid "Checkout page not found"
 msgstr ""
 
 #: src/Admin/SettingsPages/Membership/GroupsPage/GroupWPListTable.php:100
-#: src/Admin/SettingsPages/Membership/PlansPage/PlanWPListTable.php:109
+#: src/Admin/SettingsPages/Membership/PlansPage/PlanWPListTable.php:115
 #: src/Admin/SettingsPages/Membership/views/add-edit-plan-group.php:82
 #: src/Admin/SettingsPages/Membership/views/add-edit-plan.php:268
 msgid "Copy URL"
@@ -4279,21 +4290,21 @@ msgstr ""
 msgid "Add File"
 msgstr ""
 
-#: src/Admin/SettingsPages/Membership/PlansPage/PlanWPListTable.php:22
+#: src/Admin/SettingsPages/Membership/PlansPage/PlanWPListTable.php:28
 msgid "No membership plan found."
 msgstr ""
 
-#: src/Admin/SettingsPages/Membership/PlansPage/PlanWPListTable.php:29
+#: src/Admin/SettingsPages/Membership/PlansPage/PlanWPListTable.php:35
 #: src/Admin/SettingsPages/Membership/PlansPage/SettingsPage.php:93
 #: src/Admin/SettingsPages/Membership/views/add-edit-plan.php:39
 msgid "Plan Name"
 msgstr ""
 
-#: src/Admin/SettingsPages/Membership/PlansPage/PlanWPListTable.php:30
+#: src/Admin/SettingsPages/Membership/PlansPage/PlanWPListTable.php:36
 msgid "Billing Details"
 msgstr ""
 
-#: src/Admin/SettingsPages/Membership/PlansPage/PlanWPListTable.php:64
+#: src/Admin/SettingsPages/Membership/PlansPage/PlanWPListTable.php:70
 #, php-format
 msgid "ID: %d"
 msgstr ""
@@ -4315,87 +4326,87 @@ msgstr ""
 msgid "Add New Plan"
 msgstr ""
 
-#: src/Admin/SettingsPages/Membership/PlansPage/SettingsPage.php:268
-#: src/Admin/SettingsPages/Membership/PlansPage/SettingsPage.php:282
-msgid "month"
-msgstr ""
-
 #: src/Admin/SettingsPages/Membership/PlansPage/SettingsPage.php:269
 #: src/Admin/SettingsPages/Membership/PlansPage/SettingsPage.php:283
-msgid "week"
+msgid "month"
 msgstr ""
 
 #: src/Admin/SettingsPages/Membership/PlansPage/SettingsPage.php:270
 #: src/Admin/SettingsPages/Membership/PlansPage/SettingsPage.php:284
-msgid "day"
+msgid "week"
 msgstr ""
 
 #: src/Admin/SettingsPages/Membership/PlansPage/SettingsPage.php:271
 #: src/Admin/SettingsPages/Membership/PlansPage/SettingsPage.php:285
-msgid "quarter"
+msgid "day"
 msgstr ""
 
 #: src/Admin/SettingsPages/Membership/PlansPage/SettingsPage.php:272
 #: src/Admin/SettingsPages/Membership/PlansPage/SettingsPage.php:286
-msgid "every 6 months"
+msgid "quarter"
 msgstr ""
 
 #: src/Admin/SettingsPages/Membership/PlansPage/SettingsPage.php:273
 #: src/Admin/SettingsPages/Membership/PlansPage/SettingsPage.php:287
-msgid "year"
+msgid "every 6 months"
 msgstr ""
 
 #: src/Admin/SettingsPages/Membership/PlansPage/SettingsPage.php:274
 #: src/Admin/SettingsPages/Membership/PlansPage/SettingsPage.php:288
+msgid "year"
+msgstr ""
+
+#: src/Admin/SettingsPages/Membership/PlansPage/SettingsPage.php:275
+#: src/Admin/SettingsPages/Membership/PlansPage/SettingsPage.php:289
 msgid "one-time"
 msgstr ""
 
-#: src/Admin/SettingsPages/Membership/PlansPage/SettingsPage.php:301
+#: src/Admin/SettingsPages/Membership/PlansPage/SettingsPage.php:302
 msgid "Days"
 msgstr ""
 
-#: src/Admin/SettingsPages/Membership/PlansPage/SettingsPage.php:301
+#: src/Admin/SettingsPages/Membership/PlansPage/SettingsPage.php:302
 msgid "Weeks"
 msgstr ""
 
-#: src/Admin/SettingsPages/Membership/PlansPage/SettingsPage.php:301
+#: src/Admin/SettingsPages/Membership/PlansPage/SettingsPage.php:302
 msgid "Months"
 msgstr ""
 
-#: src/Admin/SettingsPages/Membership/PlansPage/SettingsPage.php:301
+#: src/Admin/SettingsPages/Membership/PlansPage/SettingsPage.php:302
 msgid "Years"
 msgstr ""
 
-#: src/Admin/SettingsPages/Membership/PlansPage/SettingsPage.php:305
+#: src/Admin/SettingsPages/Membership/PlansPage/SettingsPage.php:306
 msgid "months"
 msgstr ""
 
-#: src/Admin/SettingsPages/Membership/PlansPage/SettingsPage.php:306
+#: src/Admin/SettingsPages/Membership/PlansPage/SettingsPage.php:307
 msgid "for"
 msgstr ""
 
-#: src/Admin/SettingsPages/Membership/PlansPage/SettingsPage.php:307
+#: src/Admin/SettingsPages/Membership/PlansPage/SettingsPage.php:308
 #, php-format
 msgid " and a %s signup fee"
 msgstr ""
 
-#: src/Admin/SettingsPages/Membership/PlansPage/SettingsPage.php:309
+#: src/Admin/SettingsPages/Membership/PlansPage/SettingsPage.php:310
 msgid "Renews indefinitely"
 msgstr ""
 
-#: src/Admin/SettingsPages/Membership/PlansPage/SettingsPage.php:310
+#: src/Admin/SettingsPages/Membership/PlansPage/SettingsPage.php:311
 msgid "Never expires"
 msgstr ""
 
-#: src/Admin/SettingsPages/Membership/PlansPage/SettingsPage.php:313
+#: src/Admin/SettingsPages/Membership/PlansPage/SettingsPage.php:314
 msgid "Expires at"
 msgstr ""
 
-#: src/Admin/SettingsPages/Membership/PlansPage/SettingsPage.php:316
+#: src/Admin/SettingsPages/Membership/PlansPage/SettingsPage.php:317
 msgid "Expires after"
 msgstr ""
 
-#: src/Admin/SettingsPages/Membership/PlansPage/SettingsPage.php:319
+#: src/Admin/SettingsPages/Membership/PlansPage/SettingsPage.php:320
 #, php-format
 msgid "Includes a %s free trial"
 msgstr ""
@@ -4864,6 +4875,16 @@ msgstr ""
 
 #: src/Admin/SettingsPages/Membership/views/coupons-page-sidebar.php:18
 msgid "Save Coupon"
+msgstr ""
+
+#: src/Admin/SettingsPages/Membership/views/customers/data-metabox.php:45
+#, php-format
+msgid "Customer since %s"
+msgstr ""
+
+#: src/Admin/SettingsPages/Membership/views/customers/data-metabox.php:50
+#, php-format
+msgid "Last login on %s"
 msgstr ""
 
 #: src/Admin/SettingsPages/Membership/views/customers/data-metabox.php:57

@@ -1137,6 +1137,7 @@ html .pp-form-container .select2 input.select2-search__field {
     border-radius: 999px;
     width: 120px;
     height: 120px;
+    object-fit: cover;
 }
 
 #profilepress-myaccount-wrapper .profilepress-myaccount-nav a:focus {
