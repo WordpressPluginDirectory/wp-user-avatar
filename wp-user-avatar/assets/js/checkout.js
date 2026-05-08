@@ -40,6 +40,11 @@ export default function () {
             $(document.body).trigger('ppress_update_checkout');
         });
 
+        // Update on autorenewal checkbox check
+        $(document.body).on('change', '#ppress_mb_checkout_form #ppress-checkout-renewal', function () {
+            $(document.body).trigger('ppress_update_checkout');
+        });
+
         // Update group selection change
         $(document.body).on('change', '#ppress_mb_checkout_form [name=group_selector]', function () {
             _this.update_checkout();

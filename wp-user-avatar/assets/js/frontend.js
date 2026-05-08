@@ -51,16 +51,17 @@ function Frontend() {
 
         $('.pp-g-recaptcha').each(function (index, el) {
 
-            var $site_key = $(el).attr('data-sitekey');
-            var $form = $(this).parents('.pp-form-container').find('form');
+            var $site_key = $(el).attr('data-sitekey'),
+                $form = $(this).parents('.pp-form-container').find('form'),
+                recaptchaApi = typeof grecaptcha.enterprise !== 'undefined' ? grecaptcha.enterprise : grecaptcha;
 
             if ($(el).attr('data-type') === 'v3') {
 
                 $form.find('input.pp-submit-form').on('click', function (e) {
                     e.preventDefault();
                     _this._add_processing_label($form);
-                    grecaptcha.ready(function () {
-                        grecaptcha.execute($site_key, {action: 'form'}).then(function (token) {
+                    recaptchaApi.ready(function () {
+                        recaptchaApi.execute($site_key, {action: 'form'}).then(function (token) {
                             $form.find('[name="g-recaptcha-response"]').remove();
 
                             $form.append($('<input>', {
@@ -77,7 +78,7 @@ function Frontend() {
 
                 try {
 
-                    var widgetId1 = grecaptcha.render(el, {
+                    var widgetId1 = recaptchaApi.render(el, {
                         'sitekey': $site_key,
                         'theme': $(el).attr('data-theme'),
                         'size': $(el).attr('data-size')
@@ -87,11 +88,11 @@ function Frontend() {
                 }
 
                 $form.on('pp_form_submitted', function () {
-                    grecaptcha.reset(widgetId1)
+                    recaptchaApi.reset(widgetId1)
                 });
 
                 $(document).on('ppress_process_checkout_success_callback ppress_process_checkout_error_callback', function () {
-                    grecaptcha.reset(widgetId1)
+                    recaptchaApi.reset(widgetId1)
                 });
             }
         });

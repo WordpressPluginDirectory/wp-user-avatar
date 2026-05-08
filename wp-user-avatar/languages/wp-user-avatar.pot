@@ -2,14 +2,14 @@
 # This file is distributed under the same license as the ProfilePress plugin.
 msgid ""
 msgstr ""
-"Project-Id-Version: ProfilePress 4.16.14\n"
+"Project-Id-Version: ProfilePress 4.16.15\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wp-user-avatar\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-04-13T12:46:40+00:00\n"
+"POT-Creation-Date: 2026-05-07T11:31:52+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: wp-user-avatar\n"
@@ -526,7 +526,7 @@ msgstr ""
 #: src/Admin/SettingsPages/DragDropBuilder/DragDropBuilder.php:1250
 #: src/Admin/SettingsPages/LicenseUpgrader.php:176
 #: src/Admin/SettingsPages/Membership/CheckoutFieldsManager.php:101
-#: src/Classes/ExtensionManager.php:135
+#: src/Classes/ExtensionManager.php:139
 #: src/Functions/GlobalFunctions.php:1515
 #: src/Themes/DragDrop/AbstractMemberDirectoryTheme.php:236
 msgid "Custom Fields"
@@ -601,7 +601,7 @@ msgstr ""
 
 #: src/Admin/SettingsPages/DragDropBuilder/DragDropBuilder.php:1465
 #: src/Admin/SettingsPages/LicenseUpgrader.php:200
-#: src/Classes/ExtensionManager.php:170
+#: src/Classes/ExtensionManager.php:174
 msgid "Passwordless Login"
 msgstr ""
 
@@ -779,7 +779,7 @@ msgstr ""
 #: src/Admin/SettingsPages/DragDropBuilder/Fields/DefinedFieldTypes/Agreeable.php:61
 #: src/Admin/SettingsPages/DragDropBuilder/Fields/DefinedFieldTypes/Checkbox.php:65
 #: src/Admin/SettingsPages/DragDropBuilder/Fields/DefinedFieldTypes/Date.php:57
-#: src/Admin/SettingsPages/DragDropBuilder/Fields/DefinedFieldTypes/Input.php:58
+#: src/Admin/SettingsPages/DragDropBuilder/Fields/DefinedFieldTypes/Input.php:62
 #: src/Admin/SettingsPages/DragDropBuilder/Fields/DefinedFieldTypes/Password.php:58
 #: src/Admin/SettingsPages/DragDropBuilder/Fields/DefinedFieldTypes/Radio.php:57
 #: src/Admin/SettingsPages/DragDropBuilder/Fields/DefinedFieldTypes/Select.php:58
@@ -794,7 +794,7 @@ msgstr ""
 #: src/Admin/SettingsPages/DragDropBuilder/Fields/SelectRole.php:43
 #: src/Admin/SettingsPages/DragDropBuilder/Fields/SingleCheckbox.php:47
 #: src/Admin/SettingsPages/DragDropBuilder/Fields/Textarea.php:48
-#: src/Admin/SettingsPages/DragDropBuilder/Fields/TextBox.php:48
+#: src/Admin/SettingsPages/DragDropBuilder/Fields/TextBox.php:47
 #: src/Admin/SettingsPages/DragDropBuilder/Fields/Website.php:38
 msgid "Required"
 msgstr ""
@@ -809,7 +809,7 @@ msgstr ""
 #: src/Admin/SettingsPages/DragDropBuilder/Fields/DefinedFieldTypes/Agreeable.php:62
 #: src/Admin/SettingsPages/DragDropBuilder/Fields/DefinedFieldTypes/Checkbox.php:66
 #: src/Admin/SettingsPages/DragDropBuilder/Fields/DefinedFieldTypes/Date.php:58
-#: src/Admin/SettingsPages/DragDropBuilder/Fields/DefinedFieldTypes/Input.php:59
+#: src/Admin/SettingsPages/DragDropBuilder/Fields/DefinedFieldTypes/Input.php:63
 #: src/Admin/SettingsPages/DragDropBuilder/Fields/DefinedFieldTypes/Password.php:59
 #: src/Admin/SettingsPages/DragDropBuilder/Fields/DefinedFieldTypes/Radio.php:58
 #: src/Admin/SettingsPages/DragDropBuilder/Fields/DefinedFieldTypes/Select.php:59
@@ -824,7 +824,7 @@ msgstr ""
 #: src/Admin/SettingsPages/DragDropBuilder/Fields/SelectRole.php:44
 #: src/Admin/SettingsPages/DragDropBuilder/Fields/SingleCheckbox.php:48
 #: src/Admin/SettingsPages/DragDropBuilder/Fields/Textarea.php:49
-#: src/Admin/SettingsPages/DragDropBuilder/Fields/TextBox.php:49
+#: src/Admin/SettingsPages/DragDropBuilder/Fields/TextBox.php:48
 #: src/Admin/SettingsPages/DragDropBuilder/Fields/Website.php:39
 msgid "Force users to fill out this field, otherwise it will be optional."
 msgstr ""
@@ -840,7 +840,7 @@ msgstr ""
 #: src/Admin/SettingsPages/DragDropBuilder/Fields/DefinedFieldTypes/Agreeable.php:68
 #: src/Admin/SettingsPages/DragDropBuilder/Fields/DefinedFieldTypes/Checkbox.php:57
 #: src/Admin/SettingsPages/DragDropBuilder/Fields/DefinedFieldTypes/Date.php:64
-#: src/Admin/SettingsPages/DragDropBuilder/Fields/DefinedFieldTypes/Input.php:65
+#: src/Admin/SettingsPages/DragDropBuilder/Fields/DefinedFieldTypes/Input.php:69
 #: src/Admin/SettingsPages/DragDropBuilder/Fields/DefinedFieldTypes/Password.php:65
 #: src/Admin/SettingsPages/DragDropBuilder/Fields/DefinedFieldTypes/Radio.php:64
 #: src/Admin/SettingsPages/DragDropBuilder/Fields/DefinedFieldTypes/Select.php:65
@@ -864,7 +864,7 @@ msgstr ""
 #: src/Admin/SettingsPages/DragDropBuilder/Fields/SelectRole.php:50
 #: src/Admin/SettingsPages/DragDropBuilder/Fields/SingleCheckbox.php:54
 #: src/Admin/SettingsPages/DragDropBuilder/Fields/Textarea.php:55
-#: src/Admin/SettingsPages/DragDropBuilder/Fields/TextBox.php:55
+#: src/Admin/SettingsPages/DragDropBuilder/Fields/TextBox.php:54
 #: src/Admin/SettingsPages/DragDropBuilder/Fields/Username.php:36
 #: src/Admin/SettingsPages/DragDropBuilder/Fields/Website.php:45
 msgid "CSS Classes"
@@ -881,7 +881,7 @@ msgstr ""
 #: src/Admin/SettingsPages/DragDropBuilder/Fields/DefinedFieldTypes/Agreeable.php:70
 #: src/Admin/SettingsPages/DragDropBuilder/Fields/DefinedFieldTypes/Checkbox.php:59
 #: src/Admin/SettingsPages/DragDropBuilder/Fields/DefinedFieldTypes/Date.php:66
-#: src/Admin/SettingsPages/DragDropBuilder/Fields/DefinedFieldTypes/Input.php:67
+#: src/Admin/SettingsPages/DragDropBuilder/Fields/DefinedFieldTypes/Input.php:71
 #: src/Admin/SettingsPages/DragDropBuilder/Fields/DefinedFieldTypes/Password.php:67
 #: src/Admin/SettingsPages/DragDropBuilder/Fields/DefinedFieldTypes/Radio.php:66
 #: src/Admin/SettingsPages/DragDropBuilder/Fields/DefinedFieldTypes/Select.php:67
@@ -905,7 +905,7 @@ msgstr ""
 #: src/Admin/SettingsPages/DragDropBuilder/Fields/SelectRole.php:52
 #: src/Admin/SettingsPages/DragDropBuilder/Fields/SingleCheckbox.php:56
 #: src/Admin/SettingsPages/DragDropBuilder/Fields/Textarea.php:57
-#: src/Admin/SettingsPages/DragDropBuilder/Fields/TextBox.php:57
+#: src/Admin/SettingsPages/DragDropBuilder/Fields/TextBox.php:56
 #: src/Admin/SettingsPages/DragDropBuilder/Fields/Username.php:38
 #: src/Admin/SettingsPages/DragDropBuilder/Fields/Website.php:47
 msgid "Enter the CSS class names you would like to add to this field."
@@ -1004,6 +1004,10 @@ msgstr ""
 
 #: src/Admin/SettingsPages/DragDropBuilder/Fields/DefinedFieldTypes/Agreeable.php:53
 msgid "True"
+msgstr ""
+
+#: src/Admin/SettingsPages/DragDropBuilder/Fields/DefinedFieldTypes/Input.php:55
+msgid "Default Field Value"
 msgstr ""
 
 #: src/Admin/SettingsPages/DragDropBuilder/Fields/DisplayName.php:22
@@ -1721,6 +1725,7 @@ msgstr ""
 #: src/Admin/SettingsPages/EmailSettings/EmailSettingsPage.php:337
 #: src/Admin/SettingsPages/GeneralSettings.php:531
 #: src/Admin/SettingsPages/Membership/PaymentSettings.php:134
+#: src/Admin/SettingsPages/Membership/PaymentSettings.php:145
 msgid "Enable"
 msgstr ""
 
@@ -2724,7 +2729,7 @@ msgid "Ensures users with email addresses in this list are not blocked from regi
 msgstr ""
 
 #: src/Admin/SettingsPages/GeneralSettings.php:576
-#: src/Classes/ExtensionManager.php:333
+#: src/Classes/ExtensionManager.php:351
 msgid "BuddyPress / BuddyBoss"
 msgstr ""
 
@@ -2831,17 +2836,17 @@ msgid "Advanced shortcode builder"
 msgstr ""
 
 #: src/Admin/SettingsPages/LicenseUpgrader.php:182
-#: src/Classes/ExtensionManager.php:163
+#: src/Classes/ExtensionManager.php:167
 msgid "Social Login"
 msgstr ""
 
 #: src/Admin/SettingsPages/LicenseUpgrader.php:188
-#: src/Classes/ExtensionManager.php:191
+#: src/Classes/ExtensionManager.php:195
 msgid "Metered Paywall"
 msgstr ""
 
 #: src/Admin/SettingsPages/LicenseUpgrader.php:194
-#: src/Classes/ExtensionManager.php:156
+#: src/Classes/ExtensionManager.php:160
 msgid "User Moderation"
 msgstr ""
 
@@ -4255,18 +4260,39 @@ msgid "Check to disable automatic renewal of subscriptions at the end of a billi
 msgstr ""
 
 #: src/Admin/SettingsPages/Membership/PaymentSettings.php:133
-msgid "Checkout Autologin"
+msgid "Auto-renewal Checkbox"
 msgstr ""
 
 #: src/Admin/SettingsPages/Membership/PaymentSettings.php:135
-msgid "Check to automatically log in customers after checkout."
+msgid "Check to show a checkbox that lets customers enable or disable auto-renewal during checkout."
 msgstr ""
 
-#: src/Admin/SettingsPages/Membership/PaymentSettings.php:143
-msgid "Checkout Social Login"
+#: src/Admin/SettingsPages/Membership/PaymentSettings.php:138
+#: src/Membership/Models/Subscription/SubscriptionTrialPeriod.php:18
+msgid "Disabled"
+msgstr ""
+
+#: src/Admin/SettingsPages/Membership/PaymentSettings.php:139
+msgid "Let customers opt-out of auto-renewal"
+msgstr ""
+
+#: src/Admin/SettingsPages/Membership/PaymentSettings.php:140
+msgid "Let customers opt-in to auto-renewal"
 msgstr ""
 
 #: src/Admin/SettingsPages/Membership/PaymentSettings.php:144
+msgid "Checkout Autologin"
+msgstr ""
+
+#: src/Admin/SettingsPages/Membership/PaymentSettings.php:146
+msgid "Check to automatically log in customers after checkout."
+msgstr ""
+
+#: src/Admin/SettingsPages/Membership/PaymentSettings.php:154
+msgid "Checkout Social Login"
+msgstr ""
+
+#: src/Admin/SettingsPages/Membership/PaymentSettings.php:155
 msgid "Select the social login buttons to display on the checkout page."
 msgstr ""
 
@@ -5464,215 +5490,227 @@ msgstr ""
 msgid "Something unexpected happened. Please try again"
 msgstr ""
 
-#: src/Classes/ExtensionManager.php:97
+#: src/Classes/ExtensionManager.php:101
 msgid "Accept payments and sell subscriptions via PayPal."
 msgstr ""
 
-#: src/Classes/ExtensionManager.php:104
+#: src/Classes/ExtensionManager.php:108
 msgid "Accept payments and sell subscriptions via Mollie."
 msgstr ""
 
-#: src/Classes/ExtensionManager.php:111
+#: src/Classes/ExtensionManager.php:115
 msgid "Accept payments and sell subscriptions via Razorpay."
 msgstr ""
 
-#: src/Classes/ExtensionManager.php:118
+#: src/Classes/ExtensionManager.php:122
 msgid "Accept payments and sell subscriptions via Paystack."
 msgstr ""
 
-#: src/Classes/ExtensionManager.php:122
+#: src/Classes/ExtensionManager.php:126
 msgid "Fixed Subscription Expiration"
 msgstr ""
 
-#: src/Classes/ExtensionManager.php:124
+#: src/Classes/ExtensionManager.php:128
 msgid "Set specific expiration dates for non-recurring membership plans."
 msgstr ""
 
-#: src/Classes/ExtensionManager.php:128
+#: src/Classes/ExtensionManager.php:132
 msgid "Receipt"
 msgstr ""
 
-#: src/Classes/ExtensionManager.php:131
+#: src/Classes/ExtensionManager.php:135
 msgid "Allow customers to view, print and download as PDF, the receipt of their orders."
 msgstr ""
 
-#: src/Classes/ExtensionManager.php:138
+#: src/Classes/ExtensionManager.php:142
 msgid "Collect unlimited additional information from users besides the standard profile data."
 msgstr ""
 
-#: src/Classes/ExtensionManager.php:142
+#: src/Classes/ExtensionManager.php:146
 msgid "Email Confirmation"
 msgstr ""
 
-#: src/Classes/ExtensionManager.php:145
+#: src/Classes/ExtensionManager.php:149
 msgid "Ensure newly registered users confirm their email addresses before they can log in."
 msgstr ""
 
-#: src/Classes/ExtensionManager.php:149
+#: src/Classes/ExtensionManager.php:153
 msgid "Two-Factor Authentication (2FA)"
 msgstr ""
 
-#: src/Classes/ExtensionManager.php:152
+#: src/Classes/ExtensionManager.php:156
 msgid "Adds an additional layer of security to users accounts by requiring more than just a password to log in."
 msgstr ""
 
-#: src/Classes/ExtensionManager.php:159
+#: src/Classes/ExtensionManager.php:163
 msgid "Decide whether to approve newly registered users or not. You can also block and unblock users at any time."
 msgstr ""
 
-#: src/Classes/ExtensionManager.php:166
+#: src/Classes/ExtensionManager.php:170
 msgid "Let users easily register/login to your site using their social network accounts (Facebook, Twitter, Google, LinkedIn, Yahoo, Microsoft, Amazon, GitHub, WordPress.com, VK)."
 msgstr ""
 
-#: src/Classes/ExtensionManager.php:173
+#: src/Classes/ExtensionManager.php:177
 msgid "Let users log in to your website via a one-time URL sent to their email addresses."
 msgstr ""
 
-#: src/Classes/ExtensionManager.php:177
+#: src/Classes/ExtensionManager.php:181
 msgid "Google reCAPTCHA"
 msgstr ""
 
-#: src/Classes/ExtensionManager.php:180
+#: src/Classes/ExtensionManager.php:184
 msgid "Protect your forms against spam and bot attacks."
 msgstr ""
 
-#: src/Classes/ExtensionManager.php:187
+#: src/Classes/ExtensionManager.php:191
 msgid "Protect forms from bot submissions and automated attacks by verifying that form submissions come from real human users rather than malicious scripts or bots."
 msgstr ""
 
-#: src/Classes/ExtensionManager.php:194
+#: src/Classes/ExtensionManager.php:198
 msgid "Let guest and visitors view limited number of restricted content."
 msgstr ""
 
-#: src/Classes/ExtensionManager.php:198
+#: src/Classes/ExtensionManager.php:202
 msgid "Site Creation"
 msgstr ""
 
-#: src/Classes/ExtensionManager.php:200
+#: src/Classes/ExtensionManager.php:204
 msgid "Allow users to create new sites on a multisite network via a registration form powered by ProfilePress."
 msgstr ""
 
-#: src/Classes/ExtensionManager.php:203
+#: src/Classes/ExtensionManager.php:207
 msgid "This is not a multisite installation"
 msgstr ""
 
-#: src/Classes/ExtensionManager.php:207
+#: src/Classes/ExtensionManager.php:211
 msgid "Invite Codes"
 msgstr ""
 
-#: src/Classes/ExtensionManager.php:209
+#: src/Classes/ExtensionManager.php:213
 msgid "Restrict WordPress registration to only users with invite codes."
 msgstr ""
 
-#: src/Classes/ExtensionManager.php:217
+#: src/Classes/ExtensionManager.php:218
+msgid "Auto-Renewal Checkbox"
+msgstr ""
+
+#: src/Classes/ExtensionManager.php:220
+msgid "Allow members to decide whether to enable automatic recurring payments at specified intervals for their plan subscription during checkout."
+msgstr ""
+
+#: src/Classes/ExtensionManager.php:228
 msgid "Subscribe members to your Mailchimp audiences when they register or subscribe to a membership plan. It can also automatically sync membership and profile changes with Mailchimp."
 msgstr ""
 
-#: src/Classes/ExtensionManager.php:224
+#: src/Classes/ExtensionManager.php:235
 msgid "Subscribe members to your Campaign Monitor lists when they register or subscribe to a membership plan. It can also automatically sync membership and profile changes with Campaign Monitor."
 msgstr ""
 
-#: src/Classes/ExtensionManager.php:231
+#: src/Classes/ExtensionManager.php:242
 msgid "Subscribe members to your MailerLite groups when they register or subscribe to a membership plan. It can also automatically sync membership and profile changes with MailerLite."
 msgstr ""
 
-#: src/Classes/ExtensionManager.php:238
+#: src/Classes/ExtensionManager.php:249
+msgid "Subscribe members to your Brevo lists when they register or subscribe to a membership plan. It can also automatically sync membership and profile changes with Brevo."
+msgstr ""
+
+#: src/Classes/ExtensionManager.php:256
 msgid "Create WooCommerce membership sites, members-only discounts and stores, manage WooCommerce billing and shipping fields, replaces WooCommerce login and edit account forms in checkout and \"My Account\" pages with that of ProfilePress."
 msgstr ""
 
-#: src/Classes/ExtensionManager.php:241
+#: src/Classes/ExtensionManager.php:259
 msgid "WooCommerce is not active"
 msgstr ""
 
-#: src/Classes/ExtensionManager.php:248
+#: src/Classes/ExtensionManager.php:266
 msgid "Sell access to Tutor LMS courses, and enroll users after registration to specific courses."
 msgstr ""
 
-#: src/Classes/ExtensionManager.php:251
+#: src/Classes/ExtensionManager.php:269
 msgid "Tutor LMS is not active"
 msgstr ""
 
-#: src/Classes/ExtensionManager.php:258
+#: src/Classes/ExtensionManager.php:276
 msgid "Sell access to Academy LMS courses, and enroll users after registration to specific courses."
 msgstr ""
 
-#: src/Classes/ExtensionManager.php:261
+#: src/Classes/ExtensionManager.php:279
 msgid "Academy LMS is not active"
 msgstr ""
 
-#: src/Classes/ExtensionManager.php:268
+#: src/Classes/ExtensionManager.php:286
 msgid "Sell access to LearnDash courses and groups, enroll users after registration to specific courses and groups, and let users view their enrolled courses from the My Account page."
 msgstr ""
 
-#: src/Classes/ExtensionManager.php:271
+#: src/Classes/ExtensionManager.php:289
 msgid "LearnDash is not active"
 msgstr ""
 
-#: src/Classes/ExtensionManager.php:278
+#: src/Classes/ExtensionManager.php:296
 msgid "Sell access to LifterLMS courses and memberships, enroll users after registration to specific courses and memberships, and let users view their enrolled courses from the My Account page."
 msgstr ""
 
-#: src/Classes/ExtensionManager.php:281
+#: src/Classes/ExtensionManager.php:299
 msgid "LifterLMS is not active"
 msgstr ""
 
-#: src/Classes/ExtensionManager.php:288
+#: src/Classes/ExtensionManager.php:306
 msgid "Sell access to Sensei courses and groups, and enroll users after registration to specific courses."
 msgstr ""
 
-#: src/Classes/ExtensionManager.php:291
+#: src/Classes/ExtensionManager.php:309
 msgid "Sensei LMS is not active"
 msgstr ""
 
-#: src/Classes/ExtensionManager.php:298
+#: src/Classes/ExtensionManager.php:316
 msgid "Sell access to MasterStudy LMS courses, and enroll users after registration to specific courses."
 msgstr ""
 
-#: src/Classes/ExtensionManager.php:301
+#: src/Classes/ExtensionManager.php:319
 msgid "MasterStudy LMS is not active"
 msgstr ""
 
-#: src/Classes/ExtensionManager.php:308
+#: src/Classes/ExtensionManager.php:326
 msgid "Sell access to FluentCommunity spaces and courses, and enroll users in specific courses and spaces after registration."
 msgstr ""
 
-#: src/Classes/ExtensionManager.php:311
+#: src/Classes/ExtensionManager.php:329
 msgid "FluentCommunity is not active"
 msgstr ""
 
-#: src/Classes/ExtensionManager.php:317
+#: src/Classes/ExtensionManager.php:335
 msgid "Integrate ProfilePress with AffiliateWP plugin so you to create an affiliate program for your membership website."
 msgstr ""
 
-#: src/Classes/ExtensionManager.php:320
+#: src/Classes/ExtensionManager.php:338
 msgid "AffiliateWP is not active"
 msgstr ""
 
-#: src/Classes/ExtensionManager.php:326
+#: src/Classes/ExtensionManager.php:344
 msgid "Integrate ProfilePress with SliceWP affiliate plugin so you to start an affiliate program for your membership website."
 msgstr ""
 
-#: src/Classes/ExtensionManager.php:329
+#: src/Classes/ExtensionManager.php:347
 msgid "SliceWP is not active"
 msgstr ""
 
-#: src/Classes/ExtensionManager.php:335
+#: src/Classes/ExtensionManager.php:353
 msgid "Sell access to groups, let users select groups to join during registration and sync WordPress profile fields with BuddyPress/BuddyBoss extended profile."
 msgstr ""
 
-#: src/Classes/ExtensionManager.php:338
+#: src/Classes/ExtensionManager.php:356
 msgid "BuddyPress/BuddyBoss plugin is not active"
 msgstr ""
 
-#: src/Classes/ExtensionManager.php:345
+#: src/Classes/ExtensionManager.php:363
 msgid "Block spam and bot user registrations with Akismet and keep your membership site safe and secured."
 msgstr ""
 
-#: src/Classes/ExtensionManager.php:351
+#: src/Classes/ExtensionManager.php:369
 msgid "It allows you to build multilingual login, registration, password reset and edit profile forms."
 msgstr ""
 
-#: src/Classes/ExtensionManager.php:354
+#: src/Classes/ExtensionManager.php:372
 msgid "Polylang plugin is not active"
 msgstr ""
 
@@ -6068,6 +6106,10 @@ msgstr ""
 #: src/ContentProtection/ContentConditions.php:428
 #, php-format
 msgid "Selected %s Archive Pages"
+msgstr ""
+
+#: src/ContentProtection/ElementorDisplayCondition.php:26
+msgid "ProfilePress Membership"
 msgstr ""
 
 #: src/ContentProtection/ElementorRestriction.php:38
@@ -16179,7 +16221,7 @@ msgstr ""
 
 #: src/Membership/Controllers/CheckoutController.php:150
 #: src/Membership/Controllers/CheckoutController.php:201
-#: src/Membership/Controllers/CheckoutController.php:478
+#: src/Membership/Controllers/CheckoutController.php:480
 msgid "Please enter a plan ID."
 msgstr ""
 
@@ -16196,24 +16238,24 @@ msgstr ""
 msgid "Error processing checkout. Nonce failed"
 msgstr ""
 
-#: src/Membership/Controllers/CheckoutController.php:251
+#: src/Membership/Controllers/CheckoutController.php:253
 #: src/ShortcodeParser/MembershipShortcodes.php:153
 msgid "Invalid membership plan."
 msgstr ""
 
-#: src/Membership/Controllers/CheckoutController.php:264
+#: src/Membership/Controllers/CheckoutController.php:266
 msgid "Please read and accept the terms and conditions to proceed with your order."
 msgstr ""
 
-#: src/Membership/Controllers/CheckoutController.php:271
+#: src/Membership/Controllers/CheckoutController.php:273
 msgid "Invalid subscription ID provided for plan change."
 msgstr ""
 
-#: src/Membership/Controllers/CheckoutController.php:288
+#: src/Membership/Controllers/CheckoutController.php:290
 msgid "No payment method selected. Please try again."
 msgstr ""
 
-#: src/Membership/Controllers/CheckoutController.php:313
+#: src/Membership/Controllers/CheckoutController.php:315
 msgid "You are not allowed to switch from this plan."
 msgstr ""
 
@@ -16429,17 +16471,17 @@ msgstr ""
 msgid "No Connected User"
 msgstr ""
 
-#: src/Membership/Models/Order/OrderEntity.php:239
+#: src/Membership/Models/Order/OrderEntity.php:240
 #, php-format
 msgid "Payment %s has been fully refunded in %s."
 msgstr ""
 
-#: src/Membership/Models/Order/OrderEntity.php:259
+#: src/Membership/Models/Order/OrderEntity.php:260
 #: src/Membership/Models/Subscription/SubscriptionEntity.php:565
 msgid "payment method"
 msgstr ""
 
-#: src/Membership/Models/Order/OrderEntity.php:262
+#: src/Membership/Models/Order/OrderEntity.php:263
 #, php-format
 msgid "Order changed from %s to %s by %s"
 msgstr ""
@@ -16522,10 +16564,6 @@ msgstr ""
 
 #: src/Membership/Models/Subscription/SubscriptionStatus.php:22
 msgid "Cancelled"
-msgstr ""
-
-#: src/Membership/Models/Subscription/SubscriptionTrialPeriod.php:18
-msgid "Disabled"
 msgstr ""
 
 #: src/Membership/Models/Subscription/SubscriptionTrialPeriod.php:19

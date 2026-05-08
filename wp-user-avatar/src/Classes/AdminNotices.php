@@ -85,7 +85,7 @@ class AdminNotices
 
     public function test_mode_notice()
     {
-        if (ppress_is_test_mode() && current_user_can('manage_options')) {
+         if (apply_filters('ppress_show_test_mode_notice', true) && ppress_is_test_mode() && current_user_can('manage_options')) {
             $link = add_query_arg(
                     ['view' => 'payments', 'section' => 'payment-methods'],
                     PPRESS_SETTINGS_SETTING_PAGE

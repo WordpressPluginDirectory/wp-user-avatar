@@ -8,6 +8,7 @@ use ProfilePress\Core\Membership\Emails\SubscriptionExpiredNotification;
 use ProfilePress\Core\Membership\Models\Coupon\CouponFactory;
 use ProfilePress\Core\Membership\Models\Customer\CustomerFactory;
 use ProfilePress\Core\Membership\Models\Group\GroupFactory;
+use ProfilePress\Core\Membership\Models\Order\OrderEntity;
 use ProfilePress\Core\Membership\Models\Order\OrderFactory;
 use ProfilePress\Core\Membership\Models\Order\OrderType;
 use ProfilePress\Core\Membership\Models\Plan\PlanEntity;
@@ -42,7 +43,6 @@ class CheckoutController extends BaseController
 
         add_action('wp_ajax_ppress_contextual_state_field', [$this, 'contextual_state_field']);
         add_action('wp_ajax_nopriv_ppress_contextual_state_field', [$this, 'contextual_state_field']);
-
 
         add_action('wp', [$this, 'validate_checkout_coupon']);
         add_action('wp', [$this, 'redirect_to_referrer_after_checkout']);
@@ -230,6 +230,8 @@ class CheckoutController extends BaseController
                 throw new \Exception(esc_html__('Error processing checkout. Nonce failed', 'wp-user-avatar'));
             }
 
+            $GLOBALS['ppress_checkout_post_data'] = $_POST;
+
             $_POST = $this->cleanup_posted_data($_POST);
 
             if ( ! isset($_POST['_ppress_timestamp']) || intval($_POST['_ppress_timestamp']) > (time() - 2)) {
@@ -348,8 +350,8 @@ class CheckoutController extends BaseController
                 if ($changePlanSub->exists() && $changePlanSub->get_customer_id() == $customer_id) {
 
                     // do not send subscription cancelled email
-                    remove_action('ppress_subscription_cancelled', [SubscriptionCancelledNotification::init(), 'dispatch_email'], 10);
-                    remove_action('ppress_subscription_expired', [SubscriptionExpiredNotification::init(), 'dispatch_email'], 10);
+                    remove_action('ppress_subscription_cancelled', [SubscriptionCancelledNotification::init(), 'dispatch_email']);
+                    remove_action('ppress_subscription_expired', [SubscriptionExpiredNotification::init(), 'dispatch_email']);
 
                     $changePlanSub->cancel(true);
                     $changePlanSub->expire();
@@ -483,6 +485,8 @@ class CheckoutController extends BaseController
 
             parse_str($_POST['post_data'], $post_data);
 
+            $GLOBALS['ppress_checkout_post_data'] = $post_data;
+
             $planObj = ppress_get_plan(absint($_POST['plan_id']));
 
             $groupObj = GroupFactory::fromId(absint(ppress_var($post_data, 'group_id', 0)));
@@ -552,7 +556,10 @@ class CheckoutController extends BaseController
                 $checkout_payment_methods_html = ob_get_clean();
 
                 ob_start();
-                ppress_render_view('checkout/form-checkout-submit-btn', ['order_total' => $cart_vars->total, 'plan' => $planObj]);
+                ppress_render_view('checkout/form-checkout-submit-btn', [
+                    'order_total' => $cart_vars->total,
+                    'plan'        => $planObj
+                ]);
                 $checkout_submit_btn = ob_get_clean();
 
                 $fragments = [

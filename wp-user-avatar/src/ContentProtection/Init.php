@@ -20,10 +20,16 @@ class Init
         SearchAndAPI::get_instance();
         RestrictionShortcode::get_instance();
         NavMenuProtection::get_instance();
-        ElementorRestriction::get_instance();
         CapabilityCheck::get_instance();
 
         ConditionalBlocksIntegration::get_instance();
+
+        ElementorRestriction::get_instance();
+        add_action( 'elementor/display_conditions/register', function( $conditions_manager ) {
+            $conditions_manager->register_condition_instance(
+                new ElementorDisplayCondition()
+            );
+        } );
     }
 
     public function get_content_condition_field()

@@ -104,9 +104,12 @@ class PlanEntity extends AbstractModel implements ModelInterface
      */
     public function is_auto_renew(): bool
     {
-        $result = $this->is_recurring() && ppress_settings_by_key('disable_auto_renew') != 'true';
+        return ppress_cache_transform('plan_entity_is_auto_renew', function () {
 
-        return apply_filters('ppress_subscription_is_auto_renew', $result, $this);
+            $result = $this->is_recurring() && ppress_settings_by_key('disable_auto_renew') != 'true';
+
+            return apply_filters('ppress_subscription_is_auto_renew', $result, $this);
+        });
     }
 
     /**
@@ -174,7 +177,10 @@ class PlanEntity extends AbstractModel implements ModelInterface
 
     public function get_edit_plan_url()
     {
-        return add_query_arg(['ppress_subp_action' => 'edit', 'id' => $this->id], PPRESS_MEMBERSHIP_SUBSCRIPTION_PLANS_SETTINGS_PAGE);
+        return add_query_arg([
+            'ppress_subp_action' => 'edit',
+            'id'                 => $this->id
+        ], PPRESS_MEMBERSHIP_SUBSCRIPTION_PLANS_SETTINGS_PAGE);
     }
 
     /**

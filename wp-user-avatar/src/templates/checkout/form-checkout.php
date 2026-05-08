@@ -56,7 +56,7 @@ $cart_vars = OrderService::init()->checkout_order_calculation([
             <?php else: ?>
 
                 <?php if ( ! $isChangePlanIdSelected) : ?>
-        
+
         <?php do_action('ppress_checkout_before_account_info_fields', $planObj, $groupObj, $changePlanSubId); ?>
 
                     <div class="ppress-main-checkout-form__block__fieldset">
@@ -75,7 +75,7 @@ $cart_vars = OrderService::init()->checkout_order_calculation([
                         </fieldset>
                     </div>
 
-                    <?php ppress_render_view('checkout/form-account-info-fields'); ?>
+                    <?php ppress_render_view('checkout/form-account-info-fields', ['plan' => $planObj]); ?>
 
                     <?php ppress_render_view('checkout/form-payment-methods', [
                         'plan'      => $planObj,

@@ -24,7 +24,9 @@ class OrderFactory implements FactoryInterface
      */
     public static function fromId($id)
     {
-        return OrderRepository::init()->retrieve(absint($id));
+        return ppress_cache_transform('order_factory_from_id_' . $id, function () use ($id) {
+            return OrderRepository::init()->retrieve(absint($id));
+        });
     }
 
     /**
@@ -50,6 +52,10 @@ class OrderFactory implements FactoryInterface
      */
     public static function fromOrderKey($order_key)
     {
-        return OrderRepository::init()->retrieveByOrderKey(sanitize_text_field($order_key));
+        $order_key = sanitize_text_field($order_key);
+
+        return ppress_cache_transform('order_factory_from_order_key_' . $order_key, function () use ($order_key) {
+            return OrderRepository::init()->retrieveByOrderKey($order_key);
+        });
     }
 }

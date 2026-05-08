@@ -2,6 +2,7 @@
 
 use ProfilePress\Core\Membership\CheckoutFields;
 
+/** @var ProfilePress\Core\Membership\Models\Plan\PlanEntity $plan */
 
 echo '<div class="ppress-checkout_account_info-wrap">';
 
@@ -24,15 +25,18 @@ foreach (CheckoutFields::account_info_fields() as $field_key => $field) {
 
     if ($field_type != 'agreeable') {
         printf(
-            '<label for="%s">%s%s</label>',
-            esc_attr($field_key),
-            $label,
-            ppress_var($field, 'required') == 'true' ? '<span class="ppress-required">*</span>' : ''
+                '<label for="%s">%s%s</label>',
+                esc_attr($field_key),
+                $label,
+                ppress_var($field, 'required') == 'true' ? '<span class="ppress-required">*</span>' : ''
         );
     }
     echo CheckoutFields::render_field($field_key, $is_required);
     echo '</div>';
 }
+
+do_action('ppress_checkout_after_core_account_info_fields', $plan);
+
 echo '</div>';
 
 

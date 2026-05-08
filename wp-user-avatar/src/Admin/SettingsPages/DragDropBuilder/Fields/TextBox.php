@@ -38,8 +38,7 @@ class TextBox extends FieldBase
                 ],
                 'placeholder' => [
                     'label' => esc_html__('Placeholder', 'wp-user-avatar'),
-                    'field' => self::INPUT_FIELD,
-
+                    'field' => self::INPUT_FIELD
                 ]
             ],
             parent::SETTINGS_TAB => [

@@ -51,6 +51,7 @@ class OrderEntity extends AbstractModel implements ModelInterface
     const EU_VAT_COMPANY_ADDRESS = 'eu_vat_company_address';
     const EU_VAT_NUMBER_IS_VALID = 'eu_vat_number_is_valid';
     const EU_VAT_IS_REVERSE_CHARGED = 'eu_vat_is_reverse_charged';
+    const AUTO_RENEWAL_ENABLED = 'auto_renewal_enabled';
 
     /**
      * Order ID
@@ -414,6 +415,13 @@ class OrderEntity extends AbstractModel implements ModelInterface
      */
     public function get_plan()
     {
+        // set a flag if the order has autorenewal opted in/out via checkbox-field during checkout
+        $flag = $this->get_meta(OrderEntity::AUTO_RENEWAL_ENABLED);
+
+        if ( ! empty($flag)) {
+            $GLOBALS['ppress_order_autorenewal_checkbox_status'] = $flag;
+        }
+
         return ppress_get_plan($this->get_plan_id());
     }
 

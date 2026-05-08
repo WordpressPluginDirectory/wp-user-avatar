@@ -206,8 +206,6 @@ class CheckoutFields
 
                 foreach ($db_custom_fields as $db_custom_field) {
 
-                    if (in_array($db_custom_field['type'], ['hidden'])) continue;
-
                     $field_key  = $db_custom_field['field_key'];
                     $field_type = sanitize_text_field($db_custom_field['type']);
 

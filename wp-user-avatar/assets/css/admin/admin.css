@@ -428,7 +428,7 @@
     border-right: 1px solid #c8d7e1;
     width: 99%;
     color: #2e4453;
-    border-left: 4px solid #046BD2;
+    border-left: 4px solid var(--wp-admin-theme-color, #046bd2);
 }
 
 .ppview .pp-settings-wrap .metabox-holder {
@@ -504,7 +504,7 @@
 }
 
 #pp-sub-bar .pp-new-toolbar ul li a {
-    color: #0085ba;
+    color: var(--wp-admin-theme-color, #007cba);
     text-decoration: none;
     text-transform: uppercase;
     font-size: 13px;

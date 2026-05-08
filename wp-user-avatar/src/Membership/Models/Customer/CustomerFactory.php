@@ -24,7 +24,9 @@ class CustomerFactory implements FactoryInterface
      */
     public static function fromId($id)
     {
-        return CustomerRepository::init()->retrieve(absint($id));
+        return ppress_cache_transform('customer_factory_from_id_' . $id, function () use ($id) {
+            return CustomerRepository::init()->retrieve(absint($id));
+        });
     }
 
     /**
@@ -34,6 +36,8 @@ class CustomerFactory implements FactoryInterface
      */
     public static function fromUserId($user_id)
     {
-        return CustomerRepository::init()->retrieveByUserID(absint($user_id));
+        return ppress_cache_transform('customer_factory_from_user_id_' . $user_id, function () use ($user_id) {
+            return CustomerRepository::init()->retrieveByUserID(absint($user_id));
+        });
     }
 }

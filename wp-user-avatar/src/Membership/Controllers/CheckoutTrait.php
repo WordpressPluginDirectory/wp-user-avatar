@@ -280,7 +280,7 @@ trait CheckoutTrait
             $username = ppressPOST_var(CF::ACCOUNT_USERNAME, '');
 
             if (empty($username)) {
-                $username = sanitize_user(current(explode('@', $email)), true);
+                $username = apply_filters('ppress_checkout_username', sanitize_user(current(explode('@', $email)), true), $email);
                 // Ensure username is unique.
                 $append     = 1;
                 $o_username = $username;

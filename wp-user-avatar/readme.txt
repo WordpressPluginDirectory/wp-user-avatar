@@ -5,7 +5,7 @@ Tags: membership, ecommerce, user registration, user profile, memberships
 Requires at least: 6.0
 Requires PHP: 7.4
 Tested up to: 7.0
-Stable tag: 4.16.14
+Stable tag: 4.16.15
 License: GPLv2 or later
 
 Setup paid membership, accept payment, sell subscription & digital product, paywall, create login & registration form, user profile & member directory
@@ -127,9 +127,11 @@ Extend the capabilities of ProfilePress with our powerful addons and remove the 
 * [Google reCAPTCHA](https://profilepress.com/addons/recaptcha/?utm_source=wprepo&utm_medium=link&utm_campaign=liteversion) – Protect your user registration, login, checkout and password reset forms against spam and bot attacks using Google reCAPTCHA.
 * [Cloudflare Turnstile](https://profilepress.com/addons/cloudflare-turnstile/?utm_source=wprepo&utm_medium=link&utm_campaign=liteversion) – Stop spam registrations and bot attacks on your WordPress login, registration, and checkout forms by implementing Cloudflare Turnstile.
 * [Site Creation](https://profilepress.com/addons/site-creation/?utm_source=wprepo&utm_medium=link&utm_campaign=liteversion) – Allow users to create new sites on a multisite network via a user registration form powered by ProfilePress.
+* [Auto-Renewal Checkbox](https://profilepress.com/addons/auto-renewal-checkbox/?utm_source=wprepo&utm_medium=link&utm_campaign=liteversion) – Let your customers decide if their membership automatically renews or not during checkout.
 * [Mailchimp](https://profilepress.com/addons/mailchimp/?utm_source=wprepo&utm_medium=link&utm_campaign=liteversion) – Subscribe members to your Mailchimp audiences after they register, made a purchase and payment, subscribe to membership plans and automatically sync profile changes with Mailchimp.
 * [Campaign Monitor](https://profilepress.com/addons/campaign-monitor/?utm_source=wprepo&utm_medium=link&utm_campaign=liteversion) – Subscribe members to your Campaign Monitor lists when they register, subscribe to membership plans via checkout form, and automatically sync profile changes with Campaign Monitor.
 * [MailerLite](https://profilepress.com/addons/mailerlite/?utm_source=wprepo&utm_medium=link&utm_campaign=liteversion) – Add WordPress users to MailerLite groups when they register, subscribe to membership plans via checkout form, and automatically sync profile changes with MailerLite.
+* [Brevo](https://profilepress.com/addons/brevo/?utm_source=wprepo&utm_medium=link&utm_campaign=liteversion) – Add WordPress users to Brevo contact list when they register, subscribe to membership plans via checkout form, and automatically sync profile and membership changes with Brevo.
 * [AffiliateWP](https://profilepress.com/addons/affiliatewp/?utm_source=wprepo&utm_medium=link&utm_campaign=liteversion) – Launch an affiliate program for your WordPress membership website using AffiliateWP plugin.
 * [SliceWP](https://profilepress.com/addons/slicewp/?utm_source=wprepo&utm_medium=link&utm_campaign=liteversion) – Use SliceWP affiliate plugin to add an affiliate program to your WordPress membership website.
 * [BuddyBoss/BuddyPress](https://profilepress.com/addons/buddypress/?utm_source=wprepo&utm_medium=link&utm_campaign=liteversion) –  Sell access to groups, let users select groups to join during registration and sync WordPress profile fields with BuddyPress/BuddyBoss extended profile.
@@ -191,6 +193,12 @@ Any file type can be sold using ProfilePress ecommerce and membership plugin, in
 
 == Changelog ==
 
+= Paid Membership, Ecommerce & User Registration 4.16.15 =
+* Pro: [Brevo addon](https://profilepress.com/addons/brevo/?ref=changelog).
+* Pro: [Auto-Renewal Checkbox addon](https://profilepress.com/addons/auto-renewal-checkbox/?ref=changelog).
+* Added filters to the test mode notice and checkout username.
+* Added membership conditions to Elementor display rules.
+
 = Paid Membership, Ecommerce & User Registration 4.16.14 =
 * Added filtering by status to plan listing page.
 * Fixed avatar distortion on account page.
@@ -212,42 +220,5 @@ Any file type can be sold using ProfilePress ecommerce and membership plugin, in
 * Added a filter to allow per-field filename customization.
 * Added filter for adding custom columns to the subscriptions list table.
 * Added action hook and filter for customer details metaboxes.
-
-= Paid Membership, Ecommerce & User Registration 4.16.12 =
-* Fixed issue with plan upgrade by wrong user.
-* Fixed bug where empty subscription records could be created.
-
-= Paid Membership, Ecommerce & User Registration 4.16.11 =
-* Added filter ppressmd_member_directory_filters_expanded.
-* Fixed a security issue where a user could cancel another user subscription.
-
-= Paid Membership, Ecommerce & User Registration 4.16.10 =
-* Improvement: Cancel subscription in gateway before deletion.
-* Security Fix: Arbitrary Shortcode Execution via Checkout Billing Fields.
-
-= Paid Membership, Ecommerce & User Registration 4.16.9 =
-* Added billing address data to customer export.
-* Added ppress_is_third_party_2fa_active filter.
-* Fixed a likely fatal error on form preview.
-* Fixed bug where account info data got lost on group checkout refresh.
-* Fixed bug where checkout overrides previously uploaded files.
-* Fixed bug where download link requiring logged in users worked for other logged-in users.
-* Add custom field placeholder support to admin new user email notification.
-
-= Paid Membership, Ecommerce & User Registration 4.16.8 =
-* Fixed security issue with arbitrary shortcode execution on form preview.
-* Fixed couple of PHP notices.
-
-= Paid Membership, Ecommerce & User Registration 4.16.7 =
-* Fixed bug where label is shown for empty data in member directory.
-* Added user roles as classes to member directory item wrapper.
-
-= Paid Membership, Ecommerce & User Registration 4.16.6 =
-* Pro: [FluentCommunity addon](https://profilepress.com/addons/fluentcommunity/?ref=changelog).
-* Pro: [MasterStudy LMS addon](https://profilepress.com/addons/masterstudy-lms/?ref=changelog).
-* Added auto scroll to form error messages.
-* Added support for plan pre-selection as query parameters to group checkout URL.
-* Fixed bug where content protection on blog page did not work.
-* Improved compatibility with WPML.
 
 See the [changelog file](https://plugins.svn.wordpress.org/wp-user-avatar/trunk/changelog.txt) for full change log information.

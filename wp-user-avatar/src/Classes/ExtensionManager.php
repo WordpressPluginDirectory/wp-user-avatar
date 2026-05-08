@@ -38,9 +38,11 @@ class ExtensionManager
     const LIFTERLMS = 'lifterlms';
     const INVITATION_CODES = 'invitation_codes';
     const MAILERLITE = 'mailerlite';
+    const BREVO = 'brevo';
     const FIXED_SUBSCRIPTION_EXPIRATION = 'fixed_subscription_expiration';
     const SLICEWP = 'slicewp';
     const AFFILIATEWP = 'affiliatewp';
+    const AUTORENEWAL_CHECKBOX = 'autorenewal_checkbox';
 
     public static function is_premium()
     {
@@ -64,6 +66,7 @@ class ExtensionManager
             self::CAMPAIGN_MONITOR              => 'ProfilePress\Libsodium\CampaignMonitorIntegration\Init',
             self::MAILCHIMP                     => 'ProfilePress\Libsodium\MailchimpIntegration\Init',
             self::MAILERLITE                    => 'ProfilePress\Libsodium\MailerLiteIntegration\Init',
+            self::BREVO                         => 'ProfilePress\Libsodium\BrevoIntegration\Init',
             self::POLYLANG                      => 'ProfilePress\Libsodium\PolylangIntegration',
             self::PASSWORDLESS_LOGIN            => 'ProfilePress\Libsodium\PasswordlessLogin',
             self::USER_MODERATION               => 'ProfilePress\Libsodium\UserModeration\UserModeration',
@@ -84,6 +87,7 @@ class ExtensionManager
             self::FIXED_SUBSCRIPTION_EXPIRATION => 'ProfilePress\Libsodium\FixedSubscriptionExpiration',
             self::SLICEWP                       => 'ProfilePress\Libsodium\SliceWP\Init',
             self::AFFILIATEWP                   => 'ProfilePress\Libsodium\AffiliateWP\Init',
+            self::AUTORENEWAL_CHECKBOX          => 'ProfilePress\Libsodium\AutoRenewalCheckbox\Init',
         ];
     }
 
@@ -210,6 +214,13 @@ class ExtensionManager
                 'icon'        => '<svg viewBox="0 0 640 512" xmlns="http://www.w3.org/2000/svg"><path d="m610.5 341.3c2.6-14.1 2.6-28.5 0-42.6l25.8-14.9c3-1.7 4.3-5.2 3.3-8.5-6.7-21.6-18.2-41.2-33.2-57.4-2.3-2.5-6-3.1-9-1.4l-25.8 14.9c-10.9-9.3-23.4-16.5-36.9-21.3v-29.8c0-3.4-2.4-6.4-5.7-7.1-22.3-5-45-4.8-66.2 0-3.3.7-5.7 3.7-5.7 7.1v29.8c-13.5 4.8-26 12-36.9 21.3l-25.8-14.9c-2.9-1.7-6.7-1.1-9 1.4-15 16.2-26.5 35.8-33.2 57.4-1 3.3.4 6.8 3.3 8.5l25.8 14.9c-2.6 14.1-2.6 28.5 0 42.6l-25.8 14.9c-3 1.7-4.3 5.2-3.3 8.5 6.7 21.6 18.2 41.1 33.2 57.4 2.3 2.5 6 3.1 9 1.4l25.8-14.9c10.9 9.3 23.4 16.5 36.9 21.3v29.8c0 3.4 2.4 6.4 5.7 7.1 22.3 5 45 4.8 66.2 0 3.3-.7 5.7-3.7 5.7-7.1v-29.8c13.5-4.8 26-12 36.9-21.3l25.8 14.9c2.9 1.7 6.7 1.1 9-1.4 15-16.2 26.5-35.8 33.2-57.4 1-3.3-.4-6.8-3.3-8.5zm-114.5 27.2c-26.8 0-48.5-21.8-48.5-48.5s21.8-48.5 48.5-48.5 48.5 21.8 48.5 48.5-21.7 48.5-48.5 48.5zm-400-144.5c35.3 0 64-28.7 64-64s-28.7-64-64-64-64 28.7-64 64 28.7 64 64 64zm224 32c1.9 0 3.7-.5 5.6-.6 8.3-21.7 20.5-42.1 36.3-59.2 7.4-8 17.9-12.6 28.9-12.6 6.9 0 13.7 1.8 19.6 5.3l7.9 4.6c.8-.5 1.6-.9 2.4-1.4 7-14.6 11.2-30.8 11.2-48 0-61.9-50.1-112-112-112s-111.9 50-111.9 111.9 50.1 112 112 112zm105.2 194.5c-2.3-1.2-4.6-2.6-6.8-3.9-8.2 4.8-15.3 9.8-27.5 9.8-10.9 0-21.4-4.6-28.9-12.6-18.3-19.8-32.3-43.9-40.2-69.6-10.7-34.5 24.9-49.7 25.8-50.3-.1-2.6-.1-5.2 0-7.8l-7.9-4.6c-3.8-2.2-7-5-9.8-8.1-3.3.2-6.5.6-9.8.6-24.6 0-47.6-6-68.5-16h-8.3c-63.7 0-115.3 51.6-115.3 115.2v28.8c0 26.5 21.5 48 48 48h255.4c-3.7-6-6.2-12.8-6.2-20.3zm-252.1-175.9c-11.6-11.5-27.5-18.6-45.1-18.6h-64c-35.3 0-64 28.7-64 64v32c0 17.7 14.3 32 32 32h65.9c6.3-47.4 34.9-87.3 75.2-109.4z"/></svg>',
                 'setting_url' => add_query_arg('view', 'invite-codes', PPRESS_SETTINGS_SETTING_PAGE)
             ],
+            self::AUTORENEWAL_CHECKBOX          => [
+                'title'       => esc_html__('Auto-Renewal Checkbox', 'wp-user-avatar'),
+                'url'         => 'https://profilepress.com/addons/auto-renewal-checkbox/?utm_source=liteplugin&utm_medium=extension-page&utm_campaign=learn-more',
+                'description' => esc_html__('Allow members to decide whether to enable automatic recurring payments at specified intervals for their plan subscription during checkout.', 'wp-user-avatar'),
+                'icon'        => '<svg viewBox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><path d="m400 480h-352c-26.51 0-48-21.49-48-48v-352c0-26.51 21.49-48 48-48h352c26.51 0 48 21.49 48 48v352c0 26.51-21.49 48-48 48zm-204.686-98.059 184-184c6.248-6.248 6.248-16.379 0-22.627l-22.627-22.627c-6.248-6.248-16.379-6.249-22.628 0l-150.059 150.058-70.059-70.059c-6.248-6.248-16.379-6.248-22.628 0l-22.627 22.627c-6.248 6.248-6.248 16.379 0 22.627l104 104c6.249 6.25 16.379 6.25 22.628.001z"/></svg>',
+                'setting_url' => add_query_arg(['view' => 'payments', 'section' => 'settings'], PPRESS_SETTINGS_SETTING_PAGE) . '#checkout_auto_renewal_checkbox_row'
+            ],
             self::MAILCHIMP                     => [
                 'title'       => 'Mailchimp',
                 'url'         => 'https://profilepress.com/addons/mailchimp/?utm_source=liteplugin&utm_medium=extension-page&utm_campaign=learn-more',
@@ -230,6 +241,13 @@ class ExtensionManager
                 'setting_url' => add_query_arg(['view' => 'integrations', 'section' => 'mailerlite'], PPRESS_SETTINGS_SETTING_PAGE),
                 'description' => esc_html__('Subscribe members to your MailerLite groups when they register or subscribe to a membership plan. It can also automatically sync membership and profile changes with MailerLite.', 'wp-user-avatar'),
                 'icon'        => '<svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" viewBox="0 0 62.8 50.2"><path d="M-81.2 0h-48.9c-3.8 0-6.9 3.1-6.9 6.8v43.5l9.5-9.3h46.4c3.8 0 6.9-3.1 6.9-6.8V6.8c-.1-3.7-3.2-6.8-7-6.8z" style="fill:currentColor" transform="translate(137)"/><path d="M-90.2 15.8c5.2 0 7.6 4.1 7.6 8 0 1-.8 1.8-1.8 1.8H-94c.5 2.3 2.1 3.6 4.7 3.6 1.9 0 2.9-.4 3.9-.9.2-.1.5-.2.7-.2.9 0 1.7.7 1.7 1.6 0 .6-.4 1.1-1 1.5-1.3.7-2.7 1.4-5.5 1.4-5.2 0-8.3-3.1-8.3-8.4-.1-6.1 4.1-8.4 7.6-8.4zm-15.3-2.6c.6 0 1 .5 1 1v1.9h2.9c.9 0 1.7.7 1.7 1.6 0 .9-.7 1.6-1.7 1.6h-2.9V28c0 1.2.6 1.3 1.5 1.3.5 0 .8-.1 1.1-.1.2 0 .5-.1.7-.1.7 0 1.6.6 1.6 1.5 0 .6-.4 1.1-1 1.4-.9.4-1.7.6-2.7.6-3.2 0-4.9-1.5-4.9-4.4v-8.8h-1.7c-.6 0-1-.5-1-1 0-.3.1-.6.4-.9l4-4c.2 0 .5-.3 1-.3zm-18.7-3.8c1 0 1.8.8 1.8 1.8v19.4c0 1-.8 1.8-1.8 1.8s-1.8-.8-1.8-1.8V11.2c0-1 .8-1.8 1.8-1.8zm8.6 6.6c1 0 1.8.8 1.8 1.8v12.8c0 1-.8 1.8-1.8 1.8s-1.8-.8-1.8-1.8V17.8c0-1 .8-1.8 1.8-1.8zm25.5 3.1c-1.7 0-3.6 1-3.9 3.5h7.9c-.5-2.5-2.3-3.5-4-3.5zm-25.4-9.2c1.1 0 2 .9 2 2v.1c0 1.1-.9 2-2 2h-.2c-1.1 0-2-.9-2-2v-.1c0-1.1.9-2 2-2h.2z" style="fill:#fff" transform="translate(137)"/></svg>'
+            ],
+            self::BREVO                         => [
+                'title'       => 'Brevo',
+                'url'         => 'https://profilepress.com/addons/brevo/?utm_source=liteplugin&utm_medium=extension-page&utm_campaign=learn-more',
+                'setting_url' => add_query_arg(['view' => 'integrations', 'section' => 'brevo'], PPRESS_SETTINGS_SETTING_PAGE),
+                'description' => esc_html__('Subscribe members to your Brevo lists when they register or subscribe to a membership plan. It can also automatically sync membership and profile changes with Brevo.', 'wp-user-avatar'),
+                'icon'        => '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="currentColor" d="M12 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0zM7.2 4.8h5.747c2.34 0 3.895 1.406 3.895 3.516 0 1.022-.348 1.862-1.09 2.588C17.189 11.812 18 13.22 18 14.785c0 2.86-2.64 5.016-6.164 5.016H7.199v-15zm2.085 1.952v5.537h.07c.233-.432.858-.796 2.249-1.226 2.039-.659 3.037-1.52 3.037-2.655 0-.998-.766-1.656-1.924-1.656H9.285zm4.87 5.266c-.766.385-1.67.748-2.76 1.11-1.229.387-2.11 1.386-2.11 2.407v2.315h2.365c2.387 0 4.149-1.34 4.149-3.155 0-1.067-.625-2.087-1.645-2.677z"/></svg>'
             ],
             self::WOOCOMMERCE                   => [
                 'title'        => 'WooCommerce',
@@ -329,7 +347,7 @@ class ExtensionManager
                     return class_exists('\SliceWP') ? true : esc_html__('SliceWP is not active', 'wp-user-avatar');
                 }
             ],
-            self::BUDDYPRESS        => [
+            self::BUDDYPRESS                    => [
                 'title'        => esc_html__('BuddyPress / BuddyBoss', 'wp-user-avatar'),
                 'url'          => 'https://profilepress.com/addons/buddypress/?utm_source=liteplugin&utm_medium=extension-page&utm_campaign=learn-more',
                 'description'  => esc_html__('Sell access to groups, let users select groups to join during registration and sync WordPress profile fields with BuddyPress/BuddyBoss extended profile.', 'wp-user-avatar'),

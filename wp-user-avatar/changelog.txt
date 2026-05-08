@@ -1,5 +1,11 @@
 ﻿== Changelog ==
 
+= 4.16.15 =
+* Pro: [Brevo addon](https://profilepress.com/addons/brevo/?ref=changelog).
+* Pro: [Auto-Renewal Checkbox addon](https://profilepress.com/addons/auto-renewal-checkbox/?ref=changelog).
+* Added filters to the test mode notice and checkout username.
+* Added membership conditions to Elementor display rules.
+
 = 4.16.14 =
 * Added filtering by status to plan listing page.
 * Fixed avatar distortion on account page.

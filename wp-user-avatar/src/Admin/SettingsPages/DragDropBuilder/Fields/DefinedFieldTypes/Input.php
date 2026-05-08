@@ -50,6 +50,10 @@ class Input extends FieldBase
                     'label' => esc_html__('Placeholder', 'wp-user-avatar'),
                     'field' => self::INPUT_FIELD,
 
+                ],
+                'value' => [
+                    'label' => esc_html__('Default Field Value', 'wp-user-avatar'),
+                    'field' => self::INPUT_FIELD,
                 ]
             ],
             parent::SETTINGS_TAB => [

@@ -10,7 +10,7 @@ class DBUpdates
 {
     public static $instance;
 
-    const DB_VER = 13;
+    const DB_VER = 14;
 
     public function init_options()
     {
@@ -199,6 +199,15 @@ class DBUpdates
         if (in_array('true', [ppress_var($db, 'join_buddypress_groups'), ppress_var($db, 'buddypress_sync')])) {
             $db['buddypress'] = 'true';
             update_option(ExtensionManager::DB_OPTION_NAME, $db);
+        }
+    }
+
+    public function update_routine_14()
+    {
+        $recaptcha_site_key = ppress_settings_by_key('recaptcha_site_key');
+
+        if ( ! empty($recaptcha_site_key)) {
+            ppress_update_settings('recaptcha_api_platform', 'classic');
         }
     }
 
