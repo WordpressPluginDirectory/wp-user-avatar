@@ -31,7 +31,7 @@ class SubscriptionExpirationReminder extends AbstractMembershipEmail
 
         $subscriptions = SubscriptionRepository::init()->retrieveBy([
             'status'      => [SubscriptionStatus::CANCELLED],
-            'limit'       => 0,
+            'number'      => 0,
             'date_column' => 'expiration_date',
             'start_date'  => $subDate->startOfDay()->utc()->toDateTimeString(),
             'end_date'    => $subDate->endOfDay()->utc()->toDateTimeString()
@@ -41,7 +41,7 @@ class SubscriptionExpirationReminder extends AbstractMembershipEmail
 
         $subscriptions = SubscriptionRepository::init()->retrieveBy([
             'status'      => [SubscriptionStatus::ACTIVE, SubscriptionStatus::TRIALLING],
-            'limit'       => 0,
+            'number'      => 0,
             'date_column' => 'expiration_date',
             'start_date'  => $subDate->startOfDay()->utc()->toDateTimeString(),
             'end_date'    => $subDate->endOfDay()->utc()->toDateTimeString(),

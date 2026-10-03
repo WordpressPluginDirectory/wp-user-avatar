@@ -122,7 +122,7 @@ class MemberDirectoryListing
                 if ($raw_field_type == 'profile-bio') {
                     $bio = get_user_meta($this->user_id, 'description', true);
 
-                    $parsed_shortcode = apply_filters('ppress_md_profile_bio', $bio, $this->user_id);
+                    $parsed_shortcode = apply_filters('ppress_md_profile_bio', ppress_strip_shortcodes($bio), $this->user_id);
                 }
 
                 if ($raw_field_type == 'profile-website') {
@@ -142,7 +142,7 @@ class MemberDirectoryListing
                     $output .= sprintf('<span class="ppress-md-profile-item-title">%s:</span> ', wp_kses_post($field_title));
                 }
 
-                $output .= sprintf('%s', wp_kses_post($parsed_shortcode));
+                $output .= ppress_neutralize_shortcodes(wp_kses_post($parsed_shortcode));
 
                 $output .= '</div>';
             }

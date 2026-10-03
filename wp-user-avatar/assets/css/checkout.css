@@ -250,6 +250,25 @@
     margin-bottom: 0;
 }
 
+.ppress-checkout__form .ppress-checkout-field-inline-message {
+    margin-top: 6px;
+    font-size: 13px;
+    line-height: 18px;
+    color: #b91c1c;
+}
+
+.ppress-checkout__form .ppress-checkout-field-inline-message a {
+    color: #b91c1c;
+    text-decoration: underline;
+    cursor: pointer;
+    font-weight: 500;
+    font-size: 13px;
+}
+
+.ppress-checkout__form .ppress-checkout-field-inline-message a:hover {
+    text-decoration: none;
+}
+
 .ppress-checkout__form .ppress-required {
     color: rgb(239 68 68);
 }
@@ -385,7 +404,7 @@
     outline: 2px solid transparent;
     outline-offset: 2px;
     box-shadow: 0 0 0 0 #fff, 0 0 0 calc(1px + 0px) var(--ppress-btn-color), 0 0 #0000;
-    border-color: #2563eb;
+    border-color: var(--ppress-btn-color);
 }
 
 .ppress-checkout__form .ppress-checkout-section input[type=submit]:hover {
@@ -502,6 +521,7 @@
 .ppress-checkout__form .ppress-checkout-form__payment_method__icons img,
 .ppress-checkout__form .ppress-checkout-form__payment_method__icons svg {
     max-height: 22px;
+    min-width: 25px;
 }
 
 .ppress-checkout__form .ppress-checkout-form__payment_method .ppress-checkout-form__payment_method__content_wrap p {

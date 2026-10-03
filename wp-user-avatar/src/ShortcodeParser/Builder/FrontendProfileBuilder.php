@@ -108,7 +108,7 @@ class FrontendProfileBuilder
                 $output .= sprintf(
                     '<li class="pp-user-post-item"><a href="%s"><h3 class="pp-post-item-head">%s</h3></a></li>',
                     get_permalink($post->ID),
-                    $post->post_title,
+                    ppress_neutralize_shortcodes($post->post_title),
                     apply_filters('ppress_author_post_after_title', '', $post, $user_id, $attributes)
                 );
             }
@@ -166,11 +166,12 @@ class FrontendProfileBuilder
                 $output .= sprintf(
                     '<a href="%s">%s</a>',
                     esc_url(get_comment_link($comment->comment_ID)),
-                    get_comment_excerpt($comment->comment_ID)
+                    // neutralized because the drag-drop profile template passes this output through do_shortcode()
+                    ppress_neutralize_shortcodes(get_comment_excerpt($comment->comment_ID))
                 );
                 $output .= '</div>';
                 $output .= '<div class="pp-user-comment-item-meta">';
-                $output .= sprintf('On <a href="%s">%s</a>', get_permalink($comment->comment_post_ID), get_the_title($comment->comment_post_ID));
+                $output .= sprintf('On <a href="%s">%s</a>', get_permalink($comment->comment_post_ID), ppress_neutralize_shortcodes(get_the_title($comment->comment_post_ID)));
                 $output .= '</div>';
                 $output .= '</div>';
             }
@@ -214,7 +215,7 @@ class FrontendProfileBuilder
 
         $username = $capitalization ? ucwords($username) : $username;
 
-        return apply_filters('ppress_profile_username', $username, self::$user_data);
+        return apply_filters('ppress_profile_username', ppress_neutralize_shortcodes($username), self::$user_data);
     }
 
 
@@ -225,7 +226,7 @@ class FrontendProfileBuilder
      */
     public function profile_email()
     {
-        return apply_filters('ppress_profile_email', self::$user_data->user_email, self::$user_data);
+        return apply_filters('ppress_profile_email', ppress_neutralize_shortcodes(self::$user_data->user_email), self::$user_data);
     }
 
     /**
@@ -265,7 +266,7 @@ class FrontendProfileBuilder
      */
     public function profile_website()
     {
-        return apply_filters('ppress_profile_website', self::$user_data->user_url, self::$user_data);
+        return apply_filters('ppress_profile_website', ppress_neutralize_shortcodes(esc_url(self::$user_data->user_url)), self::$user_data);
     }
 
     /**
@@ -275,7 +276,7 @@ class FrontendProfileBuilder
      */
     public function profile_nickname()
     {
-        return apply_filters('ppress_profile_nickname', ucwords(self::$user_data->nickname), self::$user_data);
+        return apply_filters('ppress_profile_nickname', ucwords(ppress_strip_shortcodes(self::$user_data->nickname)), self::$user_data);
     }
 
     /**
@@ -285,22 +286,22 @@ class FrontendProfileBuilder
      */
     public function profile_display_name($atts = false)
     {
-        $display_name = self::$user_data->display_name;
+        $display_name = ppress_strip_shortcodes(self::$user_data->display_name);
 
         if ( ! empty($atts['format']) && ! empty(self::$user_data->first_name) && ! empty(self::$user_data->last_name)) {
 
             switch ($atts['format']) {
                 case 'first_last_names':
-                    $display_name = self::$user_data->first_name . ' ' . self::$user_data->last_name;
+                    $display_name = ppress_strip_shortcodes(self::$user_data->first_name) . ' ' . ppress_strip_shortcodes(self::$user_data->last_name);
                     break;
                 case 'last_first_names':
-                    $display_name = self::$user_data->last_name . ' ' . self::$user_data->first_name;
+                    $display_name = ppress_strip_shortcodes(self::$user_data->last_name) . ' ' . ppress_strip_shortcodes(self::$user_data->first_name);
                     break;
                 case 'first_name_initial_l':
-                    $display_name = self::$user_data->first_name . ' ' . self::$user_data->last_name[0];
+                    $display_name = ppress_strip_shortcodes(self::$user_data->first_name) . ' ' . ppress_strip_shortcodes(self::$user_data->last_name[0]);
                     break;
                 case 'f_initial_last_name':
-                    $display_name = self::$user_data->first_name[0] . ' ' . self::$user_data->last_name;
+                    $display_name = ppress_strip_shortcodes(self::$user_data->first_name[0]) . ' ' . ppress_strip_shortcodes(self::$user_data->last_name);
                     break;
             }
         }
@@ -315,7 +316,7 @@ class FrontendProfileBuilder
      */
     public function profile_first_name()
     {
-        return apply_filters('ppress_profile_first_name', ucwords(strip_shortcodes(self::$user_data->first_name)), self::$user_data);
+        return apply_filters('ppress_profile_first_name', ucwords(ppress_strip_shortcodes(self::$user_data->first_name)), self::$user_data);
     }
 
 
@@ -326,7 +327,7 @@ class FrontendProfileBuilder
      */
     public function profile_last_name()
     {
-        return apply_filters('ppress_profile_last_name', ucwords(strip_shortcodes(self::$user_data->last_name)), self::$user_data);
+        return apply_filters('ppress_profile_last_name', ucwords(ppress_strip_shortcodes(self::$user_data->last_name)), self::$user_data);
     }
 
     /**
@@ -336,7 +337,11 @@ class FrontendProfileBuilder
      */
     public function profile_bio()
     {
-        return apply_filters('ppress_profile_bio', make_clickable(wpautop(wp_kses_post(html_entity_decode(strip_shortcodes(self::$user_data->description))))), self::$user_data);
+        return apply_filters(
+                'ppress_profile_bio',
+                make_clickable(wpautop(wp_kses_post(ppress_strip_shortcodes(html_entity_decode(self::$user_data->description))))),
+                self::$user_data
+        );
     }
 
     /**
@@ -382,7 +387,15 @@ class FrontendProfileBuilder
             $data = esc_attr($atts['default']);
         }
 
-        return apply_filters('ppress_profile_cpf', strip_shortcodes($data), self::$user_data);
+        $data = ppress_strip_shortcodes($data, false);
+
+        if (is_string($data)) {
+            $data = in_array($key, array_keys(ppress_social_network_fields()), true) ? esc_url($data) : esc_html($data);
+        }
+
+        $data = ppress_neutralize_shortcodes($data);
+
+        return apply_filters('ppress_profile_cpf', $data, self::$user_data);
     }
 
     public static function get_user_uploaded_file($user_id, $field_key, $is_raw = false)
@@ -473,12 +486,14 @@ class FrontendProfileBuilder
     public function get_comment_count()
     {
         global $wpdb;
-        $userId = self::$user_data->ID;
+        $userId = absint(self::$user_data->ID);
 
-        $count = $wpdb->get_var('
-             SELECT COUNT(comment_ID)
-             FROM ' . $wpdb->comments . '
-             WHERE user_id = "' . $userId . '" AND comment_type = "" AND comment_approved = 1');
+        $count = $wpdb->get_var(
+            $wpdb->prepare(
+                "SELECT COUNT(comment_ID) FROM {$wpdb->comments} WHERE user_id = %d AND comment_type = '' AND comment_approved = '1'",
+                $userId
+            )
+        );
 
         return apply_filters('ppress_profile_comment_count', $count, self::$user_data);
     }

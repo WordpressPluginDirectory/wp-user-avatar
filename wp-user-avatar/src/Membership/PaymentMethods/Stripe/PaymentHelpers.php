@@ -245,7 +245,7 @@ class PaymentHelpers
         try {
 
             $search_result = APIClass::stripeClient()->customers->search([
-                'query' => sprintf('email:\'%s\' AND metadata[\'ppress_customer_id\']:\'%s\'', $customer->get_email(), $customer->id)
+                'query' => sprintf('metadata[\'ppress_customer_id\']:\'%s\'', $customer->id)
             ])->toArray();
 
             if ( ! empty($search_result['data']) && isset($search_result['data'][0]['id'])) {
@@ -337,6 +337,11 @@ class PaymentHelpers
         return in_array($currency, $currencies, true);
     }
 
+    /**
+     * @param $price
+     * @param $currency
+     * @return string
+     */
     public static function process_amount($price, $currency = '')
     {
         if ( ! self::is_zero_decimal_currency($currency)) {

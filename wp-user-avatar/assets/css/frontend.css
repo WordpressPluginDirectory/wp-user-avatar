@@ -838,6 +838,23 @@ html .pp-form-container .select2 input.select2-search__field {
     cursor: pointer;
 }
 
+.pp-password-reset-handler-wrap .has-password-visibility-icon {
+    display: block;
+}
+
+.pp-password-reset-handler-wrap .has-password-visibility-icon .pp-form-field-input-textarea-wrap {
+    position: relative;
+    display: block;
+}
+
+.pp-password-reset-handler-wrap .has-password-visibility-icon .pp-form-field {
+    padding-right: 40px;
+}
+
+.pp-password-reset-handler-wrap .has-password-visibility-icon .pp-form-material-icons {
+    cursor: pointer;
+}
+
 .pp-form-container .pp-form-wrapper.ppBuildScratch.ppfl-pill .pp-form-field-wrap input:not([type=radio]):not([type=checkbox]),
 .pp-form-container .pp-form-wrapper.ppBuildScratch.ppfl-pill .pp-form-field-wrap select,
 .pp-form-container .pp-form-wrapper.ppBuildScratch.ppfl-pill .pp-form-field-wrap textarea {

@@ -13,6 +13,7 @@ use ProfilePress\Core\Membership\PaymentMethods\AbstractPaymentMethod;
 use ProfilePress\Core\Membership\PaymentMethods\PaymentMethods;
 use ProfilePress\Core\Membership\Repositories\OrderRepository;
 use ProfilePress\Core\Membership\Services\Calculator;
+use ProfilePress\Core\Membership\Services\CouponService;
 use ProfilePress\Core\Membership\Services\OrderService;
 
 /**
@@ -198,6 +199,10 @@ class OrderEntity extends AbstractModel implements ModelInterface
 
         $order_id = $this->save();
 
+        if ($order_id && ! empty($this->coupon_code)) {
+            CouponService::init()->release_coupon_hold($this->id);
+        }
+
         do_action('ppress_order_completed', $this);
 
         return $order_id;
@@ -211,6 +216,10 @@ class OrderEntity extends AbstractModel implements ModelInterface
         $this->status = OrderStatus::FAILED;
 
         $order_id = $this->save();
+
+        if ($order_id && ! empty($this->coupon_code)) {
+            CouponService::init()->release_coupon_hold($this->id);
+        }
 
         do_action('ppress_order_failed', $this);
 
@@ -256,6 +265,10 @@ class OrderEntity extends AbstractModel implements ModelInterface
         $this->status = $order_status;
 
         $response = $this->save();
+
+        if ($response && $order_status === OrderStatus::FAILED && ! empty($this->coupon_code)) {
+            CouponService::init()->release_coupon_hold($this->id);
+        }
 
         $user = is_user_logged_in() ? wp_get_current_user()->user_login : esc_html__('payment method', 'wp-user-avatar');
 

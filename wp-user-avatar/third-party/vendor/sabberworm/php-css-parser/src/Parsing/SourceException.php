@@ -1,5 +1,6 @@
 <?php
 
+declare (strict_types=1);
 namespace ProfilePressVendor\Sabberworm\CSS\Parsing;
 
 use ProfilePressVendor\Sabberworm\CSS\Position\Position;
@@ -8,15 +9,14 @@ class SourceException extends \Exception implements Positionable
 {
     use Position;
     /**
-     * @param string $sMessage
-     * @param int $iLineNo
+     * @param int<1, max>|null $lineNumber
      */
-    public function __construct($sMessage, $iLineNo = 0)
+    public function __construct(string $message, ?int $lineNumber = null)
     {
-        $this->setPosition($iLineNo);
-        if (!empty($iLineNo)) {
-            $sMessage .= " [line no: {$iLineNo}]";
+        $this->setPosition($lineNumber);
+        if ($lineNumber !== null) {
+            $message .= " [line no: {$lineNumber}]";
         }
-        parent::__construct($sMessage);
+        parent::__construct($message);
     }
 }

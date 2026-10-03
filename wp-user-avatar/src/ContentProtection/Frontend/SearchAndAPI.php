@@ -12,6 +12,23 @@ class SearchAndAPI
         add_action('pre_get_posts', [$this, 'exclude_protected_posts']);
     }
 
+    /**
+     * Uses the route the REST server dispatches (matched case-insensitively) rather than the raw request URI,
+     * which can be varied with letter case or URL encoding.
+     *
+     * @return bool
+     */
+    protected function is_rest_search_request()
+    {
+        $rest_route = $GLOBALS['wp']->query_vars['rest_route'] ?? '';
+
+        if ( ! is_string($rest_route) || '' === $rest_route) return false;
+
+        $rest_route = strtolower(untrailingslashit(rawurldecode($rest_route)));
+
+        return $rest_route === '/wp/v2/search' || strpos($rest_route, '/wp/v2/search/') === 0;
+    }
+
     public function exclude_protected_posts($query)
     {
         // Determine if this query is for a frontend WP search or a REST API search.
@@ -19,7 +36,7 @@ class SearchAndAPI
             apply_filters('ppress_is_search_and_api_exclude_posts', true) &&
             (
                 ( ! is_admin() && $query->is_main_query() && $query->is_search()) ||
-                (defined('REST_REQUEST') && REST_REQUEST && strpos($_SERVER['REQUEST_URI'], '/wp/v2/search') !== false)
+                (defined('REST_REQUEST') && REST_REQUEST && $this->is_rest_search_request())
             )
         ) {
 

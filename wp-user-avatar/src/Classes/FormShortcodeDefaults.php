@@ -2,6 +2,8 @@
 
 namespace ProfilePress\Core\Classes;
 
+use ProfilePress\Core\ShortcodeParser\PasswordResetTag;
+
 class FormShortcodeDefaults
 {
     protected $form_type;
@@ -317,19 +319,7 @@ CSS;
 
     public function password_reset_handler()
     {
-        return <<<HTML
-<div class="pp-reset-password-form">
-	<h3>Enter your new password below</h3>
-	<label for="password1">New password<span class="req">*</span></label>
-	[enter-password id="password1" required autocomplete="off"]
-
-	<label for="password2">Re-enter new password<span class="req">*</span></label>
-	[re-enter-password id="password2" required autocomplete="off"]
-
-	[password-reset-submit class="pp-reset-button pp-reset-button-block" value="Save"]
-</div>
-HTML;
-
+        return PasswordResetTag::get_default_handler_form();
     }
 
     public function password_reset_success_message()

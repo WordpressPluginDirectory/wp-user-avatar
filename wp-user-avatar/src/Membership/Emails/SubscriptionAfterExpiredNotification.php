@@ -43,6 +43,9 @@ class SubscriptionAfterExpiredNotification extends AbstractMembershipEmail
 
         foreach ($subscriptions as $subscription) {
 
+            // skip customers that have resubscribed to the plan since it expired.
+            if (CustomerFactory::fromId($subscription->customer_id)->has_active_subscription($subscription->plan_id)) continue;
+
             $placeholders_values = $this->get_subscription_placeholders_values($subscription);
 
             $subject = apply_filters('ppress_' . self::ID . '_email_subject', $this->parse_placeholders(

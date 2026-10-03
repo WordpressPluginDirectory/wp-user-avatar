@@ -103,6 +103,7 @@ class RegistrationFormTag extends FormProcessor
 
         $registration_structure .= '<input type="hidden" name="pp_current_url" value="' . esc_attr(ppress_get_current_url_query_string()) . '">';
         $registration_structure .= "<input type='hidden' name='signup_form_id' value='$id'>";
+        $registration_structure .= ppress_form_signature_field($id, FR::REGISTRATION_TYPE);
         $registration_structure .= sprintf("<input type='hidden' name='signup_referrer_page' value='%s'>", ! empty($referrer_url) ? $referrer_url : '');
 
 

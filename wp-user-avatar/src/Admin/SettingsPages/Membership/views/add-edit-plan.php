@@ -32,7 +32,7 @@ $user_roles = $append + (function () {
         return $core_roles;
     })();
 
-$plan_details = [
+$plan_details = apply_filters('ppress_admin_membership_plan_details', [
     [
         'id'    => 'name',
         'type'  => 'text',
@@ -63,7 +63,7 @@ $plan_details = [
         'label'       => esc_html__('Price', 'wp-user-avatar') . sprintf(' (%s)', ppress_get_currency_symbol()),
         'description' => esc_html__('The price of this membership plan. Enter 0.00 to make this plan free.', 'wp-user-avatar')
     ]
-];
+]);
 
 $subscription_settings = apply_filters('ppress_admin_membership_plan_subscription_settings', [
     [
@@ -150,11 +150,8 @@ if ( ! ExtensionManager::is_premium()) {
         'LearnDash'        => [
             esc_html__("Sell access to LearnDash courses, and enroll users after registration to specific courses.", 'wp-user-avatar')
         ],
-        'Mailchimp'        => [
-            esc_html__("Subscribe members to your Mailchimp audiences when they register or subscribe to a membership and sync membership and profile changes with Mailchimp.", 'wp-user-avatar')
-        ],
-        'Campaign Monitor' => [
-            esc_html__("Subscribe members to your Campaign Monitor lists when they register or subscribe to a membership plan and sync membership and profile changes with Campaign Monitor.", 'wp-user-avatar')
+        'Mailchimp, Brevo, MailerLite, Campaign Monitor'        => [
+            esc_html__("Subscribe members to your email marketing lists when they register and on your website, subscribe to a membership and sync profile changes.", 'wp-user-avatar')
         ],
         'WooCommerce'      => [
             esc_html__("Sell paid memberships via WooCommerce, and create members-only discounts.", 'wp-user-avatar')

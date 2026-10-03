@@ -77,6 +77,8 @@ $cart_vars = OrderService::init()->checkout_order_calculation([
 
                     <?php ppress_render_view('checkout/form-account-info-fields', ['plan' => $planObj]); ?>
 
+                    <?php do_action('ppress_checkout_before_payment_methods', $cart_vars, $planObj); ?>
+
                     <?php ppress_render_view('checkout/form-payment-methods', [
                         'plan'      => $planObj,
                         'cart_vars' => $cart_vars

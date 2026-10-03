@@ -1,5 +1,6 @@
 <?php
 
+declare (strict_types=1);
 namespace ProfilePressVendor\Sabberworm\CSS\Parsing;
 
 /**
@@ -7,6 +8,6 @@ namespace ProfilePressVendor\Sabberworm\CSS\Parsing;
  *
  * Extends `UnexpectedTokenException` in order to preserve backwards compatibility.
  */
-class UnexpectedEOFException extends UnexpectedTokenException
+final class UnexpectedEOFException extends UnexpectedTokenException
 {
 }

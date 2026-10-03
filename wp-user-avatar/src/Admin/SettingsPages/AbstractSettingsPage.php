@@ -313,7 +313,9 @@ abstract class AbstractSettingsPage
     protected function custom_text_input($id, $placeholder = '')
     {
         $placeholder = ! empty($placeholder) ? $placeholder : esc_html__('Custom URL Here', 'wp-user-avatar');
-        $value       = ppress_get_setting($id, '');
+        $value       = esc_attr(ppress_get_setting($id, ''));
+        $placeholder = esc_attr($placeholder);
+        $id          = esc_attr($id);
 
         return "<input placeholder=\"$placeholder\" name=\"" . PPRESS_SETTINGS_DB_OPTION_NAME . "[$id]\" type=\"text\" class=\"regular-text code\" value=\"$value\">";
     }

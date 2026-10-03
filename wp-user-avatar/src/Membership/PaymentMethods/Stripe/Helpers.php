@@ -108,10 +108,10 @@ class Helpers
 
         <style>
             .ppress-stripe-connect {
-                color: #fff;
+                color: #fff !important;
                 font-size: 15px;
                 font-weight: bold;
-                text-decoration: none;
+                text-decoration: none !important;
                 line-height: 1;
                 background-color: #635bff;
                 border-radius: 3px;

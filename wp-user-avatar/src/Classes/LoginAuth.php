@@ -13,6 +13,9 @@ class LoginAuth
 {
     private static $redirect, $secure_cookie, $user, $username, $password, $login_form_id;
 
+    /** @var null|\WP_Error set when wp_signon() fails */
+    private static $login_failed_error;
+
     /**
      * Authenticate login
      *
@@ -64,9 +67,14 @@ class LoginAuth
         }
 
         add_filter('wp_redirect', [__CLASS__, 'wp_redirect_intercept'], 999999999, 2);
-        remove_all_actions('wp_login_failed');
 
-        remove_all_actions('wp_login_failed');
+        // Don't call remove_all_actions('wp_login_failed') here. It was used to stop callbacks that redirect after a
+        // failed login from being caught by wp_redirect_intercept() and treated as a successful login, but it also
+        // removed brute-force protection plugins (Limit Login Attempts etc.), which record failures on that hook.
+        // With them gone, ProfilePress logins allowed unlimited password guessing. record_login_failure() runs first
+        // instead, so wp_redirect_intercept() can tell a failed login from a successful one.
+        self::$login_failed_error = null;
+        add_action('wp_login_failed', [__CLASS__, 'record_login_failure'], -999999999, 2);
 
         self::$redirect      = $redirect;
         self::$secure_cookie = $secure_cookie;
@@ -143,8 +151,45 @@ class LoginAuth
         return $login_redirection;
     }
 
-    public static function wp_redirect_intercept()
+    /**
+     * Runs before any other wp_login_failed callback so wp_redirect_intercept() knows the login failed.
+     *
+     * @param string $username
+     * @param null|\WP_Error $error
+     */
+    public static function record_login_failure($username, $error = null)
     {
+        self::$login_failed_error = is_wp_error($error) ? $error : new \WP_Error('authentication_failed', esc_html__('Invalid username or password.', 'wp-user-avatar'));
+    }
+
+    /**
+     * Hooked on wp_redirect during wp_signon(). Plugins that redirect on wp_login (2FA, login redirect plugins
+     * etc.) are sent to ProfilePress's own login redirect instead, so AJAX logins get a JSON response.
+     *
+     * A redirect from a wp_login_failed callback is left alone for normal requests, the same as on wp-login.php.
+     * For AJAX, the failure is returned as an error, never as a successful login.
+     *
+     * @param string $location
+     * @param int $status
+     *
+     * @return string
+     */
+    public static function wp_redirect_intercept($location = '', $status = 302)
+    {
+        // a wp_login_failed callback is redirecting after a failed login. Don't treat it as a successful login.
+        if (is_wp_error(self::$login_failed_error)) {
+
+            if (wp_doing_ajax()) {
+                wp_send_json([
+                    'success' => false,
+                    'code'    => self::$login_failed_error->get_error_code(),
+                    'message' => '<div class="' . esc_attr(apply_filters('ppress_login_error_css_class', 'profilepress-login-status', self::$login_form_id)) . '">' . self::$login_failed_error->get_error_message() . '</div>'
+                ]);
+            }
+
+            return $location;
+        }
+
         $login_redirection = self::after_do_login();
 
         // if ajax, return the url to redirect to

@@ -9,6 +9,12 @@ use ProfilePress\Custom_Settings_Page_Api;
 
 class LicenseUpgrader
 {
+    /** @var int Token validity in seconds (5 minutes) */
+    const TOKEN_EXPIRY_SECONDS = 300;
+
+    /** @var string Allowed download domain for plugin files */
+    const ALLOWED_DOWNLOAD_DOMAIN = 'profilepress.com';
+
     public function __construct()
     {
         if ( ! ExtensionManager::is_premium()) {
@@ -26,9 +32,9 @@ class LicenseUpgrader
             add_action('admin_enqueue_scripts', [$this, 'settings_enqueues']);
 
             add_action('wp_ajax_ppress_connect_url', array($this, 'generate_url'));
-        }
 
-        add_action('wp_ajax_nopriv_ppress_connect_process', array($this, 'process'));
+            add_action('wp_ajax_nopriv_ppress_connect_process', array($this, 'process'));
+        }
     }
 
     public function add_menu($tabs)
@@ -41,14 +47,14 @@ class LicenseUpgrader
     public function admin_page()
     {
         $settings = [
-            [
-                'section_title'         => '',
-                'disable_submit_button' => true,
-                'license_key'           => [
-                    'type' => 'arbitrary',
-                    'data' => $this->admin_settings_page_callback()
+                [
+                        'section_title'         => '',
+                        'disable_submit_button' => true,
+                        'license_key'           => [
+                                'type' => 'arbitrary',
+                                'data' => $this->admin_settings_page_callback()
+                        ]
                 ]
-            ]
         ];
 
         $instance = Custom_Settings_Page_Api::instance($settings, 'ppress_license', esc_html__('License', 'wp-user-avatar'));
@@ -82,8 +88,8 @@ class LicenseUpgrader
             <p style="font-size: 110%;">
                 <?php
                 esc_html_e(
-                    'You\'re using ProfilePress Lite - no license needed. Enjoy! 😊',
-                    'wp-user-avatar'
+                        'You\'re using ProfilePress Lite - no license needed. Enjoy! 😊',
+                        'wp-user-avatar'
                 );
                 ?>
             </p>
@@ -91,18 +97,18 @@ class LicenseUpgrader
             <p class="description" style="margin-bottom: 8px;">
                 <?php
                 echo wp_kses_post(
-                    sprintf(
-                    /* translators: %1$s Opening anchor tag, do not translate. %2$s Closing anchor tag, do not translate. */
-                        __(
-                            'Already purchased? Simply %1$sretrieve your license key%2$s and enter it below to connect with ProfilePress Pro.',
-                            'wp-user-avatar'
-                        ),
                         sprintf(
-                            '<a href="%s" target="_blank" rel="noopener noreferrer">',
-                            'https://profilepress.com/account/?utm_source=wp_dashboard&utm_medium=retrieve_license&utm_campaign=lite_license_page'
-                        ),
-                        '</a>'
-                    )
+                        /* translators: %1$s Opening anchor tag, do not translate. %2$s Closing anchor tag, do not translate. */
+                                __(
+                                        'Already purchased? Simply %1$sretrieve your license key%2$s and enter it below to connect with ProfilePress Pro.',
+                                        'wp-user-avatar'
+                                ),
+                                sprintf(
+                                        '<a href="%s" target="_blank" rel="noopener noreferrer">',
+                                        'https://profilepress.com/account/?utm_source=wp_dashboard&utm_medium=retrieve_license&utm_campaign=lite_license_page'
+                                ),
+                                '</a>'
+                        )
                 );
                 ?>
             </p>
@@ -220,27 +226,27 @@ class LicenseUpgrader
 
                     <?php
                     echo wp_kses(
-                        sprintf(
-                        /* translators: %1$s Opening anchor tag, do not translate. %2$s Closing anchor tag, do not translate. */
-                            __(
-                                '<strong>Bonus</strong>: Loyal ProfilePress Lite users get <u>10%% off</u> regular price, automatically applied at checkout. %1$sUpgrade to Pro →%2$s',
-                                'wp-user-avatar'
-                            ),
                             sprintf(
-                                '<a href="%s" rel="noopener noreferrer" target="_blank">',
-                                'https://profilepress.com/pricing/?discount=10PPOFF&utm_source=wp_dashboard&utm_medium=retrieve_license&utm_campaign=lite_license_page'
+                            /* translators: %1$s Opening anchor tag, do not translate. %2$s Closing anchor tag, do not translate. */
+                                    __(
+                                            '<strong>Bonus</strong>: Loyal ProfilePress Lite users get <u>10%% off</u> regular price, automatically applied at checkout. %1$sUpgrade to Pro →%2$s',
+                                            'wp-user-avatar'
+                                    ),
+                                    sprintf(
+                                            '<a href="%s" rel="noopener noreferrer" target="_blank">',
+                                            'https://profilepress.com/pricing/?discount=10PPOFF&utm_source=wp_dashboard&utm_medium=retrieve_license&utm_campaign=lite_license_page'
+                                    ),
+                                    '</a>'
                             ),
-                            '</a>'
-                        ),
-                        array(
-                            'a'      => array(
-                                'href'   => true,
-                                'rel'    => true,
-                                'target' => true,
-                            ),
-                            'strong' => array(),
-                            'u'      => array(),
-                        )
+                            array(
+                                    'a'      => array(
+                                            'href'   => true,
+                                            'rel'    => true,
+                                            'target' => true,
+                                    ),
+                                    'strong' => array(),
+                                    'u'      => array(),
+                            )
                     );
                     ?>
                 </div>
@@ -253,11 +259,11 @@ class LicenseUpgrader
     public function settings_enqueues()
     {
         wp_enqueue_script(
-            'ppress-license-connect',
-            PPRESS_ASSETS_URL . "/js/admin/license.js",
-            ['jquery'],
-            PPRESS_VERSION_NUMBER,
-            true
+                'ppress-license-connect',
+                PPRESS_ASSETS_URL . "/js/admin/license.js",
+                ['jquery'],
+                PPRESS_VERSION_NUMBER,
+                true
         );
     }
 
@@ -287,31 +293,40 @@ class LicenseUpgrader
             update_option('ppress_license_key', $key);
 
             wp_send_json_success([
-                'message' => \esc_html__('You already have ProfilePress Pro installed! Activating it now', 'wp-user-avatar'),
-                'reload'  => true,
+                    'message' => \esc_html__('You already have ProfilePress Pro installed! Activating it now', 'wp-user-avatar'),
+                    'reload'  => true
             ]);
         }
 
-        $oth = hash('sha512', wp_rand());
+        try {
+            // Use cryptographically secure random bytes instead of wp_rand()
+            $oth = bin2hex(random_bytes(32));
+        } catch (\Exception $e) {
+                wp_send_json_error(['message' => esc_html__('No sources of randomness found on the server.', 'wp-user-avatar')]);
+        }
 
-        update_option('ppress_connect_token', $oth);
+        // Store token with timestamp for expiration and user verification
+        update_option('ppress_connect_token', [
+                'token'      => $oth,
+                'created_at' => time()
+        ]);
         update_option('ppress_license_key', $key);
 
         $version  = PPRESS_VERSION_NUMBER;
         $endpoint = admin_url('admin-ajax.php');
         $redirect = PPRESS_SETTINGS_SETTING_GENERAL_PAGE;
         $url      = add_query_arg(
-            [
-                'key'      => $key,
-                'oth'      => $oth,
-                'endpoint' => $endpoint,
-                'version'  => $version,
-                'siteurl'  => \admin_url(),
-                'homeurl'  => \home_url(),
-                'redirect' => rawurldecode(base64_encode($redirect)), // phpcs:ignore
-                'v'        => 1,
-            ],
-            'https://upgrade.profilepress.com'
+                [
+                        'key'      => $key,
+                        'oth'      => $oth,
+                        'endpoint' => $endpoint,
+                        'version'  => $version,
+                        'siteurl'  => \admin_url(),
+                        'homeurl'  => \home_url(),
+                        'redirect' => rawurldecode(base64_encode($redirect)), // phpcs:ignore
+                        'v'        => 1,
+                ],
+                'https://upgrade.profilepress.com'
         );
 
         wp_send_json_success(['url' => $url]);
@@ -320,19 +335,19 @@ class LicenseUpgrader
     public function process()
     {
         $error = wp_kses(
-            sprintf(
-            /* translators: %1$s Opening anchor tag, do not translate. %2$s Closing anchor tag, do not translate. */
-                __(
-                    'Oops! We could not automatically install an upgrade. Please download the plugin from profilepress.com and install it manually.',
-                    'wp-user-avatar'
-                )
-            ),
-            [
-                'a' => [
-                    'target' => true,
-                    'href'   => true,
-                ],
-            ]
+                sprintf(
+                /* translators: %1$s Opening anchor tag, do not translate. %2$s Closing anchor tag, do not translate. */
+                        __(
+                                'Oops! We could not automatically install an upgrade. Please download the plugin from profilepress.com and install it manually.',
+                                'wp-user-avatar'
+                        )
+                ),
+                [
+                        'a' => [
+                                'target' => true,
+                                'href'   => true,
+                        ],
+                ]
         );
 
         $post_oth = ! empty($_REQUEST['oth']) ? sanitize_text_field($_REQUEST['oth']) : '';
@@ -344,17 +359,41 @@ class LicenseUpgrader
             wp_send_json_error(['message' => $error, 'code_err' => '1']);
         }
 
-        $oth = get_option('ppress_connect_token');
+        // Validate URL is from allowed domain
+        $parsed_url = wp_parse_url($post_url);
+        $url_host   = isset($parsed_url['host']) ? strtolower($parsed_url['host']) : '';
 
-        if (empty($oth)) {
+        // Allow profilepress.com and subdomains (e.g., downloads.profilepress.com)
+        if ($url_host !== self::ALLOWED_DOWNLOAD_DOMAIN &&
+                ! preg_match('/\.' . preg_quote(self::ALLOWED_DOWNLOAD_DOMAIN, '/') . '$/', $url_host)) {
+            wp_send_json_error(['message' => $error, 'code_err' => 'invalid_domain']);
+        }
+
+        // Verify URL uses HTTPS
+        if ( ! isset($parsed_url['scheme']) || strtolower($parsed_url['scheme']) !== 'https') {
+            wp_send_json_error(['message' => $error, 'code_err' => 'insecure_url']);
+        }
+
+        $token_data = get_option('ppress_connect_token');
+
+        // Always delete token on any attempt (success or failure) to prevent brute-force
+        delete_option('ppress_connect_token');
+
+        if (empty($token_data) || ! is_array($token_data)) {
             wp_send_json_error(['message' => $error, 'code_err' => '2']);
         }
 
-        if ( ! hash_equals($oth, $post_oth)) {
-            wp_send_json_error(['message' => $error, 'code_err' => '3']);
+        $stored_token = $token_data['token'] ?? '';
+        $created_at   = isset($token_data['created_at']) ? (int) $token_data['created_at'] : 0;
+
+        // Verify token hasn't expired
+        if ((time() - $created_at) > self::TOKEN_EXPIRY_SECONDS) {
+            wp_send_json_error(['message' => esc_html__('The connection token has expired. Please try again.', 'wp-user-avatar'), 'code_err' => 'token_expired']);
         }
 
-        delete_option('ppress_connect_token');
+        if ( ! hash_equals($stored_token, $post_oth)) {
+            wp_send_json_error(['message' => $error, 'code_err' => '3']);
+        }
 
         // Set the current screen to avoid undefined notices.
         set_current_screen('profilepress_page_ppress-config');
@@ -372,8 +411,8 @@ class LicenseUpgrader
         if ( ! is_wp_error($active)) {
 
             wp_send_json_success([
-                'message'  => esc_html__('Plugin installed & activated.', 'wp-user-avatar'),
-                'code_err' => '3.5'
+                    'message'  => esc_html__('Plugin installed & activated.', 'wp-user-avatar'),
+                    'code_err' => '3.5'
             ]);
         }
 
@@ -401,8 +440,8 @@ class LicenseUpgrader
 
         if (empty($license)) {
             wp_send_json_error([
-                'message'  => esc_html__('You are not licensed.', 'wp-user-avatar'),
-                'code_err' => '6'
+                    'message'  => esc_html__('You are not licensed.', 'wp-user-avatar'),
+                    'code_err' => '6'
             ]);
         }
 

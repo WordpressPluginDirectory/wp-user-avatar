@@ -67,11 +67,9 @@ class CustomerSubscriptionUpdated implements WebhookHandlerInterface
                 break;
             case 'past_due':
                 $subscription->add_note(
-                    sprintf(
-                        esc_html__('Stripe payment failed (payment is past due)', 'wp-user-avatar'),
-                        ppress_format_date($event_data['cancel_at'])
-                    )
+                    esc_html__('Stripe payment failed (payment is past due)', 'wp-user-avatar')
                 );
+                $subscription->payment_failed();
                 break;
         }
 

@@ -85,6 +85,9 @@ function ppress_is_any_active_coupon()
     return absint($wpdb->get_var("SELECT COUNT(id) FROM $table WHERE status = 'true'")) > 0;
 }
 
+/**
+ * @return string
+ */
 function ppress_get_currency()
 {
     return apply_filters('ppress_currency', ppress_settings_by_key('payment_currency', 'USD', true));
@@ -470,15 +473,16 @@ function ppress_get_currency_symbols()
  */
 function ppress_get_currency_symbol($currency = '')
 {
-    if ( ! $currency) {
-        $currency = ppress_get_currency();
-    }
+    return ppress_cache_transform('ppress_get_currency_symbol_'.$currency, function() use ($currency) {
 
-    $symbols = ppress_get_currency_symbols();
+        if ( ! $currency) $currency = ppress_get_currency();
 
-    $currency_symbol = isset($symbols[$currency]) ? $symbols[$currency] : '';
+        $symbols = ppress_get_currency_symbols();
 
-    return apply_filters('ppress_currency_symbol', $currency_symbol, $currency);
+        $currency_symbol = $symbols[$currency] ?? '';
+
+        return apply_filters('ppress_currency_symbol', $currency_symbol, $currency);
+    });
 }
 
 
@@ -496,7 +500,7 @@ function ppress_get_currency_name($code = '')
     }
 
     $currencies = ppress_get_currencies();
-    $name       = isset($currencies[$code]) ? $currencies[$code] : $code;
+    $name       = $currencies[$code] ?? $code;
 
     return apply_filters('ppress_currency_name', $name);
 }

@@ -937,7 +937,7 @@
     text-shadow: rgba(0, 0, 0, .01) 0 0 1px;
 }
 
-.pp-form-buider-settings-popup-container .pp-form-buider-settings-popup-body .pp-form-control {
+.pp-form-buider-settings-popup-container .pp-form-buider-settings-popup-body .pp-form-control:not([type=checkbox]):not([type=radio]) {
     -webkit-font-smoothing: antialiased;
     background-color: #fff;
     background-image: none;
@@ -968,11 +968,6 @@
     transition-duration: .3s;
     transition-property: all;
     transition-timing-function: ease-in-out;
-}
-
-.pp-form-buider-settings-popup-container .pp-form-buider-settings-popup-body .pp-form-control[type="checkbox"],
-.pp-form-buider-settings-popup-container .pp-form-buider-settings-popup-body .pp-form-control[type="radio"] {
-    height: 1rem;
 }
 
 .pp-form-buider-settings-popup-container .pp-form-buider-settings-popup-body select.pp-form-control {

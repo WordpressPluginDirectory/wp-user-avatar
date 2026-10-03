@@ -18,6 +18,10 @@ class TabbedWidgetDependency
      */
     static function login($username, $password)
     {
+        if ( ! ppress_verify_form_signature(0, 'tabbed', $_POST['ppress_form_sig'] ?? '')) {
+            return ppress_invalid_form_submission_message();
+        }
+
         $login_status = LoginAuth::login_auth($username, $password);
 
         if ($login_status->get_error_code() == 'pp2fa_auth_code_invalid') {
@@ -67,6 +71,14 @@ class TabbedWidgetDependency
     public static function registration($username, $password, $email)
     {
         if (apply_filters('ppress_disable_tab_widget_registration', false)) return '';
+
+        // The tab widget must have been rendered somewhere on the site for this registration path to be usable.
+        // It registers with form ID 0, so no per-form validators (invite codes, CAPTCHA) apply. Without the check,
+        // posting is-pp-tab-widget=true to pp_ajax_signup bypassed them even on sites that never use the widget.
+        // See ppress_form_signature().
+        if ( ! ppress_verify_form_signature(0, 'tabbed', $_POST['ppress_form_sig'] ?? '')) {
+            return ppress_invalid_form_submission_message();
+        }
 
         add_action('ppress_after_registration', function ($form_id, $user_data, $user_id) {
             // update is being used because RegistrationAuth::register_new_user will set it to 0.

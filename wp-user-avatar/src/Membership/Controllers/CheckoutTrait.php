@@ -14,6 +14,7 @@ use ProfilePress\Core\Membership\Models\Order\OrderFactory;
 use ProfilePress\Core\Membership\Models\Order\OrderStatus;
 use ProfilePress\Core\Membership\Models\Order\OrderType;
 use ProfilePress\Core\Membership\Models\Subscription\SubscriptionEntity;
+use ProfilePress\Core\Membership\Models\Subscription\SubscriptionFactory;
 use ProfilePress\Core\Membership\Models\Subscription\SubscriptionStatus;
 use ProfilePress\Core\Membership\Models\Subscription\SubscriptionTrialPeriod;
 use ProfilePress\Core\Membership\PaymentMethods\StoreGateway;
@@ -128,6 +129,21 @@ trait CheckoutTrait
 
         if ($subscription->is_recurring() && Calculator::init($subscription->recurring_amount)->isNegativeOrZero()) {
             $subscription->expiration_date = '';
+        }
+
+        $change_plan_sub_id = absint($cart_vars->change_plan_sub_id);
+
+        if ($change_plan_sub_id > 0 && ! $subscription->is_lifetime()) {
+            $fromSub    = SubscriptionFactory::fromId($change_plan_sub_id);
+            $order_type = CheckoutSessionData::get_order_type($plan_id);
+            
+            if ($order_type === OrderType::DOWNGRADE) {
+                $subscription->expiration_date = SubscriptionService::init()->get_downgrade_expiration_datetime(
+                    $fromSub,
+                    $subscription->expiration_date
+                );
+                $subscription->trial_period = SubscriptionTrialPeriod::DISABLED;
+            }
         }
 
         $subscription_id = $subscription->save();
@@ -336,11 +352,11 @@ trait CheckoutTrait
             'user_pass'    => $password ?? '',
             'user_email'   => $email,
             'user_url'     => ppressPOST_var(CF::ACCOUNT_WEBSITE, ''),
-            'nickname'     => ppressPOST_var(CF::ACCOUNT_NICKNAME, ''),
-            'display_name' => ppressPOST_var(CF::ACCOUNT_DISPLAY_NAME, ''),
-            'first_name'   => ppressPOST_var(CF::ACCOUNT_FIRST_NAME, ''),
-            'last_name'    => ppressPOST_var(CF::ACCOUNT_LAST_NAME, ''),
-            'description'  => ppressPOST_var(CF::ACCOUNT_BIO, ''),
+            'nickname'     => ppress_strip_shortcodes_clean(ppressPOST_var(CF::ACCOUNT_NICKNAME, '')),
+            'display_name' => ppress_strip_shortcodes_clean(ppressPOST_var(CF::ACCOUNT_DISPLAY_NAME, '')),
+            'first_name'   => ppress_strip_shortcodes_clean(ppressPOST_var(CF::ACCOUNT_FIRST_NAME, '')),
+            'last_name'    => ppress_strip_shortcodes_clean(ppressPOST_var(CF::ACCOUNT_LAST_NAME, '')),
+            'description'  => ppress_strip_shortcodes_clean(ppressPOST_var(CF::ACCOUNT_BIO, '')),
         ]));
 
         // get the data for use by update_meta
@@ -452,7 +468,7 @@ trait CheckoutTrait
             if (
                 class_exists('ProfilePress\Libsodium\UserModeration\UserModeration') &&
                 UserModeration::moderation_is_active() &&
-                apply_filters('ppress_checkout_registration_user_moderation_support', false, $user_id)
+                apply_filters('ppress_checkout_registration_user_moderation_support', true, $user_id)
             ) {
 
                 if (apply_filters('ppress_user_moderation_make_pending', true, 'checkout', $user_data)) {

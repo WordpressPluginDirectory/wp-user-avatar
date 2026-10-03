@@ -29,9 +29,16 @@ class SubscriptionRenewalReminder extends AbstractMembershipEmail
 
         $subDate = CarbonImmutable::now(wp_timezone())->addDays($reminder_days);
 
+        $statuses = [SubscriptionStatus::ACTIVE, SubscriptionStatus::TRIALLING];
+
+        // trialling customers get the Free Trial Ending Reminder instead when it is enabled.
+        if (SubscriptionTrialEndingReminder::is_enabled()) {
+            $statuses = [SubscriptionStatus::ACTIVE];
+        }
+
         $subscriptions = SubscriptionRepository::init()->retrieveBy([
-            'status'      => [SubscriptionStatus::ACTIVE, SubscriptionStatus::TRIALLING],
-            'limit'       => 0,
+            'status'      => $statuses,
+            'number'      => 0,
             'date_column' => 'expiration_date',
             'start_date'  => $subDate->startOfDay()->utc()->toDateTimeString(),
             'end_date'    => $subDate->endOfDay()->utc()->toDateTimeString(),

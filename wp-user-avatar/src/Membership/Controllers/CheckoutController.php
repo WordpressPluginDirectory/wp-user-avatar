@@ -3,8 +3,7 @@
 namespace ProfilePress\Core\Membership\Controllers;
 
 use ProfilePress\Core\Classes\LoginAuth;
-use ProfilePress\Core\Membership\Emails\SubscriptionCancelledNotification;
-use ProfilePress\Core\Membership\Emails\SubscriptionExpiredNotification;
+use ProfilePress\Core\Membership\CheckoutFields;
 use ProfilePress\Core\Membership\Models\Coupon\CouponFactory;
 use ProfilePress\Core\Membership\Models\Customer\CustomerFactory;
 use ProfilePress\Core\Membership\Models\Group\GroupFactory;
@@ -17,9 +16,11 @@ use ProfilePress\Core\Membership\PaymentMethods\PaymentMethods;
 use ProfilePress\Core\Membership\PaymentMethods\StoreGateway;
 use ProfilePress\Core\Membership\Repositories\OrderRepository;
 use ProfilePress\Core\Membership\Repositories\SubscriptionRepository;
+use ProfilePress\Core\Membership\Services\CouponService;
 use ProfilePress\Core\Membership\Services\EUVATChecker\EuVatApi;
 use ProfilePress\Core\Membership\Services\OrderService;
 use ProfilePress\Core\Membership\Services\TaxService;
+use ProfilePress\Libsodium\LoginGuard;
 
 class CheckoutController extends BaseController
 {
@@ -28,6 +29,8 @@ class CheckoutController extends BaseController
     public function __construct()
     {
         add_action('wp_ajax_nopriv_ppress_process_checkout_login', [$this, 'process_checkout_login']);
+        add_action('wp_ajax_ppress_checkout_check_email', [$this, 'check_email_exists']);
+        add_action('wp_ajax_nopriv_ppress_checkout_check_email', [$this, 'check_email_exists']);
 
         add_action('wp_ajax_ppress_process_checkout', [$this, 'process_checkout']);
         add_action('wp_ajax_nopriv_ppress_process_checkout', [$this, 'process_checkout']);
@@ -63,7 +66,12 @@ class CheckoutController extends BaseController
 
         if ( ! empty($states)) {
 
-            printf('<select name="%s" id="%s" class="%s" autocomplete="address-level1" required="required">', $nameAttr, $idAttr, $classAttr);
+            printf(
+                '<select name="%s" id="%s" class="%s" autocomplete="address-level1" required="required">',
+                esc_attr($nameAttr),
+                esc_attr($idAttr),
+                esc_attr($classAttr)
+            );
             echo '<option value="">&mdash;&mdash;&mdash;</option>';
             foreach ($states as $id => $label) {
                 printf('<option value="%s">%s</option>', $id, $label);
@@ -74,7 +82,9 @@ class CheckoutController extends BaseController
 
             printf(
                 '<input name="%s" type="text" id="%s" class="%s" autocomplete="address-level1" required="required">',
-                $nameAttr, $idAttr, $classAttr
+                esc_attr($nameAttr),
+                esc_attr($idAttr),
+                esc_attr($classAttr)
             );
         }
 
@@ -93,7 +103,10 @@ class CheckoutController extends BaseController
 
             $coupon = CouponFactory::fromCode($coupon['coupon_code']);
 
-            if ( ! $coupon->is_valid($plan_id)) {
+            $order_type = CheckoutSessionData::get_order_type($plan_id);
+            if ( ! $order_type) $order_type = OrderType::NEW_ORDER;
+
+            if ( ! $coupon->is_valid($plan_id, $order_type)) {
                 ppress_session()->set(CheckoutSessionData::COUPON_CODE, null);
             }
         }
@@ -122,6 +135,63 @@ class CheckoutController extends BaseController
         }
 
         wp_send_json_success();
+    }
+
+    public function check_email_exists()
+    {
+        if (is_user_logged_in()) {
+            wp_send_json_error([
+                'message' => esc_html__('User is already logged in.', 'wp-user-avatar')
+            ]);
+        }
+
+        $nonce_check = check_ajax_referer('ppress_process_checkout', 'csrf', false);
+        if (false === $nonce_check) {
+            $nonce_check = check_ajax_referer('ppress_process_checkout', 'ppress_checkout_nonce', false);
+        }
+        if (false === $nonce_check) {
+            $nonce_check = check_ajax_referer('ppress-frontend-nonce', 'csrf', false);
+        }
+
+        if (false === $nonce_check) {
+            wp_send_json_error([
+                'message' => esc_html__('Security check failed.', 'wp-user-avatar')
+            ]);
+        }
+
+        $email = sanitize_email(ppressPOST_var('email', ''));
+
+        if (empty($email) || ! is_email($email)) {
+            wp_send_json_error([
+                'message' => esc_html__('Please enter a valid email address.', 'wp-user-avatar')
+            ]);
+        }
+
+        $user_exists = (bool) email_exists($email);
+
+        if ($user_exists) {
+            $login_link = sprintf(
+                '<a href="#" class="ppress-checkout-inline-login-link">%s</a>',
+                esc_html__('log in', 'wp-user-avatar')
+            );
+
+            $message = sprintf(
+                /* translators: %s: Login link */
+                esc_html__('An account already exists with this email address. Please %s to continue.', 'wp-user-avatar'),
+                $login_link
+            );
+
+            $message = apply_filters('ppress_checkout_email_exists_message', $message, $email);
+
+            wp_send_json_success([
+                'exists'  => true,
+                'message' => $message
+            ]);
+        }
+
+        wp_send_json_success([
+            'exists' => false
+        ]);
     }
 
     public function apply_discount()
@@ -220,8 +290,13 @@ class CheckoutController extends BaseController
         }
     }
 
+    /**
+     * @throws \Exception
+     */
     public function process_checkout()
     {
+        $order_id = 0;
+
         try {
 
             $nonce_check = check_ajax_referer('ppress_process_checkout', 'ppress_checkout_nonce', false);
@@ -246,13 +321,17 @@ class CheckoutController extends BaseController
 
             $change_plan_sub_id = (int)$_POST['change_plan_sub_id'];
 
-            if (empty($change_plan_sub_id) && $plan_id > 0) {
+            // plan lookups absint() the ID, so a negative ID would otherwise resolve to a plan without passing the active check below.
+            if ($plan_id < 1 || $change_plan_sub_id < 0) {
+                throw new \Exception(
+                    esc_html__('Invalid membership plan.', 'wp-user-avatar')
+                );
+            }
 
-                if ( ! ppress_get_plan($plan_id)->is_active()) {
-                    throw new \Exception(
-                        esc_html__('Invalid membership plan.', 'wp-user-avatar')
-                    );
-                }
+            if (empty($change_plan_sub_id) && ! ppress_get_plan($plan_id)->is_active()) {
+                throw new \Exception(
+                    esc_html__('Invalid membership plan.', 'wp-user-avatar')
+                );
             }
 
             $checkout_errors = apply_filters('ppress_checkout_validation', new \WP_Error(), $plan_id, $_POST);
@@ -269,26 +348,58 @@ class CheckoutController extends BaseController
 
             $changePlanSub = SubscriptionFactory::fromId($change_plan_sub_id);
 
-            if ( ! empty($change_plan_sub_id) && ! $changePlanSub->exists()) {
-                throw new \Exception(esc_html__('Invalid subscription ID provided for plan change.', 'wp-user-avatar'));
+            if ( ! empty($change_plan_sub_id)) {
+
+                if ( ! $changePlanSub->exists()) {
+                    throw new \Exception(esc_html__('Invalid subscription ID provided for plan change.', 'wp-user-avatar'));
+                }
+
+                if ( ! is_user_logged_in()) {
+                    throw new \Exception(esc_html__('You are not allowed to switch from this plan.', 'wp-user-avatar'));
+                }
+
+                $currentCustomer = CustomerFactory::fromUserId(get_current_user_id());
+
+                if ( ! $currentCustomer->exists() || (int)$currentCustomer->id !== $changePlanSub->get_customer_id()) {
+                    throw new \Exception(esc_html__('You are not allowed to switch from this plan.', 'wp-user-avatar'));
+                }
+
+                if ( ! $changePlanSub->can_switch_to_plan($plan_id)) {
+                    throw new \Exception(esc_html__('You are not allowed to switch from this plan.', 'wp-user-avatar'));
+                }
             }
+
+            $coupon_code = CheckoutSessionData::get_coupon_code($plan_id);
 
             $cart_vars = OrderService::init()->checkout_order_calculation([
                 'plan_id'            => $plan_id,
-                'coupon_code'        => CheckoutSessionData::get_coupon_code($plan_id),
-                'tax_rate'           => CheckoutSessionData::get_tax_rate($plan_id),
+                'coupon_code'        => $coupon_code,
+                'tax_rate'           => $this->get_submitted_checkout_tax_rate($plan_id),
                 'change_plan_sub_id' => $change_plan_sub_id
             ]);
+
+            if ( ! empty($coupon_code) && empty($cart_vars->coupon_code)) {
+                throw new \Exception(
+                    esc_html__('Sorry, this coupon is not valid.', 'wp-user-avatar')
+                );
+            }
 
             $is_free_checkout = OrderService::init()->is_free_checkout($cart_vars);
 
             $payment_method = PaymentMethods::get_instance()->get_by_id(ppressPOST_var('ppress_payment_method', ''));
 
-            if ((empty($_POST['ppress_payment_method']) || ! $payment_method) && $is_free_checkout === false) {
+            if ($is_free_checkout === false) {
 
-                throw new \Exception(
-                    esc_html__('No payment method selected. Please try again.', 'wp-user-avatar')
-                );
+                if (
+                    empty($_POST['ppress_payment_method']) ||
+                    ! $payment_method ||
+                    ! $payment_method->is_enabled() ||
+                    $payment_method->is_backend_only()
+                ) {
+                    throw new \Exception(
+                        esc_html__('No payment method selected. Please try again.', 'wp-user-avatar')
+                    );
+                }
             }
 
             if ($is_free_checkout) {
@@ -339,6 +450,33 @@ class CheckoutController extends BaseController
 
             $this->save_eu_vat_details($payment_method->id, $order_id);
 
+            if ($changePlanSub->exists() && $changePlanSub->get_customer_id() == $customer_id) {
+                SubscriptionFactory::fromId($subscription_id)->update_meta('_upgraded_from_sub_id', $changePlanSub->get_id());
+            }
+
+            if ( ! empty($cart_vars->coupon_code)) {
+
+                $coupon = CouponFactory::fromCode($cart_vars->coupon_code);
+
+                if ($coupon->exists() && absint($coupon->get_usage_limit()) > 0) {
+
+                    $order_type = CheckoutSessionData::get_order_type($plan_id);
+                    if ( ! $order_type) $order_type = OrderType::NEW_ORDER;
+
+                    if (false === CouponService::init()->check_and_hold_coupon(
+                        $coupon,
+                        $order_id,
+                        $plan_id,
+                        $order_type
+                    )) {
+                        ppress_session()->set(CheckoutSessionData::COUPON_CODE, null);
+                        throw new \Exception(
+                            esc_html__('Sorry, this coupon is not valid.', 'wp-user-avatar')
+                        );
+                    }
+                }
+            }
+
             if ($is_free_checkout) {
                 OrderFactory::fromId($order_id)->complete_order();
                 SubscriptionFactory::fromId($subscription_id)->activate_subscription();
@@ -346,19 +484,6 @@ class CheckoutController extends BaseController
                 $process_payment = (new CheckoutResponse())->set_is_success(true);
 
             } else {
-
-                if ($changePlanSub->exists() && $changePlanSub->get_customer_id() == $customer_id) {
-
-                    // do not send subscription cancelled email
-                    remove_action('ppress_subscription_cancelled', [SubscriptionCancelledNotification::init(), 'dispatch_email']);
-                    remove_action('ppress_subscription_expired', [SubscriptionExpiredNotification::init(), 'dispatch_email']);
-
-                    $changePlanSub->cancel(true);
-                    $changePlanSub->expire();
-
-                    SubscriptionFactory::fromId($subscription_id)->update_meta('_upgraded_from_sub_id', $changePlanSub->get_id());
-                    $changePlanSub->update_meta('_upgraded_to_sub_id', $subscription_id);
-                }
 
                 /** @var CheckoutResponse $process_payment */
                 $process_payment = $payment_method->process_payment(
@@ -374,10 +499,17 @@ class CheckoutController extends BaseController
 
             if (apply_filters('ppress_autologin_after_checkout', $is_checkout_autologin, $order, $subscription_id)) {
 
-                if ( ! is_user_logged_in()) {
+                if (!is_user_logged_in()) {
                     $user_id = CustomerFactory::fromId($customer_id)->get_user_id();
-                    wp_set_auth_cookie($user_id, true);
-                    wp_set_current_user($user_id);
+                    if ($user_id > 0) {
+                        $can_login = class_exists(LoginGuard::class)
+                            ? LoginGuard::can_user_login($user_id, 'checkout_autologin')
+                            : true;
+                        if (!is_wp_error($can_login)) {
+                            wp_set_current_user($user_id);
+                            wp_set_auth_cookie($user_id, true);
+                        }
+                    }
                 }
             }
 
@@ -390,6 +522,10 @@ class CheckoutController extends BaseController
             ]);
 
         } catch (\Exception $e) {
+
+            if ( ! empty($order_id)) {
+                CouponService::init()->release_coupon_hold($order_id);
+            }
 
             $error_message = ppress_is_json($e->getMessage()) ? json_decode($e->getMessage(), true) : $e->getMessage();
 
@@ -439,6 +575,12 @@ class CheckoutController extends BaseController
 
             if (empty($vat_number)) return $tax_rate;
 
+            // already validated earlier in this checkout session for the same plan, VAT number and country.
+            $cached_vat_details = CheckoutSessionData::get_eu_vat_number_details($planObj->id, $vat_number);
+            if (is_array($cached_vat_details) && ppress_var($cached_vat_details, 'country_code') == $country_code && ppress_var($cached_vat_details, 'reverse_charged') === true) {
+                return 0;
+            }
+
             $session_data = [
                 'plan_id'      => $planObj->id,
                 'vat_number'   => $vat_number,
@@ -468,6 +610,37 @@ class CheckoutController extends BaseController
         return $tax_rate;
     }
 
+    /**
+     * Tax rate for the order being placed, computed from the submitted billing details rather than
+     * trusting the rate stored in session by update_order_review.
+     *
+     * @param int $plan_id
+     *
+     * @return float|int|string
+     * @throws \Exception
+     */
+    private function get_submitted_checkout_tax_rate($plan_id)
+    {
+        if ( ! TaxService::init()->is_tax_enabled()) return 0;
+
+        $payment_method_id = sanitize_key(ppressPOST_var('ppress_payment_method', ''));
+
+        $country_code       = sanitize_text_field(ppressPOST_var($payment_method_id . '_' . CheckoutFields::BILLING_COUNTRY, '', true));
+        $country_state_code = sanitize_text_field(ppressPOST_var($payment_method_id . '_' . CheckoutFields::BILLING_STATE, '', true));
+        $vat_number         = sanitize_text_field(ppressPOST_var($payment_method_id . '_' . CheckoutFields::VAT_NUMBER, '', true));
+
+        $tax_rate = $this->get_checkout_tax_rate($country_code, $country_state_code, $vat_number, ppress_get_plan($plan_id));
+
+        ppress_session()->set(CheckoutSessionData::TAX_RATE, [
+            'plan_id'  => $plan_id,
+            'tax_rate' => $tax_rate,
+            'country'  => $country_code,
+            'state'    => $country_state_code
+        ]);
+
+        return $tax_rate;
+    }
+
     public function update_order_review()
     {
         check_ajax_referer('ppress_process_checkout', 'csrf');
@@ -475,10 +648,7 @@ class CheckoutController extends BaseController
         try {
 
             if (empty($_POST['plan_id'])) {
-
-                throw new \Exception(
-                    esc_html__('Please enter a plan ID.', 'wp-user-avatar')
-                );
+                throw new \Exception(esc_html__('Please enter a plan ID.', 'wp-user-avatar'));
             }
 
             global $cart_vars;
@@ -568,6 +738,8 @@ class CheckoutController extends BaseController
                     '.ppress-checkout-submit'               => $checkout_submit_btn
                 ];
             }
+
+            do_action('ppress_update_order_review_actions', $post_data, $planObj, $cart_vars);
 
             wp_send_json_success(
                 apply_filters('ppress_update_order_review_response', [

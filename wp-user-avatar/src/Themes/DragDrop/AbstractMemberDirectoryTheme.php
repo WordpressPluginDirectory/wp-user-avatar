@@ -21,7 +21,8 @@ abstract class AbstractMemberDirectoryTheme extends AbstractTheme
             'specific_users' => $this->get_meta('ppress_md_specific_users'),
             'exclude_users'  => $this->get_meta('ppress_md_exclude_users'),
             'sort_default'   => $this->get_meta('ppress_md_sort_default'),
-            'search_fields'  => $this->get_meta('ppress_md_search_fields')
+            'search_fields'  => $this->get_meta('ppress_md_search_fields'),
+            'filter_fields'  => $this->get_enabled_filter_fields()
         ]);
 
         add_action('ppress_drag_drop_builder_admin_page', [$this, 'js_script']);
@@ -425,15 +426,25 @@ abstract class AbstractMemberDirectoryTheme extends AbstractTheme
         <?php
     }
 
-    protected function filter_structure($show_filter_fields = false)
+    /**
+     * Filter fields enabled for this directory. Empty if filtering is disabled.
+     *
+     * @return array
+     */
+    protected function get_enabled_filter_fields()
     {
-        $filter_enabled = $this->get_meta('ppress_md_enable_filters') == 'true';
+        if ($this->get_meta('ppress_md_enable_filters') != 'true') return [];
 
-        $filter_fields = apply_filters('ppress_member_directory_filter_fields', array_filter($this->get_meta('ppress_md_filter_fields'), function ($item) {
+        return apply_filters('ppress_member_directory_filter_fields', array_filter((array)$this->get_meta('ppress_md_filter_fields'), function ($item) {
             return ! empty($item);
         }), $this->form_id, $this);
+    }
 
-        if ( ! $filter_enabled || empty($filter_fields)) return;
+    protected function filter_structure($show_filter_fields = false)
+    {
+        $filter_fields = $this->get_enabled_filter_fields();
+
+        if (empty($filter_fields)) return;
 
         if ( ! $show_filter_fields) : ?>
             <span class="ppressmd-member-directory-filters">
@@ -510,12 +521,15 @@ abstract class AbstractMemberDirectoryTheme extends AbstractTheme
 
                                         $config = FieldsShortcodeCallback::date_picker_config($field_key, $dateFormat);
 
+                                        $date_value = ppress_var(ppress_var($query_params, 'filters', []), $field_key);
+                                        $date_value = is_scalar($date_value) ? (string)$date_value : '';
+
                                         printf(
                                             '<input type="text" name="%1$s" placeholder="%2$s" value="%4$s" class="ppressmd-form-field ppmd-date" data-config="%3$s">',
-                                            'filters[' . $custom_field['field_key'] . ']',
-                                            $custom_field['label_name'],
+                                            esc_attr('filters[' . $custom_field['field_key'] . ']'),
+                                            esc_attr($custom_field['label_name']),
                                             esc_attr(json_encode($config)),
-                                            ppress_var(ppress_var($query_params, 'filters', []), $field_key)
+                                            esc_attr(ppress_neutralize_shortcodes($date_value))
                                         );
                                         break;
                                 }
@@ -536,8 +550,8 @@ abstract class AbstractMemberDirectoryTheme extends AbstractTheme
     {
         printf(
             '<select name="%s" data-placeholder="%s" class="ppressmd-form-field ppmd-select2"%s>',
-            $is_multiple ? 'filters[' . $field_key . '][]' : 'filters[' . $field_key . ']',
-            $label_name,
+            esc_attr($is_multiple ? 'filters[' . $field_key . '][]' : 'filters[' . $field_key . ']'),
+            esc_attr($label_name),
             $is_multiple ? ' multiple' : ' data-allow-clear="true"'
         );
 
@@ -549,8 +563,8 @@ abstract class AbstractMemberDirectoryTheme extends AbstractTheme
             $bucket = ppress_var(ppress_var($query_params, 'filters', []), $field_key);
             printf(
                 '<option value="%1$s" %3$s>%2$s</option>',
-                $optionKey,
-                $option,
+                esc_attr($optionKey),
+                esc_html($option),
                 ! $is_multiple ? selected($option, $bucket, false) : (is_array($bucket) && in_array($option, $bucket) ? 'selected=selected' : '')
             );
         }

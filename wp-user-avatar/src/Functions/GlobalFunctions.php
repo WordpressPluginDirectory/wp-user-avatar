@@ -135,6 +135,91 @@ function ppress_new_user_admin_notification_message_default()
 HTML;
 }
 
+function ppress_login_notification_subject_default()
+{
+    return sprintf(esc_html__('[%s] New login to your account', 'wp-user-avatar'), ppress_site_title());
+}
+
+function ppress_login_notification_content_default()
+{
+    return <<<HTML
+<p>Hi {{display_name}},</p>
+<p>We noticed a new login to your {{site_title}} account.</p>
+<ul>
+    <li>Date: {{login_date}}</li>
+    <li>Time: {{login_time}}</li>
+    <li>Device: {{device}}</li>
+    <li>IP Address: {{ip_address}}</li>
+</ul>
+<p>If this was you, there's nothing for you to do. However, if you did not log in, please <a href="{{password_reset_link}}">reset your password</a> immediately to secure your account.</p>
+<p>Remember to stay safe:</p>
+<ul>
+    <li>Never share your password or personal details with anyone.</li>
+    <li>Use a strong, unique password for your account.</li>
+</ul>
+<p>Regards,<br>The {{site_title}} Team</p>
+HTML;
+}
+
+/**
+ * Human-readable browser and operating system from a user agent string, e.g. "Chrome on macOS".
+ *
+ * @param string $user_agent
+ *
+ * @return string
+ */
+function ppress_user_agent_label($user_agent)
+{
+    $browsers = [
+        'Edg/'           => 'Edge',
+        'OPR/'           => 'Opera',
+        'SamsungBrowser' => 'Samsung Internet',
+        'Firefox/'       => 'Firefox',
+        'FxiOS'          => 'Firefox',
+        'CriOS'          => 'Chrome',
+        'Chrome/'        => 'Chrome',
+        'Safari/'        => 'Safari',
+    ];
+
+    $platforms = [
+        'iPhone'     => 'iOS',
+        'iPad'       => 'iPadOS',
+        'Android'    => 'Android',
+        'CrOS'       => 'ChromeOS',
+        'Windows'    => 'Windows',
+        'Macintosh'  => 'macOS',
+        'Linux'      => 'Linux',
+    ];
+
+    $browser  = '';
+    $platform = '';
+
+    foreach ($browsers as $needle => $name) {
+        if (strpos($user_agent, $needle) !== false) {
+            $browser = $name;
+            break;
+        }
+    }
+
+    foreach ($platforms as $needle => $name) {
+        if (strpos($user_agent, $needle) !== false) {
+            $platform = $name;
+            break;
+        }
+    }
+
+    if ($browser && $platform) {
+        /* translators: 1: browser name, 2: operating system name */
+        $label = sprintf(esc_html__('%1$s on %2$s', 'wp-user-avatar'), $browser, $platform);
+    } elseif ($browser || $platform) {
+        $label = $browser ?: $platform;
+    } else {
+        $label = esc_html__('Unknown device', 'wp-user-avatar');
+    }
+
+    return apply_filters('ppress_user_agent_label', $label, $user_agent);
+}
+
 function ppress_passwordless_login_message_default()
 {
     return <<<MESSAGE
@@ -768,6 +853,7 @@ function ppress_wp_new_user_notification($user_id, $deprecated = null, $notify =
             $search = array(
                     '{{username}}',
                     '{{user_email}}',
+                    '{{email}}',
                     '{{site_title}}',
                     '{{first_name}}',
                     '{{last_name}}'
@@ -775,6 +861,7 @@ function ppress_wp_new_user_notification($user_id, $deprecated = null, $notify =
 
             $replace = array(
                     $user->user_login,
+                    $user->user_email,
                     $user->user_email,
                     $blogname,
                     $user->first_name,
@@ -1046,7 +1133,7 @@ function ppress_generate_unique_id($length = 10)
     $charactersLength = strlen($characters);
     $randomString     = '';
     for ($i = 0; $i < $length; $i++) {
-        $randomString .= $characters[mt_rand(0, $charactersLength - 1)];
+        $randomString .= $characters[random_int(0, $charactersLength - 1)];
     }
 
     return ppress_md5(time() . $randomString);
@@ -1361,6 +1448,11 @@ function ppress_is_boolean($maybe_bool)
     return false;
 }
 
+function ppress_is_valid_data($value)
+{
+    return ppress_is_boolean($value) || is_int($value) || ! empty($value);
+}
+
 function ppress_filter_empty_array($values)
 {
     if ( ! is_array($values)) return $values;
@@ -1553,7 +1645,7 @@ function ppress_is_my_own_profile()
 {
     global $ppress_frontend_profile_user_obj;
 
-    return ppress_var_obj($ppress_frontend_profile_user_obj, 'ID') == get_current_user_id();
+    return is_user_logged_in() && absint(ppress_var_obj($ppress_frontend_profile_user_obj, 'ID')) === get_current_user_id();
 }
 
 function ppress_is_my_account_page()
@@ -1565,7 +1657,7 @@ function ppress_social_network_fields()
 {
     return apply_filters('ppress_core_contact_info_fields', [
             Base::cif_facebook  => 'Facebook',
-            Base::cif_twitter   => 'Twitter',
+            Base::cif_twitter   => 'X/Twitter',
             Base::cif_linkedin  => 'LinkedIn',
             Base::cif_vk        => 'VK',
             Base::cif_youtube   => 'YouTube',
@@ -1696,23 +1788,200 @@ function ppress_is_json($str)
 function ppress_clean($var, $callback = 'sanitize_textarea_field')
 {
     if (is_array($var)) {
-        return array_map('ppress_clean', $var);
+        return array_map(function ($value) use ($callback) {
+            return ppress_clean($value, $callback);
+        }, $var);
     } else {
         return is_scalar($var) ? call_user_func($callback, $var) : $var;
     }
 }
 
 /**
- * Stripe shortcode tag and sanitize data
+ * Strip shortcode tags until the value stops changing.
+ *
+ * strip_shortcodes() makes a single non-recursive pass, so a nested tag such as
+ * "[profile-[profile-email]email]" comes out of it as a working shortcode.
+ *
+ * By default, any bracket left over afterwards is entity-encoded so that partial
+ * fragments (e.g. "[pp-custom-html" in one field and "[pp-custom-html. ...]" in
+ * another) can't be recombined into a live shortcode once separately rendered
+ * values are concatenated and passed through do_shortcode() again.
+ *
+ * @param mixed $var
+ * @param bool $neutralize
+ *
+ * @return mixed
+ */
+function ppress_strip_shortcodes($var, $neutralize = true)
+{
+    return ppress_clean($var, function ($value) use ($neutralize) {
+        if ( ! is_string($value)) return $value;
+
+        while ($value !== ($stripped = strip_shortcodes($value))) {
+            $value = $stripped;
+        }
+
+        return $neutralize ? ppress_neutralize_shortcodes($value) : $value;
+    });
+}
+
+/**
+ * Entity-encode square brackets so the value can never be parsed as (part of) a shortcode.
+ * Browsers render &#x5B; and &#x5D; as [ and ], so the displayed text is unchanged.
+ * Hex entities are used because do_shortcode() runs unescape_invalid_shortcodes(), which
+ * converts &#91; and &#93; back into real brackets and would undo the neutralization.
+ *
+ * @param mixed $var
+ *
+ * @return mixed
+ */
+function ppress_neutralize_shortcodes($var)
+{
+    if (is_array($var)) return array_map('ppress_neutralize_shortcodes', $var);
+
+    return is_string($var) ? str_replace(['[', ']'], ['&#x5B;', '&#x5D;'], $var) : $var;
+}
+
+/**
+ * Neutralize shortcodes in fully-assembled template buffers before outer do_shortcode() execution.
+ *
+ * Prevents split shortcode fragments from recombining across HTML element boundaries
+ * and disarms builder-only shortcodes like pp-custom-html in assembled buffers.
+ *
+ * @param string $content
+ *
+ * @return string
+ */
+function ppress_neutralize_buffer_shortcodes($content)
+{
+    if (empty($content) || ! is_string($content)) {
+        return $content;
+    }
+
+    // Neutralize any pp-custom-html shortcodes in the assembled buffer (these are only
+    // intended to be parsed individually during listing generation, not in outer buffers).
+    $content = preg_replace('/\[(\/?pp-custom-html\b[^\]]*)\]/i', '&#x5B;$1&#x5D;', $content);
+
+    // Neutralize any '[' that spans across HTML tag delimiters ('<' or '>') before a closing ']'
+    $content = preg_replace('/\[(?=[^\]]*[<>])/', '&#x5B;', $content);
+
+    // Neutralize any unterminated '[' (opening bracket without any matching closing bracket)
+    $content = preg_replace('/\[(?![^\[]*\])/', '&#x5B;', $content);
+
+    return $content;
+}
+
+/**
+ * Filter admin-supplied markup through wp_kses_post for users without the unfiltered_html capability
+ * (e.g. sub-site administrators on multisite). Strings without markup are returned untouched so CSS keeps working.
+ *
+ * @param mixed $value
+ *
+ * @return mixed
+ */
+function ppress_kses_unless_unfiltered_html($value)
+{
+    if (current_user_can('unfiltered_html')) return $value;
+
+    if (is_array($value)) return array_map('ppress_kses_unless_unfiltered_html', $value);
+
+    if (is_string($value) && strpos($value, '<') !== false) return wp_kses_post($value);
+
+    return $value;
+}
+
+/**
+ * Signature binding a submitted form ID to a form that was actually rendered.
+ *
+ * Why this exists: login and registration forms post their ID in a plain hidden input (login_form_id,
+ * signup_form_id, pp_melange_id). The ID decides security-relevant behaviour: the role a new user gets
+ * (REGISTRATION_USER_ROLE meta, the reg-select-role allow-list) and which per-form validators run (invite codes,
+ * reCAPTCHA, Turnstile in Libsodium only enforce on forms that contain their field). Without a signature,
+ * a client could post form_id=0 to skip those validators, or post the ID of another (even unpublished) form
+ * to get its role.
+ *
+ * Rendered next to the ID by ppress_form_signature_field() and checked by ppress_verify_form_signature() at
+ * every entry point: AjaxHandler::ajax_login_func / ajax_signup_func, FormProcessor::process_login_form /
+ * process_registration_form and TabbedWidgetDependency::login / registration.
+ *
+ * Deterministic (no time component or user ID) so it keeps working on cached pages. Anyone can read the
+ * signature of a form that's displayed somewhere, which is fine: the point is that only rendered forms can
+ * be submitted.
+ *
+ * Form types: FormRepository::LOGIN_TYPE, REGISTRATION_TYPE, MELANGE_TYPE (signature in pp_melange_sig) and
+ * 'tabbed' for the tabbed widget, which has no form ID (always 0).
+ *
+ * @param int|string $form_id
+ * @param string $form_type registration, login, melange or tabbed.
+ *
+ * @return string
+ */
+function ppress_form_signature($form_id, $form_type)
+{
+    return wp_hash(sprintf('ppress_form|%s|%d', $form_type, absint($form_id)), 'nonce');
+}
+
+/**
+ * @param int|string $form_id
+ * @param string $form_type
+ * @param string $field_name
+ *
+ * @return string
+ */
+function ppress_form_signature_field($form_id, $form_type, $field_name = 'ppress_form_sig')
+{
+    return sprintf(
+        '<input type="hidden" name="%s" value="%s">',
+        esc_attr($field_name),
+        esc_attr(ppress_form_signature($form_id, $form_type))
+    );
+}
+
+/**
+ * Verify a submitted form ID was rendered by ProfilePress and not picked by the client.
+ *
+ * Custom login/registration forms that ProfilePress didn't render (custom HTML posting to pp_ajax_login or
+ * pp_ajax_signup) fail this check. Sites that need them can use the ppress_verify_form_signature filter.
+ *
+ * @see ppress_form_signature() for why this exists.
+ *
+ * @param int|string $form_id
+ * @param string $form_type
+ * @param mixed $signature
+ *
+ * @return bool
+ */
+function ppress_verify_form_signature($form_id, $form_type, $signature)
+{
+    $form_id = absint($form_id);
+
+    // tabbed widget forms have no ID; every other form must have one.
+    if ($form_type !== 'tabbed' && $form_id < 1) $verified = false;
+    elseif ( ! is_string($signature) || '' === $signature) $verified = false;
+    else $verified = hash_equals(ppress_form_signature($form_id, $form_type), $signature);
+
+    return (bool)apply_filters('ppress_verify_form_signature', $verified, $form_id, $form_type, $signature);
+}
+
+/**
+ * @return string
+ */
+function ppress_invalid_form_submission_message()
+{
+    return esc_html__('Invalid form submission. Please reload the page and try again.', 'wp-user-avatar');
+}
+
+/**
+ * Strip shortcode tag and sanitize data
  *
  * @param $var
- * @param $callback
  *
- * @return void
+ * @return mixed
  */
 function ppress_strip_shortcodes_clean($var)
 {
-    return ppress_clean(ppress_clean($var), 'strip_shortcodes');
+    // stored raw; neutralized on output instead so saved values aren't entity-encoded.
+    return ppress_strip_shortcodes(ppress_clean($var), false);
 }
 
 /**
@@ -1769,7 +2038,7 @@ function ppress_generateUniqueId($length = 10)
     $charactersLength = strlen($characters);
     $randomString     = '';
     for ($i = 0; $i < $length; $i++) {
-        $randomString .= $characters[mt_rand(0, $charactersLength - 1)];
+        $randomString .= $characters[random_int(0, $charactersLength - 1)];
     }
 
     return ppress_md5(time() . $randomString);

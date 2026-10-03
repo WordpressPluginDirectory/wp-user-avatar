@@ -311,6 +311,7 @@ class Init
         ) {
             $display_plan = $this->is_purchase_button_display(get_the_ID());
             if ( ! empty($display_plan)) {
+                $GLOBALS['ppress_academy_display_plan_id'] = $display_plan;
                 $template = dirname(__FILE__) . '/footer-form.php';
             }
         }
@@ -359,6 +360,9 @@ class Init
         $customer = CustomerFactory::fromUserId(get_current_user_id());
 
         $plan_ids = $this->get_course_plan_ids($course_id);
+
+        // courses not mapped to any plan return false here.
+        if (empty($plan_ids) || ! is_array($plan_ids)) return false;
 
         $plan_checks = array_map(function ($plan_id) use ($customer) {
 

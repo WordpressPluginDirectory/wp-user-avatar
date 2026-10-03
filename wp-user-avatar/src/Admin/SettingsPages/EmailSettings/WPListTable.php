@@ -55,7 +55,7 @@ class WPListTable extends \WP_List_Table
         $key   = sanitize_text_field($item['key']);
         $class = 'dashicons pp-email-notification-status dashicons-no-alt';
 
-        if (ppress_get_setting($key . '_email_enabled', 'on') == 'on') {
+        if (ppress_get_setting($key . '_email_enabled', $item['enabled_default'] ?? 'on') == 'on') {
             $class = 'dashicons pp-email-notification-status dashicons-yes';
             $class .= ' pp-is-active ';
         }

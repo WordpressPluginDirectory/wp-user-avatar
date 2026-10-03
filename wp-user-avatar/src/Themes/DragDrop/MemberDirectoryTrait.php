@@ -2,6 +2,8 @@
 
 namespace ProfilePress\Core\Themes\DragDrop;
 
+use ProfilePress\Core\Classes\PROFILEPRESS_sql;
+use ProfilePress\Core\Membership\CheckoutFields;
 use WP_User;
 use WP_User_Query;
 
@@ -109,12 +111,24 @@ trait MemberDirectoryTrait
 
             $offset = $current_page > 1 ? ($current_page - 1) * $users_per_page : 0;
 
-            $filter_meta_fields = isset($query_params['filters']) ? array_filter(
-                array_map('ppress_recursive_trim', ppress_var($query_params, 'filters', [], true))
+            $filter_meta_fields = isset($query_params['filters']) && is_array($query_params['filters']) ? array_filter(
+                array_map('ppress_recursive_trim', $query_params['filters'])
             ) : [];
 
-            if ( ! empty($filter_meta_fields['ppress_user_role'])) {
-                $roles = [sanitize_text_field($filter_meta_fields['ppress_user_role'])];
+            // only allow filtering by fields the admin enabled as directory filters so arbitrary user meta can't be probed.
+            $filter_meta_fields = array_intersect_key(
+                $filter_meta_fields,
+                array_flip(array_filter((array)($this->args['filter_fields'] ?? []), 'is_string'))
+            );
+
+            if ( ! empty($filter_meta_fields['ppress_user_role']) && is_string($filter_meta_fields['ppress_user_role'])) {
+
+                $filter_role = sanitize_text_field($filter_meta_fields['ppress_user_role']);
+
+                // the role filter can only narrow down the roles the directory is configured to display.
+                if (empty($roles) || in_array($filter_role, $roles, true)) {
+                    $roles = [$filter_role];
+                }
             }
 
             $wp_user_query = $this->member_directory_users([
@@ -362,11 +376,19 @@ trait MemberDirectoryTrait
 
                 foreach ($parsed_args['search_meta_fields'] as $search_meta_field) {
 
-                    $args['meta_query'][0][] = [
-                        'key'     => $search_meta_field,
-                        'value'   => $search_term,
-                        'compare' => 'LIKE'
-                    ];
+                    $clause = ['key' => $search_meta_field, 'value' => $search_term, 'compare' => 'LIKE'];
+
+                    // country fields store the country code, so match the searched name against the codes it resolves to.
+                    if ($search_meta_field == CheckoutFields::BILLING_COUNTRY || PROFILEPRESS_sql::get_field_type($search_meta_field) == 'country') {
+
+                        $codes = array_keys(array_filter(ppress_array_of_world_countries(), function ($title) use ($search_term) {
+                            return stripos($title, $search_term) !== false;
+                        }));
+
+                        if ( ! empty($codes)) $clause = ['key' => $search_meta_field, 'value' => $codes, 'compare' => 'IN'];
+                    }
+
+                    $args['meta_query'][0][] = $clause;
                 }
             }
         }

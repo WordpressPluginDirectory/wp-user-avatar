@@ -91,7 +91,7 @@ class SendEmail
                 $message = ob_get_clean();
             }
 
-            if (class_exists('DOMDocument') && ! is_customize_preview()) {
+            if (class_exists('\DOMDocument') && ! is_customize_preview()) {
                 try {
                     $message = Emogrifier\CssInliner::fromHtml($message)->inlineCss()->render();
                 } catch (\Exception $e) {

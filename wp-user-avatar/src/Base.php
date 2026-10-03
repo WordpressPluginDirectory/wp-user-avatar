@@ -24,6 +24,8 @@ use ProfilePress\Core\Admin\SettingsPages\ToolsSettingsPage;
 use ProfilePress\Core\Admin\UserRolesEdit;
 use ProfilePress\Core\Classes\BlockRegistrations;
 use ProfilePress\Core\Classes\DisableConcurrentLogins;
+use ProfilePress\Core\Classes\LoginActivity;
+use ProfilePress\Core\Classes\LoginNotificationEmail;
 use ProfilePress\Core\Classes\GlobalSiteAccess;
 use ProfilePress\Core\ContentProtection;
 use ProfilePress\Core\Admin\SettingsPages\EmailSettings\DefaultTemplateCustomizer;
@@ -167,6 +169,8 @@ class Base extends DBTables
         ModifyRedirectDefaultLinks::get_instance();
         UsernameEmailRestrictLogin::get_instance();
         DisableConcurrentLogins::get_instance();
+        LoginActivity::get_instance();
+        LoginNotificationEmail::get_instance();
         BuddyPressBbPress::get_instance();
         AjaxHandler::get_instance();
         ShortcodeParser\Init::get_instance();

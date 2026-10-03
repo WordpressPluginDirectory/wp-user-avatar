@@ -83,7 +83,14 @@ class FrontendProfileTag
             ));
         }
 
-        if (is_user_logged_in() && ppress_get_setting('disable_members_can_view_profiles') == 'on' && ! ppress_is_my_own_profile()) {
+        // Determine which user this shortcode instance will ultimately display, so the
+        // "members can't view other profiles" check below is enforced against the actual
+        // target user rather than the profile detected from the current URL/username.
+        $requested_user_id = ! empty($atts['user-id'])
+            ? absint($atts['user-id'])
+            : (int) ppress_var_obj($ppress_frontend_profile_user_obj, 'ID');
+
+        if (is_user_logged_in() && ppress_get_setting('disable_members_can_view_profiles') == 'on' && $requested_user_id !== get_current_user_id()) {
             return wpautop(esc_html__('You are not authorized to access this area.', 'wp-user-avatar'));
         }
 
@@ -93,7 +100,7 @@ class FrontendProfileTag
 
         if ( ! empty($atts['user-id'])) {
 
-            $user = apply_filters('ppress_frontend_profile_wp_user_object', get_user_by('ID', absint($atts['user-id'])));
+            $user = apply_filters('ppress_frontend_profile_wp_user_object', get_user_by('ID', $requested_user_id));
 
             $ppress_frontend_profile_user_obj = $user;
 
@@ -129,6 +136,8 @@ class FrontendProfileTag
         } else {
             $user_profile_structure = FR::get_form_meta($id, FR::USER_PROFILE_TYPE, FR::FORM_STRUCTURE);
         }
+
+        $user_profile_structure = ppress_neutralize_buffer_shortcodes($user_profile_structure);
 
         return do_shortcode($user_profile_structure);
     }

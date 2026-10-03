@@ -2,6 +2,7 @@
 
 namespace ProfilePress\Core\Membership\Models\Coupon;
 
+use ProfilePress\Core\Base;
 use ProfilePress\Core\Membership\Models\AbstractModel;
 use ProfilePress\Core\Membership\Models\Customer\CustomerFactory;
 use ProfilePress\Core\Membership\Models\ModelInterface;
@@ -9,6 +10,7 @@ use ProfilePress\Core\Membership\Models\Order\OrderStatus;
 use ProfilePress\Core\Membership\Models\Order\OrderType;
 use ProfilePress\Core\Membership\Repositories\CouponRepository;
 use ProfilePress\Core\Membership\Repositories\OrderRepository;
+use ProfilePress\Core\Membership\Services\CouponService;
 use ProfilePressVendor\Carbon\Carbon;
 use ProfilePressVendor\Carbon\CarbonImmutable;
 
@@ -265,11 +267,20 @@ class CouponEntity extends AbstractModel implements ModelInterface
      */
     public function get_usage_count()
     {
-        return OrderRepository::init()->retrieveBy([
-            'status'      => [OrderStatus::COMPLETED, OrderStatus::REFUNDED],
-            'coupon_code' => $this->code,
-            'number'      => 0
-        ], true);
+        global $wpdb;
+
+        $orders_table = Base::orders_db_table();
+
+        $orders = $wpdb->get_var(
+            $wpdb->prepare(
+                "SELECT COUNT(id) FROM {$orders_table} WHERE coupon_code = %s AND status IN (%s, %s)",
+                $this->code,
+                OrderStatus::COMPLETED,
+                OrderStatus::REFUNDED
+            )
+        );
+
+        return absint($orders) + CouponService::init()->count_tentative_holds($this->code);
     }
 
     /**

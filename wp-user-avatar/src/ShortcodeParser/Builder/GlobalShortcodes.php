@@ -59,6 +59,7 @@ class GlobalShortcodes
             $redirect = esc_url($GLOBALS['pp_melange_form_redirect']);
 
             $tag .= "<input type='hidden' name='pp_melange_id' class='pp_melange_id' value='$form_id'>";
+            $tag .= ppress_form_signature_field($GLOBALS['pp_melange_form_id'], \ProfilePress\Core\Classes\FormRepository::MELANGE_TYPE, 'pp_melange_sig');
             if ( ! empty($GLOBALS['pp_melange_form_redirect'])) {
                 $tag .= "<input type='hidden' name='melange_redirect' value='$redirect'>";
             }

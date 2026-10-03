@@ -40,6 +40,8 @@ class CheckoutFieldsManager
 
             check_admin_referer('wp-csa-nonce', 'wp_csa_nonce');
 
+            if ( ! current_user_can('manage_options')) return;
+
             update_option(CheckoutFields::DB_OPTION_NAME, [
                 'accountInfo' => ppress_clean(ppressPOST_var('accountInfo', []), 'wp_kses_post'),
                 'billing'     => ppress_clean(ppressPOST_var('billing', []), 'wp_kses_post'),

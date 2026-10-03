@@ -8,6 +8,7 @@ use ProfilePress\Core\Membership\Models\Customer\CustomerFactory;
 use ProfilePress\Core\Membership\Models\Order\CartEntity;
 use ProfilePress\Core\Membership\Models\Order\OrderEntity;
 use ProfilePress\Core\Membership\Models\Order\OrderFactory;
+use ProfilePress\Core\Membership\Models\Order\OrderType;
 use ProfilePress\Core\Membership\Models\Plan\PlanEntity;
 use ProfilePress\Core\Membership\Models\Plan\PlanFactory;
 use ProfilePress\Core\Membership\Models\Subscription\SubscriptionEntity;
@@ -640,6 +641,38 @@ class Stripe extends AbstractPaymentMethod
     }
 
     /**
+     * Delay the first Stripe billing date to the previous membership expiration on downgrades.
+     *
+     * @param array $args
+     * @param OrderEntity $order
+     * @param SubscriptionEntity $subscription
+     * @param bool $is_checkout_session
+     *
+     * @return array
+     */
+    protected function apply_downgrade_billing_cycle($args, $order, $subscription, $is_checkout_session = false)
+    {
+        if ($order->order_type !== OrderType::DOWNGRADE) return $args;
+
+        // Only delay billing when nothing is due now. A paid-in-full downgrade still needs its first invoice.
+        if (Calculator::init($order->total)->isGreaterThanZero()) return $args;
+
+        $expiration_ts = ppress_strtotime_utc($subscription->expiration_date);
+
+        if ($expiration_ts <= time()) return $args;
+
+        if ($is_checkout_session) {
+            unset($args['subscription_data']['trial_period_days']);
+            $args['subscription_data']['trial_end'] = $expiration_ts;
+        } else {
+            unset($args['trial_period_days']);
+            $args['trial_end'] = $expiration_ts;
+        }
+
+        return $args;
+    }
+
+    /**
      * @param OrderEntity $order
      * @param CustomerEntity $customer
      * @param SubscriptionEntity $subscription
@@ -742,6 +775,10 @@ class Stripe extends AbstractPaymentMethod
                 $create_session_args['discounts'][] = ['coupon' => $stripe_coupon['id']];
 
                 PaymentHelpers::add_coupon_to_bucket($stripe_coupon['id']);
+            }
+
+            if ($plan->is_auto_renew()) {
+                $create_session_args = $this->apply_downgrade_billing_cycle($create_session_args, $order, $subscription, true);
             }
 
             $create_session_args = apply_filters('ppress_stripe_create_session_args', $create_session_args, $this, $customer, $order, $subscription);
@@ -880,6 +917,8 @@ class Stripe extends AbstractPaymentMethod
 
                     $create_subscription_args['coupon'] = $stripe_coupon['id'];
                 }
+
+                $create_subscription_args = $this->apply_downgrade_billing_cycle($create_subscription_args, $order, $subscription);
 
                 $create_subscription_args = apply_filters('ppress_stripe_create_subscription_args', $create_subscription_args, $this, $customer, $order, $subscription);
 

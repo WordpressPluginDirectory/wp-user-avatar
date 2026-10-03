@@ -105,8 +105,6 @@ class CurrencyFormatter
     {
         $amount = $this->amount;
 
-        if (Calculator::init($amount)->isNegativeOrZero()) $amount = '0';
-
         $sep_found = strpos($amount, $this->decimal_separator);
         if (',' === $this->decimal_separator && false !== $sep_found) {
             $whole  = substr($amount, 0, $sep_found);
@@ -122,7 +120,9 @@ class CurrencyFormatter
         }
 
         // one last formatting check especially when amount contains currency
-        $amount = preg_replace('/[^0-9\.]/', '', $amount);
+        $amount = preg_replace('/[^0-9\.\-]/', '', $amount);
+
+        if ( ! is_numeric($amount) || Calculator::init($amount)->isNegativeOrZero()) $amount = '0';
 
         return $amount;
     }

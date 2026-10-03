@@ -13,15 +13,24 @@ class FrontendController extends BaseController
     {
         add_action('wp', [$this, 'prevent_caching'], 0);
         add_action('wp', [$this, 'change_plan_shim'], 0);
+        add_filter('Yoast\WP\SEO\allowlist_permalink_vars', [$this, 'yoast_allowlist_checkout_vars']);
+    }
+
+    public function yoast_allowlist_checkout_vars($allowed_vars)
+    {
+        return array_merge(
+            $allowed_vars,
+            ['plan', 'group', 'change_plan', 'default', 'ppress_file', 'ppress-listener', 'token', 'ttl', 'redirect_to', 'pp_social_login', 'form_id', 'token', 'uid', 'user_id', 'activation_code', 'ppress-2fa-reset']
+        );
     }
 
     public function change_plan_shim()
     {
         if (ppress_is_checkout()) {
 
-            if (is_user_logged_in() && (isset($_GET['plan']) || ! empty($_GET['group']))) {
+            if (is_user_logged_in() && (isset($_GET['plan']) || !empty($_GET['group']))) {
 
-                $plan_group_id = ! empty($_GET['group']) ? absint($_GET['group']) : PlanFactory::fromId(intval($_GET['plan']))->get_group_id();
+                $plan_group_id = !empty($_GET['group']) ? absint($_GET['group']) : PlanFactory::fromId(intval($_GET['plan']))->get_group_id();
 
                 if (is_int($plan_group_id)) {
 
@@ -38,9 +47,15 @@ class FrontendController extends BaseController
                 }
             }
 
-            if (isset($_GET['change_plan'])) {
-                $sub = SubscriptionFactory::fromId(intval($_GET['change_plan']));
-                if ($sub->exists()) {
+            if (isset($_GET['change_plan']) && is_user_logged_in()) {
+                $sub      = SubscriptionFactory::fromId(intval($_GET['change_plan']));
+                $customer = CustomerFactory::fromUserId(get_current_user_id());
+                if (
+                    $sub->exists() &&
+                    $customer->exists() &&
+                    (int)$customer->id === $sub->get_customer_id() &&
+                    $sub->can_change_plan()
+                ) {
                     $_GET['plan'] = $sub->get_plan_id();
                 }
             }
@@ -49,7 +64,7 @@ class FrontendController extends BaseController
                 $group = GroupFactory::fromId(intval($_GET['group']));
                 if ($group->exists()) {
                     $group_plan_ids = $group->get_plan_ids();
-                    if ( ! empty($group_plan_ids)) {
+                    if (!empty($group_plan_ids)) {
                         $_GET['plan'] = $group->get_default_plan_id();
                         if (isset($_GET['default']) && in_array(intval($_GET['default']), $group_plan_ids)) {
                             $_GET['plan'] = intval($_GET['default']);
@@ -65,7 +80,7 @@ class FrontendController extends BaseController
      */
     public function prevent_caching()
     {
-        if ( ! is_blog_installed()) {
+        if (!is_blog_installed()) {
             return;
         }
 
@@ -77,7 +92,7 @@ class FrontendController extends BaseController
             ppress_settings_by_key('edit_user_profile_url', false, true)
         ]);
 
-        $do_not_cache = apply_filters('ppress_no_cache', ( ! empty($page_ids)) ? true : false);
+        $do_not_cache = apply_filters('ppress_no_cache', (!empty($page_ids)) ? true : false);
 
         if (apply_filters('ppress_is_prevent_cache', $do_not_cache && is_page($page_ids))) {
 
@@ -116,7 +131,7 @@ class FrontendController extends BaseController
             'no-store',
         );
 
-        if ( ! empty($headers['Cache-Control'])) {
+        if (!empty($headers['Cache-Control'])) {
             $original_headers_cache_control = array_map('trim', explode(',', $headers['Cache-Control']));
             // Merge original headers with our nocache headers.
             $nocache_headers_cache_control = array_merge($nocache_headers_cache_control, $original_headers_cache_control);
@@ -146,12 +161,12 @@ class FrontendController extends BaseController
              * allow the entire site to be cached by WP Engine.
              * Note: This will prevent users from being able to successfully use the "Lost your password?" feature.
              */
-            if (isset($GLOBALS['wp_rewrite']) && ! $GLOBALS['wp_rewrite']->using_permalinks()) {
+            if (isset($GLOBALS['wp_rewrite']) && !$GLOBALS['wp_rewrite']->using_permalinks()) {
                 return;
             }
 
-            $path          = wp_parse_url(get_permalink(), PHP_URL_PATH);
-            $cookie_domain = ! defined('COOKIE_DOMAIN') ? false : COOKIE_DOMAIN;
+            $path = wp_parse_url(get_permalink(), PHP_URL_PATH);
+            $cookie_domain = !defined('COOKIE_DOMAIN') ? false : COOKIE_DOMAIN;
             setcookie('wordpress_wpe_no_cache', '1', 0, $path, $cookie_domain, is_ssl(), true);
         }
     }
@@ -165,9 +180,9 @@ class FrontendController extends BaseController
      */
     public function exclude_page_from_pantheon_server_cache()
     {
-        if (apply_filters('ppress_enable_pantheon_caching_exclusion', true) && ! empty($_ENV['PANTHEON_ENVIRONMENT'])) {
+        if (apply_filters('ppress_enable_pantheon_caching_exclusion', true) && !empty($_ENV['PANTHEON_ENVIRONMENT'])) {
             $domain = $_SERVER['HTTP_HOST'];
-            $path   = wp_parse_url(get_permalink(), PHP_URL_PATH);
+            $path = wp_parse_url(get_permalink(), PHP_URL_PATH);
             setcookie('NO_CACHE', '1', time() + 0, $path, $domain);
         }
     }

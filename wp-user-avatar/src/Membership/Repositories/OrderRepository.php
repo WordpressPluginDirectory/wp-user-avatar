@@ -227,6 +227,8 @@ class OrderRepository extends BaseRepository
      */
     public function retrieveBy($args = array(), $count = false)
     {
+        static $static_cache = [];
+
         $defaults = [
             'search'          => '',
             'number'          => 10,
@@ -254,6 +256,16 @@ class OrderRepository extends BaseRepository
 
         $args = wp_parse_args($args, $defaults);
 
+        // Normalize status before generating cache key.
+        $args['status'] = ! empty($args['status']) && is_string($args['status']) ? [$args['status']] : $args['status'];
+
+        $cache_key = md5(serialize([
+            'args'  => $args,
+            'count' => (bool)$count
+        ]));
+
+        if (array_key_exists($cache_key, $static_cache)) return $static_cache[$cache_key];
+
         $limit = absint($args['number']);
 
         $offset = $args['offset'];
@@ -268,7 +280,13 @@ class OrderRepository extends BaseRepository
         $user_table     = $this->wpdb()->users;
         $customer_table = Base::customers_db_table();
 
-        $date_compare = ! empty($args['date_compare']) ? esc_sql($args['date_compare']) : '=';
+        $allowed_columns = [
+            'id', 'order_key', 'plan_id', 'customer_id', 'subscription_id', 'order_type', 'transaction_id',
+            'payment_method', 'status', 'coupon_code', 'subtotal', 'tax', 'discount', 'total', 'mode',
+            'currency', 'ip_address', 'date_created', 'date_completed'
+        ];
+
+        $date_compare = in_array($args['date_compare'], ['=', '!=', '<', '<=', '>', '>='], true) ? $args['date_compare'] : '=';
 
         $replacement = [1];
         $sql         .= " WHERE 1=%d"; // fixes Notice: wpdb::prepare was called incorrectly. The query argument of wpdb::prepare() must have a placeholder
@@ -309,8 +327,6 @@ class OrderRepository extends BaseRepository
             $replacement[] = $args['payment_method'];
         }
 
-        $args['status'] = ! empty($args['status']) && is_string($args['status']) ? [$args['status']] : $args['status'];
-
         if (
             ! empty($args['status']) &&
             count(array_intersect($args['status'], array_keys(OrderStatus::get_all()))) == count($args['status'])
@@ -346,7 +362,7 @@ class OrderRepository extends BaseRepository
 
         $start_date  = $args['start_date'];
         $end_date    = $args['end_date'];
-        $date_column = esc_sql($args['date_column']);
+        $date_column = in_array($args['date_column'], ['date_created', 'date_completed'], true) ? $args['date_column'] : 'date_created';
 
         if ( ! empty($start_date)) {
             $sql           .= " AND $date_column >= %s";
@@ -359,7 +375,6 @@ class OrderRepository extends BaseRepository
         }
 
         if ( ! empty($search)) {
-
             if (is_numeric($search)) {
                 $sql .= " AND (id = %d";
                 $sql .= " OR plan_id = %d";
@@ -393,7 +408,10 @@ class OrderRepository extends BaseRepository
             }
         }
 
-        $sql .= sprintf(" ORDER BY %s %s", esc_sql($args['orderby']), esc_sql($args['order']));
+        $orderby = in_array($args['orderby'], $allowed_columns, true) ? $args['orderby'] : 'id';
+        $order   = strtoupper((string)$args['order']) === 'ASC' ? 'ASC' : 'DESC';
+
+        $sql .= sprintf(" ORDER BY %s %s", $orderby, $order);
 
         if ($count === false) {
             if ($limit > 0) {
@@ -407,18 +425,21 @@ class OrderRepository extends BaseRepository
             }
         }
 
-
         if ($count === true) {
-            return (int)$this->wpdb()->get_var($this->wpdb()->prepare($sql, $replacement));
+            $static_cache[$cache_key] = (int)$this->wpdb()->get_var($this->wpdb()->prepare($sql, $replacement));
+            return $static_cache[$cache_key];
         }
 
         $result = $this->wpdb()->get_results($this->wpdb()->prepare($sql, $replacement), 'ARRAY_A');
 
         if (is_array($result) && ! empty($result)) {
-            return array_map([OrderFactory::class, 'make'], $result);
+            $static_cache[$cache_key] = array_map([OrderFactory::class, 'make'], $result);
+            return $static_cache[$cache_key];
         }
 
-        return [];
+        $static_cache[$cache_key] = [];
+
+        return $static_cache[$cache_key];
     }
 
     public function get_customer_total_spend($customer_id)

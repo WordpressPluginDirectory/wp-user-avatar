@@ -343,16 +343,19 @@ class ContentConditions
             }
 
             if ($name == 'page') {
+                // These were the bare 'is_front_page' / 'is_home' conditional tags. They only check the main query,
+                // so protected front page / posts page content leaked through the REST API and search excerpts.
+                // See ConditionCallbacks::front_page() and blog_page() before changing these callbacks.
                 $conditions['is_front_page'] = array(
                     'group'    => $post_type->labels->name,
                     'title'    => __('Home or Front Page', 'wp-user-avatar'),
-                    'callback' => 'is_front_page',
+                    'callback' => array('\\ProfilePress\Core\ContentProtection\ConditionCallbacks', 'front_page'),
                 );
 
                 $conditions['is_home'] = array(
                     'group'    => $post_type->labels->name,
                     'title'    => __('Blog or Posts Page', 'wp-user-avatar'),
-                    'callback' => 'is_home',
+                    'callback' => array('\\ProfilePress\Core\ContentProtection\ConditionCallbacks', 'blog_page'),
                 );
 
                 $conditions['is_search'] = array(

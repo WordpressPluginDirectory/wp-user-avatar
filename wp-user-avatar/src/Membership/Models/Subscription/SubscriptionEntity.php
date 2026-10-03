@@ -242,6 +242,72 @@ class SubscriptionEntity extends AbstractModel implements ModelInterface
         return $this->status == SubscriptionStatus::PENDING;
     }
 
+    /**
+     * Whether this subscription may be used as the source of a plan change.
+     *
+     * Pending, expired, unpaid and already-upgraded subscriptions cannot be used as credit.
+     *
+     * @return bool
+     */
+    public function can_change_plan()
+    {
+        if ( ! $this->exists() || $this->is_pending() || ! $this->is_active()) {
+            return false;
+        }
+
+        if ($this->get_completed_order_count() < 1) return false;
+
+        $upgradedToSub = $this->get_meta('_upgraded_to_sub_id');
+
+        if (!empty($upgradedToSub)) {
+
+            $upgradedToSubObj = SubscriptionFactory::fromId($upgradedToSub);
+
+            if ($upgradedToSubObj->exists() && !$upgradedToSubObj->is_pending()) return false;
+        }
+
+        if ( ! $this->get_plan()->get_group_id()) {
+            return false;
+        }
+
+        return apply_filters('ppress_subscription_can_change_plan', true, $this);
+    }
+
+    /**
+     * Whether this subscription may be switched to the given target plan.
+     *
+     * @param int $target_plan_id
+     *
+     * @return bool
+     */
+    public function can_switch_to_plan($target_plan_id)
+    {
+        $target_plan_id = absint($target_plan_id);
+
+        if ( ! $this->can_change_plan() || $target_plan_id < 1) {
+            return false;
+        }
+
+        if ($this->get_plan_id() === $target_plan_id) {
+            return false;
+        }
+
+        $target_plan = ppress_get_plan($target_plan_id);
+
+        if ( ! $target_plan->is_active()) {
+            return false;
+        }
+
+        $source_group_id = $this->get_plan()->get_group_id();
+        $target_group_id = $target_plan->get_group_id();
+
+        if ( ! $source_group_id || $source_group_id !== $target_group_id) {
+            return false;
+        }
+
+        return apply_filters('ppress_subscription_can_switch_to_plan', true, $this, $target_plan_id);
+    }
+
     public function is_cancelled()
     {
         return $this->status == SubscriptionStatus::CANCELLED;
@@ -678,6 +744,14 @@ class SubscriptionEntity extends AbstractModel implements ModelInterface
         $this->remove_plan_role_from_customer();
 
         do_action('ppress_subscription_expired', $this);
+    }
+
+    /**
+     * @return void
+     */
+    public function payment_failed()
+    {
+        do_action('ppress_subscription_payment_failed', $this);
     }
 
     /**

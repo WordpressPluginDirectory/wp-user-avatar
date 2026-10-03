@@ -105,7 +105,7 @@ class TabbedWidget extends \WP_Widget
         if ( ! is_user_logged_in()) {
             echo $args['before_widget'];
 
-            if (isset($this->widget_status)) echo '<div class="pp-tab-status">', $this->widget_status, '</div>';
+            if ( ! empty($this->widget_status) && is_string($this->widget_status)) echo '<div class="pp-tab-status">', wp_kses_post($this->widget_status), '</div>';
             ?>
             <div class="pp-tab-widget-form">
                 <ul class="pp-tab-widget">
@@ -138,6 +138,7 @@ class TabbedWidget extends \WP_Widget
                                 }
                                 ?>
                                 <input type="hidden" name="is-pp-tab-widget" value="true">
+                                <?php echo ppress_form_signature_field(0, 'tabbed'); ?>
                                 <input type="text" name="tabbed-login-name" value="<?php echo esc_attr(ppress_var($_POST, 'tabbed-login-name', '')); ?>" placeholder="<?php echo $login_placeholder; ?>" required/>
                             </li>
                             <li>
@@ -163,6 +164,7 @@ class TabbedWidget extends \WP_Widget
                             <ul class="tab-widget" style="list-style: none">
                                 <li>
                                     <input type="hidden" name="is-pp-tab-widget" value="true">
+                                <?php echo ppress_form_signature_field(0, 'tabbed'); ?>
                                     <input type="text" name="tabbed-reg-username" placeholder="<?php echo esc_html__('Username', 'wp-user-avatar'); ?>" value="<?php echo esc_attr(ppress_var($_POST, 'tabbed-reg-username', '')); ?>" required/>
                                 </li>
                                 <li>
@@ -190,6 +192,7 @@ class TabbedWidget extends \WP_Widget
                                 <li>
                                     <input name="tabbed-user-login" value="<?php echo esc_attr(ppress_var($_POST, 'tabbed-user-login', '')); ?>" type="text" placeholder="<?php echo esc_html__('Username or E-mail:', 'wp-user-avatar'); ?>" required/>
                                     <input type="hidden" name="is-pp-tab-widget" value="true">
+                                <?php echo ppress_form_signature_field(0, 'tabbed'); ?>
                                 </li>
                                 <li>
                                     <input data-pp-submit-label="<?= $password_reset_btn_label ?>" data-pp-processing-label="<?= $processing_label ?>" name="tabbed_reset_passkey" type="submit" value="<?= $password_reset_btn_label ?>" class="tb-button"/>

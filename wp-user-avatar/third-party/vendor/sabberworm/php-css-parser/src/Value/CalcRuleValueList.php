@@ -1,24 +1,20 @@
 <?php
 
+declare (strict_types=1);
 namespace ProfilePressVendor\Sabberworm\CSS\Value;
 
 use ProfilePressVendor\Sabberworm\CSS\OutputFormat;
 class CalcRuleValueList extends RuleValueList
 {
     /**
-     * @param int $iLineNo
+     * @param int<1, max>|null $lineNumber
      */
-    public function __construct($iLineNo = 0)
+    public function __construct(?int $lineNumber = null)
     {
-        parent::__construct(',', $iLineNo);
+        parent::__construct(',', $lineNumber);
     }
-    /**
-     * @param OutputFormat|null $oOutputFormat
-     *
-     * @return string
-     */
-    public function render($oOutputFormat)
+    public function render(OutputFormat $outputFormat): string
     {
-        return $oOutputFormat->implode(' ', $this->aComponents);
+        return $outputFormat->getFormatter()->implode(' ', $this->components);
     }
 }

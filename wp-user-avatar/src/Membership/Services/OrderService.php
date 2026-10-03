@@ -214,6 +214,10 @@ class OrderService
         $fromSub = SubscriptionFactory::fromId($from_sub_id);
         $toPlan  = ppress_get_plan($to_plan_id);
 
+        if ( ! $fromSub->exists() || ! $fromSub->is_active() || $fromSub->get_completed_order_count() < 1) {
+            return Calculator::init($toPlan->get_price())->isNegativeOrZero() ? '0' : $toPlan->get_price();
+        }
+
         $old_price = Calculator::init($fromSub->get_initial_amount())->minus($fromSub->get_initial_tax())->val();
         $new_price = $toPlan->get_price();
 
@@ -249,20 +253,41 @@ class OrderService
 
         $args = wp_parse_args($args, $defaults);
 
+        $planObj = ppress_get_plan(absint($args['plan_id']));
+
+        do_action('ppress_before_checkout_order_calculation', $args, $planObj);
+
         $tax_rate = $args['tax_rate'];
 
         $coupon_code = ! empty($args['coupon_code']) ? $args['coupon_code'] : '';
-
-        $planObj = ppress_get_plan(absint($args['plan_id']));
 
         $change_plan_sub_id = intval($args['change_plan_sub_id']);
 
         $prorated_price_flag = false;
         $prorated_price      = '0';
 
+        // Reset the session order type on every calculation. get_pro_rated_upgrade_cost() below sets it again,
+        // but only for a plan change whose subscription passed the ownership and can_switch_to_plan() checks.
+        //
+        // Without this reset, ORDER_TYPE was only ever written, never cleared. A customer could trigger a
+        // change-plan order review (ppress_update_order_review with isChangePlanUpdate=true), which staged
+        // upgrade/downgrade for plan X, then do a normal new checkout for plan X. That checkout read the stale type:
+        // coupons restricted to existing purchases (retention coupons) passed is_valid(), the order was saved as
+        // an upgrade/downgrade, and a free DOWNGRADE pushed Stripe's first bill back to the old expiry date.
+        //
+        // Every reader of CheckoutSessionData::get_order_type() during process_checkout() runs after this
+        // calculation, so they all see the type for the current request.
+        ppress_session()->set(CheckoutSessionData::ORDER_TYPE, null);
+
+        $fromSub          = SubscriptionFactory::fromId($change_plan_sub_id);
+        $current_customer = CustomerFactory::fromUserId(get_current_user_id());
+
         if (
             $change_plan_sub_id > 0 &&
-            SubscriptionFactory::fromId($change_plan_sub_id)->exists()
+            $fromSub->exists() &&
+            $current_customer->exists() &&
+            $fromSub->get_customer_id() === (int)$current_customer->id &&
+            $fromSub->can_switch_to_plan(absint($args['plan_id']))
         ) {
             $prorated_price_flag = true;
             $prorated_price      = $this->get_pro_rated_upgrade_cost($change_plan_sub_id, absint($args['plan_id']));
@@ -284,7 +309,15 @@ class OrderService
 
         $couponObj = CouponFactory::fromCode($coupon_code);
 
-        if ($couponObj->exists()) {
+        $order_type = CheckoutSessionData::get_order_type(absint($args['plan_id']));
+        if ( ! $order_type) {
+            $order_type = OrderType::NEW_ORDER;
+        }
+
+        // Re-validate at calculation time. apply_discount() already ran is_valid(),
+        // but final checkout and order review previously trusted the staged session
+        // code whenever the coupon row still existed.
+        if ($couponObj->exists() && $couponObj->is_valid(absint($args['plan_id']), $order_type)) {
 
             $discount_amount = $couponObj->amount;
 
@@ -308,6 +341,9 @@ class OrderService
             if ($planObj->is_recurring() && $couponObj->is_recurring()) {
                 $recurring_amount = Calculator::init($recurring_amount)->minus($recurring_discount_amount)->val();
             }
+        } elseif ( ! empty($coupon_code)) {
+            ppress_session()->set(CheckoutSessionData::COUPON_CODE, null);
+            $coupon_code = '';
         }
 
         if (
@@ -375,7 +411,7 @@ class OrderService
         $cart->recurring_tax      = $recurring_tax_amount;
         $cart->expiration_date    = SubscriptionService::init()->get_plan_expiration_datetime($planObj->id);
 
-        return $cart;
+        return apply_filters('ppress_checkout_cart_entity_vars', $cart, $args);
     }
 
     public function get_customer_orders_url($customer_id, $order_status = false)

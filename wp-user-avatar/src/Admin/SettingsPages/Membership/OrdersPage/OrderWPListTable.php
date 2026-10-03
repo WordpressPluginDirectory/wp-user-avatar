@@ -351,10 +351,10 @@ class OrderWPListTable extends \WP_List_Table
 
         <span id="ppress-date-filters" class="ppress-from-to-wrapper">
             <span class="ppress-start-date-wrap">
-                <input type="text" name="start_date" id="start-date" placeholder="<?= _x('From', 'date filter', 'wp-user-avatar') ?>" value="<?= $start_date ?>" class="ppress_datepicker">
+                <input type="text" name="start_date" id="start-date" placeholder="<?= _x('From', 'date filter', 'wp-user-avatar') ?>" value="<?= esc_attr($start_date) ?>" class="ppress_datepicker">
             </span>
             <span id="ppress-end-date-wrap">
-                <input type="text" name="end_date" id="end-date" value="<?= $end_date ?>" placeholder="<?= _x('To', 'date filter', 'wp-user-avatar') ?>" class="ppress_datepicker">
+                <input type="text" name="end_date" id="end-date" value="<?= esc_attr($end_date) ?>" placeholder="<?= _x('To', 'date filter', 'wp-user-avatar') ?>" class="ppress_datepicker">
             </span>
         </span>
 
@@ -374,7 +374,7 @@ class OrderWPListTable extends \WP_List_Table
             <select name="by_ci" class="ppress-select2-field customer_user" style="min-width:180px">
                 <option value="all"><?= esc_html__('All Customers', 'wp-user-avatar') ?></option>
                     <?php if ( ! empty($customer) && 'all' != $customer) : ?>
-                        <option value="<?= $customer ?>" selected><?= CustomerFactory::fromId($customer)->get_name() ?></option>
+                        <option value="<?= esc_attr($customer) ?>" selected><?= esc_html(CustomerFactory::fromId($customer)->get_name()) ?></option>
                     <?php endif; ?>
             </select>
         </span>

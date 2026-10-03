@@ -1,5 +1,84 @@
 ﻿== Changelog ==
 
+= 4.17.6 =
+* Fixed security issue where with shortcode execution via comment content on user profile.
+* Fixed: remove 10-per-day limit on renewal and expiration emails.
+* Added Free Trial Ending Reminder email.
+* Added Login notification email.
+* Added Login Activity tab to My Account page showing recent logins.
+* Fixed XSS in contextual country state field in checkout.
+* Fixed: Reflected XSS in member directory filters.
+* Fixed: User meta enumeration via member directory filters.
+* Fixed: Member directory role filter could list users outside the directory's configured roles.
+* Fixed: Registration and login form ID could be tampered with to bypass invite codes, CAPTCHA and form-assigned user roles.
+* Fixed: Brute-force protection plugins not recording failed logins made via ProfilePress login forms.
+* Fixed: Unauthenticated file upload via non-file custom fields; files from failed registrations are now deleted.
+* Fixed: CSRF in edit profile avatar and cover photo removal.
+* Fixed: Deactivated membership plans could be purchased at checkout.
+* Fixed: Checkout tax could be bypassed by skipping or altering the order review.
+* Fixed: Retention-only coupons could be applied to new purchases.
+* Fixed: Content protection bypass via REST API and search for "Pages with Template", "Home or Front Page" and "Blog or Posts Page" rules.
+* Fixed: Comments on protected content are now hidden from users without access.
+* Fixed: REST API search bypass of protected content exclusion.
+* Fixed: CSV formula injection in membership exports; exports no longer written to the uploads folder.
+* Fixed: Missing capability checks on admin notice dismissal, login redirect settings and content protection AJAX.
+* Fixed: Email content saved by users without the unfiltered_html capability is now sanitized.
+* Fixed: AcademyLMS fatal error for paid courses not mapped to a plan.
+
+= 4.17.5 =
+* Fixed: Sensitive Information Exposure via Shortcode Injection via Nickname and Biographical Info Profile Fields.
+* Fixed PHP Warning: Undefined array key "login_remember".
+* Fixed bug where edit profile form was missing updated user data.
+* Made usermoderation enabled by default via checkout.
+
+= 4.17.4 =
+* Added inline validation of email address during checkout.
+* Added LoginGuard to checkout and registration autologin.
+* Fixed security issue where subscribers could obtain a paid plan without payment via plan change.
+* Improvement: Revalidate coupons at calculation time and fixed race condition bug.
+* Fixed bug with upgrade/downgrade not working after old sub got expired.
+
+= 4.17.3 =
+* Fixed the security issue in the bio frontend user profile.
+* Scanned and fixed Fable reported security issues.
+* Fixed fatal error with emogrify.
+* Improvement: ppress_allow_empty_password_unchanged filter is true by default.
+
+= 4.17.2 =
+* Improved security of license upgrader.
+* Upgraded internal PHP dependencies.
+
+= 4.17.1 =
+* Fixed security issue with shortcode execution on frontend profile data.
+* Fixed bug with searching users by country name on member directory.
+* Fixed bug where expiry emails were sent to customers who have resubscribed.
+* Fix invisible checked state on form builder field settings checkboxes.
+
+= 4.17.0 =
+* Premium: Added [Pay What You Want addon](https://profilepress.com/addons/pay-what-you-want/?ref=changelog).
+* Added Subscription Payment Failed email notification.
+* Fixed Stripe bug where email change caused checkout failure.
+* Fixed fatal error when price has a currency symbol or thousands separator on admin order creation.
+* Fixed security issue of shortcode execution on first and last name profile fields.
+
+= 4.16.19 =
+* Add optional order creation to the Add New Customer screen.
+* Fixed bug where suppressed email still went out.
+* Fixed security issue where other file types (exe, msi) could be uploaded outside ProfilePress upload scope.
+* Improved support for Jetpack/wp.com SSO.
+* Enhancement: Made the Pay button text translatable.
+
+= 4.16.18 =
+* Added compatibility with Yoast URL Cleanup feature.
+* Fix security issue where non-admin user role can be passed as user role.
+
+= 4.16.17 =
+* Fixed security issue a user subscription can be canceled by another user.
+
+= 4.16.16 =
+* Pro: [Paddle addon](https://profilepress.com/addons/paddle/?ref=changelog).
+* Added password visibility icons to the password reset handler form fields
+
 = 4.16.15 =
 * Pro: [Brevo addon](https://profilepress.com/addons/brevo/?ref=changelog).
 * Pro: [Auto-Renewal Checkbox addon](https://profilepress.com/addons/auto-renewal-checkbox/?ref=changelog).

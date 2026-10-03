@@ -5,7 +5,7 @@ use ProfilePress\Core\Membership\Models\Plan\PlanEntity;
 /** @global $order_total */
 /** @global PlanEntity $plan */
 
-$submit_button_text = apply_filters('ppress_checkout_order_button_text', sprintf('Pay %s', ppress_display_amount($order_total)), $order_total, $plan);
+$submit_button_text = apply_filters('ppress_checkout_order_button_text', sprintf(esc_html__('Pay %s', 'wp-user-avatar'), ppress_display_amount($order_total)), $order_total, $plan);
 
 if ($plan->is_recurring()) $submit_button_text = esc_html__('Subscribe', 'wp-user-avatar');
 

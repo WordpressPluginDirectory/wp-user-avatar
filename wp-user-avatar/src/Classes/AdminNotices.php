@@ -24,7 +24,12 @@ class AdminNotices
         if (class_exists('\ProfilePressVendor\PAnD')) {
             // persist admin notice dismissal initialization
             add_action('admin_init', array('ProfilePressVendor\PAnD', 'init'));
-            add_action('wp_ajax_dismiss_admin_notice', ['ProfilePressVendor\PAnD', 'dismiss_admin_notice']);
+            add_action('wp_ajax_dismiss_admin_notice', function () {
+                // the dismissal nonce is printed for every logged-in user, so also require admin capability.
+                if ( ! current_user_can('manage_options')) return;
+
+                \ProfilePressVendor\PAnD::dismiss_admin_notice();
+            });
         }
         add_action('admin_init', array($this, 'act_on_request'));
 
@@ -74,11 +79,15 @@ class AdminNotices
     {
         if ( ! empty($_GET['ppress_admin_action'])) {
 
+            if ( ! current_user_can('manage_options') || ! isset($_GET['_wpnonce']) || ! wp_verify_nonce($_GET['_wpnonce'], 'ppress_admin_action')) {
+                return;
+            }
+
             if ($_GET['ppress_admin_action'] == 'dismiss_leave_review_forever') {
                 update_option('ppress_dismiss_leave_review_forever', true);
             }
 
-            wp_safe_redirect(esc_url_raw(remove_query_arg('ppress_admin_action')));
+            wp_safe_redirect(esc_url_raw(remove_query_arg(['ppress_admin_action', '_wpnonce'])));
             exit;
         }
     }
@@ -121,7 +130,7 @@ class AdminNotices
 
         $review_url = 'https://wordpress.org/support/plugin/wp-user-avatar/reviews/?filter=5#new-post';
 
-        $dismiss_url = esc_url(add_query_arg('ppress_admin_action', 'dismiss_leave_review_forever'));
+        $dismiss_url = esc_url(wp_nonce_url(add_query_arg('ppress_admin_action', 'dismiss_leave_review_forever'), 'ppress_admin_action'));
 
         $notice = sprintf(
                 __('Hey, I noticed you have been using ProfilePress for at least 7 days now - that\'s awesome! Could you please do us a BIG favor and give it a %1$s5-star rating on WordPress?%2$s This will help us spread the word and boost our motivation - thanks!', 'wp-user-avatar'),

@@ -95,6 +95,7 @@ class LoginFormTag extends FormProcessor
         }
 
         $login_structure .= "<input type='hidden' name='login_form_id' value='$id'>";
+        $login_structure .= ppress_form_signature_field($id, FR::LOGIN_TYPE);
         $login_structure .= '<input type="hidden" name="pp_current_url" value="' . esc_attr(ppress_get_current_url_query_string()) . '">';
         $login_structure .= '<input type="hidden" name="login_referrer_page" value="' . esc_attr($referrer_url) . '">';
 

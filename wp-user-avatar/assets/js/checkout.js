@@ -6,6 +6,9 @@ export default function () {
 
     window.ppressCheckoutForm = this;
 
+    this.last_checked_email = '';
+    this.check_email_xhr = null;
+
     this.init = function () {
 
         if (pp_ajax_form.is_checkout === '0' || $('#ppress_checkout_main_form').length === 0) return;
@@ -16,6 +19,17 @@ export default function () {
         $(document).on('click', '.ppress-apply-discount-btn', this.apply_discount_code);
         $(document).on('click', '#ppress-remove-applied-coupon', this.remove_applied_discount_code);
         $(document).on('submit', '#ppress_mb_checkout_form', this.process_checkout);
+
+        if (pp_ajax_form.is_user_logged_in !== '1') {
+            $(document).on('blur', '#ppress_mb_checkout_form #ppmb_email', this.check_email_exists);
+            $(document).on('input', '#ppress_mb_checkout_form #ppmb_email', _this.debounce(this.check_email_exists, 500));
+            $(document).on('click', '.ppress-checkout-inline-login-link', this.show_login_form_and_focus);
+
+            let initialEmail = $.trim($('#ppress_mb_checkout_form #ppmb_email').val());
+            if (initialEmail) {
+                this.check_email_exists();
+            }
+        }
 
         $(document).on('click', '.ppress-terms-and-conditions-link', function (e) {
             var cache = $('.ppress-checkout-form__terms_condition__content');
@@ -42,6 +56,11 @@ export default function () {
 
         // Update on autorenewal checkbox check
         $(document.body).on('change', '#ppress_mb_checkout_form #ppress-checkout-renewal', function () {
+            $(document.body).trigger('ppress_update_checkout');
+        });
+
+        // Update on pay what you want price change
+        $(document.body).on('change', '#ppress_mb_checkout_form #pwyw_price', function () {
             $(document.body).trigger('ppress_update_checkout');
         });
 
@@ -203,12 +222,111 @@ export default function () {
             if (isChangePlanUpdate === true && ignoreChangePlanRefresh !== true) {
                 _this.update_checkout(true);
             }
+
+            if (isChangePlanUpdate === true) {
+                _this.last_checked_email = '';
+                _this.check_email_exists();
+            }
         });
     };
 
     this.toggle_login_form = function (e) {
         e.preventDefault();
-        $('#ppress_checkout_account_info .ppress-main-checkout-form__login_form_wrap').slideToggle();
+        $('#ppress_checkout_account_info .ppress-main-checkout-form__login_form_wrap').slideToggle(function () {
+            if ($(this).is(':visible')) {
+                let email = $.trim($('#ppress_mb_checkout_form #ppmb_email').val());
+                let $user_login = $('#ppmb_user_login');
+                if (email && !$user_login.val()) {
+                    $user_login.val(email);
+                }
+            }
+        });
+    };
+
+    this.show_login_form_and_focus = function (e) {
+        e.preventDefault();
+
+        let $loginWrap = $('#ppress_checkout_account_info .ppress-main-checkout-form__login_form_wrap');
+        let email = $.trim($('#ppress_mb_checkout_form #ppmb_email').val());
+        let $user_login = $('#ppmb_user_login');
+
+        if (email) {
+            $user_login.val(email);
+        }
+
+        let focusTarget = function () {
+            if ($user_login.val()) {
+                $('#ppmb_user_pass').focus();
+            } else {
+                $user_login.focus();
+            }
+        };
+
+        if (!$loginWrap.is(':visible')) {
+            $loginWrap.slideDown(focusTarget);
+        } else {
+            focusTarget();
+        }
+
+        if ($('#ppress_checkout_account_info').length) {
+            $('html, body').animate({
+                scrollTop: ($('#ppress_checkout_account_info').offset().top - 100)
+            }, 500);
+        }
+    };
+
+    this.check_email_exists = function () {
+        if (pp_ajax_form.is_user_logged_in === '1') return;
+
+        let $emailField = $('#ppress_mb_checkout_form #ppmb_email');
+        if ($emailField.length === 0 || $emailField.attr('type') === 'hidden') return;
+
+        let email = $.trim($emailField.val());
+        let emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+        if (!email || !emailRegex.test(email)) {
+            _this.remove_email_exists_message();
+            _this.last_checked_email = '';
+            return;
+        }
+
+        if (email === _this.last_checked_email) {
+            return;
+        }
+
+        let data = {
+            'action': 'ppress_checkout_check_email',
+            'email': email,
+            'csrf': $('#ppress_checkout_nonce').val() || pp_ajax_form.nonce
+        };
+
+        if (_this.check_email_xhr) {
+            _this.check_email_xhr.abort();
+        }
+
+        _this.check_email_xhr = $.post(pp_ajax_form.ajaxurl, data, function (response) {
+            _this.last_checked_email = email;
+            _this.remove_email_exists_message();
+
+            if (response && response.success && response.data && response.data.exists) {
+                if ($.trim($('#ppress_mb_checkout_form #ppmb_email').val()) === email) {
+                    let message = response.data.message || '';
+                    if (message) {
+                        let $msg = $('<div class="ppress-checkout-field-inline-message ppress-checkout-email-exists-message">' + message + '</div>');
+                        let $parent = $emailField.closest('.ppmb-email');
+                        if ($parent.length) {
+                            $parent.append($msg);
+                        } else {
+                            $emailField.after($msg);
+                        }
+                    }
+                }
+            }
+        });
+    };
+
+    this.remove_email_exists_message = function () {
+        $('.ppress-checkout-email-exists-message').remove();
     };
 
     this.toggle_discount_code_reveal = function (e) {

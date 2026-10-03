@@ -55,9 +55,7 @@ abstract class BigNumber implements \Serializable, \JsonSerializable
         if (\preg_match(self::PARSE_REGEXP, $value, $matches) !== 1) {
             $throw();
         }
-        $getMatch = static function (string $value) use ($matches): ?string {
-            return isset($matches[$value]) && $matches[$value] !== '' ? $matches[$value] : null;
-        };
+        $getMatch = static fn(string $value): ?string => ($matches[$value] ?? '') !== '' ? $matches[$value] : null;
         $sign = $getMatch('sign');
         $numerator = $getMatch('numerator');
         $denominator = $getMatch('denominator');

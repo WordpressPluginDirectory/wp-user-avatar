@@ -236,7 +236,8 @@
                 $.post(
                     ajaxurl, {
                         action: "pp_profile_fields_sortable",
-                        data: data
+                        data: data,
+                        csrf: ppress_admin_globals.nonce
                     }
                 );
 
@@ -262,7 +263,8 @@
                 $.post(
                     ajaxurl, {
                         action: "pp_contact_info_sortable",
-                        data: data
+                        data: data,
+                        csrf: ppress_admin_globals.nonce
                     }
                 );
             }

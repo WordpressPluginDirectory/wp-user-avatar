@@ -3,6 +3,7 @@
 namespace ProfilePress\Core\ShortcodeParser;
 
 use ProfilePress\Core\Classes\EditUserProfile;
+use ProfilePress\Core\Classes\FormRepository as FR;
 use ProfilePress\Core\Classes\LoginAuth;
 use ProfilePress\Core\Classes\PasswordReset;
 use ProfilePress\Core\Classes\RegistrationAuth;
@@ -142,11 +143,13 @@ class FormProcessor
             }
         }
 
-        if (isset($_POST['eup_remove_avatar']) && $_POST['eup_remove_avatar'] == 'removed') {
+        $is_remove_request_verified = is_user_logged_in() && isset($_POST['_wpnonce']) && wp_verify_nonce($_POST['_wpnonce'], ppress_nonce_action_string());
+
+        if ($is_remove_request_verified && isset($_POST['eup_remove_avatar']) && $_POST['eup_remove_avatar'] == 'removed') {
             EditUserProfile::remove_user_avatar();
         }
 
-        if (isset($_POST['eup_remove_cover_image']) && $_POST['eup_remove_cover_image'] == 'removed') {
+        if ($is_remove_request_verified && isset($_POST['eup_remove_cover_image']) && $_POST['eup_remove_cover_image'] == 'removed') {
             EditUserProfile::remove_user_cover_image();
         }
 
@@ -190,7 +193,11 @@ class FormProcessor
                 return $this->restore_form_error($state_key);
             }
 
-            $form_id = absint(ppressPOST_var('pp_melange_id', $_POST['signup_form_id'] ?? '', true));
+            // Melange is detected from the melange ID, not the posted is_melange flag: [pp-registration-form] outputs
+            // is_melange=true even outside melange forms, and a client could set it to change which form type is checked.
+            $is_melange = ! empty($_POST['pp_melange_id']);
+
+            $form_id = absint($is_melange ? $_POST['pp_melange_id'] : ($_POST['signup_form_id'] ?? ''));
 
             $redirect = ppressPOST_var('signup_redirect', '', true);
             if ( ! empty($_POST['melange_redirect'])) {
@@ -199,9 +206,16 @@ class FormProcessor
 
             $no_login_redirect = ! empty($_POST['signup_no_login_redirect']) ? sanitize_text_field($_POST['signup_no_login_redirect']) : '';
 
-            $is_melange = isset($_POST['is_melange']) && $_POST['is_melange'] == 'true';
+            // the form ID decides the new user's role and which validators run. See ppress_form_signature().
+            $is_valid_form = ppress_verify_form_signature(
+                $form_id,
+                $is_melange ? FR::MELANGE_TYPE : FR::REGISTRATION_TYPE,
+                $is_melange ? ($_POST['pp_melange_sig'] ?? '') : ($_POST['ppress_form_sig'] ?? '')
+            );
 
-            $response = RegistrationAuth::register_new_user($_POST, $form_id, $redirect, $is_melange, $no_login_redirect);
+            $response = $is_valid_form ?
+                RegistrationAuth::register_new_user($_POST, $form_id, $redirect, $is_melange, $no_login_redirect) :
+                '<div class="profilepress-reg-status">' . ppress_invalid_form_submission_message() . '</div>';
 
             if ( ! empty($response)) {
                 $response = wp_kses_post(html_entity_decode($response));
@@ -241,14 +255,25 @@ class FormProcessor
             $password       = $_POST['login_password'];
             $remember_login = sanitize_text_field($_POST['login_remember'] ?? '');
 
-            $form_id = absint(! empty($_POST['pp_melange_id']) ? $_POST['pp_melange_id'] : ($_POST['login_form_id'] ?? ''));
+            $is_melange = ! empty($_POST['pp_melange_id']);
+
+            $form_id = absint($is_melange ? $_POST['pp_melange_id'] : ($_POST['login_form_id'] ?? ''));
 
             $redirect = ! empty($_POST['login_redirect']) ? sanitize_text_field($_POST['login_redirect']) : '';
             if ( ! empty($_POST['melange_redirect'])) {
                 $redirect = sanitize_text_field($_POST['melange_redirect']);
             }
 
-            $login_status = LoginAuth::login_auth($username, $password, $remember_login, $form_id, $redirect);
+            // the form ID decides which login validators (e.g. CAPTCHA) run. See ppress_form_signature().
+            $is_valid_form = ppress_verify_form_signature(
+                $form_id,
+                $is_melange ? FR::MELANGE_TYPE : FR::LOGIN_TYPE,
+                $is_melange ? ($_POST['pp_melange_sig'] ?? '') : ($_POST['ppress_form_sig'] ?? '')
+            );
+
+            $login_status = $is_valid_form ?
+                LoginAuth::login_auth($username, $password, $remember_login, $form_id, $redirect) :
+                new \WP_Error('ppress_invalid_form', ppress_invalid_form_submission_message());
 
             $login_error = '';
 
@@ -279,7 +304,7 @@ class FormProcessor
             $this->password_reset_form_error = $parsed_error;
         }
 
-        if ( ! isset($_POST['password_reset_submit']) || empty($_POST['password_reset_submit'])) return;
+        if (empty($_POST['password_reset_submit'])) return;
 
         $state_key = 'password_reset_form_error';
 

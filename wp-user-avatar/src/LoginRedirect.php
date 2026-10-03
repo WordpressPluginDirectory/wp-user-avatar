@@ -116,6 +116,8 @@ class LoginRedirect
 
             check_admin_referer('wp-csa-nonce', 'wp_csa_nonce');
 
+            if ( ! current_user_can('manage_options')) return;
+
             $payload = ['membership_plan' => [], 'user_role' => []];
 
             if (isset($_POST['ppress_login_redirect']['membership_plan'])) {

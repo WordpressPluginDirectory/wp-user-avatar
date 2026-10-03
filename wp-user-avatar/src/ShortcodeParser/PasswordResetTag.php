@@ -101,10 +101,20 @@ class PasswordResetTag extends FormProcessor
 <div class="pp-reset-password-form">
     <h3><?= esc_html__('Enter your new password below', 'wp-user-avatar'); ?></h3>
     <label for="password1"><?= esc_html__('New password', 'wp-user-avatar'); ?> <span class="req">*</span></label>
-    [enter-password id="password1" required autocomplete="off"]
+    <span class="pp-form-field-wrap has-password-visibility-icon">
+        <span class="pp-form-field-input-textarea-wrap">
+        [enter-password class="pp-form-field" id="password1" required autocomplete="off"]
+        <i class="pp-form-material-icons">visibility</i>
+        </span>
+    </span>
 
     <label for="password2"><?= esc_html__('Re-enter new password', 'wp-user-avatar') ?> <span class="req">*</span></label>
-    [re-enter-password id="password2" required autocomplete="off"]
+    <span class="pp-form-field-wrap has-password-visibility-icon">
+        <span class="pp-form-field-input-textarea-wrap">
+            [re-enter-password class="pp-form-field" id="password2" required autocomplete="off"]
+            <i class="pp-form-material-icons">visibility</i>
+        </span>
+    </span>
 
     [password-reset-submit class="pp-reset-button pp-reset-button-block" value="<?= esc_html__('Save', 'wp-user-avatar'); ?>"]
 </div>

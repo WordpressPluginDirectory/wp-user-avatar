@@ -95,6 +95,8 @@ class MemberDirectoryTag
             $structure = self::convert_shortcode_brackets($structure);
         }
 
+        $structure = ppress_neutralize_buffer_shortcodes($structure);
+
         return do_shortcode($structure);
     }
 
@@ -231,10 +233,12 @@ class MemberDirectoryTag
 
             new FrontendProfileBuilder($user);
 
-            // replace { and } with { and } so they get parsed as shortcode since they are inside [user-loop] ... [/user-loop]
-            $content = preg_replace("/(\{)([^\}]+)(\})/", '[$2]', $content);
+            // replace { and } with [ and ] so they get parsed as shortcode since they are inside [user-loop] ... [/user-loop]
+            $parsed_content = preg_replace("/(\{)([^\}]+)(\})/", '[$2]', $content);
 
-            $output .= do_shortcode($content);
+            $parsed_content = ppress_neutralize_buffer_shortcodes($parsed_content);
+
+            $output .= do_shortcode($parsed_content);
         }
 
         return $output;

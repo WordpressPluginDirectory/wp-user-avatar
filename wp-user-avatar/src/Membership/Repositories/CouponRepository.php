@@ -113,6 +113,10 @@ class CouponRepository extends BaseRepository
     }
 
     /**
+     * Load a coupon row by code. This is not a validity check: inactive, expired,
+     * and exhausted codes are still returned. Callers that grant a discount must
+     * also run CouponEntity::is_valid().
+     *
      * @param $code
      *
      * @return CouponEntity

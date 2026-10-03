@@ -47,7 +47,7 @@ class ToolsSettingsPage
                         'type'        => 'arbitrary',
                         'data'        => sprintf(
                             '<textarea class="ppress-error-log-textarea" disabled>%s</textarea>',
-                            $debug_log_content
+                            esc_textarea($debug_log_content)
                         ),
                         'description' => sprintf(
                             '<div style="margin-top: 10px"><a class="button pp-confirm-delete" href="%s">%s</a></div>', $delete_debug_log_url,

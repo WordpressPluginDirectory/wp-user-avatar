@@ -8,7 +8,12 @@ use ProfilePress\Core\Admin\SettingsPages\Membership\ContextualStateChangeHelper
 use ProfilePress\Core\Membership\CheckoutFields;
 use ProfilePress\Core\Membership\Models\Customer\CustomerEntity;
 use ProfilePress\Core\Membership\Models\Customer\CustomerFactory;
+use ProfilePress\Core\Membership\Models\Order\OrderStatus;
+use ProfilePress\Core\Membership\PaymentMethods\PaymentMethods;
+use ProfilePress\Core\Membership\Repositories\PlanRepository;
+use ProfilePress\Core\Membership\Services\Calculator;
 use ProfilePress\Custom_Settings_Page_Api;
+use ProfilePressVendor\Carbon\CarbonImmutable;
 
 class SettingsPage extends AbstractSettingsPage
 {
@@ -180,10 +185,70 @@ class SettingsPage extends AbstractSettingsPage
             wp_die(__('Error creating customer record.', 'wp-user-avatar'), __('Error', 'wp-user-avatar'), array('response' => 500));
         }
 
+        if (ppress_var($customer_data, 'billing_address') == 'true') {
+            foreach (array_keys(CheckoutFields::billing_fields()) as $billing_key) {
+                if (isset($_POST[$billing_key])) {
+                    update_user_meta($user->ID, $billing_key, sanitize_textarea_field($_POST[$billing_key]));
+                }
+            }
+        }
+
         do_action('ppress_customer_updated', $customer_id);
+
+        if (ppress_var($customer_data, 'create_order') == 'true') {
+            $this->create_customer_order($customer_id, $customer_data);
+        }
 
         wp_safe_redirect(esc_url_raw(CustomerWPListTable::view_customer_url($customer_id)));
         exit;
+    }
+
+    /**
+     * Create a membership order for the customer.
+     *
+     * @param int $customer_id
+     * @param array $customer_data
+     *
+     * @return void
+     */
+    protected function create_customer_order($customer_id, $customer_data)
+    {
+        $plan_id = absint(ppress_var($customer_data, 'order_plan'));
+
+        if (empty($plan_id)) {
+            wp_die(__('No plan was selected. Please try again.', 'wp-user-avatar'), __('Error', 'wp-user-avatar'), array('response' => 400));
+        }
+
+        $date_created = current_time('mysql');
+
+        if ( ! empty($customer_data['order_date'])) {
+            $date_created = CarbonImmutable::parse(sanitize_text_field($customer_data['order_date']), wp_timezone())
+                                           ->setTimeFromTimeString(CarbonImmutable::now(wp_timezone())->toTimeString())
+                                           ->utc()->toDateTimeString();
+        }
+
+        $amount = ppress_sanitize_amount(ppress_var($customer_data, 'order_amount', ''));
+
+        if (empty($amount) || Calculator::init($amount)->isNegativeOrZero()) {
+            $amount = ppress_get_plan($plan_id)->get_price();
+        }
+
+        $response = ppress_subscribe_user_to_plan(
+            $plan_id,
+            $customer_id,
+            [
+                'amount'         => $amount,
+                'order_status'   => ppress_var($customer_data, 'order_status', OrderStatus::COMPLETED),
+                'payment_method' => ppress_var($customer_data, 'order_payment_method', ''),
+                'transaction_id' => ppress_var($customer_data, 'order_transaction_id', ''),
+                'date_created'   => $date_created
+            ],
+            ppress_var($customer_data, 'order_send_receipt') == 'true'
+        );
+
+        if (is_wp_error($response)) {
+            wp_die($response->get_error_message(), __('Error', 'wp-user-avatar'), array('response' => 400));
+        }
     }
 
     public function search_wp_users()
@@ -291,8 +356,7 @@ class SettingsPage extends AbstractSettingsPage
 
         if (ppressGET_var('ppress_customer_action') == 'new') {
 
-            $instance->main_content([
-                    apply_filters('ppress_admin_new_customer_form_fields', [
+            $form_fields = [
                             'account_type' => [
                                     'label' => __('User Account', 'wp-user-avatar'),
                                     'type'  => 'custom_field_block',
@@ -324,8 +388,74 @@ class SettingsPage extends AbstractSettingsPage
                                     'label' => __('Password', 'wp-user-avatar'),
                                     'type'  => 'custom_field_block',
                                     'data'  => self::password_field()
+                            ],
+                            'billing_address'         => [
+                                    'label'          => __('Billing Address', 'wp-user-avatar'),
+                                    'checkbox_label' => __('Add a billing address for this customer.', 'wp-user-avatar'),
+                                    'type'           => 'checkbox'
                             ]
-                    ])
+            ];
+
+            $form_fields = array_merge($form_fields, self::billing_field_blocks());
+
+            $form_fields = array_merge($form_fields, [
+                            'create_order'           => [
+                                    'label'          => __('Create Order', 'wp-user-avatar'),
+                                    'checkbox_label' => __('Create a membership order for this customer.', 'wp-user-avatar'),
+                                    'type'           => 'checkbox'
+                            ],
+                            'order_plan'             => [
+                                    'label'   => __('Membership Plan', 'wp-user-avatar'),
+                                    'type'    => 'select',
+                                    'options' => array_reduce(PlanRepository::init()->retrieveAll(), function ($carry, $item) {
+                                        $carry[$item->id] = $item->name;
+
+                                        return $carry;
+                                    }, ['' => '&mdash;&mdash;&mdash;&mdash;'])
+                            ],
+                            'order_amount'           => [
+                                    'label'       => __('Amount', 'wp-user-avatar'),
+                                    'type'        => 'text',
+                                    'placeholder' => ppress_display_amount('0.00'),
+                                    'description' => esc_html__('Enter the total order amount, or leave blank to use the price of the selected plan.', 'wp-user-avatar')
+                            ],
+                            'order_status'           => [
+                                    'label'   => __('Order Status', 'wp-user-avatar'),
+                                    'type'    => 'select',
+                                    'options' => OrderStatus::get_all()
+                            ],
+                            'order_payment_method'   => [
+                                    'label'   => __('Payment Method', 'wp-user-avatar'),
+                                    'type'    => 'select',
+                                    'options' => array_reduce(PaymentMethods::get_instance()->get_all(), function ($carry, $item) {
+                                        $carry[$item->id] = $item->method_title;
+
+                                        return $carry;
+                                    }, ['' => '&mdash;&mdash;&mdash;&mdash;'])
+                            ],
+                            'order_transaction_id'   => [
+                                    'label'       => __('Transaction ID', 'wp-user-avatar'),
+                                    'type'        => 'text',
+                                    'description' => esc_html__('Enter the transaction ID, if any.', 'wp-user-avatar')
+                            ],
+                            'order_date'             => [
+                                    'label'       => __('Date', 'wp-user-avatar'),
+                                    'type'        => 'text',
+                                    'class'       => 'ppress_datepicker',
+                                    'description' => esc_html__("Enter the purchase date, or leave blank for today's date.", 'wp-user-avatar')
+                            ],
+                            'order_send_receipt'     => [
+                                    'label'          => __('Send Receipt', 'wp-user-avatar'),
+                                    'checkbox_label' => __('Check to send the order receipt to the customer.', 'wp-user-avatar'),
+                                    'type'           => 'checkbox',
+                                    'default_value'  => 'true'
+                            ]
+            ]);
+
+            ContextualStateChangeHelper::init();
+
+            $instance->main_content([
+                    apply_filters('ppress_admin_new_customer_form_fields', $form_fields)
             ]);
 
             $instance->remove_white_design();
@@ -379,6 +509,32 @@ class SettingsPage extends AbstractSettingsPage
         </div>
         <?php
         return ob_get_clean();
+    }
+
+    /**
+     * Billing field blocks for the new customer form.
+     *
+     * @return array
+     */
+    protected static function billing_field_blocks()
+    {
+        $billing_fields = CheckoutFields::billing_fields();
+        $standard       = CheckoutFields::standard_billing_fields();
+
+        $blocks = [];
+
+        foreach ($billing_fields as $field_id => $field) {
+
+            $label = ppress_var($field, 'label', ppress_var($standard, $field_id, ['label' => $field_id])['label']);
+
+            $blocks['billing_field_' . $field_id] = [
+                    'label' => $label,
+                    'type'  => 'custom_field_block',
+                    'data'  => do_shortcode(sprintf('[edit-profile-cpf id="%1$s" key="%1$s" value="" class="regular-text widefat"]', esc_attr($field_id)))
+            ];
+        }
+
+        return $blocks;
     }
 
     public function add_new_button()
@@ -436,6 +592,16 @@ class SettingsPage extends AbstractSettingsPage
                         $("#username_row").hide();
                         $("#password_row").hide();
                     }
+                }).trigger('change');
+
+                var orderRows = "#order_plan_row, #order_amount_row, #order_status_row, #order_payment_method_row, #order_transaction_id_row, #order_date_row, #order_send_receipt_row";
+                $("#create_order").on("change", function () {
+                    $(this).is(":checked") ? $(orderRows).show() : $(orderRows).hide();
+                }).trigger('change');
+
+                var billingRows = $("tr[id^='billing_field_']");
+                $("#billing_address").on("change", function () {
+                    $(this).is(":checked") ? billingRows.show() : billingRows.hide();
                 }).trigger('change');
             });
         </script>

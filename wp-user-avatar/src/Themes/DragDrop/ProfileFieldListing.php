@@ -181,7 +181,7 @@ class ProfileFieldListing
                 if ( ! empty($field_title)) {
                     $output .= $this->title_start_tag . wp_kses_post($field_title) . $this->title_end_tag;
                 }
-                $output .= $this->info_start_tag . $parsed_shortcode . $this->info_end_tag;
+                $output .= $this->info_start_tag . wp_kses_post(ppress_neutralize_shortcodes($parsed_shortcode)) . $this->info_end_tag;
                 $output .= $this->item_wrap_end_tag;
             }
         }

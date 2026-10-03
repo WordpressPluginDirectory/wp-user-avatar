@@ -4,6 +4,7 @@ namespace ProfilePress\Core\ShortcodeParser\MyAccount;
 
 use ProfilePress\Core\Classes\PROFILEPRESS_sql;
 use ProfilePress\Core\Classes\UserAvatar;
+use ProfilePress\Core\Membership\Models\Subscription\SubscriptionEntity;
 use ProfilePress\Core\Membership\Models\Subscription\SubscriptionFactory;
 use ProfilePress\Core\Membership\Services\SubscriptionService;
 use ProfilePress\Core\ShortcodeParser\FormProcessor;
@@ -102,6 +103,13 @@ class MyAccountTag extends FormProcessor
                     'icon'     => 'vpn_key',
                     'callback' => [$classInstance, 'change_password_callback']
                 ],
+                'login-activity'     => [
+                    'title'    => esc_html__('Login Activity', 'wp-user-avatar'),
+                    'endpoint' => esc_html(ppress_settings_by_key('myac_login_activity_endpoint', 'login-activity', true)),
+                    'priority' => 52,
+                    'icon'     => 'history',
+                    'callback' => [$classInstance, 'login_activity_callback']
+                ],
                 'delete-account'     => [
                     'title'    => esc_html__('Delete Account', 'wp-user-avatar'),
                     'endpoint' => apply_filters('ppress_my_account_dashboard_delete_account_endpoint', 'delete-account'),
@@ -194,6 +202,11 @@ class MyAccountTag extends FormProcessor
         require apply_filters('ppress_my_account_change_password_template', wp_normalize_path(dirname(__FILE__) . '/change-password.tmpl.php'));
     }
 
+    public function login_activity_callback()
+    {
+        require apply_filters('ppress_my_account_login_activity_template', wp_normalize_path(dirname(__FILE__) . '/login-activity.tmpl.php'));
+    }
+
     public function delete_account_callback()
     {
         require apply_filters('ppress_my_account_delete_account_template', wp_normalize_path(dirname(__FILE__) . '/delete-account.tmpl.php'));
@@ -254,21 +267,24 @@ class MyAccountTag extends FormProcessor
 
             check_admin_referer($sub_id . $action . $sub->get_customer()->get_user_id());
 
-            if ($action == 'cancel') {
-                $sub->cancel(true);
-            }
+            if (is_a($sub, SubscriptionEntity::class) && get_current_user_id() === $sub->get_customer()->get_user_id()) {
 
-            if ($action == 'resubscribe') {
-                wp_safe_redirect(ppress_plan_checkout_url($sub->plan_id));
-                exit;
-            }
+                if ($action == 'cancel') {
+                    $sub->cancel(true);
+                }
 
-            if ($action == 'change_plan') {
-                wp_safe_redirect(ppress_plan_checkout_url($sub->id, true));
-                exit;
-            }
+                if ($action == 'resubscribe') {
+                    wp_safe_redirect(ppress_plan_checkout_url($sub->plan_id));
+                    exit;
+                }
 
-            do_action('ppress_handle_subscription_actions', $action, $sub);
+                if ($action == 'change_plan') {
+                    wp_safe_redirect(ppress_plan_checkout_url($sub->id, true));
+                    exit;
+                }
+
+                do_action('ppress_handle_subscription_actions', $action, $sub);
+            }
 
             wp_safe_redirect(
                 add_query_arg(
@@ -284,10 +300,8 @@ class MyAccountTag extends FormProcessor
     {
         if ( ! empty($_GET['sub_id'])) {
             add_action('ppress_myaccount_subscription_action_status', function ($sub, $action) {
-                switch ($action) {
-                    case 'cancel':
-                        self::alert_message(esc_html__('Subscription successfully cancelled.', 'wp-user-avatar'));
-                        break;
+                if ($action == 'cancel') {
+                    self::alert_message(esc_html__('Subscription successfully cancelled.', 'wp-user-avatar'));
                 }
             }, 10, 2);
 

@@ -2,6 +2,7 @@
 
 namespace ProfilePress\Core\ContentProtection;
 
+use ProfilePress\Core\ContentProtection\Frontend\CommentProtection;
 use ProfilePress\Core\ContentProtection\Frontend\PostContent;
 use ProfilePress\Core\ContentProtection\Frontend\Redirect;
 use ProfilePress\Core\ContentProtection\Frontend\RestrictionShortcode;
@@ -18,6 +19,7 @@ class Init
         PostContent::get_instance();
         Redirect::get_instance();
         SearchAndAPI::get_instance();
+        CommentProtection::get_instance();
         RestrictionShortcode::get_instance();
         NavMenuProtection::get_instance();
         CapabilityCheck::get_instance();
@@ -35,6 +37,8 @@ class Init
     public function get_content_condition_field()
     {
         check_ajax_referer('ppress_cr_nonce', 'nonce');
+
+        if ( ! current_user_can('manage_options')) wp_send_json_error();
 
         $instance = ContentConditions::get_instance();
 
@@ -58,6 +62,8 @@ class Init
 	{
 		check_ajax_referer('ppress_cr_nonce', 'nonce');
 
+        if ( ! current_user_can('manage_options')) wp_send_json_error();
+
 		$instance = ContentConditions::get_instance();
 
 		if ( ! empty($_POST['field_type']) && ! empty($_POST['facetId']) && ! empty($_POST['facetListId'])) {
@@ -79,6 +85,8 @@ class Init
     public function get_content_condition_search()
     {
         check_ajax_referer('ppress_cr_nonce', 'nonce');
+
+        if ( ! current_user_can('manage_options')) wp_send_json_error();
 
         $results['results'] = [];
 

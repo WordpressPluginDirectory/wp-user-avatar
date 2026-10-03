@@ -1,13 +1,12 @@
 <?php
 
+declare (strict_types=1);
 namespace ProfilePressVendor\Sabberworm\CSS\CSSList;
 
 use ProfilePressVendor\Sabberworm\CSS\OutputFormat;
 use ProfilePressVendor\Sabberworm\CSS\Parsing\ParserState;
 use ProfilePressVendor\Sabberworm\CSS\Parsing\SourceException;
 use ProfilePressVendor\Sabberworm\CSS\Property\Selector;
-use ProfilePressVendor\Sabberworm\CSS\RuleSet\DeclarationBlock;
-use ProfilePressVendor\Sabberworm\CSS\RuleSet\RuleSet;
 /**
  * This class represents the root of a parsed CSS file. It contains all top-level CSS contents: mostly declaration
  * blocks, but also any at-rules encountered (`Import` and `Charset`).
@@ -15,60 +14,15 @@ use ProfilePressVendor\Sabberworm\CSS\RuleSet\RuleSet;
 class Document extends CSSBlockList
 {
     /**
-     * @param int $iLineNo
-     */
-    public function __construct($iLineNo = 0)
-    {
-        parent::__construct($iLineNo);
-    }
-    /**
-     * @return Document
-     *
      * @throws SourceException
      *
      * @internal since V8.8.0
      */
-    public static function parse(ParserState $oParserState)
+    public static function parse(ParserState $parserState): Document
     {
-        $oDocument = new Document($oParserState->currentLine());
-        CSSList::parseList($oParserState, $oDocument);
-        return $oDocument;
-    }
-    /**
-     * Gets all `DeclarationBlock` objects recursively, no matter how deeply nested the selectors are.
-     * Aliased as `getAllSelectors()`.
-     *
-     * @return array<int, DeclarationBlock>
-     */
-    public function getAllDeclarationBlocks()
-    {
-        /** @var array<int, DeclarationBlock> $aResult */
-        $aResult = [];
-        $this->allDeclarationBlocks($aResult);
-        return $aResult;
-    }
-    /**
-     * Gets all `DeclarationBlock` objects recursively.
-     *
-     * @return array<int, DeclarationBlock>
-     *
-     * @deprecated will be removed in version 9.0; use `getAllDeclarationBlocks()` instead
-     */
-    public function getAllSelectors()
-    {
-        return $this->getAllDeclarationBlocks();
-    }
-    /**
-     * Returns all `RuleSet` objects recursively found in the tree, no matter how deeply nested the rule sets are.
-     *
-     * @return array<int, RuleSet>
-     */
-    public function getAllRuleSets()
-    {
-        /** @var array<int, RuleSet> $aResult */
-        $aResult = [];
-        $this->allRuleSets($aResult);
-        return $aResult;
+        $document = new Document($parserState->currentLine());
+        CSSList::parseList($parserState, $document);
+        return $document;
     }
     /**
      * Returns all `Selector` objects with the requested specificity found recursively in the tree.
@@ -76,65 +30,29 @@ class Document extends CSSBlockList
      * Note that this does not yield the full `DeclarationBlock` that the selector belongs to
      * (and, currently, there is no way to get to that).
      *
-     * @param string|null $sSpecificitySearch
+     * @param string|null $specificitySearch
      *        An optional filter by specificity.
      *        May contain a comparison operator and a number or just a number (defaults to "==").
      *
-     * @return array<int, Selector>
+     * @return list<Selector>
+     *
      * @example `getSelectorsBySpecificity('>= 100')`
-     *
      */
-    public function getSelectorsBySpecificity($sSpecificitySearch = null)
+    public function getSelectorsBySpecificity(?string $specificitySearch = null): array
     {
-        /** @var array<int, Selector> $aResult */
-        $aResult = [];
-        $this->allSelectors($aResult, $sSpecificitySearch);
-        return $aResult;
-    }
-    /**
-     * Expands all shorthand properties to their long value.
-     *
-     * @return void
-     *
-     * @deprecated since 8.7.0, will be removed without substitution in version 9.0 in #511
-     */
-    public function expandShorthands()
-    {
-        foreach ($this->getAllDeclarationBlocks() as $oDeclaration) {
-            $oDeclaration->expandShorthands();
-        }
-    }
-    /**
-     * Create shorthands properties whenever possible.
-     *
-     * @return void
-     *
-     * @deprecated since 8.7.0, will be removed without substitution in version 9.0 in #511
-     */
-    public function createShorthands()
-    {
-        foreach ($this->getAllDeclarationBlocks() as $oDeclaration) {
-            $oDeclaration->createShorthands();
-        }
+        return $this->getAllSelectors($specificitySearch);
     }
     /**
      * Overrides `render()` to make format argument optional.
-     *
-     * @param OutputFormat|null $oOutputFormat
-     *
-     * @return string
      */
-    public function render($oOutputFormat = null)
+    public function render(?OutputFormat $outputFormat = null): string
     {
-        if ($oOutputFormat === null) {
-            $oOutputFormat = new OutputFormat();
+        if ($outputFormat === null) {
+            $outputFormat = new OutputFormat();
         }
-        return $oOutputFormat->comments($this) . $this->renderListContents($oOutputFormat);
+        return $outputFormat->getFormatter()->comments($this) . $this->renderListContents($outputFormat);
     }
-    /**
-     * @return bool
-     */
-    public function isRootList()
+    public function isRootList(): bool
     {
         return \true;
     }

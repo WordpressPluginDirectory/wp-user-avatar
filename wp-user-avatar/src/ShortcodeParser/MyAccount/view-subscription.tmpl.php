@@ -47,7 +47,7 @@ $payment_method = PaymentMethods::get_instance()->get_by_id($sub->get_payment_me
                 $actions['resubscribe'] = esc_html__('Resubscribe', 'wp-user-avatar');
             }
 
-            if ($plan_group_id && ! $sub->is_pending()) {
+            if ($sub->can_change_plan()) {
                 $actions['change_plan'] = esc_html__('Change Plan', 'wp-user-avatar');
             }
 

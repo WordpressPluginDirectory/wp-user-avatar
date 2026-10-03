@@ -238,7 +238,7 @@ class SettingsPage extends AbstractSettingsPage
         $coupon_id  = (int)$_POST['coupon_code'];
         $tax_amount = sanitize_text_field($_POST['tax']);
 
-        $plan_price = ! empty($plan_price) ? $plan_price : PlanFactory::fromId($plan_id)->get_price();
+        $plan_price = ! empty($plan_price) ? ppress_sanitize_amount($plan_price) : PlanFactory::fromId($plan_id)->get_price();
 
         $order              = OrderFactory::fromId($order_id);
         $order->plan_id     = ppress_sanitize_amount($plan_id);
@@ -271,7 +271,7 @@ class SettingsPage extends AbstractSettingsPage
 
         if (TaxService::init()->is_tax_enabled() && ! empty($tax_amount) && TaxService::init()->is_price_inclusive_tax()) {
 
-            $subtotal = Calculator::init($plan_price)->minus($order->discount)->minus($tax_amount);
+            $subtotal = Calculator::init($plan_price)->minus($order->discount)->minus($order->tax);
 
             $order->subtotal = $subtotal->val();
 

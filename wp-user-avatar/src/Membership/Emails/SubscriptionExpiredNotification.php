@@ -45,7 +45,7 @@ class SubscriptionExpiredNotification extends AbstractMembershipEmail
         // double ensure the subscription is indeed expired before sending the email.
         $refetchedSub = SubscriptionFactory::fromId($subscription->id);
 
-        if ($refetchedSub->is_expired()) {
+        if ($refetchedSub->is_expired() && ! CustomerFactory::fromId($subscription->customer_id)->has_active_subscription($subscription->plan_id)) {
             ppress_send_email($recipient, $subject, $message);
         }
     }

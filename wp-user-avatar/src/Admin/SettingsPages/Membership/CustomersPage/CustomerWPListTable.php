@@ -309,10 +309,10 @@ class CustomerWPListTable extends \WP_List_Table
 
         <span id="ppress-date-filters" class="ppress-from-to-wrapper">
             <span class="ppress-start-date-wrap">
-                <input type="text" name="start_date" id="start-date" placeholder="<?= _x('From', 'date filter', 'wp-user-avatar') ?>" value="<?= $start_date ?>" class="ppress_datepicker">
+                <input type="text" name="start_date" id="start-date" placeholder="<?= _x('From', 'date filter', 'wp-user-avatar') ?>" value="<?= esc_attr($start_date) ?>" class="ppress_datepicker">
             </span>
             <span id="ppress-end-date-wrap">
-                <input type="text" name="end_date" id="end-date" value="<?= $end_date ?>" placeholder="<?= _x('To', 'date filter', 'wp-user-avatar') ?>" class="ppress_datepicker">
+                <input type="text" name="end_date" id="end-date" value="<?= esc_attr($end_date) ?>" placeholder="<?= _x('To', 'date filter', 'wp-user-avatar') ?>" class="ppress_datepicker">
             </span>
         </span>
 

@@ -3,6 +3,7 @@
 namespace ProfilePress\Core\Admin\SettingsPages\Membership\ExportPage;
 
 use ProfilePressVendor\Carbon\CarbonImmutable;
+use ProfilePressVendor\League\Csv\EscapeFormula;
 use ProfilePressVendor\League\Csv\Writer;
 
 abstract class AbstractExport
@@ -20,17 +21,10 @@ abstract class AbstractExport
 
     public function execute()
     {
-        $upload_dir = wp_upload_dir();
-
         $export_type = $this->camelCaseToKebabCase($this->class_basename(static::class)) . '-' . CarbonImmutable::now(wp_timezone())->toDateString();
 
         $filetype = '.csv';
         $filename = 'ppress-' . $export_type . $filetype;
-        $file     = trailingslashit($upload_dir['basedir']) . $filename;
-
-        if (file_exists($file)) {
-            unlink($file);
-        }
 
         $page  = 1;
         $limit = 9999;
@@ -41,11 +35,11 @@ abstract class AbstractExport
             wp_die(esc_html__('No data found for export parameters', 'wp-user-avatar'));
         }
 
-        $writer = Writer::createFromPath($file, 'w+');
+        // written to a temp stream rather than a guessable file in the public uploads directory.
+        $writer = Writer::createFromFileObject(new \SplTempFileObject());
 
-        if (apply_filters('ppress_data_export_writer_use_alternative', false)) {
-            $writer = Writer::createFromFileObject(new \SplTempFileObject());
-        }
+        // customer-supplied values could otherwise run as spreadsheet formulas when the export is opened.
+        $writer->addFormatter(new EscapeFormula());
 
         $writer->insertOne($this->headers());
         $writer->insertAll($data);
@@ -72,8 +66,6 @@ abstract class AbstractExport
         }
 
         $writer->output($filename);
-
-        @unlink($file);
 
         exit;
     }

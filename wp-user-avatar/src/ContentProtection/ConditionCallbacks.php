@@ -3,6 +3,26 @@
 namespace ProfilePress\Core\ContentProtection;
 
 
+/**
+ * Callbacks that decide whether a content protection rule's condition matches.
+ *
+ * Callbacks are invoked by Checker::content_match() with ($condition_id, $rule_saved_value, $is_redirect)
+ * in two contexts:
+ *
+ * 1. Redirect ($is_redirect = true), from Frontend\Redirect on template_redirect. "Does the page the visitor
+ *    is viewing match?" Main-query conditional tags (is_front_page(), is_page(), is_page_template()...) are
+ *    correct here.
+ *
+ * 2. Content filtering ($is_redirect = false), from Frontend\PostContent on the_content. "Does the post whose
+ *    content is being printed match?" the_content runs for any post printed anywhere: REST API responses
+ *    (/wp-json/wp/v2/pages/<id>), RSS feeds, search result excerpts, Query Loop blocks and other secondary
+ *    loops. In those requests the main query isn't the protected post, so main-query conditional tags return
+ *    false, the condition doesn't match and the protected content leaks. Conditions must check the global
+ *    $post (the post being filtered) instead.
+ *
+ * When adding a condition, handle both contexts. See front_page(), blog_page() and the 'template' case in
+ * post_type() for examples.
+ */
 class ConditionCallbacks
 {
     /**
@@ -95,7 +115,25 @@ class ConditionCallbacks
 
             case 'template':
 
-                if (is_page() && is_page_template($selected)) return true;
+                if (true === $is_redirect) {
+                    if (is_page() && is_page_template($selected)) return true;
+                    break;
+                }
+
+                // Content filtering: check the template of the post being filtered, not the main query.
+                // This used to be `is_page() && is_page_template($selected)` for both contexts, but in REST,
+                // feeds and secondary loops is_page() is false and is_page_template() reads the queried object,
+                // so pages protected by template were served unprotected through /wp-json/wp/v2/pages/<id>.
+                // get_page_template_slug() returns '' for the default template, hence the 'default' check.
+                if (self::_is_post_type('page')) {
+
+                    $selected      = (array)$selected;
+                    $page_template = get_page_template_slug($post_id);
+
+                    if (in_array($page_template, $selected, true) || (empty($page_template) && in_array('default', $selected, true))) {
+                        return true;
+                    }
+                }
                 break;
         }
 
@@ -311,6 +349,78 @@ class ConditionCallbacks
      *
      * @return bool
      */
+    /**
+     * "Home or Front Page" condition.
+     *
+     * This was registered as the bare `is_front_page` conditional tag. That only answers "is the main query the
+     * front page?", so in a REST request (/wp-json/wp/v2/pages/<front page id>) or on a search results page
+     * (front page excerpt) it returned false, the rule didn't match and the protected front page content was
+     * served to anyone.
+     *
+     * - is_front_page() true: matches, as before, in both contexts.
+     * - Redirect context: stays query-based. Redirecting should only happen when the visitor is on the home page.
+     * - Content filtering: also matches when the post being filtered is the page set in Settings > Reading >
+     *   Homepage (page_on_front), wherever that content is printed.
+     * - When the homepage shows "Your latest posts" there is no front page post, so only is_front_page() applies.
+     *
+     * Don't switch the registration in ContentConditions back to 'is_front_page'.
+     *
+     * @param string $condition_id
+     * @param mixed $rule_saved_value
+     * @param bool $is_redirect
+     *
+     * @return bool
+     */
+    public static function front_page($condition_id = '', $rule_saved_value = '', $is_redirect = false)
+    {
+        if (is_front_page()) return true;
+
+        if (true === $is_redirect || 'page' !== get_option('show_on_front')) return false;
+
+        return self::_is_page_option_post('page_on_front');
+    }
+
+    /**
+     * "Blog or Posts Page" condition.
+     *
+     * Same problem and fix as front_page(). The bare `is_home` conditional tag only matched when the main query
+     * was the posts page, so the posts page's own content leaked through REST and search. In the content filtering
+     * context this also matches the page set in Settings > Reading > Posts page (page_for_posts).
+     *
+     * Don't switch the registration in ContentConditions back to 'is_home'.
+     *
+     * @param string $condition_id
+     * @param mixed $rule_saved_value
+     * @param bool $is_redirect
+     *
+     * @return bool
+     */
+    public static function blog_page($condition_id = '', $rule_saved_value = '', $is_redirect = false)
+    {
+        if (is_home()) return true;
+
+        if (true === $is_redirect) return false;
+
+        return self::_is_page_option_post('page_for_posts');
+    }
+
+    /**
+     * Whether the post being filtered (global $post, set by the loop, REST controller or feed) is the page set
+     * in the given reading option.
+     *
+     * @param string $option page_on_front or page_for_posts
+     *
+     * @return bool
+     */
+    protected static function _is_page_option_post($option)
+    {
+        global $post;
+
+        $page_id = absint(get_option($option));
+
+        return $page_id > 0 && is_object($post) && absint($post->ID) === $page_id;
+    }
+
     public static function _is_post_type($post_type)
     {
         global $post;

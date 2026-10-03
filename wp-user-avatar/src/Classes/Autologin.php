@@ -2,6 +2,8 @@
 
 namespace ProfilePress\Core\Classes;
 
+use ProfilePress\Libsodium\LoginGuard;
+
 class Autologin
 {
     /**
@@ -24,17 +26,24 @@ class Autologin
 
             if ($set_login_cookie) {
 
-                $secure_cookie = '';
-                // If the user wants ssl but the session is not ssl, force a secure cookie.
-                if ( ! force_ssl_admin()) {
-                    if (get_user_option('use_ssl', $user_id)) {
-                        $secure_cookie = true;
-                        force_ssl_admin(true);
-                    }
-                }
+                $can_login = class_exists(LoginGuard::class)
+                    ? LoginGuard::can_user_login($user_id, 'registration_autologin')
+                    : true;
 
-                wp_set_auth_cookie($user_id, true, $secure_cookie);
-                wp_set_current_user($user_id);
+                if (!is_wp_error($can_login)) {
+
+                    $secure_cookie = '';
+                    // If the user wants ssl but the session is not ssl, force a secure cookie.
+                    if (!force_ssl_admin()) {
+                        if (get_user_option('use_ssl', $user_id)) {
+                            $secure_cookie = true;
+                            force_ssl_admin(true);
+                        }
+                    }
+
+                    wp_set_auth_cookie($user_id, true, $secure_cookie);
+                    wp_set_current_user($user_id);
+                }
             }
 
             do_action('ppress_before_auto_login_redirect', $login_id, $user_id);

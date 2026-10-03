@@ -113,6 +113,14 @@ abstract class AbstractMembershipEmail
      */
     public static function init()
     {
-        return new static();
+        static $instances = [];
+
+        $class = static::class;
+
+        if ( ! isset($instances[$class])) {
+            $instances[$class] = new static();
+        }
+
+        return $instances[$class];
     }
 }

@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit8e1a004d4bdd56825e4d70be58246b69
+class ComposerStaticInit73485d359cb933e147da10ce336a1fda
 {
     public static $files = array (
         'a4a119a56e50fbb293281d9a48007e0e' => __DIR__ . '/..' . '/symfony/polyfill-php80/bootstrap.php',
@@ -236,18 +236,23 @@ class ComposerStaticInit8e1a004d4bdd56825e4d70be58246b69
         'ProfilePressVendor\\Pelago\\Emogrifier\\Css\\StyleRule' => __DIR__ . '/..' . '/pelago/emogrifier/src/Css/StyleRule.php',
         'ProfilePressVendor\\Pelago\\Emogrifier\\HtmlProcessor\\AbstractHtmlProcessor' => __DIR__ . '/..' . '/pelago/emogrifier/src/HtmlProcessor/AbstractHtmlProcessor.php',
         'ProfilePressVendor\\Pelago\\Emogrifier\\HtmlProcessor\\CssToAttributeConverter' => __DIR__ . '/..' . '/pelago/emogrifier/src/HtmlProcessor/CssToAttributeConverter.php',
+        'ProfilePressVendor\\Pelago\\Emogrifier\\HtmlProcessor\\CssVariableEvaluator' => __DIR__ . '/..' . '/pelago/emogrifier/src/HtmlProcessor/CssVariableEvaluator.php',
         'ProfilePressVendor\\Pelago\\Emogrifier\\HtmlProcessor\\HtmlNormalizer' => __DIR__ . '/..' . '/pelago/emogrifier/src/HtmlProcessor/HtmlNormalizer.php',
         'ProfilePressVendor\\Pelago\\Emogrifier\\HtmlProcessor\\HtmlPruner' => __DIR__ . '/..' . '/pelago/emogrifier/src/HtmlProcessor/HtmlPruner.php',
         'ProfilePressVendor\\Pelago\\Emogrifier\\Utilities\\ArrayIntersector' => __DIR__ . '/..' . '/pelago/emogrifier/src/Utilities/ArrayIntersector.php',
         'ProfilePressVendor\\Pelago\\Emogrifier\\Utilities\\CssConcatenator' => __DIR__ . '/..' . '/pelago/emogrifier/src/Utilities/CssConcatenator.php',
+        'ProfilePressVendor\\Pelago\\Emogrifier\\Utilities\\DeclarationBlockParser' => __DIR__ . '/..' . '/pelago/emogrifier/src/Utilities/DeclarationBlockParser.php',
+        'ProfilePressVendor\\Pelago\\Emogrifier\\Utilities\\Preg' => __DIR__ . '/..' . '/pelago/emogrifier/src/Utilities/Preg.php',
         'ProfilePressVendor\\Psr\\Clock\\ClockInterface' => __DIR__ . '/..' . '/psr/clock/src/ClockInterface.php',
         'ProfilePressVendor\\Sabberworm\\CSS\\CSSElement' => __DIR__ . '/..' . '/sabberworm/php-css-parser/src/CSSElement.php',
         'ProfilePressVendor\\Sabberworm\\CSS\\CSSList\\AtRuleBlockList' => __DIR__ . '/..' . '/sabberworm/php-css-parser/src/CSSList/AtRuleBlockList.php',
         'ProfilePressVendor\\Sabberworm\\CSS\\CSSList\\CSSBlockList' => __DIR__ . '/..' . '/sabberworm/php-css-parser/src/CSSList/CSSBlockList.php',
         'ProfilePressVendor\\Sabberworm\\CSS\\CSSList\\CSSList' => __DIR__ . '/..' . '/sabberworm/php-css-parser/src/CSSList/CSSList.php',
+        'ProfilePressVendor\\Sabberworm\\CSS\\CSSList\\CSSListItem' => __DIR__ . '/..' . '/sabberworm/php-css-parser/src/CSSList/CSSListItem.php',
         'ProfilePressVendor\\Sabberworm\\CSS\\CSSList\\Document' => __DIR__ . '/..' . '/sabberworm/php-css-parser/src/CSSList/Document.php',
         'ProfilePressVendor\\Sabberworm\\CSS\\CSSList\\KeyFrame' => __DIR__ . '/..' . '/sabberworm/php-css-parser/src/CSSList/KeyFrame.php',
         'ProfilePressVendor\\Sabberworm\\CSS\\Comment\\Comment' => __DIR__ . '/..' . '/sabberworm/php-css-parser/src/Comment/Comment.php',
+        'ProfilePressVendor\\Sabberworm\\CSS\\Comment\\CommentContainer' => __DIR__ . '/..' . '/sabberworm/php-css-parser/src/Comment/CommentContainer.php',
         'ProfilePressVendor\\Sabberworm\\CSS\\Comment\\Commentable' => __DIR__ . '/..' . '/sabberworm/php-css-parser/src/Comment/Commentable.php',
         'ProfilePressVendor\\Sabberworm\\CSS\\OutputFormat' => __DIR__ . '/..' . '/sabberworm/php-css-parser/src/OutputFormat.php',
         'ProfilePressVendor\\Sabberworm\\CSS\\OutputFormatter' => __DIR__ . '/..' . '/sabberworm/php-css-parser/src/OutputFormatter.php',
@@ -266,9 +271,11 @@ class ComposerStaticInit8e1a004d4bdd56825e4d70be58246b69
         'ProfilePressVendor\\Sabberworm\\CSS\\Property\\Import' => __DIR__ . '/..' . '/sabberworm/php-css-parser/src/Property/Import.php',
         'ProfilePressVendor\\Sabberworm\\CSS\\Property\\KeyframeSelector' => __DIR__ . '/..' . '/sabberworm/php-css-parser/src/Property/KeyframeSelector.php',
         'ProfilePressVendor\\Sabberworm\\CSS\\Property\\Selector' => __DIR__ . '/..' . '/sabberworm/php-css-parser/src/Property/Selector.php',
+        'ProfilePressVendor\\Sabberworm\\CSS\\Property\\Selector\\SpecificityCalculator' => __DIR__ . '/..' . '/sabberworm/php-css-parser/src/Property/Selector/SpecificityCalculator.php',
         'ProfilePressVendor\\Sabberworm\\CSS\\Renderable' => __DIR__ . '/..' . '/sabberworm/php-css-parser/src/Renderable.php',
         'ProfilePressVendor\\Sabberworm\\CSS\\RuleSet\\AtRuleSet' => __DIR__ . '/..' . '/sabberworm/php-css-parser/src/RuleSet/AtRuleSet.php',
         'ProfilePressVendor\\Sabberworm\\CSS\\RuleSet\\DeclarationBlock' => __DIR__ . '/..' . '/sabberworm/php-css-parser/src/RuleSet/DeclarationBlock.php',
+        'ProfilePressVendor\\Sabberworm\\CSS\\RuleSet\\RuleContainer' => __DIR__ . '/..' . '/sabberworm/php-css-parser/src/RuleSet/RuleContainer.php',
         'ProfilePressVendor\\Sabberworm\\CSS\\RuleSet\\RuleSet' => __DIR__ . '/..' . '/sabberworm/php-css-parser/src/RuleSet/RuleSet.php',
         'ProfilePressVendor\\Sabberworm\\CSS\\Rule\\Rule' => __DIR__ . '/..' . '/sabberworm/php-css-parser/src/Rule/Rule.php',
         'ProfilePressVendor\\Sabberworm\\CSS\\Settings' => __DIR__ . '/..' . '/sabberworm/php-css-parser/src/Settings.php',
@@ -804,9 +811,9 @@ class ComposerStaticInit8e1a004d4bdd56825e4d70be58246b69
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInit8e1a004d4bdd56825e4d70be58246b69::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInit8e1a004d4bdd56825e4d70be58246b69::$prefixDirsPsr4;
-            $loader->classMap = ComposerStaticInit8e1a004d4bdd56825e4d70be58246b69::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInit73485d359cb933e147da10ce336a1fda::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit73485d359cb933e147da10ce336a1fda::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInit73485d359cb933e147da10ce336a1fda::$classMap;
 
         }, null, ClassLoader::class);
     }

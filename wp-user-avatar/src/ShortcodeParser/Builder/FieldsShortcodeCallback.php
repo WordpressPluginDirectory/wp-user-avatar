@@ -542,7 +542,7 @@ class FieldsShortcodeCallback
         $type = sanitize_text_field($atts['type']);
 
         if ($this->form_type == FormRepository::EDIT_PROFILE_TYPE) {
-            $db_data       = isset($atts['value']) ? sanitize_text_field($atts['value']) : ($this->current_user->$key ?? '');
+            $db_data       = isset($atts['value']) && ppress_is_valid_data($atts['value']) ? sanitize_text_field($atts['value']) : ($this->current_user->$key ?? '');
             $atts['value'] = isset($_POST[$key]) ? esc_attr($_POST[$key]) : $db_data;
         }
 
@@ -599,7 +599,7 @@ class FieldsShortcodeCallback
         $value = isset($_POST[$key]) ? sanitize_text_field($_POST[$key]) : sanitize_text_field($atts['value'] ?? '');
 
         if ($this->form_type == FormRepository::EDIT_PROFILE_TYPE) {
-            $db_data = isset($atts['value']) ? sanitize_text_field($atts['value']) : ($this->current_user->$key ?? '');
+            $db_data = isset($atts['value']) && ppress_is_valid_data($atts['value']) ? sanitize_text_field($atts['value']) : ($this->current_user->$key ?? '');
             $value   = isset($_POST[$key]) ? sanitize_text_field($_POST[$key]) : $db_data;
         }
 
@@ -690,7 +690,7 @@ class FieldsShortcodeCallback
 
 
         if ($this->form_type == FormRepository::EDIT_PROFILE_TYPE) {
-            $db_data       = isset($atts['value']) ? esc_attr($atts['value']) : ($this->current_user->$key ?? '');
+            $db_data       = isset($atts['value']) && ppress_is_valid_data($atts['value']) ? esc_attr($atts['value']) : ($this->current_user->$key ?? '');
             $atts['value'] = isset($_POST[$key]) ? esc_attr($_POST[$key]) : $db_data;
         }
 
@@ -735,7 +735,7 @@ class FieldsShortcodeCallback
         $value = isset($_POST[$key]) ? esc_textarea($_POST[$key]) : esc_textarea($atts['value'] ?? '');
 
         if ($this->form_type == FormRepository::EDIT_PROFILE_TYPE) {
-            $db_data = isset($atts['value']) ? esc_textarea($atts['value']) : ($this->current_user->$key ?? '');
+            $db_data = isset($atts['value']) && ppress_is_valid_data($atts['value']) ? esc_textarea($atts['value']) : ($this->current_user->$key ?? '');
             $value   = isset($_POST[$key]) ? esc_textarea($_POST[$key]) : $db_data;
         }
 
@@ -868,9 +868,9 @@ class FieldsShortcodeCallback
             $checked = @checked($_POST[$key], $value, false);
 
             if ($this->form_type == FormRepository::EDIT_PROFILE_TYPE) {
-                $db_data = isset($atts['value']) ? esc_attr($atts['value']) : ($this->current_user->$key ?? '');
+                $db_data = isset($atts['value']) && ppress_is_valid_data($atts['value']) ? esc_attr($atts['value']) : ($this->current_user->$key ?? '');
                 $checked = @checked(
-                    isset($_POST[$key]) && ! empty($_POST[$key]) ? $_POST[$key] : $db_data,
+                    ! empty($_POST[$key]) ? $_POST[$key] : $db_data,
                     $value,
                     false
                 );
@@ -978,7 +978,7 @@ class FieldsShortcodeCallback
         $checked = checked(ppressPOST_var($key, ppress_var($atts, 'checked_state')), 'true', false);
 
         if ($this->form_type == FormRepository::EDIT_PROFILE_TYPE) {
-            $db_data = isset($atts['value']) ? sanitize_text_field($atts['value']) : ($this->current_user->$key ?? '');
+            $db_data = isset($atts['value']) && ppress_is_valid_data($atts['value']) ? sanitize_text_field($atts['value']) : ($this->current_user->$key ?? '');
             $db_data = ('1' == $db_data) ? 'true' : $db_data;
 
             $checked = checked(
@@ -1136,7 +1136,7 @@ class FieldsShortcodeCallback
         }
 
         $atts          = apply_filters('ppress_' . $this->form_name . '_submit_field_atts', $this->valid_field_atts(ppress_normalize_attributes($atts)));
-        $atts['value'] = isset($atts['value']) ? esc_attr($atts['value']) : $value;
+        $atts['value'] = isset($atts['value']) && ppress_is_valid_data($atts['value']) ? esc_attr($atts['value']) : $value;
 
         $form_type = $this->form_type;
         $form_id   = $GLOBALS['pp_registration_form_id'] ?? 0;

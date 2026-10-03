@@ -42,7 +42,7 @@ class ModifyRedirectDefaultLinks
 
         $is_active = false;
 
-        if ('wp-login.php' == $pagenow) {
+        if (strstr($_SERVER['REQUEST_URI'], '/wp-admin') || 'wp-login.php' == $pagenow) {
 
             if (class_exists('Jetpack') && \Jetpack::is_module_active('sso')) {
                 $is_active = true;

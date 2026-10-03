@@ -277,6 +277,9 @@ abstract class AbstractPaymentMethod implements PaymentMethodInterface
      * Get setting value.
      *
      * @param $setting
+     * @param bool $default
+     *
+     * @return mixed
      */
     public function get_value($setting, $default = false)
     {

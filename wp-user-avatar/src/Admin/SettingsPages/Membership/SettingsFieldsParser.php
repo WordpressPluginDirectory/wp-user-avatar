@@ -110,7 +110,7 @@ class SettingsFieldsParser
             case 'checkbox':
                 $checkbox_label = esc_html(ppress_var($config, 'checkbox_label', '', true));
                 printf('<input type="hidden" name="%1$s" value="false">', $field_id);
-                printf('<label><input type="checkbox" name="%1$s" value="true"%2$s>%3$s</label>', $field_id, checked('true', $field_data, false), $checkbox_label);
+                printf('<label><input id="%4$s" type="checkbox" name="%1$s" value="true"%2$s>%3$s</label>', $field_id, checked('true', $field_data, false), $checkbox_label, $config['id']);
                 break;
             default:
                 do_action('ppress_admin_settings_fields_parser_field', $field_data, $config, $this);

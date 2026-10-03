@@ -105,7 +105,8 @@ class RegisterScripts
             'disable_ajax_form'              => apply_filters('ppress_disable_ajax_form', (string)$is_ajax_mode_disabled),
             'is_checkout'                    => ppress_is_checkout() ? '1' : '0',
             'is_checkout_tax_enabled'        => $this->is_tax_enabled_in_checkout() ? '1' : '0',
-            'is_checkout_autoscroll_enabled' => apply_filters('ppress_is_checkout_autoscroll_enabled', 'true')
+            'is_checkout_autoscroll_enabled' => apply_filters('ppress_is_checkout_autoscroll_enabled', 'true'),
+            'is_user_logged_in'              => is_user_logged_in() ? '1' : '0'
         ]);
 
         if (isset($_GET['pp_preview_form']) || ppress_post_content_has_shortcode('profilepress-member-directory')) {

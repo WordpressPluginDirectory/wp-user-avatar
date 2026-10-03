@@ -19,7 +19,7 @@ namespace ProfilePressVendor\Pelago\Emogrifier\Caching;
  *
  * @internal
  */
-class SimpleStringCache
+final class SimpleStringCache
 {
     /**
      * @var array<string, string>

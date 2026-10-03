@@ -3,6 +3,7 @@
 declare (strict_types=1);
 namespace ProfilePressVendor\Pelago\Emogrifier\Css;
 
+use ProfilePressVendor\Sabberworm\CSS\OutputFormat;
 use ProfilePressVendor\Sabberworm\CSS\Property\Selector;
 use ProfilePressVendor\Sabberworm\CSS\RuleSet\DeclarationBlock;
 /**
@@ -10,7 +11,7 @@ use ProfilePressVendor\Sabberworm\CSS\RuleSet\DeclarationBlock;
  *
  * @internal
  */
-class StyleRule
+final class StyleRule
 {
     /**
      * @var DeclarationBlock
@@ -37,7 +38,7 @@ class StyleRule
         /** @var array<int, Selector> $selectors */
         $selectors = $this->declarationBlock->getSelectors();
         return \array_map(static function (Selector $selector): string {
-            return (string) $selector;
+            return $selector->getSelector();
         }, $selectors);
     }
     /**
@@ -45,7 +46,13 @@ class StyleRule
      */
     public function getDeclarationAsText(): string
     {
-        return \implode(' ', $this->declarationBlock->getRules());
+        $rules = $this->declarationBlock->getRules();
+        $renderedRules = [];
+        $outputFormat = OutputFormat::create();
+        foreach ($rules as $rule) {
+            $renderedRules[] = $rule->render($outputFormat);
+        }
+        return \implode(' ', $renderedRules);
     }
     /**
      * Checks whether the declaration block has at least one declaration.

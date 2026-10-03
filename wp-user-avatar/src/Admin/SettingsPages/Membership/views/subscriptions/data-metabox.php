@@ -171,7 +171,7 @@ if ( ! empty($payment_method_string)) {
                 <input id="sub_profile_id" type="text" name="sub_profile_id" value="<?= $subscription_data->get_profile_id() ?>">
             </p>
 
-            <?php if ( ! $subscription_data->is_pending() && is_int($plan_group_id)) : ?>
+            <?php if ($subscription_data->can_change_plan()) : ?>
                 <p class="mb-form-field change_plan_url">
                     <label for="change_plan_url"><?php esc_html_e('Change Plan URL:', 'wp-user-avatar'); ?></label>
                     <input id="change_plan_url" type="text" name="change_plan_url" value="<?= ppress_plan_checkout_url($subscription_id, true) ?>" readonly>

@@ -103,10 +103,16 @@ class MembershipShortcodes
 
             $sub = SubscriptionFactory::fromId(absint($_GET['change_plan']));
 
-            if ( ! $sub->exists() || ! ppress_get_plan($sub->plan_id)->get_group_id()) {
+            $customer = CustomerFactory::fromUserId(get_current_user_id());
 
+            if (
+                ! $sub->exists() ||
+                ! $customer->exists() ||
+                (int)$customer->id !== $sub->get_customer_id() ||
+                ! $sub->can_change_plan()
+            ) {
                 echo '<p>';
-                esc_html_e('You can not switch to another plan because this plan does not belong to any group.', 'wp-user-avatar');
+                esc_html_e('You are not allowed to switch from this plan.', 'wp-user-avatar');
                 echo '</p>';
 
                 return;

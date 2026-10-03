@@ -244,7 +244,7 @@ class FormList extends \WP_List_Table
             'form-preview' => sprintf("<a target='_blank' href='%s'>%s</a>", $preview_url, esc_attr__('Preview', 'wp-user-avatar'))
         );
 
-        $name = '<strong><a href="' . $customize_url . '">' . $item['name'] . '</a></strong>';
+        $name = '<strong><a href="' . $customize_url . '">' . esc_html($item['name']) . '</a></strong>';
 
 
         return $name . $this->row_actions($actions);

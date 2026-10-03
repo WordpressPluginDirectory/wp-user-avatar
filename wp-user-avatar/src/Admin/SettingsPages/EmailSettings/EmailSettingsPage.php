@@ -48,7 +48,7 @@ class EmailSettingsPage
             add_filter('wp_cspa_sanitize_skip', function ($return, $fieldkey, $value) {
 
                 if (isset($_GET['type']) && $fieldkey == sanitize_text_field($_GET['type']) . '_email_content') {
-                    return stripslashes($value);
+                    return ppress_kses_unless_unfiltered_html(stripslashes($value));
                 }
 
                 return $return;
@@ -164,11 +164,41 @@ class EmailSettingsPage
                 'recipient'    => ppress_get_admin_notification_emails(),
                 'placeholders' => [
                     '{{username}}'   => esc_html__('Username of the newly registered user.', 'wp-user-avatar'),
-                    '{{email}}'      => esc_html__('Email address of the newly registered user.', 'wp-user-avatar'),
+                    '{{user_email}}'      => esc_html__('Email address of the newly registered user.', 'wp-user-avatar'),
                     '{{first_name}}' => esc_html__('First name of the newly registered user.', 'wp-user-avatar'),
                     '{{last_name}}'  => esc_html__('Last name of the newly registered user.', 'wp-user-avatar'),
                     '{{site_title}}' => esc_html__('Website title or name.', 'wp-user-avatar'),
                     '{{field_key}}'  => sprintf(
+                        esc_html__('Replace "field_key" with the %scustom field key%s or usermeta key.', 'wp-user-avatar'),
+                        '<a href="' . PPRESS_CUSTOM_FIELDS_SETTINGS_PAGE . '" target="_blank">', '</a>'
+                    )
+                ]
+            ],
+            [
+                'type'            => self::ACCOUNT_EMAIL_TYPE,
+                'key'             => 'login_notification',
+                'title'           => esc_html__('Login Notification Email', 'wp-user-avatar'),
+                'subject'         => ppress_login_notification_subject_default(),
+                'message'         => ppress_login_notification_content_default(),
+                'description'     => esc_html__('Email that is sent to the user when they log in from a new device, or on every login.', 'wp-user-avatar'),
+                'recipient'       => esc_html__('Users', 'wp-user-avatar'),
+                'enabled_default' => 'off',
+                'placeholders'    => [
+                    '{{username}}'            => esc_html__('Username of the user.', 'wp-user-avatar'),
+                    '{{userid}}'              => esc_html__('User ID of the user.', 'wp-user-avatar'),
+                    '{{email}}'               => esc_html__('Email address of the user.', 'wp-user-avatar'),
+                    '{{display_name}}'        => esc_html__('Display name of the user.', 'wp-user-avatar'),
+                    '{{first_name}}'          => esc_html__('First name of the user.', 'wp-user-avatar'),
+                    '{{last_name}}'           => esc_html__('Last name of the user.', 'wp-user-avatar'),
+                    '{{site_title}}'          => esc_html__('Website title or name.', 'wp-user-avatar'),
+                    '{{login_date}}'          => esc_html__('Date of the login, in the site date format.', 'wp-user-avatar'),
+                    '{{login_time}}'          => esc_html__('Time of the login, in the site time format and timezone.', 'wp-user-avatar'),
+                    '{{device}}'              => esc_html__('Browser and operating system the login came from, e.g. "Chrome on Windows".', 'wp-user-avatar'),
+                    '{{ip_address}}'          => esc_html__('IP address the login came from.', 'wp-user-avatar'),
+                    '{{user_agent}}'          => esc_html__('Browser user agent the login came from.', 'wp-user-avatar'),
+                    '{{password_reset_link}}' => esc_html__('URL of the password reset page.', 'wp-user-avatar'),
+                    '{{login_link}}'          => esc_html__('URL to login.', 'wp-user-avatar'),
+                    '{{field_key}}'           => sprintf(
                         esc_html__('Replace "field_key" with the %scustom field key%s or usermeta key.', 'wp-user-avatar'),
                         '<a href="' . PPRESS_CUSTOM_FIELDS_SETTINGS_PAGE . '" target="_blank">', '</a>'
                     )
@@ -190,7 +220,7 @@ class EmailSettingsPage
                 'title'        => esc_html__('Renewal Order Receipt', 'wp-user-avatar'),
                 'subject'      => sprintf(esc_html__('Subscription Renewal Receipt', 'wp-user-avatar'), $site_title),
                 'message'      => $this->get_order_receipt_content(true),
-                'description'  => esc_html__('Email sent to customer whenever a renewal order occurs.', 'wp-user-avatar'),
+                'description'  => esc_html__('Email sent to customers whenever a renewal order occurs.', 'wp-user-avatar'),
                 'recipient'    => esc_html__('Customers', 'wp-user-avatar'),
                 'placeholders' => $this->get_order_placeholders()
             ],
@@ -210,7 +240,7 @@ class EmailSettingsPage
                 'title'        => esc_html__('Subscription Cancelled Notification', 'wp-user-avatar'),
                 'subject'      => sprintf(esc_html__('Your subscription has been cancelled.', 'wp-user-avatar'), $site_title),
                 'message'      => $this->get_subscription_cancelled_content(),
-                'description'  => esc_html__('Email sent to customer whenever their subscription is cancelled.', 'wp-user-avatar'),
+                'description'  => esc_html__('Email sent to customers whenever their subscription is cancelled.', 'wp-user-avatar'),
                 'recipient'    => esc_html__('Customers', 'wp-user-avatar'),
                 'placeholders' => $this->get_subscription_placeholders()
             ],
@@ -220,7 +250,17 @@ class EmailSettingsPage
                 'title'        => esc_html__('Subscription Expired Notification', 'wp-user-avatar'),
                 'subject'      => sprintf(esc_html__('Your subscription has expired.', 'wp-user-avatar'), $site_title),
                 'message'      => $this->get_subscription_expired_content(),
-                'description'  => esc_html__('Email sent to customer whenever their subscription expires.', 'wp-user-avatar'),
+                'description'  => esc_html__('Email sent to customers whenever their subscription expires.', 'wp-user-avatar'),
+                'recipient'    => esc_html__('Customers', 'wp-user-avatar'),
+                'placeholders' => $this->get_subscription_placeholders()
+            ],
+            [
+                'type'         => self::SUBSCRIPTION_EMAIL_TYPE,
+                'key'          => 'subscription_payment_failed_notification',
+                'title'        => esc_html__('Subscription Payment Failed Notification', 'wp-user-avatar'),
+                'subject'      => sprintf(esc_html__('Your subscription payment failed.', 'wp-user-avatar'), $site_title),
+                'message'      => $this->get_subscription_payment_failed_content(),
+                'description'  => esc_html__('Email sent to customers whenever a recurring payment that should renew their subscription fails or goes unpaid.', 'wp-user-avatar'),
                 'recipient'    => esc_html__('Customers', 'wp-user-avatar'),
                 'placeholders' => $this->get_subscription_placeholders()
             ],
@@ -230,7 +270,7 @@ class EmailSettingsPage
                 'title'        => esc_html__('Subscription Completed Notification', 'wp-user-avatar'),
                 'subject'      => sprintf(esc_html__('Your subscription is now complete.', 'wp-user-avatar'), $site_title),
                 'message'      => $this->get_subscription_completed_content(),
-                'description'  => esc_html__('Email sent to customer whenever they complete their subscription payments.', 'wp-user-avatar'),
+                'description'  => esc_html__('Email sent to customers whenever they complete their subscription payments.', 'wp-user-avatar'),
                 'recipient'    => esc_html__('Customers', 'wp-user-avatar'),
                 'placeholders' => $this->get_subscription_placeholders()
             ],
@@ -240,10 +280,21 @@ class EmailSettingsPage
                 'title'         => esc_html__('Upcoming Renewal Reminder', 'wp-user-avatar'),
                 'subject'       => sprintf(esc_html__('Your subscription is renewing soon.', 'wp-user-avatar'), $site_title),
                 'message'       => $this->get_subscription_renewal_reminder_content(),
-                'description'   => esc_html__('Email sent to customer to remind them that their subscription is approaching its renewal.', 'wp-user-avatar'),
+                'description'   => esc_html__('Email sent to customers to remind them that their subscription is approaching its renewal.', 'wp-user-avatar'),
                 'recipient'     => esc_html__('Customers', 'wp-user-avatar'),
                 'placeholders'  => $this->get_subscription_placeholders(),
                 'reminder_days' => '1'
+            ],
+            [
+                'type'          => self::SUBSCRIPTION_EMAIL_TYPE,
+                'key'           => 'subscription_trial_ending_reminder',
+                'title'         => esc_html__('Free Trial Ending Reminder', 'wp-user-avatar'),
+                'subject'       => esc_html__('Your free trial is ending soon.', 'wp-user-avatar'),
+                'message'       => $this->get_subscription_trial_ending_reminder_content(),
+                'description'   => esc_html__('Email sent to customers to remind them that their free trial is ending and they will be charged.', 'wp-user-avatar'),
+                'recipient'     => esc_html__('Customers', 'wp-user-avatar'),
+                'placeholders'  => $this->get_subscription_placeholders(),
+                'reminder_days' => '3'
             ],
             [
                 'type'          => self::SUBSCRIPTION_EMAIL_TYPE,
@@ -251,7 +302,7 @@ class EmailSettingsPage
                 'title'         => esc_html__('Upcoming Expiration Reminder', 'wp-user-avatar'),
                 'subject'       => sprintf(esc_html__('Your subscription is expiring soon.', 'wp-user-avatar'), $site_title),
                 'message'       => $this->get_subscription_renewal_reminder_content(true),
-                'description'   => esc_html__('Email sent to customer to remind them that their subscription is approaching its expiration.', 'wp-user-avatar'),
+                'description'   => esc_html__('Email sent to customers to remind them that their subscription is approaching its expiration.', 'wp-user-avatar'),
                 'recipient'     => esc_html__('Customers', 'wp-user-avatar'),
                 'placeholders'  => $this->get_subscription_placeholders(),
                 'reminder_days' => '1'
@@ -262,7 +313,7 @@ class EmailSettingsPage
                 'title'         => esc_html__('After Subscription Expired Notification', 'wp-user-avatar'),
                 'subject'       => sprintf(esc_html__('Your subscription has expired.', 'wp-user-avatar'), $site_title),
                 'message'       => $this->get_subscription_expired_content(),
-                'description'   => esc_html__('Email sent to customer few days after their subscription expires.', 'wp-user-avatar'),
+                'description'   => esc_html__('Email sent to customers few days after their subscription expires.', 'wp-user-avatar'),
                 'recipient'     => esc_html__('Customers', 'wp-user-avatar'),
                 'placeholders'  => $this->get_subscription_placeholders(),
                 'reminder_days' => '2'
@@ -336,7 +387,7 @@ class EmailSettingsPage
                     'label'          => esc_html__('Enable Notification', 'wp-user-avatar'),
                     'checkbox_label' => esc_html__('Enable', 'wp-user-avatar'),
                     'value'          => 'on',
-                    'default_value'  => 'on',
+                    'default_value'  => ($data['enabled_default'] ?? 'on') == 'on' ? 'on' : '',
                     'description'    => esc_html__('Check to enable this email notification.', 'wp-user-avatar')
                 ],
                 $key . '_email_subject' => [
@@ -368,6 +419,28 @@ class EmailSettingsPage
                 'value'       => $data['reminder_days'],
                 'label'       => esc_html__('Reminder Days', 'wp-user-avatar'),
                 'description' => esc_html__('The number of days before the upcoming payment due date to notify the customer.', 'wp-user-avatar')
+            ];
+        }
+
+        if ($key == 'login_notification') {
+            $email_settings[0][$key . '_send_for'] = [
+                'type'        => 'select',
+                'options'     => [
+                    'new_device'  => esc_html__('Logins from a new device', 'wp-user-avatar'),
+                    'every_login' => esc_html__('Every login', 'wp-user-avatar')
+                ],
+                'value'       => 'new_device',
+                'label'       => esc_html__('Send For', 'wp-user-avatar'),
+                'description' => esc_html__('Choose whether to email users on every login, or only when they log in from a browser or device they have not used before.', 'wp-user-avatar')
+            ];
+        }
+
+        if ($key == 'subscription_trial_ending_reminder') {
+            $email_settings[0][$key . '_reminder_days'] = [
+                'type'        => 'number',
+                'value'       => $data['reminder_days'],
+                'label'       => esc_html__('Reminder Days', 'wp-user-avatar'),
+                'description' => esc_html__('The number of days before the free trial ends to notify the customer. While this email is enabled, trialling customers get it instead of the Upcoming Renewal Reminder.', 'wp-user-avatar')
             ];
         }
 
@@ -493,7 +566,7 @@ class EmailSettingsPage
 
     public function handle_email_preview()
     {
-        if ( ! isset($_GET['pp_email_preview']) || empty($_GET['pp_email_preview'])) return;
+        if (empty($_GET['pp_email_preview'])) return;
 
         if ( ! current_user_can('manage_options')) return;
 

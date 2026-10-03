@@ -10,7 +10,7 @@ class DBUpdates
 {
     public static $instance;
 
-    const DB_VER = 14;
+    const DB_VER = 15;
 
     public function init_options()
     {
@@ -209,6 +209,12 @@ class DBUpdates
         if ( ! empty($recaptcha_site_key)) {
             ppress_update_settings('recaptcha_api_platform', 'classic');
         }
+    }
+
+    public function update_routine_15()
+    {
+        // registers the new My Account "login-activity" endpoint. Deferred because updates run before rewrite rules and endpoints are set up.
+        add_action('init', 'flush_rewrite_rules', 99999);
     }
 
     public static function get_instance()
